@@ -1,5 +1,5 @@
 # INTT
-Cheng-Wei SHih, National Central University, Taiwan
+Cheng-Wei Shih, National Central University, Taiwan
 
 
 
