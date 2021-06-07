@@ -7,6 +7,11 @@ This macro requires 4 files to run.
 
 For file 4, it can be created by "ls fphx_raw_*.root > total_file.txt"
 Please delete the text ".root" in this file.
+
+
+
+
+
 For more detailed introduction, please check "Channel classification instruction.pdf"
 
 =======================================================================================
