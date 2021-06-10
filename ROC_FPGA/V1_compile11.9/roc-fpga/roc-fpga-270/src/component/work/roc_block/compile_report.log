@@ -1,0 +1,1282 @@
+=====================================================================
+Parameters used to run compile:
+===============================
+
+Family      : ProASIC3E
+Device      : A3PE3000
+Package     : 896 FBGA
+Source      :
+C:\FVTX_VHDL_code\ROC_FVTX_blocks\ROC_FVTX_blocks\ROC_FVTX_comb\roc_block\synthesis\roc_block.e\
+dn
+
+C:\FVTX_VHDL_code\ROC_FVTX_blocks\ROC_FVTX_blocks\ROC_FVTX_comb\roc_block\component\work\decode\
+r_array\decoder_array.cdb
+
+C:\FVTX_VHDL_code\ROC_FVTX_blocks\ROC_FVTX_blocks\ROC_FVTX_comb\roc_block\component\work\deser_\
+array\deser_array.cdb
+
+C:\FVTX_VHDL_code\ROC_FVTX_blocks\ROC_FVTX_blocks\ROC_FVTX_comb\roc_block\component\work\or_arr\
+ay\or_array.cdb
+
+C:\FVTX_VHDL_code\ROC_FVTX_blocks\ROC_FVTX_blocks\ROC_FVTX_comb\roc_block\component\work\output\
+_arbiter\output_arbiter.cdb
+
+C:\FVTX_VHDL_code\ROC_FVTX_blocks\ROC_FVTX_blocks\ROC_FVTX_comb\roc_block\component\work\pf_arr\
+ay\pf_array.cdb
+
+C:\FVTX_VHDL_code\ROC_FVTX_blocks\ROC_FVTX_blocks\ROC_FVTX_comb\roc_block\component\work\sync_b\
+lock_logic\sync_block_logic.cdb
+
+C:\FVTX_VHDL_code\ROC_FVTX_blocks\ROC_FVTX_blocks\ROC_FVTX_comb\roc_block\synthesis\roc_block_s\
+dc.sdc
+
+C:\FVTX_VHDL_code\ROC_FVTX_blocks\ROC_FVTX_blocks\ROC_FVTX_comb\roc_block\constraint\roc_block.\
+pdc
+Format      : EDIF
+Topcell     : roc_block
+Speed grade : -2
+Temp        : 0:25:70
+Voltage     : 1.58:1.50:1.42
+
+Keep Existing Physical Constraints : No
+Keep Existing Timing Constraints   : Yes
+
+pdc_abort_on_error                 : Yes
+pdc_eco_display_unmatched_objects  : No
+pdc_eco_max_warnings               : 10000
+
+demote_globals                     : No
+promote_globals                    : No
+localclock_max_shared_instances    : 12
+localclock_buffer_tree_max_fanout  : 12
+
+combine_register                   : No
+delete_buffer_tree                 : No
+
+report_high_fanout_nets_limit      : 10
+
+=====================================================================
+Compile starts ...
+
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_2_BUF[30]:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_0_BUF[14]:Q drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_0_BUF[15]:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_1_BUF[29]:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_2_BUF[14]:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/FULL:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_2_BUF[15]:Q drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_1_BUF[31]:Q drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_1_BUF[14]:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_1_BUF[15]:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/FULL:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_1_BUF[30]:Q drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_0_BUF[31]:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_0_BUF[29]:Q drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/FULL:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/FULL:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/FULL:Q drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_2_BUF[31]:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/FULL:Q drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_2_BUF[29]:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/DATA_OR_0_BUF[30]:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_15_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/FULL:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_7_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_13_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_12_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_0/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_4/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_15_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_9_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_1/FIFOBLOCK0/U_6_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_6_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_1/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_10_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_12_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_3/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_5/FULL:Q drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/FULL:Q drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_3_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_0/fifo_block_0/FIFOBLOCK0/U_4_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_7_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_1/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_8_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_0/fifo_block_0/FIFOBLOCK0/U_1_1:PIN1
+         drives no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_15_0:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_1/FIFOBLOCK0/U_5_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_0/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_13_1:PIN1 drives
+         no load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_1/fifo_block_0/FIFOBLOCK0/U_11_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin
+         Inst_arbiter/Inst_ofb/Inst_ofb_1/Inst_ff_1/fifo_block_0/FIFOBLOCK0/U_5_1:PIN1 drives no
+         load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_0/Inst_fw_2/fifo_block_1/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+Warning: CMP202: Pin Inst_arbiter/Inst_fb/Inst_fb_1/Inst_fw_2/fifo_block_0/FIFOBLOCK0/U_2_1:PIN1
+         drives no load.
+
+Netlist Optimization Report
+===========================
+
+Optimized macros:
+  - Dangling net drivers:   0
+  - Buffers:                0
+  - Inverters:              0
+  - Tieoff:                 0
+  - Logic combining:        0
+
+    Total macros optimized  0
+Info: BLK016: Delete the global instance Inst_decoder_array/RST_CLKINT because of clock sharing.
+      The driver net will be rerouted.
+Info: BLK016: Delete the global instance Inst_arbiter/RST_CLKINT because of clock sharing. The
+      driver net will be rerouted.
+Info: BLK016: Delete the global instance Inst_pf_array/RST_CLKINT because of clock sharing. The
+      driver net will be rerouted.
+Info: BLK016: Delete the global instance Inst_or_array/RST_CLKINT because of clock sharing. The
+      driver net will be rerouted.
+Info: BLK016: Delete the global instance Inst_sync_block/RST_CLKINT because of clock sharing.
+      The driver net will be rerouted.
+Info: BLK016: Delete the global instance Inst_deser_array/RST_CLKINT because of clock sharing.
+      The driver net will be rerouted.
+Info: CMP702: Promoted the net 'RST' because of PDC constraints (assign_quadrant_clock or
+      assign_global_clock).
+
+There were 0 error(s) and 401 warning(s) in this design.
+=====================================================================
+
+Reading user pdc (Physical Design Constraints) file(s) postcompile
+
+
+There were 0 error(s) and 0 warning(s) in reading the user pdc.
+
+=====================================================================
+
+Reading previous post-compile physical placement constraints.
+
+
+There were 0 error(s) and 0 warning(s).
+
+=====================================================================
+Compile report:
+===============
+
+    CORE                       Used:  51718  Total:  75264   (68.72%)
+    IO (W/ clocks)             Used:      0  Total:    620   (0.00%)
+    Differential IO            Used:      0  Total:    310   (0.00%)
+    GLOBAL (Chip+Quadrant)     Used:      1  Total:     18   (5.56%)
+    PLL                        Used:      0  Total:      6   (0.00%)
+    RAM/FIFO                   Used:     26  Total:    112   (23.21%)
+    Low Static ICC             Used:      0  Total:      1   (0.00%)
+    FlashROM                   Used:      0  Total:      1   (0.00%)
+    User JTAG                  Used:      0  Total:      1   (0.00%)
+
+Global Information:
+
+    Type            | Used   | Total
+    ----------------|--------|--------------
+    Chip global     | 1      | 6  (16.67%)*
+    Quadrant global | 0      | 12 (0.00%)
+
+    (*) Chip globals may be assigned to Quadrant globals using the Multi-View Navigator (MVN)
+        or Physical Design Constraints (PDC).
+        They may also be assigned to Quadrant globals automatically during Layout.
+
+Core Information:
+
+    Type    | Instances    | Core tiles
+    --------|--------------|-----------
+    COMB    | 21669        | 21669
+    SEQ     | 30049        | 30049
+
+I/O Function:
+
+    Type                          | w/o register  | w/ register  | w/ DDR register
+    ------------------------------|---------------|--------------|----------------
+    Input I/O                     | 0             | 0            | 0
+    Output I/O                    | 0             | 0            | 0
+    Bidirectional I/O             | 0             | 0            | 0
+    Differential Input I/O Pairs  | 0             | 0            | 0
+    Differential Output I/O Pairs | 0             | 0            | 0
+
+I/O Technology:
+
+                                    |   Voltages    |             I/Os
+    --------------------------------|-------|-------|-------|--------|--------------
+    I/O Standard(s)                 | Vcci  | Vref  | Input | Output | Bidirectional
+    --------------------------------|-------|-------|-------|--------|--------------
+
+Net information report:
+=======================
+
+The following nets have been assigned to a chip global resource:
+    Fanout  Type          Name
+    --------------------------
+    30075   SET/RESET_NET Net   : RST
+                          Driver: RST_CLKINT
+                          Source: PDC PROMOTED
+
+High fanout nets in the post compile netlist:
+    Fanout  Type          Name
+    --------------------------
+    28333   CLK_NET       Net   : CLK
+    888     CLK_NET       Net   : OUT_CLK
+    704     CLK_NET       Net   : CLK90
+    194     INT_NET       Net   : LATCH
+    176     CLK_NET       Net   : BCO_CLK
+    176     INT_NET       Net   : SHIFT_EN
+    16      INT_NET       Net   :
+Inst_decoder_array/Inst_decoder_array_top\/Inst_dec_2\\\/ADDR[0]
+                          Driver:
+Inst_decoder_array/Inst_decoder_array_top/Inst_dec_2/Inst_cnt_20/CNT_OUT[0]
+    16      INT_NET       Net   :
+Inst_decoder_array/Inst_decoder_array_top\/Inst_dec_1\\\/ADDR[0]
+                          Driver:
+Inst_decoder_array/Inst_decoder_array_top/Inst_dec_1/Inst_cnt_20/CNT_OUT[0]
+    16      INT_NET       Net   :
+Inst_decoder_array/Inst_decoder_array_bot\/Inst_dec_2\\\/ADDR[0]
+                          Driver:
+Inst_decoder_array/Inst_decoder_array_bot/Inst_dec_2/Inst_cnt_20/CNT_OUT[0]
+    16      INT_NET       Net   :
+Inst_decoder_array/Inst_decoder_array_bot\/Inst_dec_4\\\/ADDR[0]
+                          Driver:
+Inst_decoder_array/Inst_decoder_array_bot/Inst_dec_4/Inst_cnt_20/CNT_OUT[0]
+
+Nets that are candidates for clock assignment and the resulting fanout:
+    Fanout  Type          Name
+    --------------------------
+    28333   CLK_NET       Net   : CLK
+    888     CLK_NET       Net   : OUT_CLK
+    704     CLK_NET       Net   : CLK90
+    194     INT_NET       Net   : LATCH
+    176     CLK_NET       Net   : BCO_CLK
+    176     INT_NET       Net   : SHIFT_EN
+    16      INT_NET       Net   :
+Inst_decoder_array/Inst_decoder_array_top\/Inst_dec_2\\\/ADDR[0]
+                          Driver:
+Inst_decoder_array/Inst_decoder_array_top/Inst_dec_2/Inst_cnt_20/CNT_OUT[0]
+    16      INT_NET       Net   :
+Inst_decoder_array/Inst_decoder_array_top\/Inst_dec_1\\\/ADDR[0]
+                          Driver:
+Inst_decoder_array/Inst_decoder_array_top/Inst_dec_1/Inst_cnt_20/CNT_OUT[0]
+    16      INT_NET       Net   :
+Inst_decoder_array/Inst_decoder_array_bot\/Inst_dec_2\\\/ADDR[0]
+                          Driver:
+Inst_decoder_array/Inst_decoder_array_bot/Inst_dec_2/Inst_cnt_20/CNT_OUT[0]
+    16      INT_NET       Net   :
+Inst_decoder_array/Inst_decoder_array_bot\/Inst_dec_4\\\/ADDR[0]
+                          Driver:
+Inst_decoder_array/Inst_decoder_array_bot/Inst_dec_4/Inst_cnt_20/CNT_OUT[0]
+
+Block Information Report :
+==========================
+
+    Conflict resolution from Compile options :
+    ==========================================
+        Placement : Error if conflict
+        Routing   : Resolve conflict/Keep and Lock non conflicting routing
+
+    -----------------------------------------------------
+    Block Name        : decoder_array
+    Instance Name     : Inst_decoder_array
+
+                      | Locked  | Total
+            ---------------------------
+            Instances | 1060    | 1060 (100.00%)
+            Nets      | 884     | 884 (100.00%)
+
+
+    -----------------------------------------------------
+    Block Name        : deser_array
+    Instance Name     : Inst_deser_array
+
+                      | Locked  | Total
+            ---------------------------
+            Instances | 28864   | 28864 (100.00%)
+            Nets      | 26576   | 26576 (100.00%)
+
+
+    -----------------------------------------------------
+    Block Name        : or_array
+    Instance Name     : Inst_or_array
+
+                      | Locked  | Total
+            ---------------------------
+            Instances | 2340    | 2340 (100.00%)
+            Nets      | 2064    | 2080 (99.23%)
+
+
+    -----------------------------------------------------
+    Block Name        : output_arbiter
+    Instance Name     : Inst_arbiter
+
+                      | Locked  | Total
+            ---------------------------
+            Instances | 2304    | 2304 (100.00%)
+            Nets      | 2581    | 2581 (100.00%)
+
+
+    -----------------------------------------------------
+    Block Name        : pf_array
+    Instance Name     : Inst_pf_array
+
+                      | Locked  | Total
+            ---------------------------
+            Instances | 16192   | 16192 (100.00%)
+            Nets      | 15998   | 16015 (99.89%)
+
+
+    -----------------------------------------------------
+    Block Name        : sync_block_logic
+    Instance Name     : Inst_sync_block
+
+                      | Locked  | Total
+            ---------------------------
+            Instances | 984     | 984 (100.00%)
+            Nets      | 840     | 840 (100.00%)
+

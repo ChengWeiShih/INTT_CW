@@ -1,0 +1,673 @@
+assign_global_clock -net GLOBAL_RST
+#assign_global_clock -net CLK
+#assign_global_clock -net CLK90
+assign_global_clock -net OUT_CLK
+assign_global_clock -net BCO_CLK
+
+set_io BCO_CLK_n -iostd LVDS -IN_DELAY Off -REGISTER No -pinname R30 -fixed yes
+set_io BCO_CLK_p -iostd LVDS -IN_DELAY Off -REGISTER No -pinname T28 -fixed yes
+#These are for FPGA "B":
+set_io DATA_IN_0_n\[0\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname J21 -fixed yes
+set_io DATA_IN_0_n\[1\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C24 -fixed yes
+set_io DATA_IN_0_n\[2\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D25 -fixed yes
+set_io DATA_IN_0_n\[3\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D23 -fixed yes
+set_io DATA_IN_0_n\[4\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname F22 -fixed yes
+set_io DATA_IN_0_n\[5\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D21 -fixed yes
+set_io DATA_IN_0_n\[6\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H21 -fixed yes
+set_io DATA_IN_0_n\[7\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B24 -fixed yes
+set_io DATA_IN_0_n\[8\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname E22 -fixed yes
+set_io DATA_IN_0_n\[9\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C22 -fixed yes
+set_io DATA_IN_0_n\[10\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname G20 -fixed yes
+set_io DATA_IN_0_n\[11\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D19 -fixed yes
+set_io DATA_IN_0_n\[12\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B28 -fixed yes
+set_io DATA_IN_0_n\[13\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C20 -fixed yes
+set_io DATA_IN_0_n\[14\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H19 -fixed yes
+set_io DATA_IN_0_n\[15\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B22 -fixed yes
+set_io DATA_IN_0_n\[16\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname E20 -fixed yes
+set_io DATA_IN_0_n\[17\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C19 -fixed yes
+set_io DATA_IN_0_n\[18\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname F19 -fixed yes
+set_io DATA_IN_0_n\[19\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname A22 -fixed yes
+set_io DATA_IN_0_n\[20\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D12 -fixed yes
+set_io DATA_IN_0_n\[21\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname A11 -fixed yes
+set_io DATA_IN_0_n\[22\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname J12 -fixed yes
+set_io DATA_IN_0_n\[23\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B10 -fixed yes
+set_io DATA_IN_0_n\[24\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname J11 -fixed yes
+set_io DATA_IN_0_n\[25\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname A9 -fixed yes
+set_io DATA_IN_0_n\[26\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname G11 -fixed yes
+set_io DATA_IN_0_n\[27\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C10 -fixed yes
+set_io DATA_IN_0_n\[28\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname A4 -fixed yes
+set_io DATA_IN_0_n\[29\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname E11 -fixed yes
+set_io DATA_IN_0_n\[30\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname F8 -fixed yes
+set_io DATA_IN_0_n\[31\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D10 -fixed yes
+set_io DATA_IN_0_n\[32\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname G10 -fixed yes
+set_io DATA_IN_0_n\[33\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname A8 -fixed yes
+set_io DATA_IN_0_n\[34\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H9 -fixed yes
+set_io DATA_IN_0_n\[35\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname A6 -fixed yes
+set_io DATA_IN_0_n\[36\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D7 -fixed yes
+set_io DATA_IN_0_n\[37\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D9 -fixed yes
+set_io DATA_IN_0_n\[38\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname J10 -fixed yes
+set_io DATA_IN_0_n\[39\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C7 -fixed yes
+set_io DATA_IN_0_n\[40\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname E6 -fixed yes
+set_io DATA_IN_0_n\[41\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D8 -fixed yes
+set_io DATA_IN_0_n\[42\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C4 -fixed yes
+set_io DATA_IN_0_n\[43\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C2 -fixed yes
+set_io DATA_IN_0_n\[44\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname K6 -fixed yes
+set_io DATA_IN_0_n\[45\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname L10 -fixed yes
+set_io DATA_IN_0_n\[46\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname G3 -fixed yes
+set_io DATA_IN_0_n\[47\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D3 -fixed yes
+set_io DATA_IN_0_n\[48\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname K3 -fixed yes
+set_io DATA_IN_0_n\[49\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname E2 -fixed yes
+set_io DATA_IN_0_n\[50\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname J3 -fixed yes
+set_io DATA_IN_0_n\[51\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname K8 -fixed yes
+set_io DATA_IN_0_n\[52\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H3 -fixed yes
+set_io DATA_IN_0_n\[53\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname J6 -fixed yes
+set_io DATA_IN_0_n\[54\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname L3 -fixed yes
+set_io DATA_IN_0_n\[55\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname G4 -fixed yes
+set_io DATA_IN_0_n\[56\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname G2 -fixed yes
+set_io DATA_IN_0_n\[57\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname J5 -fixed yes
+set_io DATA_IN_0_n\[58\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H2 -fixed yes
+set_io DATA_IN_0_n\[59\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname L9 -fixed yes
+set_io DATA_IN_0_n\[60\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname M3 -fixed yes
+set_io DATA_IN_0_n\[61\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname L6 -fixed yes
+set_io DATA_IN_0_n\[62\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname J1 -fixed yes
+set_io DATA_IN_0_n\[63\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname M9 -fixed yes
+set_io DATA_IN_0_n\[64\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname K1 -fixed yes
+set_io DATA_IN_0_n\[65\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname N7 -fixed yes
+set_io DATA_IN_0_n\[66\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname L1 -fixed yes
+set_io DATA_IN_0_n\[67\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname N6 -fixed yes
+set_io DATA_IN_0_n\[68\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname P4 -fixed yes
+set_io DATA_IN_0_n\[69\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname M5 -fixed yes
+set_io DATA_IN_0_n\[70\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname M1 -fixed yes
+set_io DATA_IN_0_n\[71\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname N8 -fixed yes
+#
+#
+set_io DATA_IN_0_p\[0\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname K20 -fixed yes
+set_io DATA_IN_0_p\[1\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C25 -fixed yes
+set_io DATA_IN_0_p\[2\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname E25 -fixed yes
+set_io DATA_IN_0_p\[3\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D24 -fixed yes
+set_io DATA_IN_0_p\[4\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname F23 -fixed yes
+set_io DATA_IN_0_p\[5\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D22 -fixed yes
+set_io DATA_IN_0_p\[6\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H22 -fixed yes
+set_io DATA_IN_0_p\[7\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname A25 -fixed yes
+set_io DATA_IN_0_p\[8\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname E23 -fixed yes
+set_io DATA_IN_0_p\[9\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C23 -fixed yes
+set_io DATA_IN_0_p\[10\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname G21 -fixed yes
+set_io DATA_IN_0_p\[11\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D20 -fixed yes
+set_io DATA_IN_0_p\[12\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C27 -fixed yes
+set_io DATA_IN_0_p\[13\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C21 -fixed yes
+set_io DATA_IN_0_p\[14\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H20 -fixed yes
+set_io DATA_IN_0_p\[15\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B23 -fixed yes
+set_io DATA_IN_0_p\[16\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname F20 -fixed yes
+set_io DATA_IN_0_p\[17\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B19 -fixed yes
+set_io DATA_IN_0_p\[18\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname E19 -fixed yes
+set_io DATA_IN_0_p\[19\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname A23 -fixed yes
+set_io DATA_IN_0_p\[20\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D13 -fixed yes
+set_io DATA_IN_0_p\[21\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname A12 -fixed yes
+set_io DATA_IN_0_p\[22\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname J13 -fixed yes
+set_io DATA_IN_0_p\[23\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B11 -fixed yes
+set_io DATA_IN_0_p\[24\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H11 -fixed yes
+set_io DATA_IN_0_p\[25\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname A10 -fixed yes
+set_io DATA_IN_0_p\[26\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname F11 -fixed yes
+set_io DATA_IN_0_p\[27\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B9 -fixed yes
+set_io DATA_IN_0_p\[28\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B5 -fixed yes
+set_io DATA_IN_0_p\[29\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname E12 -fixed yes
+set_io DATA_IN_0_p\[30\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname F9 -fixed yes
+set_io DATA_IN_0_p\[31\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D11 -fixed yes
+set_io DATA_IN_0_p\[32\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname F10 -fixed yes
+set_io DATA_IN_0_p\[33\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B8 -fixed yes
+set_io DATA_IN_0_p\[34\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H10 -fixed yes
+set_io DATA_IN_0_p\[35\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B7 -fixed yes
+set_io DATA_IN_0_p\[36\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname E8 -fixed yes
+set_io DATA_IN_0_p\[37\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C9 -fixed yes
+set_io DATA_IN_0_p\[38\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname K11 -fixed yes
+set_io DATA_IN_0_p\[39\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C6 -fixed yes
+set_io DATA_IN_0_p\[40\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D6 -fixed yes
+set_io DATA_IN_0_p\[41\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname C8 -fixed yes
+set_io DATA_IN_0_p\[42\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D5 -fixed yes
+set_io DATA_IN_0_p\[43\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname B3 -fixed yes
+set_io DATA_IN_0_p\[44\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname K5 -fixed yes
+set_io DATA_IN_0_p\[45\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname K9 -fixed yes
+set_io DATA_IN_0_p\[46\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname F3 -fixed yes
+set_io DATA_IN_0_p\[47\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname E4 -fixed yes
+set_io DATA_IN_0_p\[48\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname K4 -fixed yes
+set_io DATA_IN_0_p\[49\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname D1 -fixed yes
+set_io DATA_IN_0_p\[50\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname J4 -fixed yes
+set_io DATA_IN_0_p\[51\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname K7 -fixed yes
+set_io DATA_IN_0_p\[52\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H4 -fixed yes
+set_io DATA_IN_0_p\[53\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H6 -fixed yes
+set_io DATA_IN_0_p\[54\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname L4 -fixed yes
+set_io DATA_IN_0_p\[55\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname F4 -fixed yes
+set_io DATA_IN_0_p\[56\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname F1 -fixed yes
+set_io DATA_IN_0_p\[57\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H5 -fixed yes
+set_io DATA_IN_0_p\[58\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname H1 -fixed yes
+set_io DATA_IN_0_p\[59\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname L8 -fixed yes
+set_io DATA_IN_0_p\[60\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname M4 -fixed yes
+set_io DATA_IN_0_p\[61\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname L7 -fixed yes
+set_io DATA_IN_0_p\[62\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname J2 -fixed yes
+set_io DATA_IN_0_p\[63\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname M8 -fixed yes
+set_io DATA_IN_0_p\[64\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname K2 -fixed yes
+set_io DATA_IN_0_p\[65\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname M7 -fixed yes
+set_io DATA_IN_0_p\[66\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname L2 -fixed yes
+set_io DATA_IN_0_p\[67\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname M6 -fixed yes
+set_io DATA_IN_0_p\[68\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname N4 -fixed yes
+set_io DATA_IN_0_p\[69\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname L5 -fixed yes
+set_io DATA_IN_0_p\[70\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname M2 -fixed yes
+set_io DATA_IN_0_p\[71\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname N9 -fixed yes
+set_io DATA_IN_1_n\[0\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V6 -fixed yes
+set_io DATA_IN_1_n\[1\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W3 -fixed yes
+set_io DATA_IN_1_n\[2\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V9 -fixed yes
+set_io DATA_IN_1_n\[3\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname U5 -fixed yes
+set_io DATA_IN_1_n\[4\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V5 -fixed yes
+set_io DATA_IN_1_n\[5\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB1 -fixed yes
+set_io DATA_IN_1_n\[6\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W7 -fixed yes
+set_io DATA_IN_1_n\[7\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC2 -fixed yes
+set_io DATA_IN_1_n\[8\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y9 -fixed yes
+set_io DATA_IN_1_n\[9\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W4 -fixed yes
+set_io DATA_IN_1_n\[10\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W5 -fixed yes
+set_io DATA_IN_1_n\[11\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y3 -fixed yes
+set_io DATA_IN_1_n\[12\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y7 -fixed yes
+set_io DATA_IN_1_n\[13\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA3 -fixed yes
+set_io DATA_IN_1_n\[14\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y5 -fixed yes
+set_io DATA_IN_1_n\[15\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA4 -fixed yes
+set_io DATA_IN_1_n\[16\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA8 -fixed yes
+set_io DATA_IN_1_n\[17\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB3 -fixed yes
+set_io DATA_IN_1_n\[18\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB6 -fixed yes
+set_io DATA_IN_1_n\[19\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD2 -fixed yes
+set_io DATA_IN_1_n\[20\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB5 -fixed yes
+set_io DATA_IN_1_n\[21\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD3 -fixed yes
+set_io DATA_IN_1_n\[22\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE4 -fixed yes
+set_io DATA_IN_1_n\[23\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG1 -fixed yes
+set_io DATA_IN_1_n\[24\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC6 -fixed yes
+set_io DATA_IN_1_n\[25\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD4 -fixed yes
+set_io DATA_IN_1_n\[26\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y10 -fixed yes
+set_io DATA_IN_1_n\[27\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA6 -fixed yes
+set_io DATA_IN_1_n\[28\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH2 -fixed yes
+set_io DATA_IN_1_n\[29\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG3 -fixed yes
+set_io DATA_IN_1_n\[30\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG7 -fixed yes
+set_io DATA_IN_1_n\[31\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE8 -fixed yes
+set_io DATA_IN_1_n\[32\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF9 -fixed yes
+set_io DATA_IN_1_n\[33\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF6 -fixed yes
+set_io DATA_IN_1_n\[34\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH8 -fixed yes
+set_io DATA_IN_1_n\[35\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC9 -fixed yes
+set_io DATA_IN_1_n\[36\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG9 -fixed yes
+set_io DATA_IN_1_n\[37\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE9 -fixed yes
+set_io DATA_IN_1_n\[38\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG10 -fixed yes
+set_io DATA_IN_1_n\[39\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC10 -fixed yes
+set_io DATA_IN_1_n\[40\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG12 -fixed yes
+set_io DATA_IN_1_n\[41\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF4 -fixed yes
+set_io DATA_IN_1_n\[42\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH6 -fixed yes
+set_io DATA_IN_1_n\[43\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD11 -fixed yes
+set_io DATA_IN_1_n\[44\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AJ5 -fixed yes
+set_io DATA_IN_1_n\[45\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC11 -fixed yes
+set_io DATA_IN_1_n\[46\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AJ7 -fixed yes
+set_io DATA_IN_1_n\[47\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE10 -fixed yes
+set_io DATA_IN_1_n\[48\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AJ8 -fixed yes
+set_io DATA_IN_1_n\[49\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE11 -fixed yes
+set_io DATA_IN_1_n\[50\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH12 -fixed yes
+set_io DATA_IN_1_n\[51\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC12 -fixed yes
+set_io DATA_IN_1_n\[52\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD18 -fixed yes
+set_io DATA_IN_1_n\[53\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AK20 -fixed yes
+set_io DATA_IN_1_n\[54\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB20 -fixed yes
+set_io DATA_IN_1_n\[55\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AJ20 -fixed yes
+set_io DATA_IN_1_n\[56\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE20 -fixed yes
+set_io DATA_IN_1_n\[57\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH20 -fixed yes
+set_io DATA_IN_1_n\[58\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC19 -fixed yes
+set_io DATA_IN_1_n\[59\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AK22 -fixed yes
+set_io DATA_IN_1_n\[60\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF20 -fixed yes
+set_io DATA_IN_1_n\[61\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AJ24 -fixed yes
+set_io DATA_IN_1_n\[62\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE21 -fixed yes
+set_io DATA_IN_1_n\[63\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG20 -fixed yes
+set_io DATA_IN_1_n\[64\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC20 -fixed yes
+set_io DATA_IN_1_n\[65\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AJ22 -fixed yes
+set_io DATA_IN_1_n\[66\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB21 -fixed yes
+set_io DATA_IN_1_n\[67\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG21 -fixed yes
+set_io DATA_IN_1_n\[68\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF22 -fixed yes
+set_io DATA_IN_1_n\[69\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG22 -fixed yes
+set_io DATA_IN_1_n\[70\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF23 -fixed yes
+set_io DATA_IN_1_n\[71\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH23 -fixed yes
+set_io DATA_IN_1_n\[72\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AJ26 -fixed yes
+set_io DATA_IN_1_n\[73\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH25 -fixed yes
+set_io DATA_IN_1_n\[74\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF25 -fixed yes
+set_io DATA_IN_1_n\[75\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname T24 -fixed yes
+set_io DATA_IN_1_n\[76\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname T23 -fixed yes
+set_io DATA_IN_1_n\[77\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname T25 -fixed yes
+set_io DATA_IN_1_n\[78\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC26 -fixed yes
+set_io DATA_IN_1_n\[79\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC28 -fixed yes
+set_io DATA_IN_1_n\[80\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG30 -fixed yes
+set_io DATA_IN_1_n\[81\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y28 -fixed yes
+set_io DATA_IN_1_n\[82\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD27 -fixed yes
+set_io DATA_IN_1_n\[83\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD28 -fixed yes
+set_io DATA_IN_1_n\[84\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA25 -fixed yes
+set_io DATA_IN_1_n\[85\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y27 -fixed yes
+set_io DATA_IN_1_n\[86\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA22 -fixed yes
+set_io DATA_IN_1_n\[87\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA28 -fixed yes
+set_io DATA_IN_1_n\[88\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC25 -fixed yes
+set_io DATA_IN_1_n\[89\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W25 -fixed yes
+set_io DATA_IN_1_n\[90\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y23 -fixed yes
+set_io DATA_IN_1_n\[91\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC30 -fixed yes
+set_io DATA_IN_1_n\[92\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA23 -fixed yes
+set_io DATA_IN_1_n\[93\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V22 -fixed yes
+set_io DATA_IN_1_n\[94\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y22 -fixed yes
+set_io DATA_IN_1_n\[95\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC29 -fixed yes
+set_io DATA_IN_1_n\[96\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y24 -fixed yes
+set_io DATA_IN_1_n\[97\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W24 -fixed yes
+set_io DATA_IN_1_n\[98\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W26 -fixed yes
+set_io DATA_IN_1_n\[99\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE26 -fixed yes
+set_io DATA_IN_1_n\[100\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V26 -fixed yes
+set_io DATA_IN_1_n\[101\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V23 -fixed yes
+set_io DATA_IN_1_n\[102\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname U25 -fixed yes
+set_io DATA_IN_1_n\[103\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB27 -fixed yes
+set_io DATA_IN_1_p\[0\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname U7 -fixed yes
+set_io DATA_IN_1_p\[1\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V3 -fixed yes
+set_io DATA_IN_1_p\[2\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V8 -fixed yes
+set_io DATA_IN_1_p\[3\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname U4 -fixed yes
+set_io DATA_IN_1_p\[4\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname U6 -fixed yes
+set_io DATA_IN_1_p\[5\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA1 -fixed yes
+set_io DATA_IN_1_p\[6\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V7 -fixed yes
+set_io DATA_IN_1_p\[7\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC1 -fixed yes
+set_io DATA_IN_1_p\[8\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W9 -fixed yes
+set_io DATA_IN_1_p\[9\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V4 -fixed yes
+set_io DATA_IN_1_p\[10\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W6 -fixed yes
+set_io DATA_IN_1_p\[11\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y2 -fixed yes
+set_io DATA_IN_1_p\[12\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W8 -fixed yes
+set_io DATA_IN_1_p\[13\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA2 -fixed yes
+set_io DATA_IN_1_p\[14\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y6 -fixed yes
+set_io DATA_IN_1_p\[15\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y4 -fixed yes
+set_io DATA_IN_1_p\[16\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y8 -fixed yes
+set_io DATA_IN_1_p\[17\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB2 -fixed yes
+set_io DATA_IN_1_p\[18\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA7 -fixed yes
+set_io DATA_IN_1_p\[19\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE1 -fixed yes
+set_io DATA_IN_1_p\[20\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB4 -fixed yes
+set_io DATA_IN_1_p\[21\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC3 -fixed yes
+set_io DATA_IN_1_p\[22\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE3 -fixed yes
+set_io DATA_IN_1_p\[23\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF2 -fixed yes
+set_io DATA_IN_1_p\[24\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC5 -fixed yes
+set_io DATA_IN_1_p\[25\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC4 -fixed yes
+set_io DATA_IN_1_p\[26\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA9 -fixed yes
+set_io DATA_IN_1_p\[27\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA5 -fixed yes
+set_io DATA_IN_1_p\[28\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AJ3 -fixed yes
+set_io DATA_IN_1_p\[29\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH4 -fixed yes
+set_io DATA_IN_1_p\[30\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG8 -fixed yes
+set_io DATA_IN_1_p\[31\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF8 -fixed yes
+set_io DATA_IN_1_p\[32\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF10 -fixed yes
+set_io DATA_IN_1_p\[33\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG6 -fixed yes
+set_io DATA_IN_1_p\[34\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH9 -fixed yes
+set_io DATA_IN_1_p\[35\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA11 -fixed yes
+set_io DATA_IN_1_p\[36\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH10 -fixed yes
+set_io DATA_IN_1_p\[37\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD10 -fixed yes
+set_io DATA_IN_1_p\[38\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH11 -fixed yes
+set_io DATA_IN_1_p\[39\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB10 -fixed yes
+set_io DATA_IN_1_p\[40\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG11 -fixed yes
+set_io DATA_IN_1_p\[41\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG5 -fixed yes
+set_io DATA_IN_1_p\[42\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH7 -fixed yes
+set_io DATA_IN_1_p\[43\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB11 -fixed yes
+set_io DATA_IN_1_p\[44\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AK4 -fixed yes
+set_io DATA_IN_1_p\[45\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD12 -fixed yes
+set_io DATA_IN_1_p\[46\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AK6 -fixed yes
+set_io DATA_IN_1_p\[47\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF11 -fixed yes
+set_io DATA_IN_1_p\[48\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AJ9 -fixed yes
+set_io DATA_IN_1_p\[49\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE12 -fixed yes
+set_io DATA_IN_1_p\[50\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH13 -fixed yes
+set_io DATA_IN_1_p\[51\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD13 -fixed yes
+set_io DATA_IN_1_p\[52\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD19 -fixed yes
+set_io DATA_IN_1_p\[53\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AK21 -fixed yes
+set_io DATA_IN_1_p\[54\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA20 -fixed yes
+set_io DATA_IN_1_p\[55\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AJ21 -fixed yes
+set_io DATA_IN_1_p\[56\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE19 -fixed yes
+set_io DATA_IN_1_p\[57\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG19 -fixed yes
+set_io DATA_IN_1_p\[58\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD20 -fixed yes
+set_io DATA_IN_1_p\[59\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AK23 -fixed yes
+set_io DATA_IN_1_p\[60\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AF21 -fixed yes
+set_io DATA_IN_1_p\[61\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AK25 -fixed yes
+set_io DATA_IN_1_p\[62\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD21 -fixed yes
+set_io DATA_IN_1_p\[63\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH21 -fixed yes
+set_io DATA_IN_1_p\[64\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC21 -fixed yes
+set_io DATA_IN_1_p\[65\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AJ23 -fixed yes
+set_io DATA_IN_1_p\[66\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC22 -fixed yes
+set_io DATA_IN_1_p\[67\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH22 -fixed yes
+set_io DATA_IN_1_p\[68\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE22 -fixed yes
+set_io DATA_IN_1_p\[69\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG23 -fixed yes
+set_io DATA_IN_1_p\[70\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG24 -fixed yes
+set_io DATA_IN_1_p\[71\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AH24 -fixed yes
+set_io DATA_IN_1_p\[72\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AK27 -fixed yes
+set_io DATA_IN_1_p\[73\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG25 -fixed yes
+set_io DATA_IN_1_p\[74\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AG26 -fixed yes
+set_io DATA_IN_1_p\[75\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname R24 -fixed yes
+set_io DATA_IN_1_p\[76\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname R23 -fixed yes
+set_io DATA_IN_1_p\[77\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname R26 -fixed yes
+set_io DATA_IN_1_p\[78\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB26 -fixed yes
+set_io DATA_IN_1_p\[79\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB28 -fixed yes
+set_io DATA_IN_1_p\[80\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE30 -fixed yes
+set_io DATA_IN_1_p\[81\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W28 -fixed yes
+set_io DATA_IN_1_p\[82\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AC27 -fixed yes
+set_io DATA_IN_1_p\[83\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AD29 -fixed yes
+set_io DATA_IN_1_p\[84\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA26 -fixed yes
+set_io DATA_IN_1_p\[85\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W27 -fixed yes
+set_io DATA_IN_1_p\[86\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y21 -fixed yes
+set_io DATA_IN_1_p\[87\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA29 -fixed yes
+set_io DATA_IN_1_p\[88\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB25 -fixed yes
+set_io DATA_IN_1_p\[89\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y26 -fixed yes
+set_io DATA_IN_1_p\[90\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W23 -fixed yes
+set_io DATA_IN_1_p\[91\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB30 -fixed yes
+set_io DATA_IN_1_p\[92\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA24 -fixed yes
+set_io DATA_IN_1_p\[93\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname U22 -fixed yes
+set_io DATA_IN_1_p\[94\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname W22 -fixed yes
+set_io DATA_IN_1_p\[95\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AB29 -fixed yes
+set_io DATA_IN_1_p\[96\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname Y25 -fixed yes
+set_io DATA_IN_1_p\[97\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V24 -fixed yes
+set_io DATA_IN_1_p\[98\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname V25 -fixed yes
+set_io DATA_IN_1_p\[99\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AE27 -fixed yes
+set_io DATA_IN_1_p\[100\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname U26 -fixed yes
+set_io DATA_IN_1_p\[101\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname U23 -fixed yes
+set_io DATA_IN_1_p\[102\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname U24 -fixed yes
+set_io DATA_IN_1_p\[103\] -iostd LVDS -IN_DELAY Off -REGISTER No -pinname AA27 -fixed yes
+#
+
+
+#Need to swap bits 2 and 11 and bits 6 and 15 because layout does not match schematics:
+
+set_io DATA_OUT_0_0\[0\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname E16 -fixed yes
+set_io DATA_OUT_0_0\[1\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname F18 -fixed yes
+#set_io DATA_OUT_0_0\[2\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B18 -fixed yes
+set_io DATA_OUT_0_0\[2\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C18 -fixed yes
+set_io DATA_OUT_0_0\[3\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname H17 -fixed yes
+set_io DATA_OUT_0_0\[4\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B21 -fixed yes
+set_io DATA_OUT_0_0\[5\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname J19 -fixed yes
+#set_io DATA_OUT_0_0\[6\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname D18 -fixed yes
+set_io DATA_OUT_0_0\[6\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C17 -fixed yes
+set_io DATA_OUT_0_0\[7\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname G18 -fixed yes
+set_io DATA_OUT_0_0\[8\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname G19 -fixed yes
+set_io DATA_OUT_0_0\[9\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname E17 -fixed yes
+set_io DATA_OUT_0_0\[10\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname E18 -fixed yes
+#set_io DATA_OUT_0_0\[11\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C18 -fixed yes
+set_io DATA_OUT_0_0\[11\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B18 -fixed yes
+set_io DATA_OUT_0_0\[12\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname H18 -fixed yes
+set_io DATA_OUT_0_0\[13\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B20 -fixed yes
+set_io DATA_OUT_0_0\[14\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname J20 -fixed yes
+#set_io DATA_OUT_0_0\[15\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C17 -fixed yes
+set_io DATA_OUT_0_0\[15\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname D18 -fixed yes
+set_io DATA_OUT_0_0\[16\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname A17 -fixed yes
+set_io DATA_OUT_0_0\[17\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname H16 -fixed yes
+set_io DATA_OUT_0_0\[18\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname A18 -fixed yes
+set_io DATA_OUT_0_0\[19\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname J17 -fixed yes
+set_io DATA_OUT_0_0\[20\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname A20 -fixed yes
+set_io DATA_OUT_0_0\[21\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname G16 -fixed yes
+set_io DATA_OUT_0_0\[22\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname D16 -fixed yes
+set_io DATA_OUT_0_0\[23\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname F16 -fixed yes
+set_io DATA_OUT_0_0\[24\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname F17 -fixed yes
+set_io DATA_OUT_0_0\[25\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B17 -fixed yes
+set_io DATA_OUT_0_0\[26\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname J16 -fixed yes
+set_io DATA_OUT_0_0\[27\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname A19 -fixed yes
+set_io DATA_OUT_0_0\[28\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname J18 -fixed yes
+set_io DATA_OUT_0_0\[29\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname A21 -fixed yes
+set_io DATA_OUT_0_0\[30\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname G17 -fixed yes
+set_io DATA_OUT_0_0\[31\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname D17 -fixed yes
+
+#Need to swap bits 5 and 13 and bits 7 and 15 because layout does not match schematics:
+#Also, SEND_DATA_0 and bit 8 are swapped:
+
+set_io DATA_OUT_0_1\[0\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname J15 -fixed yes
+set_io DATA_OUT_0_1\[1\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname A14 -fixed yes
+set_io DATA_OUT_0_1\[2\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname E14 -fixed yes
+set_io DATA_OUT_0_1\[3\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname A16 -fixed yes
+set_io DATA_OUT_0_1\[4\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname F15 -fixed yes
+#set_io DATA_OUT_0_1\[5\] -iostd LVCMOS25 -REGISTER Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B16 -fixed yes
+set_io DATA_OUT_0_1\[5\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B15 -fixed yes
+set_io DATA_OUT_0_1\[6\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname H15 -fixed yes
+#set_io DATA_OUT_0_1\[7\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C16 -fixed yes
+set_io DATA_OUT_0_1\[7\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C15 -fixed yes
+#set_io DATA_OUT_0_1\[8\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname E15 -fixed yes
+set_io DATA_OUT_0_1\[8\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname D15 -fixed yes
+set_io DATA_OUT_0_1\[9\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname A13 -fixed yes
+set_io DATA_OUT_0_1\[10\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname E13 -fixed yes
+set_io DATA_OUT_0_1\[11\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname A15 -fixed yes
+set_io DATA_OUT_0_1\[12\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname G15 -fixed yes
+#set_io DATA_OUT_0_1\[13\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B15 -fixed yes
+set_io DATA_OUT_0_1\[13\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B16 -fixed yes
+set_io DATA_OUT_0_1\[14\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname G14 -fixed yes
+#set_io DATA_OUT_0_1\[15\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C15 -fixed yes
+set_io DATA_OUT_0_1\[15\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C16 -fixed yes
+set_io DATA_OUT_0_1\[16\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname E10 -fixed yes
+set_io DATA_OUT_0_1\[17\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C12 -fixed yes
+set_io DATA_OUT_0_1\[18\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname G13 -fixed yes
+set_io DATA_OUT_0_1\[19\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname D14 -fixed yes
+set_io DATA_OUT_0_1\[20\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname H14 -fixed yes
+set_io DATA_OUT_0_1\[21\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B13 -fixed yes
+set_io DATA_OUT_0_1\[22\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname F14 -fixed yes
+set_io DATA_OUT_0_1\[23\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B14 -fixed yes
+set_io DATA_OUT_0_1\[24\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname J14 -fixed yes
+set_io DATA_OUT_0_1\[25\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C11 -fixed yes
+set_io DATA_OUT_0_1\[26\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname H12 -fixed yes
+set_io DATA_OUT_0_1\[27\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C14 -fixed yes
+set_io DATA_OUT_0_1\[28\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname H13 -fixed yes
+set_io DATA_OUT_0_1\[29\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname B12 -fixed yes
+set_io DATA_OUT_0_1\[30\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname F13 -fixed yes
+set_io DATA_OUT_0_1\[31\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname C13 -fixed yes
+set_io DATA_OUT_1_0\[0\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AJ10 -fixed yes
+set_io DATA_OUT_1_0\[1\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AF12 -fixed yes
+set_io DATA_OUT_1_0\[2\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AK8 -fixed yes
+set_io DATA_OUT_1_0\[3\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AB12 -fixed yes
+set_io DATA_OUT_1_0\[4\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AG13 -fixed yes
+set_io DATA_OUT_1_0\[5\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AC13 -fixed yes
+set_io DATA_OUT_1_0\[6\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AJ12 -fixed yes
+set_io DATA_OUT_1_0\[7\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AE13 -fixed yes
+set_io DATA_OUT_1_0\[8\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AD14 -fixed yes
+set_io DATA_OUT_1_0\[9\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AJ11 -fixed yes
+set_io DATA_OUT_1_0\[10\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AF13 -fixed yes
+set_io DATA_OUT_1_0\[11\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AK9 -fixed yes
+set_io DATA_OUT_1_0\[12\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AB13 -fixed yes
+set_io DATA_OUT_1_0\[13\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AH14 -fixed yes
+set_io DATA_OUT_1_0\[14\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AC14 -fixed yes
+set_io DATA_OUT_1_0\[15\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AJ13 -fixed yes
+set_io DATA_OUT_1_0\[16\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AK10 -fixed yes
+set_io DATA_OUT_1_0\[17\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AE14 -fixed yes
+set_io DATA_OUT_1_0\[18\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AG14 -fixed yes
+set_io DATA_OUT_1_0\[19\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AB14 -fixed yes
+set_io DATA_OUT_1_0\[20\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AJ14 -fixed yes
+set_io DATA_OUT_1_0\[21\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AF15 -fixed yes
+set_io DATA_OUT_1_0\[22\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AH15 -fixed yes
+set_io DATA_OUT_1_0\[23\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AC15 -fixed yes
+set_io DATA_OUT_1_0\[24\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AD15 -fixed yes
+set_io DATA_OUT_1_0\[25\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AK11 -fixed yes
+set_io DATA_OUT_1_0\[26\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AF14 -fixed yes
+set_io DATA_OUT_1_0\[27\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AG15 -fixed yes
+set_io DATA_OUT_1_0\[28\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AB15 -fixed yes
+set_io DATA_OUT_1_0\[29\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AK14 -fixed yes
+set_io DATA_OUT_1_0\[30\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AE15 -fixed yes
+set_io DATA_OUT_1_0\[31\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AJ15 -fixed yes
+set_io DATA_OUT_1_1\[0\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AK13 -fixed yes
+set_io DATA_OUT_1_1\[1\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AB17 -fixed yes
+set_io DATA_OUT_1_1\[2\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AK16 -fixed yes
+set_io DATA_OUT_1_1\[3\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AD16 -fixed yes
+set_io DATA_OUT_1_1\[4\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AK18 -fixed yes
+set_io DATA_OUT_1_1\[5\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AC17 -fixed yes
+set_io DATA_OUT_1_1\[6\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AG17 -fixed yes
+set_io DATA_OUT_1_1\[7\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AF17 -fixed yes
+set_io DATA_OUT_1_1\[8\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AH16 -fixed yes
+set_io DATA_OUT_1_1\[9\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AB16 -fixed yes
+set_io DATA_OUT_1_1\[10\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AK15 -fixed yes
+set_io DATA_OUT_1_1\[11\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AE16 -fixed yes
+set_io DATA_OUT_1_1\[12\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AK17 -fixed yes
+set_io DATA_OUT_1_1\[13\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AC16 -fixed yes
+set_io DATA_OUT_1_1\[14\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AG16 -fixed yes
+set_io DATA_OUT_1_1\[15\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AF16 -fixed yes
+set_io DATA_OUT_1_1\[16\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AH17 -fixed yes
+set_io DATA_OUT_1_1\[17\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AE17 -fixed yes
+set_io DATA_OUT_1_1\[18\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AJ17 -fixed yes
+set_io DATA_OUT_1_1\[19\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AC18 -fixed yes
+set_io DATA_OUT_1_1\[20\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AH18 -fixed yes
+set_io DATA_OUT_1_1\[21\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AF19 -fixed yes
+set_io DATA_OUT_1_1\[22\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AK19 -fixed yes
+set_io DATA_OUT_1_1\[23\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AB19 -fixed yes
+set_io DATA_OUT_1_1\[24\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AH19 -fixed yes
+set_io DATA_OUT_1_1\[25\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AE18 -fixed yes
+set_io DATA_OUT_1_1\[26\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AJ16 -fixed yes
+set_io DATA_OUT_1_1\[27\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AD17 -fixed yes
+set_io DATA_OUT_1_1\[28\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AG18 -fixed yes
+set_io DATA_OUT_1_1\[29\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AF18 -fixed yes
+set_io DATA_OUT_1_1\[30\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AJ18 -fixed yes
+set_io DATA_OUT_1_1\[31\] -iostd LVCMOS25 -REGISTER  Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname AB18 -fixed yes
+
+#set_io LATCH_0 -iostd LVCMOS25 -REGISTER No -RES_PULL None -SCHMITT_TRIGGER Off -IN_DELAY Off -pinname P24 -fixed yes
+set_io LATCH_1 -iostd LVCMOS25 -REGISTER No -RES_PULL None -SCHMITT_TRIGGER Off -IN_DELAY Off -pinname V1 -fixed yes
+set_io OUT_CLK_n -iostd LVDS -IN_DELAY Off -REGISTER No -pinname R5 -fixed yes
+set_io OUT_CLK_p -iostd LVDS -IN_DELAY Off -REGISTER No -pinname R2 -fixed yes
+set_io RST -iostd LVCMOS25 -REGISTER No -RES_PULL None -SCHMITT_TRIGGER Off -IN_DELAY Off -pinname R4 -fixed yes
+#SEND_DATA_0 pin is swapped with DATA_OUT_0_1[8] pin in layout:
+#set_io SEND_DATA_0 -iostd LVCMOS25 -REGISTER No -RES_PULL None -SCHMITT_TRIGGER Off -IN_DELAY Off -pinname D15 -fixed yes
+#set_io SEND_DATA_0 -iostd LVCMOS25 -REGISTER No -RES_PULL None -SCHMITT_TRIGGER Off -IN_DELAY Off -pinname E15 -fixed yes
+#set_io SEND_DATA_1 -iostd LVCMOS25 -REGISTER No -RES_PULL None -SCHMITT_TRIGGER Off -IN_DELAY Off -pinname AK12 -fixed yes
+set_io SHIFT_EN -iostd LVCMOS25 -REGISTER No -RES_PULL None -SCHMITT_TRIGGER Off -IN_DELAY Off -pinname N28 -fixed yes
+#set_io SHIFT_EN -iostd LVCMOS25 -REGISTER No -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname N28 -fixed yes
+set_io SHIFT_IN -iostd LVCMOS25 -REGISTER No -RES_PULL Down -SCHMITT_TRIGGER Off -IN_DELAY Off -pinname L24 -fixed yes
+set_io SHIFT_OUT -iostd LVCMOS25 -REGISTER No -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname L23 -fixed yes
+set_io TKLSB_A00H -iostd LVCMOS25 -REGISTER Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname H29 -fixed yes
+set_io TKLSB_A00L -iostd LVCMOS25 -REGISTER Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname H30 -fixed yes
+set_io TKLSB_A01H -iostd LVCMOS25 -REGISTER Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname J25 -fixed yes
+set_io TKLSB_A01L -iostd LVCMOS25 -REGISTER Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname J26 -fixed yes
+set_io TKLSB_A10H -iostd LVCMOS25 -REGISTER Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname J29 -fixed yes
+set_io TKLSB_A10L -iostd LVCMOS25 -REGISTER Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname J30 -fixed yes
+set_io TKLSB_A11H -iostd LVCMOS25 -REGISTER Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname F28 -fixed yes
+set_io TKLSB_A11L -iostd LVCMOS25 -REGISTER Yes -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname G28 -fixed yes
+set_io TKMSB_A00H -iostd LVCMOS25 -REGISTER No -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname H26 -fixed yes
+set_io TKMSB_A00L -iostd LVCMOS25 -REGISTER No -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname K27 -fixed yes
+set_io TKMSB_A01H -iostd LVCMOS25 -REGISTER No -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname K28 -fixed yes
+set_io TKMSB_A01L -iostd LVCMOS25 -REGISTER No -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname F27 -fixed yes
+set_io TKMSB_A10H -iostd LVCMOS25 -REGISTER No -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname G27 -fixed yes
+set_io TKMSB_A10L -iostd LVCMOS25 -REGISTER No -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname L25 -fixed yes
+set_io TKMSB_A11H -iostd LVCMOS25 -REGISTER No -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname L26 -fixed yes
+set_io TKMSB_A11L -iostd LVCMOS25 -REGISTER No -OUT_DRIVE 12 -SLEW High -RES_PULL None -SKEW Off -OUT_LOAD 35 -pinname K24 -fixed yes
+
+set_location DATA_OUT_0_0_tmp\[0\] -fixed yes 227 173
+set_location DATA_OUT_0_0_tmp\[1\] -fixed yes 228 173
+set_location DATA_OUT_0_0_tmp\[2\] -fixed yes 229 173
+set_location DATA_OUT_0_0_tmp\[3\] -fixed yes 230 173
+set_location DATA_OUT_0_0_tmp\[4\] -fixed yes 231 173
+set_location DATA_OUT_0_0_tmp\[5\] -fixed yes 232 173
+set_location DATA_OUT_0_0_tmp\[6\] -fixed yes 233 173
+set_location DATA_OUT_0_0_tmp\[7\] -fixed yes 234 173
+set_location DATA_OUT_0_0_tmp\[8\] -fixed yes 235 173
+set_location DATA_OUT_0_0_tmp\[9\] -fixed yes 236 173
+set_location DATA_OUT_0_0_tmp\[10\] -fixed yes 237 173
+set_location DATA_OUT_0_0_tmp\[11\] -fixed yes 238 173
+set_location DATA_OUT_0_0_tmp\[12\] -fixed yes 239 173
+set_location DATA_OUT_0_0_tmp\[13\] -fixed yes 240 173
+set_location DATA_OUT_0_0_tmp\[14\] -fixed yes 241 173
+set_location DATA_OUT_0_0_tmp\[15\] -fixed yes 242 173
+set_location DATA_OUT_0_0_tmp\[16\] -fixed yes 243 173
+set_location DATA_OUT_0_0_tmp\[17\] -fixed yes 244 173
+set_location DATA_OUT_0_0_tmp\[18\] -fixed yes 245 173
+set_location DATA_OUT_0_0_tmp\[19\] -fixed yes 246 173
+set_location DATA_OUT_0_0_tmp\[20\] -fixed yes 247 173
+set_location DATA_OUT_0_0_tmp\[21\] -fixed yes 248 173
+set_location DATA_OUT_0_0_tmp\[22\] -fixed yes 249 173
+set_location DATA_OUT_0_0_tmp\[23\] -fixed yes 250 173
+set_location DATA_OUT_0_0_tmp\[24\] -fixed yes 251 173
+set_location DATA_OUT_0_0_tmp\[25\] -fixed yes 252 173
+set_location DATA_OUT_0_0_tmp\[26\] -fixed yes 253 173
+set_location DATA_OUT_0_0_tmp\[27\] -fixed yes 254 173
+set_location DATA_OUT_0_0_tmp\[28\] -fixed yes 255 173
+set_location DATA_OUT_0_0_tmp\[29\] -fixed yes 256 173
+set_location DATA_OUT_0_0_tmp\[30\] -fixed yes 257 173
+set_location DATA_OUT_0_0_tmp\[31\] -fixed yes 258 173
+
+set_location DATA_OUT_0_1_tmp\[0\] -fixed yes 195 173
+set_location DATA_OUT_0_1_tmp\[1\] -fixed yes 196 173
+set_location DATA_OUT_0_1_tmp\[2\] -fixed yes 197 173
+set_location DATA_OUT_0_1_tmp\[3\] -fixed yes 198 173
+set_location DATA_OUT_0_1_tmp\[4\] -fixed yes 199 173
+set_location DATA_OUT_0_1_tmp\[5\] -fixed yes 200 173
+set_location DATA_OUT_0_1_tmp\[6\] -fixed yes 201 173
+set_location DATA_OUT_0_1_tmp\[7\] -fixed yes 202 173
+set_location DATA_OUT_0_1_tmp\[8\] -fixed yes 203 173
+set_location DATA_OUT_0_1_tmp\[9\] -fixed yes 204 173
+set_location DATA_OUT_0_1_tmp\[10\] -fixed yes 205 173
+set_location DATA_OUT_0_1_tmp\[11\] -fixed yes 206 173
+set_location DATA_OUT_0_1_tmp\[12\] -fixed yes 207 173
+set_location DATA_OUT_0_1_tmp\[13\] -fixed yes 208 173
+set_location DATA_OUT_0_1_tmp\[14\] -fixed yes 209 173
+set_location DATA_OUT_0_1_tmp\[15\] -fixed yes 210 173
+set_location DATA_OUT_0_1_tmp\[16\] -fixed yes 211 173
+set_location DATA_OUT_0_1_tmp\[17\] -fixed yes 212 173
+set_location DATA_OUT_0_1_tmp\[18\] -fixed yes 213 173
+set_location DATA_OUT_0_1_tmp\[19\] -fixed yes 214 173
+set_location DATA_OUT_0_1_tmp\[20\] -fixed yes 215 173
+set_location DATA_OUT_0_1_tmp\[21\] -fixed yes 216 173
+set_location DATA_OUT_0_1_tmp\[22\] -fixed yes 217 173
+set_location DATA_OUT_0_1_tmp\[23\] -fixed yes 218 173
+set_location DATA_OUT_0_1_tmp\[24\] -fixed yes 219 173
+set_location DATA_OUT_0_1_tmp\[25\] -fixed yes 220 173
+set_location DATA_OUT_0_1_tmp\[26\] -fixed yes 221 173
+set_location DATA_OUT_0_1_tmp\[27\] -fixed yes 222 173
+set_location DATA_OUT_0_1_tmp\[28\] -fixed yes 223 173
+set_location DATA_OUT_0_1_tmp\[29\] -fixed yes 224 173
+set_location DATA_OUT_0_1_tmp\[30\] -fixed yes 225 173
+set_location DATA_OUT_0_1_tmp\[31\] -fixed yes 226 173
+
+set_location DATA_OUT_1_0_tmp\[0\] -fixed yes 195 6
+set_location DATA_OUT_1_0_tmp\[1\] -fixed yes 196 6
+set_location DATA_OUT_1_0_tmp\[2\] -fixed yes 197 6
+set_location DATA_OUT_1_0_tmp\[3\] -fixed yes 198 6
+set_location DATA_OUT_1_0_tmp\[4\] -fixed yes 199 6
+set_location DATA_OUT_1_0_tmp\[5\] -fixed yes 200 6
+set_location DATA_OUT_1_0_tmp\[6\] -fixed yes 201 6
+set_location DATA_OUT_1_0_tmp\[7\] -fixed yes 202 6
+set_location DATA_OUT_1_0_tmp\[8\] -fixed yes 203 6
+set_location DATA_OUT_1_0_tmp\[9\] -fixed yes 204 6
+set_location DATA_OUT_1_0_tmp\[10\] -fixed yes 205 6
+set_location DATA_OUT_1_0_tmp\[11\] -fixed yes 206 6
+set_location DATA_OUT_1_0_tmp\[12\] -fixed yes 207 6
+set_location DATA_OUT_1_0_tmp\[13\] -fixed yes 208 6
+set_location DATA_OUT_1_0_tmp\[14\] -fixed yes 209 6
+set_location DATA_OUT_1_0_tmp\[15\] -fixed yes 210 6
+set_location DATA_OUT_1_0_tmp\[16\] -fixed yes 211 6
+set_location DATA_OUT_1_0_tmp\[17\] -fixed yes 212 6
+set_location DATA_OUT_1_0_tmp\[18\] -fixed yes 213 6
+set_location DATA_OUT_1_0_tmp\[19\] -fixed yes 214 6
+set_location DATA_OUT_1_0_tmp\[20\] -fixed yes 215 6
+set_location DATA_OUT_1_0_tmp\[21\] -fixed yes 216 6
+set_location DATA_OUT_1_0_tmp\[22\] -fixed yes 217 6
+set_location DATA_OUT_1_0_tmp\[23\] -fixed yes 218 6
+set_location DATA_OUT_1_0_tmp\[24\] -fixed yes 219 6
+set_location DATA_OUT_1_0_tmp\[25\] -fixed yes 220 6
+set_location DATA_OUT_1_0_tmp\[26\] -fixed yes 221 6
+set_location DATA_OUT_1_0_tmp\[27\] -fixed yes 222 6
+set_location DATA_OUT_1_0_tmp\[28\] -fixed yes 223 6
+set_location DATA_OUT_1_0_tmp\[29\] -fixed yes 224 6
+set_location DATA_OUT_1_0_tmp\[30\] -fixed yes 225 6
+set_location DATA_OUT_1_0_tmp\[31\] -fixed yes 226 6
+
+set_location DATA_OUT_1_1_tmp\[0\] -fixed yes 227 6
+set_location DATA_OUT_1_1_tmp\[1\] -fixed yes 228 6
+set_location DATA_OUT_1_1_tmp\[2\] -fixed yes 229 6
+set_location DATA_OUT_1_1_tmp\[3\] -fixed yes 230 6
+set_location DATA_OUT_1_1_tmp\[4\] -fixed yes 231 6
+set_location DATA_OUT_1_1_tmp\[5\] -fixed yes 232 6
+set_location DATA_OUT_1_1_tmp\[6\] -fixed yes 233 6
+set_location DATA_OUT_1_1_tmp\[7\] -fixed yes 234 6
+set_location DATA_OUT_1_1_tmp\[8\] -fixed yes 235 6
+set_location DATA_OUT_1_1_tmp\[9\] -fixed yes 236 6
+set_location DATA_OUT_1_1_tmp\[10\] -fixed yes 237 6
+set_location DATA_OUT_1_1_tmp\[11\] -fixed yes 238 6
+set_location DATA_OUT_1_1_tmp\[12\] -fixed yes 239 6
+set_location DATA_OUT_1_1_tmp\[13\] -fixed yes 240 6
+set_location DATA_OUT_1_1_tmp\[14\] -fixed yes 241 6
+set_location DATA_OUT_1_1_tmp\[15\] -fixed yes 242 6
+set_location DATA_OUT_1_1_tmp\[16\] -fixed yes 243 6
+set_location DATA_OUT_1_1_tmp\[17\] -fixed yes 244 6
+set_location DATA_OUT_1_1_tmp\[18\] -fixed yes 245 6
+set_location DATA_OUT_1_1_tmp\[19\] -fixed yes 246 6
+set_location DATA_OUT_1_1_tmp\[20\] -fixed yes 247 6
+set_location DATA_OUT_1_1_tmp\[21\] -fixed yes 248 6
+set_location DATA_OUT_1_1_tmp\[22\] -fixed yes 249 6
+set_location DATA_OUT_1_1_tmp\[23\] -fixed yes 250 6
+set_location DATA_OUT_1_1_tmp\[24\] -fixed yes 251 6
+set_location DATA_OUT_1_1_tmp\[25\] -fixed yes 252 6
+set_location DATA_OUT_1_1_tmp\[26\] -fixed yes 253 6
+set_location DATA_OUT_1_1_tmp\[27\] -fixed yes 254 6
+set_location DATA_OUT_1_1_tmp\[28\] -fixed yes 255 6
+set_location DATA_OUT_1_1_tmp\[29\] -fixed yes 256 6
+set_location DATA_OUT_1_1_tmp\[30\] -fixed yes 257 6
+set_location DATA_OUT_1_1_tmp\[31\] -fixed yes 258 6
+
+set_location Inst_roc_dcm/Core -fixed yes 2 90

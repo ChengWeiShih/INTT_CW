@@ -1,0 +1,2166 @@
+----------------------------------------------------------------------
+Report for cell ROC_top.rtl
+                                          Cell usage:
+                               cell       count     area    count*area
+                             CLKINT         1       0.0        0.0
+                               DFN1         1       1.0        1.0
+                             DFN1C1       304       1.0      304.0
+                                GND         1       0.0        0.0
+                              INBUF         4       0.0        0.0
+                               OR2A         1       1.0        1.0
+                             OUTBUF       145       0.0        0.0
+                                VCC         1       0.0        0.0
+                            in_lvds         1       0.0        0.0
+                          in_lvds_0         1       0.0        0.0
+                          in_lvds_1         1       0.0        0.0
+                         in_lvds_10         1       0.0        0.0
+                        in_lvds_100         1       0.0        0.0
+                        in_lvds_101         1       0.0        0.0
+                        in_lvds_102         1       0.0        0.0
+                        in_lvds_103         1       0.0        0.0
+                        in_lvds_104         1       0.0        0.0
+                        in_lvds_105         1       0.0        0.0
+                        in_lvds_106         1       0.0        0.0
+                        in_lvds_107         1       0.0        0.0
+                        in_lvds_108         1       0.0        0.0
+                        in_lvds_109         1       0.0        0.0
+                         in_lvds_11         1       0.0        0.0
+                        in_lvds_110         1       0.0        0.0
+                        in_lvds_111         1       0.0        0.0
+                        in_lvds_112         1       0.0        0.0
+                        in_lvds_113         1       0.0        0.0
+                        in_lvds_114         1       0.0        0.0
+                        in_lvds_115         1       1.0        1.0
+                        in_lvds_116         1       0.0        0.0
+                        in_lvds_117         1       0.0        0.0
+                        in_lvds_118         1       0.0        0.0
+                        in_lvds_119         1       0.0        0.0
+                         in_lvds_12         1       0.0        0.0
+                        in_lvds_120         1       0.0        0.0
+                        in_lvds_121         1       0.0        0.0
+                        in_lvds_122         1       0.0        0.0
+                        in_lvds_123         1       0.0        0.0
+                        in_lvds_124         1       0.0        0.0
+                        in_lvds_125         1       0.0        0.0
+                        in_lvds_126         1       0.0        0.0
+                        in_lvds_127         1       0.0        0.0
+                        in_lvds_128         1       0.0        0.0
+                        in_lvds_129         1       0.0        0.0
+                         in_lvds_13         1       0.0        0.0
+                        in_lvds_130         1       0.0        0.0
+                        in_lvds_131         1       0.0        0.0
+                        in_lvds_132         1       0.0        0.0
+                        in_lvds_133         1       0.0        0.0
+                        in_lvds_134         1       0.0        0.0
+                        in_lvds_135         1       0.0        0.0
+                        in_lvds_136         1       0.0        0.0
+                        in_lvds_137         1       0.0        0.0
+                        in_lvds_138         1       0.0        0.0
+                        in_lvds_139         1       0.0        0.0
+                         in_lvds_14         1       0.0        0.0
+                        in_lvds_140         1       0.0        0.0
+                        in_lvds_141         1       0.0        0.0
+                        in_lvds_142         1       0.0        0.0
+                        in_lvds_143         1       0.0        0.0
+                        in_lvds_144         1       0.0        0.0
+                        in_lvds_145         1       0.0        0.0
+                        in_lvds_146         1       0.0        0.0
+                        in_lvds_147         1       0.0        0.0
+                        in_lvds_148         1       0.0        0.0
+                        in_lvds_149         1       0.0        0.0
+                         in_lvds_15         1       0.0        0.0
+                        in_lvds_150         1       0.0        0.0
+                        in_lvds_151         1       0.0        0.0
+                        in_lvds_152         1       0.0        0.0
+                        in_lvds_153         1       0.0        0.0
+                        in_lvds_154         1       0.0        0.0
+                        in_lvds_155         1       0.0        0.0
+                        in_lvds_156         1       0.0        0.0
+                        in_lvds_157         1       0.0        0.0
+                        in_lvds_158         1       0.0        0.0
+                        in_lvds_159         1       0.0        0.0
+                         in_lvds_16         1       0.0        0.0
+                        in_lvds_160         1       0.0        0.0
+                        in_lvds_161         1       0.0        0.0
+                        in_lvds_162         1       0.0        0.0
+                        in_lvds_163         1       0.0        0.0
+                        in_lvds_164         1       0.0        0.0
+                        in_lvds_165         1       0.0        0.0
+                        in_lvds_166         1       0.0        0.0
+                        in_lvds_167         1       0.0        0.0
+                        in_lvds_168         1       0.0        0.0
+                        in_lvds_169         1       0.0        0.0
+                         in_lvds_17         1       0.0        0.0
+                        in_lvds_170         1       0.0        0.0
+                        in_lvds_171         1       0.0        0.0
+                        in_lvds_172         1       1.0        1.0
+                        in_lvds_173         1       0.0        0.0
+                        in_lvds_174         1       0.0        0.0
+                        in_lvds_178         1       0.0        0.0
+                      in_lvds_178_0         1       0.0        0.0
+                         in_lvds_18         1       0.0        0.0
+                         in_lvds_19         1       0.0        0.0
+                          in_lvds_2         1       0.0        0.0
+                         in_lvds_20         1       0.0        0.0
+                         in_lvds_21         1       0.0        0.0
+                         in_lvds_22         1       0.0        0.0
+                         in_lvds_23         1       0.0        0.0
+                         in_lvds_24         1       0.0        0.0
+                         in_lvds_25         1       0.0        0.0
+                         in_lvds_26         1       0.0        0.0
+                         in_lvds_27         1       0.0        0.0
+                         in_lvds_28         1       0.0        0.0
+                         in_lvds_29         1       0.0        0.0
+                          in_lvds_3         1       0.0        0.0
+                         in_lvds_30         1       0.0        0.0
+                         in_lvds_31         1       0.0        0.0
+                         in_lvds_32         1       0.0        0.0
+                         in_lvds_33         1       0.0        0.0
+                         in_lvds_34         1       0.0        0.0
+                         in_lvds_35         1       0.0        0.0
+                         in_lvds_36         1       0.0        0.0
+                         in_lvds_37         1       0.0        0.0
+                         in_lvds_38         1       0.0        0.0
+                         in_lvds_39         1       0.0        0.0
+                          in_lvds_4         1       0.0        0.0
+                         in_lvds_40         1       0.0        0.0
+                         in_lvds_41         1       0.0        0.0
+                         in_lvds_42         1       0.0        0.0
+                         in_lvds_43         1       0.0        0.0
+                         in_lvds_44         1       0.0        0.0
+                         in_lvds_45         1       0.0        0.0
+                         in_lvds_46         1       0.0        0.0
+                         in_lvds_47         1       1.0        1.0
+                         in_lvds_48         1       0.0        0.0
+                         in_lvds_49         1       0.0        0.0
+                          in_lvds_5         1       0.0        0.0
+                         in_lvds_50         1       0.0        0.0
+                         in_lvds_51         1       0.0        0.0
+                         in_lvds_52         1       0.0        0.0
+                         in_lvds_53         1       0.0        0.0
+                         in_lvds_54         1       0.0        0.0
+                         in_lvds_55         1       0.0        0.0
+                         in_lvds_56         1       0.0        0.0
+                         in_lvds_57         1       0.0        0.0
+                         in_lvds_58         1       0.0        0.0
+                         in_lvds_59         1       0.0        0.0
+                          in_lvds_6         1       1.0        1.0
+                         in_lvds_60         1       0.0        0.0
+                         in_lvds_61         1       0.0        0.0
+                         in_lvds_62         1       0.0        0.0
+                         in_lvds_63         1       0.0        0.0
+                         in_lvds_64         1       0.0        0.0
+                         in_lvds_65         1       0.0        0.0
+                         in_lvds_66         1       0.0        0.0
+                         in_lvds_67         1       0.0        0.0
+                         in_lvds_68         1       0.0        0.0
+                         in_lvds_69         1       0.0        0.0
+                          in_lvds_7         1       0.0        0.0
+                         in_lvds_70         1       0.0        0.0
+                         in_lvds_71         1       0.0        0.0
+                         in_lvds_72         1       0.0        0.0
+                         in_lvds_73         1       0.0        0.0
+                         in_lvds_74         1       0.0        0.0
+                         in_lvds_75         1       0.0        0.0
+                         in_lvds_76         1       0.0        0.0
+                         in_lvds_77         1       0.0        0.0
+                         in_lvds_78         1       0.0        0.0
+                         in_lvds_79         1       0.0        0.0
+                          in_lvds_8         1       0.0        0.0
+                         in_lvds_80         1       0.0        0.0
+                         in_lvds_81         1       0.0        0.0
+                         in_lvds_82         1       0.0        0.0
+                         in_lvds_83         1       0.0        0.0
+                         in_lvds_84         1       0.0        0.0
+                         in_lvds_85         1       0.0        0.0
+                         in_lvds_86         1       0.0        0.0
+                         in_lvds_87         1       0.0        0.0
+                         in_lvds_88         1       0.0        0.0
+                         in_lvds_89         1       0.0        0.0
+                          in_lvds_9         1       0.0        0.0
+                         in_lvds_90         1       0.0        0.0
+                         in_lvds_91         1       0.0        0.0
+                         in_lvds_92         1       0.0        0.0
+                         in_lvds_93         1       0.0        0.0
+                         in_lvds_94         1       0.0        0.0
+                         in_lvds_95         1       0.0        0.0
+                         in_lvds_96         1       0.0        0.0
+                         in_lvds_97         1       0.0        0.0
+                         in_lvds_98         1       0.0        0.0
+                         in_lvds_99         1       0.0        0.0
+                          roc_block         1       0.0        0.0
+                            roc_dcm         1       0.0        0.0
+                            
+                         TOTAL            638                310.0
+----------------------------------------------------------------------
+Report for cell in_lvds_178_0.netlist
+  Original Cell name in_lvds_178
+     Instance path:  Inst_out_clk
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_178.netlist
+  Original Cell name in_lvds
+     Instance path:  Inst_clk
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell roc_dcm.netlist
+     Instance path:  Inst_roc_dcm
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                                PLL         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_174.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.45.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_173.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.51.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_172.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.44.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                INV         1       1.0        1.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              4                  1.0
+----------------------------------------------------------------------
+Report for cell in_lvds_171.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.50.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_170.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.43.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_169.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.103.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_168.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.42.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_167.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.102.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_166.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.41.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_165.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.54.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_164.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.47.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_163.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.53.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_162.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.46.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_161.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.57.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_160.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.60.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_159.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.59.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_158.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.58.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_157.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.48.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_156.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.56.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_155.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.49.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_154.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.55.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_153.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.6.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_152.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.66.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_151.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.52.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_150.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.33.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_149.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.93.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_148.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.32.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_147.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.92.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_146.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.31.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_145.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.91.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_144.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.30.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_143.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.90.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_142.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.29.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_141.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.89.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_140.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.28.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_139.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.88.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_138.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.27.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_137.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.87.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_136.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.75.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_135.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.14.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_134.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.74.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_133.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.4.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_132.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.64.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_131.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.3.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_130.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.63.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_129.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.2.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_128.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.62.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_127.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.1.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_126.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.61.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_125.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.101.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_124.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.40.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_123.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.100.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_122.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.39.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_121.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.99.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_120.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.38.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_119.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.98.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_118.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.37.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_117.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.97.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_116.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.36.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_115.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.96.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                INV         1       1.0        1.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              4                  1.0
+----------------------------------------------------------------------
+Report for cell in_lvds_114.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.35.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_113.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.26.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_112.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.86.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_111.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.25.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_110.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.13.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_109.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.73.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_108.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.12.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_107.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.72.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_106.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.11.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_105.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.71.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_104.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.10.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_103.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.70.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_102.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.9.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_101.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.69.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_100.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.8.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_99.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.68.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_98.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.7.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_97.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.67.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_96.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.95.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_95.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.34.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_94.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.94.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_93.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.85.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_92.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.24.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_91.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.84.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_90.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.23.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_89.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.83.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_88.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.22.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_87.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.82.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_86.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.21.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_85.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.81.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_84.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.20.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_83.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.80.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_82.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.19.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_81.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.79.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_80.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.18.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_79.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.78.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_78.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.17.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_77.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.77.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_76.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.16.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_75.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.76.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_74.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.15.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_73.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.0.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_72.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.5.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_71.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_1.65.in_data_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_70.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.15.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_69.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.21.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_68.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.14.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_67.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.22.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_66.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.20.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_65.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.13.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_64.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.1.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_63.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.18.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_62.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.11.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_61.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.71.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_60.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.10.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_59.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.68.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_58.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.6.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_57.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.2.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_56.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.62.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_55.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.70.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_54.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.8.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_53.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.69.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_52.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.9.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_51.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.3.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_50.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.5.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_49.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.65.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_48.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.4.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_47.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.64.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                INV         1       1.0        1.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              4                  1.0
+----------------------------------------------------------------------
+Report for cell in_lvds_46.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.23.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_45.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.16.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_44.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.59.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_43.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.53.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_42.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.60.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_41.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.52.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_40.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.55.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_39.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.56.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_38.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.19.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_37.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.12.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_36.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.58.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_35.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.51.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_34.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.57.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_33.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.50.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_32.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.43.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_31.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.49.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_30.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.48.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_29.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.46.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_28.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.41.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_27.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.42.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_26.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.47.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_25.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.40.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_24.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.39.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_23.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.45.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_22.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.38.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_21.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.44.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_20.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.37.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_19.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.30.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_18.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.36.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_17.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.29.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_16.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.35.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_15.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.28.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_14.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.34.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_13.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.27.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_12.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.33.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_11.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.26.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_10.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.32.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_9.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.25.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_8.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.31.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_7.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.24.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_6.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.17.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                INV         1       1.0        1.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              4                  1.0
+----------------------------------------------------------------------
+Report for cell in_lvds_5.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.54.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_4.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.66.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_3.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.7.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_2.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.0.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_1.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.61.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds_0.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.67.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0
+----------------------------------------------------------------------
+Report for cell in_lvds.netlist
+  Original Cell name in_lvds
+     Instance path:  input_arr_0.63.in_data_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                         INBUF_LVDS         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              3                  0.0

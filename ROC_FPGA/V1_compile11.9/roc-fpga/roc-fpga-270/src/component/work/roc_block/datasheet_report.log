@@ -1,0 +1,1262 @@
+SmartTime Version v9.1 SP5
+Actel Corporation - Actel Designer Software Release v9.1 SP5 (Version 9.1.5.1)
+Date: Tue Oct 22 17:13:34 2013 
+
+ Design                         roc_block         
+ Family                         ProASIC3E         
+ Die                            A3PE3000          
+ Package                        896 FBGA          
+ Temperature                    COM               
+ Voltage                        COM               
+ Speed Grade                    -2                
+ Design State                   Post-Layout       
+ Data source                    Silicon verified  
+ Analysis Min Case              BEST              
+ Analysis Max Case              WORST             
+ Scenario for Timing Analysis   Primary           
+
+ Using Enhanced Min Delay Analysis
+Pin Description
++----------------+----------+--------+----------------+
+| Name           | Location | Type   | I/O Technology |
++----------------+----------+--------+----------------+
+| RST            |          | Input  |                |
+| BCO_CLK        |          | Clock  |                |
+| CLK            |          | Clock  |                |
+| CLK90          |          | Clock  |                |
+| OUT_CLK        |          | Clock  |                |
+| LATCH          |          | Input  |                |
+| SEND_DATA_0    |          | Input  |                |
+| SEND_DATA_1    |          | Input  |                |
+| DATA_IN_0[71]  |          | Input  |                |
+| DATA_IN_0[70]  |          | Input  |                |
+| DATA_IN_0[69]  |          | Input  |                |
+| DATA_IN_0[68]  |          | Input  |                |
+| DATA_IN_0[67]  |          | Input  |                |
+| DATA_IN_0[66]  |          | Input  |                |
+| DATA_IN_0[65]  |          | Input  |                |
+| DATA_IN_0[64]  |          | Input  |                |
+| DATA_IN_0[63]  |          | Input  |                |
+| DATA_IN_0[62]  |          | Input  |                |
+| DATA_IN_0[61]  |          | Input  |                |
+| DATA_IN_0[60]  |          | Input  |                |
+| DATA_IN_0[59]  |          | Input  |                |
+| DATA_IN_0[58]  |          | Input  |                |
+| DATA_IN_0[57]  |          | Input  |                |
+| DATA_IN_0[56]  |          | Input  |                |
+| DATA_IN_0[55]  |          | Input  |                |
+| DATA_IN_0[54]  |          | Input  |                |
+| DATA_IN_0[53]  |          | Input  |                |
+| DATA_IN_0[52]  |          | Input  |                |
+| DATA_IN_0[51]  |          | Input  |                |
+| DATA_IN_0[50]  |          | Input  |                |
+| DATA_IN_0[49]  |          | Input  |                |
+| DATA_IN_0[48]  |          | Input  |                |
+| DATA_IN_0[47]  |          | Input  |                |
+| DATA_IN_0[46]  |          | Input  |                |
+| DATA_IN_0[45]  |          | Input  |                |
+| DATA_IN_0[44]  |          | Input  |                |
+| DATA_IN_0[43]  |          | Input  |                |
+| DATA_IN_0[42]  |          | Input  |                |
+| DATA_IN_0[41]  |          | Input  |                |
+| DATA_IN_0[40]  |          | Input  |                |
+| DATA_IN_0[39]  |          | Input  |                |
+| DATA_IN_0[38]  |          | Input  |                |
+| DATA_IN_0[37]  |          | Input  |                |
+| DATA_IN_0[36]  |          | Input  |                |
+| DATA_IN_0[35]  |          | Input  |                |
+| DATA_IN_0[34]  |          | Input  |                |
+| DATA_IN_0[33]  |          | Input  |                |
+| DATA_IN_0[32]  |          | Input  |                |
+| DATA_IN_0[31]  |          | Input  |                |
+| DATA_IN_0[30]  |          | Input  |                |
+| DATA_IN_0[29]  |          | Input  |                |
+| DATA_IN_0[28]  |          | Input  |                |
+| DATA_IN_0[27]  |          | Input  |                |
+| DATA_IN_0[26]  |          | Input  |                |
+| DATA_IN_0[25]  |          | Input  |                |
+| DATA_IN_0[24]  |          | Input  |                |
+| DATA_IN_0[23]  |          | Input  |                |
+| DATA_IN_0[22]  |          | Input  |                |
+| DATA_IN_0[21]  |          | Input  |                |
+| DATA_IN_0[20]  |          | Input  |                |
+| DATA_IN_0[19]  |          | Input  |                |
+| DATA_IN_0[18]  |          | Input  |                |
+| DATA_IN_0[17]  |          | Input  |                |
+| DATA_IN_0[16]  |          | Input  |                |
+| DATA_IN_0[15]  |          | Input  |                |
+| DATA_IN_0[14]  |          | Input  |                |
+| DATA_IN_0[13]  |          | Input  |                |
+| DATA_IN_0[12]  |          | Input  |                |
+| DATA_IN_0[11]  |          | Input  |                |
+| DATA_IN_0[10]  |          | Input  |                |
+| DATA_IN_0[9]   |          | Input  |                |
+| DATA_IN_0[8]   |          | Input  |                |
+| DATA_IN_0[7]   |          | Input  |                |
+| DATA_IN_0[6]   |          | Input  |                |
+| DATA_IN_0[5]   |          | Input  |                |
+| DATA_IN_0[4]   |          | Input  |                |
+| DATA_IN_0[3]   |          | Input  |                |
+| DATA_IN_0[2]   |          | Input  |                |
+| DATA_IN_0[1]   |          | Input  |                |
+| DATA_IN_0[0]   |          | Input  |                |
+| DATA_IN_1[103] |          | Inout  |                |
+| DATA_IN_1[102] |          | Input  |                |
+| DATA_IN_1[101] |          | Input  |                |
+| DATA_IN_1[100] |          | Input  |                |
+| DATA_IN_1[99]  |          | Input  |                |
+| DATA_IN_1[98]  |          | Input  |                |
+| DATA_IN_1[97]  |          | Input  |                |
+| DATA_IN_1[96]  |          | Input  |                |
+| DATA_IN_1[95]  |          | Input  |                |
+| DATA_IN_1[94]  |          | Input  |                |
+| DATA_IN_1[93]  |          | Input  |                |
+| DATA_IN_1[92]  |          | Input  |                |
+| DATA_IN_1[91]  |          | Input  |                |
+| DATA_IN_1[90]  |          | Input  |                |
+| DATA_IN_1[89]  |          | Input  |                |
+| DATA_IN_1[88]  |          | Input  |                |
+| DATA_IN_1[87]  |          | Input  |                |
+| DATA_IN_1[86]  |          | Input  |                |
+| DATA_IN_1[85]  |          | Input  |                |
+| DATA_IN_1[84]  |          | Input  |                |
+| DATA_IN_1[83]  |          | Input  |                |
+| DATA_IN_1[82]  |          | Input  |                |
+| DATA_IN_1[81]  |          | Input  |                |
+| DATA_IN_1[80]  |          | Input  |                |
+| DATA_IN_1[79]  |          | Input  |                |
+| DATA_IN_1[78]  |          | Input  |                |
+| DATA_IN_1[77]  |          | Input  |                |
+| DATA_IN_1[76]  |          | Input  |                |
+| DATA_IN_1[75]  |          | Input  |                |
+| DATA_IN_1[74]  |          | Input  |                |
+| DATA_IN_1[73]  |          | Input  |                |
+| DATA_IN_1[72]  |          | Input  |                |
+| DATA_IN_1[71]  |          | Input  |                |
+| DATA_IN_1[70]  |          | Input  |                |
+| DATA_IN_1[69]  |          | Input  |                |
+| DATA_IN_1[68]  |          | Input  |                |
+| DATA_IN_1[67]  |          | Input  |                |
+| DATA_IN_1[66]  |          | Input  |                |
+| DATA_IN_1[65]  |          | Input  |                |
+| DATA_IN_1[64]  |          | Input  |                |
+| DATA_IN_1[63]  |          | Input  |                |
+| DATA_IN_1[62]  |          | Input  |                |
+| DATA_IN_1[61]  |          | Input  |                |
+| DATA_IN_1[60]  |          | Input  |                |
+| DATA_IN_1[59]  |          | Input  |                |
+| DATA_IN_1[58]  |          | Input  |                |
+| DATA_IN_1[57]  |          | Input  |                |
+| DATA_IN_1[56]  |          | Input  |                |
+| DATA_IN_1[55]  |          | Input  |                |
+| DATA_IN_1[54]  |          | Input  |                |
+| DATA_IN_1[53]  |          | Input  |                |
+| DATA_IN_1[52]  |          | Input  |                |
+| DATA_IN_1[51]  |          | Input  |                |
+| DATA_IN_1[50]  |          | Input  |                |
+| DATA_IN_1[49]  |          | Input  |                |
+| DATA_IN_1[48]  |          | Input  |                |
+| DATA_IN_1[47]  |          | Input  |                |
+| DATA_IN_1[46]  |          | Input  |                |
+| DATA_IN_1[45]  |          | Input  |                |
+| DATA_IN_1[44]  |          | Input  |                |
+| DATA_IN_1[43]  |          | Input  |                |
+| DATA_IN_1[42]  |          | Input  |                |
+| DATA_IN_1[41]  |          | Input  |                |
+| DATA_IN_1[40]  |          | Input  |                |
+| DATA_IN_1[39]  |          | Input  |                |
+| DATA_IN_1[38]  |          | Input  |                |
+| DATA_IN_1[37]  |          | Input  |                |
+| DATA_IN_1[36]  |          | Input  |                |
+| DATA_IN_1[35]  |          | Input  |                |
+| DATA_IN_1[34]  |          | Input  |                |
+| DATA_IN_1[33]  |          | Input  |                |
+| DATA_IN_1[32]  |          | Input  |                |
+| DATA_IN_1[31]  |          | Input  |                |
+| DATA_IN_1[30]  |          | Input  |                |
+| DATA_IN_1[29]  |          | Input  |                |
+| DATA_IN_1[28]  |          | Input  |                |
+| DATA_IN_1[27]  |          | Input  |                |
+| DATA_IN_1[26]  |          | Input  |                |
+| DATA_IN_1[25]  |          | Input  |                |
+| DATA_IN_1[24]  |          | Input  |                |
+| DATA_IN_1[23]  |          | Input  |                |
+| DATA_IN_1[22]  |          | Input  |                |
+| DATA_IN_1[21]  |          | Input  |                |
+| DATA_IN_1[20]  |          | Input  |                |
+| DATA_IN_1[19]  |          | Input  |                |
+| DATA_IN_1[18]  |          | Input  |                |
+| DATA_IN_1[17]  |          | Input  |                |
+| DATA_IN_1[16]  |          | Input  |                |
+| DATA_IN_1[15]  |          | Input  |                |
+| DATA_IN_1[14]  |          | Input  |                |
+| DATA_IN_1[13]  |          | Input  |                |
+| DATA_IN_1[12]  |          | Input  |                |
+| DATA_IN_1[11]  |          | Input  |                |
+| DATA_IN_1[10]  |          | Input  |                |
+| DATA_IN_1[9]   |          | Input  |                |
+| DATA_IN_1[8]   |          | Input  |                |
+| DATA_IN_1[7]   |          | Input  |                |
+| DATA_IN_1[6]   |          | Input  |                |
+| DATA_IN_1[5]   |          | Input  |                |
+| DATA_IN_1[4]   |          | Input  |                |
+| DATA_IN_1[3]   |          | Input  |                |
+| DATA_IN_1[2]   |          | Input  |                |
+| DATA_IN_1[1]   |          | Input  |                |
+| DATA_IN_1[0]   |          | Input  |                |
+| SHIFT_IN       |          | Input  |                |
+| SHIFT_EN       |          | Input  |                |
+| SHIFT_OUT      |          | Output |                |
+| LSB[7]         |          | Output |                |
+| LSB[6]         |          | Output |                |
+| LSB[5]         |          | Output |                |
+| LSB[4]         |          | Output |                |
+| LSB[3]         |          | Output |                |
+| LSB[2]         |          | Output |                |
+| LSB[1]         |          | Output |                |
+| LSB[0]         |          | Output |                |
+| MSB[7]         |          | Output |                |
+| MSB[6]         |          | Output |                |
+| MSB[5]         |          | Output |                |
+| MSB[4]         |          | Output |                |
+| MSB[3]         |          | Output |                |
+| MSB[2]         |          | Output |                |
+| MSB[1]         |          | Output |                |
+| MSB[0]         |          | Output |                |
+| DATA_OUT_0[31] |          | Output |                |
+| DATA_OUT_0[30] |          | Output |                |
+| DATA_OUT_0[29] |          | Output |                |
+| DATA_OUT_0[28] |          | Output |                |
+| DATA_OUT_0[27] |          | Output |                |
+| DATA_OUT_0[26] |          | Output |                |
+| DATA_OUT_0[25] |          | Output |                |
+| DATA_OUT_0[24] |          | Output |                |
+| DATA_OUT_0[23] |          | Output |                |
+| DATA_OUT_0[22] |          | Output |                |
+| DATA_OUT_0[21] |          | Output |                |
+| DATA_OUT_0[20] |          | Output |                |
+| DATA_OUT_0[19] |          | Output |                |
+| DATA_OUT_0[18] |          | Output |                |
+| DATA_OUT_0[17] |          | Output |                |
+| DATA_OUT_0[16] |          | Output |                |
+| DATA_OUT_0[15] |          | Output |                |
+| DATA_OUT_0[14] |          | Output |                |
+| DATA_OUT_0[13] |          | Output |                |
+| DATA_OUT_0[12] |          | Output |                |
+| DATA_OUT_0[11] |          | Output |                |
+| DATA_OUT_0[10] |          | Output |                |
+| DATA_OUT_0[9]  |          | Output |                |
+| DATA_OUT_0[8]  |          | Output |                |
+| DATA_OUT_0[7]  |          | Output |                |
+| DATA_OUT_0[6]  |          | Output |                |
+| DATA_OUT_0[5]  |          | Output |                |
+| DATA_OUT_0[4]  |          | Output |                |
+| DATA_OUT_0[3]  |          | Output |                |
+| DATA_OUT_0[2]  |          | Output |                |
+| DATA_OUT_0[1]  |          | Output |                |
+| DATA_OUT_0[0]  |          | Output |                |
+| DATA_OUT_1[31] |          | Output |                |
+| DATA_OUT_1[30] |          | Output |                |
+| DATA_OUT_1[29] |          | Output |                |
+| DATA_OUT_1[28] |          | Output |                |
+| DATA_OUT_1[27] |          | Output |                |
+| DATA_OUT_1[26] |          | Output |                |
+| DATA_OUT_1[25] |          | Output |                |
+| DATA_OUT_1[24] |          | Output |                |
+| DATA_OUT_1[23] |          | Output |                |
+| DATA_OUT_1[22] |          | Output |                |
+| DATA_OUT_1[21] |          | Output |                |
+| DATA_OUT_1[20] |          | Output |                |
+| DATA_OUT_1[19] |          | Output |                |
+| DATA_OUT_1[18] |          | Output |                |
+| DATA_OUT_1[17] |          | Output |                |
+| DATA_OUT_1[16] |          | Output |                |
+| DATA_OUT_1[15] |          | Output |                |
+| DATA_OUT_1[14] |          | Output |                |
+| DATA_OUT_1[13] |          | Output |                |
+| DATA_OUT_1[12] |          | Output |                |
+| DATA_OUT_1[11] |          | Output |                |
+| DATA_OUT_1[10] |          | Output |                |
+| DATA_OUT_1[9]  |          | Output |                |
+| DATA_OUT_1[8]  |          | Output |                |
+| DATA_OUT_1[7]  |          | Output |                |
+| DATA_OUT_1[6]  |          | Output |                |
+| DATA_OUT_1[5]  |          | Output |                |
+| DATA_OUT_1[4]  |          | Output |                |
+| DATA_OUT_1[3]  |          | Output |                |
+| DATA_OUT_1[2]  |          | Output |                |
+| DATA_OUT_1[1]  |          | Output |                |
+| DATA_OUT_1[0]  |          | Output |                |
+| DATA_OUT_2[31] |          | Output |                |
+| DATA_OUT_2[30] |          | Output |                |
+| DATA_OUT_2[29] |          | Output |                |
+| DATA_OUT_2[28] |          | Output |                |
+| DATA_OUT_2[27] |          | Output |                |
+| DATA_OUT_2[26] |          | Output |                |
+| DATA_OUT_2[25] |          | Output |                |
+| DATA_OUT_2[24] |          | Output |                |
+| DATA_OUT_2[23] |          | Output |                |
+| DATA_OUT_2[22] |          | Output |                |
+| DATA_OUT_2[21] |          | Output |                |
+| DATA_OUT_2[20] |          | Output |                |
+| DATA_OUT_2[19] |          | Output |                |
+| DATA_OUT_2[18] |          | Output |                |
+| DATA_OUT_2[17] |          | Output |                |
+| DATA_OUT_2[16] |          | Output |                |
+| DATA_OUT_2[15] |          | Output |                |
+| DATA_OUT_2[14] |          | Output |                |
+| DATA_OUT_2[13] |          | Output |                |
+| DATA_OUT_2[12] |          | Output |                |
+| DATA_OUT_2[11] |          | Output |                |
+| DATA_OUT_2[10] |          | Output |                |
+| DATA_OUT_2[9]  |          | Output |                |
+| DATA_OUT_2[8]  |          | Output |                |
+| DATA_OUT_2[7]  |          | Output |                |
+| DATA_OUT_2[6]  |          | Output |                |
+| DATA_OUT_2[5]  |          | Output |                |
+| DATA_OUT_2[4]  |          | Output |                |
+| DATA_OUT_2[3]  |          | Output |                |
+| DATA_OUT_2[2]  |          | Output |                |
+| DATA_OUT_2[1]  |          | Output |                |
+| DATA_OUT_2[0]  |          | Output |                |
+| DATA_OUT_3[31] |          | Output |                |
+| DATA_OUT_3[30] |          | Output |                |
+| DATA_OUT_3[29] |          | Output |                |
+| DATA_OUT_3[28] |          | Output |                |
+| DATA_OUT_3[27] |          | Output |                |
+| DATA_OUT_3[26] |          | Output |                |
+| DATA_OUT_3[25] |          | Output |                |
+| DATA_OUT_3[24] |          | Output |                |
+| DATA_OUT_3[23] |          | Output |                |
+| DATA_OUT_3[22] |          | Output |                |
+| DATA_OUT_3[21] |          | Output |                |
+| DATA_OUT_3[20] |          | Output |                |
+| DATA_OUT_3[19] |          | Output |                |
+| DATA_OUT_3[18] |          | Output |                |
+| DATA_OUT_3[17] |          | Output |                |
+| DATA_OUT_3[16] |          | Output |                |
+| DATA_OUT_3[15] |          | Output |                |
+| DATA_OUT_3[14] |          | Output |                |
+| DATA_OUT_3[13] |          | Output |                |
+| DATA_OUT_3[12] |          | Output |                |
+| DATA_OUT_3[11] |          | Output |                |
+| DATA_OUT_3[10] |          | Output |                |
+| DATA_OUT_3[9]  |          | Output |                |
+| DATA_OUT_3[8]  |          | Output |                |
+| DATA_OUT_3[7]  |          | Output |                |
+| DATA_OUT_3[6]  |          | Output |                |
+| DATA_OUT_3[5]  |          | Output |                |
+| DATA_OUT_3[4]  |          | Output |                |
+| DATA_OUT_3[3]  |          | Output |                |
+| DATA_OUT_3[2]  |          | Output |                |
+| DATA_OUT_3[1]  |          | Output |                |
+| DATA_OUT_3[0]  |          | Output |                |
+| TEST_OUT[7]    |          | Inout  |                |
+| TEST_OUT[6]    |          | Inout  |                |
+| TEST_OUT[5]    |          | Inout  |                |
+| TEST_OUT[4]    |          | Output |                |
+| TEST_OUT[3]    |          | Output |                |
+| TEST_OUT[2]    |          | Output |                |
+| TEST_OUT[1]    |          | Output |                |
+| TEST_OUT[0]    |          | Inout  |                |
++----------------+----------+--------+----------------+
+
+
+DC Electrical Characteristics
+Not Applicable
+
+
+AC Electrical Characteristics
++-------------------+----------------+--------+----------------+--------+----------+------+
+| Description       |                |        |                | Min    | Max      | Unit |
++-------------------+----------------+--------+----------------+--------+----------+------+
+| Clock frequency   | BCO_CLK        |        |                |        | 197.006  | MHz  |
+| Clock period      | BCO_CLK        |        |                | 5.076  |          | ns   |
+| Clock frequency   | CLK            |        |                |        | 237.982  | MHz  |
+| Clock period      | CLK            |        |                | 4.202  |          | ns   |
+| Clock frequency   | CLK90          |        |                |        | 1404.494 | MHz  |
+| Clock period      | CLK90          |        |                | 0.712  |          | ns   |
+| Clock frequency   | OUT_CLK        |        |                |        | 169.377  | MHz  |
+| Clock period      | OUT_CLK        |        |                | 5.904  |          | ns   |
+| Setup time        | DATA_IN_0[0]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[0]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[10]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[10]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[11]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[11]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[12]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[12]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[13]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[13]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[14]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[14]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[15]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[15]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[16]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[16]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[17]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[17]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[18]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[18]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[19]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[19]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[1]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[1]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[20]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[20]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[21]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[21]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[22]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[22]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[23]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[23]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[24]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[24]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[25]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[25]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[26]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[26]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[27]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[27]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[28]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[28]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[29]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[29]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[2]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[2]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[30]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[30]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[31]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[31]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[32]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[32]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[33]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[33]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[34]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[34]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[35]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[35]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[36]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[36]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[37]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[37]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[38]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[38]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[39]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[39]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[3]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[3]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[40]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[40]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[41]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[41]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[42]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[42]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[43]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[43]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[44]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[44]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[45]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[45]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[46]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[46]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[47]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[47]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[48]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[48]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[49]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[49]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[4]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[4]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[50]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[50]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[51]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[51]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[52]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[52]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[53]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[53]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[54]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[54]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[55]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[55]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[56]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[56]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[57]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[57]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[58]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[58]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[59]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[59]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[5]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[5]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[60]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[60]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[61]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[61]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[62]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[62]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[63]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[63]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[64]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[64]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[65]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[65]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[66]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[66]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[67]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[67]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[68]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[68]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[69]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[69]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[6]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[6]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[70]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[70]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[71]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[71]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[7]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[7]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[8]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[8]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_0[9]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_0[9]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[0]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[0]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[100] | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[100] | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[101] | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[101] | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[102] | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[102] | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[103] | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[103] | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[10]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[10]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[11]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[11]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[12]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[12]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[13]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[13]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[14]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[14]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[15]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[15]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[16]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[16]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[17]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[17]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[18]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[18]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[19]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[19]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[1]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[1]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[20]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[20]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[21]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[21]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[22]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[22]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[23]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[23]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[24]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[24]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[25]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[25]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[26]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[26]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[27]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[27]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[28]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[28]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[29]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[29]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[2]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[2]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[30]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[30]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[31]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[31]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[32]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[32]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[33]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[33]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[34]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[34]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[35]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[35]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[36]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[36]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[37]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[37]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[38]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[38]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[39]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[39]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[3]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[3]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[40]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[40]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[41]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[41]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[42]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[42]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[43]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[43]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[44]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[44]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[45]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[45]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[46]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[46]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[47]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[47]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[48]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[48]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[49]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[49]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[4]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[4]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[50]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[50]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[51]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[51]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[52]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[52]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[53]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[53]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[54]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[54]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[55]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[55]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[56]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[56]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[57]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[57]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[58]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[58]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[59]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[59]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[5]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[5]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[60]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[60]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[61]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[61]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[62]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[62]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[63]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[63]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[64]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[64]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[65]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[65]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[66]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[66]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[67]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[67]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[68]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[68]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[69]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[69]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[6]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[6]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[70]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[70]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[71]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[71]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[72]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[72]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[73]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[73]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[74]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[74]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[75]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[75]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[76]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[76]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[77]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[77]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[78]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[78]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[79]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[79]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[7]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[7]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[80]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[80]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[81]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[81]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[82]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[82]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[83]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[83]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[84]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[84]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[85]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[85]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[86]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[86]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[87]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[87]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[88]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[88]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[89]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[89]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[8]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[8]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[90]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[90]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[91]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[91]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[92]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[92]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[93]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[93]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[94]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[94]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[95]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[95]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[96]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[96]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[97]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[97]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[98]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[98]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[99]  | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[99]  | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | DATA_IN_1[9]   | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | DATA_IN_1[9]   | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Setup time        | LATCH          | before | CLK (rise)     | 0.428  |          | ns   |
+| Setup time        | LATCH          | before | OUT_CLK (rise) | 0.428  |          | ns   |
+| Setup time        | SEND_DATA_0    | before | OUT_CLK (rise) | 1.147  |          | ns   |
+| Setup time        | SEND_DATA_1    | before | OUT_CLK (rise) | 1.148  |          | ns   |
+| Setup time        | SHIFT_EN       | before | BCO_CLK (rise) | 0.454  |          | ns   |
+| Setup time        | SHIFT_IN       | before | BCO_CLK (rise) | 0.428  |          | ns   |
+| Setup time        | TEST_OUT[0]    | before | CLK (fall)     | 1.335  |          | ns   |
+| Setup time        | TEST_OUT[0]    | before | CLK90 (fall)   | 1.330  |          | ns   |
+| Hold time         | DATA_IN_0[0]   | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[0]   | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[10]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[10]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[11]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[11]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[12]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[12]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[13]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[13]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[14]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[14]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[15]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[15]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[16]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[16]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[17]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[17]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[18]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[18]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[19]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[19]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[1]   | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[1]   | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[20]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[20]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[21]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[21]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[22]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[22]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[23]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[23]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[24]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[24]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[25]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[25]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[26]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[26]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[27]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[27]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[28]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[28]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[29]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[29]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[2]   | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[2]   | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[30]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[30]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[31]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[31]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[32]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[32]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[33]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[33]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[34]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[34]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[35]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[35]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[36]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[36]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[37]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[37]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[38]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[38]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[39]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[39]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[3]   | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[3]   | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[40]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[40]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[41]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[41]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[42]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[42]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[43]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[43]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[44]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[44]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[45]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[45]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[46]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[46]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[47]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[47]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[48]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[48]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[49]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[49]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[4]   | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[4]   | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[50]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[50]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[51]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[51]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[52]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[52]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[53]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[53]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[54]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[54]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[55]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[55]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[56]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[56]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[57]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[57]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[58]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[58]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[59]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[59]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[5]   | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[5]   | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[60]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[60]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[61]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[61]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[62]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[62]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[63]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[63]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[64]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[64]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[65]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[65]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[66]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[66]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[67]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[67]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[68]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[68]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[69]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[69]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[6]   | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[6]   | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[70]  | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[70]  | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[71]  | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[71]  | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[7]   | after  | CLK (fall)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[7]   | after  | CLK90 (rise)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[8]   | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[8]   | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[9]   | after  | CLK (rise)     | -0.322 |          | ns   |
+| Hold time         | DATA_IN_0[9]   | after  | CLK90 (fall)   | -0.322 |          | ns   |
+| Hold time         | DATA_IN_1[0]   | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[0]   | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[100] | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[100] | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[101] | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[101] | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[102] | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[102] | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[103] | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[103] | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[10]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[10]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[11]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[11]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[12]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[12]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[13]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[13]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[14]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[14]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[15]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[15]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[16]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[16]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[17]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[17]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[18]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[18]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[19]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[19]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[1]   | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[1]   | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[20]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[20]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[21]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[21]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[22]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[22]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[23]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[23]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[24]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[24]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[25]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[25]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[26]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[26]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[27]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[27]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[28]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[28]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[29]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[29]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[2]   | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[2]   | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[30]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[30]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[31]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[31]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[32]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[32]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[33]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[33]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[34]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[34]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[35]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[35]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[36]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[36]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[37]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[37]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[38]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[38]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[39]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[39]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[3]   | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[3]   | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[40]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[40]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[41]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[41]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[42]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[42]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[43]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[43]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[44]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[44]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[45]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[45]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[46]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[46]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[47]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[47]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[48]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[48]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[49]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[49]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[4]   | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[4]   | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[50]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[50]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[51]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[51]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[52]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[52]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[53]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[53]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[54]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[54]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[55]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[55]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[56]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[56]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[57]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[57]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[58]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[58]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[59]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[59]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[5]   | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[5]   | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[60]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[60]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[61]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[61]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[62]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[62]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[63]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[63]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[64]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[64]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[65]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[65]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[66]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[66]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[67]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[67]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[68]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[68]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[69]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[69]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[6]   | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[6]   | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[70]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[70]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[71]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[71]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[72]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[72]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[73]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[73]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[74]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[74]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[75]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[75]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[76]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[76]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[77]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[77]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[78]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[78]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[79]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[79]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[7]   | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[7]   | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[80]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[80]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[81]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[81]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[82]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[82]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[83]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[83]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[84]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[84]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[85]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[85]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[86]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[86]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[87]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[87]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[88]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[88]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[89]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[89]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[8]   | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[8]   | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[90]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[90]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[91]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[91]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[92]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[92]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[93]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[93]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[94]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[94]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[95]  | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[95]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[96]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[96]  | after  | CLK90 (fall)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[97]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[97]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[98]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[98]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[99]  | after  | CLK (rise)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[99]  | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | DATA_IN_1[9]   | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | DATA_IN_1[9]   | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Hold time         | LATCH          | after  | CLK (rise)     | 0.000  |          | ns   |
+| Hold time         | LATCH          | after  | OUT_CLK (rise) | 0.000  |          | ns   |
+| Hold time         | SEND_DATA_0    | after  | OUT_CLK (rise) | -0.339 |          | ns   |
+| Hold time         | SEND_DATA_1    | after  | OUT_CLK (rise) | -0.341 |          | ns   |
+| Hold time         | SHIFT_EN       | after  | BCO_CLK (rise) | 0.000  |          | ns   |
+| Hold time         | SHIFT_IN       | after  | BCO_CLK (rise) | 0.000  |          | ns   |
+| Hold time         | TEST_OUT[0]    | after  | CLK (fall)     | -0.323 |          | ns   |
+| Hold time         | TEST_OUT[0]    | after  | CLK90 (rise)   | -0.320 |          | ns   |
+| Recovery time     | RST            | before | BCO_CLK (rise) | 2.019  |          | ns   |
+| Recovery time     | RST            | before | CLK (rise)     | 3.428  |          | ns   |
+| Recovery time     | RST            | before | CLK90 (rise)   | 2.059  |          | ns   |
+| Recovery time     | RST            | before | OUT_CLK (rise) | 3.428  |          | ns   |
+| Removal time      | RST            | after  | BCO_CLK (rise) | -0.921 |          | ns   |
+| Removal time      | RST            | after  | CLK (rise)     | -0.822 |          | ns   |
+| Removal time      | RST            | after  | CLK90 (rise)   | -0.942 |          | ns   |
+| Removal time      | RST            | after  | OUT_CLK (rise) | -0.822 |          | ns   |
+| Propagation delay | BCO_CLK (rise) | to     | SHIFT_OUT      | 0.206  | 0.550    | ns   |
+| Propagation delay | CLK (rise)     | to     | TEST_OUT[1]    | 0.206  | 0.550    | ns   |
+| Propagation delay | CLK (rise)     | to     | TEST_OUT[2]    | 0.206  | 0.550    | ns   |
+| Propagation delay | DATA_IN_1[103] | to     | TEST_OUT[0]    | 0.000  | 0.000    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[0]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[10] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[11] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[12] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[13] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[14] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[15] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[16] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[17] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[18] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[19] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[1]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[20] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[21] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[22] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[23] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[24] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[25] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[26] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[27] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[28] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[29] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[2]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[30] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[31] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[3]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[4]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[5]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[6]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[7]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[8]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_0[9]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[0]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[10] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[11] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[12] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[13] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[14] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[15] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[16] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[17] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[18] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[19] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[1]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[20] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[21] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[22] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[23] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[24] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[25] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[26] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[27] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[28] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[29] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[2]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[30] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[31] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[3]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[4]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[5]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[6]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[7]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[8]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_1[9]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[0]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[10] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[11] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[12] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[13] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[14] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[15] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[16] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[17] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[18] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[19] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[1]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[20] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[21] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[22] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[23] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[24] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[25] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[26] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[27] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[28] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[29] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[2]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[30] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[31] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[3]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[4]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[5]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[6]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[7]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[8]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_2[9]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[0]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[10] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[11] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[12] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[13] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[14] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[15] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[16] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[17] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[18] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[19] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[1]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[20] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[21] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[22] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[23] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[24] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[25] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[26] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[27] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[28] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[29] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[2]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[30] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[31] | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[3]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[4]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[5]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[6]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[7]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[8]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | DATA_OUT_3[9]  | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | LSB[0]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | LSB[1]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | LSB[2]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | LSB[3]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | LSB[4]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | LSB[5]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | LSB[6]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | LSB[7]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | MSB[0]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | MSB[1]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | MSB[2]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | MSB[3]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | MSB[4]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | MSB[5]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | MSB[6]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | MSB[7]         | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | TEST_OUT[3]    | 0.206  | 0.550    | ns   |
+| Propagation delay | OUT_CLK (rise) | to     | TEST_OUT[4]    | 0.206  | 0.550    | ns   |
+| Propagation delay | TEST_OUT[0]    | to     | DATA_IN_1[103] | 0.000  | 0.000    | ns   |
++-------------------+----------------+--------+----------------+--------+----------+------+
+
+

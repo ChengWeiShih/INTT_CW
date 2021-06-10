@@ -1,0 +1,24 @@
+
+
+@S |Clock Optimization Summary
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+Clock optimization not enabled
+0 non-gated/non-generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+4 gated/generated clock tree(s) driving 309 clock pin(s) of sequential element(s)
+0 instances converted, 309 sequential instances remain driven by gated/generated clocks
+
+================================================================================ Gated/Generated Clocks =================================================================================
+Clock Tree ID     Driving Element                    Drive Element Type                 Fanout     Sample Instance          Explanation                                                  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@K:CKID0001       Inst_roc_dcm.Core                  PLL                                1          Inst_roc_block           No gated clock conversion method for cell cell:work.roc_block
+@K:CKID0002       Inst_roc_dcm.Core                  PLL                                1          Inst_roc_block           No gated clock conversion method for cell cell:work.roc_block
+@K:CKID0003       Inst_out_clk.INBUF_LVDS_0_inst     clock definition on INBUF_LVDS     306        DATA_OUT_0_1_tmp[10]     Clock conversion disabled                                    
+@K:CKID0004       Inst_clk.INBUF_LVDS_0_inst         clock definition on INBUF_LVDS     1          Inst_roc_block           No gated clock conversion method for cell cell:work.roc_block
+=========================================================================================================================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+

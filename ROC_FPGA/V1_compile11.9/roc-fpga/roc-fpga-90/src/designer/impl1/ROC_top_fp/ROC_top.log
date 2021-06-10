@@ -1,0 +1,18 @@
+FlashPro
+Version: 9.1.3.4
+Release: v9.1 SP3
+
+Software Version: 9.1.3.4
+PDB file 'C:\FVTX_VHDL_code\MissingWedge2\ROC_FVTX\ROC_main_FPGA_B_D\designer\impl1\ROC_top.pdb'
+has been loaded successfully.
+DESIGN : ROC_top;  CHECKSUM : C026;  PDB_VERSION : 1.7
+Driver : 3.0.0 build 1
+programmer '08756' : FlashPro3
+Opened
+'C:\FVTX_VHDL_code\MissingWedge2\ROC_FVTX\ROC_main_FPGA_B_D\designer\impl1\ROC_top_fp\ROC_top.p\
+ro'
+programmer '08756' : Scan Chain...
+Error: Vjtag is disconnected or shorted. Please check the FPGA's Vjtag pin is properly
+       connected. Please check that the target board is powered.
+Error: programmer '08756' : Scan Chain FAILED.
+Error: Failed to run Action.

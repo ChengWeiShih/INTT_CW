@@ -1,0 +1,25 @@
+
+Global Usage Report:
+====================
+
+Product      : Designer
+Release      : v9.1 SP5
+Version      : 9.1.5.1
+Date         : Tue Oct 22 17:13:11 2013
+Design Name  : roc_block 
+Family       : ProASIC3E
+Die          : A3PE3000
+Package      : 896 FBGA
+Design State : Post-Layout
+
+
+The following nets have been routed to a chip global resource:
+
+    Fanout            Name
+    ----------------------
+    30075             Net   : RST
+                      Driver: RST_CLKINT/U_GL
+
+
+
+

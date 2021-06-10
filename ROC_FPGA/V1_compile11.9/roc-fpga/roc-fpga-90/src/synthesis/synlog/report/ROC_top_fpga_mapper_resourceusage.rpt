@@ -1,0 +1,34 @@
+Target Part: A3PE3000_FBGA896_-2
+Report for cell ROC_top.rtl
+  Core Cell usage:
+              cell count     area count*area
+            CLKINT     1      0.0        0.0
+               GND   180      0.0        0.0
+               INV     4      1.0        4.0
+              OR2A     1      1.0        1.0
+               PLL     1      0.0        0.0
+               VCC   180      0.0        0.0
+
+
+              DFN1     1      1.0        1.0
+            DFN1C1   304      1.0      304.0
+                   -----          ----------
+             TOTAL   672               310.0
+
+
+  IO Cell usage:
+              cell count
+             INBUF     4
+        INBUF_LVDS   178
+            OUTBUF   145
+         roc_block     1
+                   -----
+             TOTAL   328
+
+
+Core Cells         : 310 of 75264 (0%)
+IO Cells           : 328
+
+  RAM/ROM Usage Summary
+Block Rams : 0 of 112 (0%)
+

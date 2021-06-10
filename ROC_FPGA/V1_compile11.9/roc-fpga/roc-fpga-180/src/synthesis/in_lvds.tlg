@@ -1,0 +1,4 @@
+@N: CD630 :"C:\FPGA\ROC_FVTX\ROC_main_FPGA_B_D\smartgen\in_lvds\in_lvds.vhd":8:7:8:13|Synthesizing work.in_lvds.def_arch 
+@N: CD630 :"C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\proasic3e.vhd":2038:10:2038:19|Synthesizing proasic3e.inbuf_lvds.syn_black_box 
+Post processing for proasic3e.inbuf_lvds.syn_black_box
+Post processing for work.in_lvds.def_arch

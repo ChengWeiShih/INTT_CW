@@ -1,0 +1,20 @@
+@N: CD630 :"C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\hdl\ROC_top.vhd":29:7:29:13|Synthesizing work.roc_top.rtl 
+@W: CD638 :"C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\hdl\ROC_top.vhd":127:10:127:17|Signal test_out is undriven 
+@N: CD630 :"C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\component\work\roc_block\roc_block_syn.vhd":10:7:10:15|Synthesizing work.roc_block.def_arch 
+Post processing for work.roc_block.def_arch
+@N: CD630 :"C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\smartgen\in_lvds\in_lvds.vhd":8:7:8:13|Synthesizing work.in_lvds.def_arch 
+@N: CD630 :"C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\proasic3e.vhd":2038:10:2038:19|Synthesizing proasic3e.inbuf_lvds.syn_black_box 
+Post processing for proasic3e.inbuf_lvds.syn_black_box
+Post processing for work.in_lvds.def_arch
+@N: CD630 :"C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\smartgen\roc_dcm\roc_dcm.vhd":8:7:8:13|Synthesizing work.roc_dcm.def_arch 
+@N: CD630 :"C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\proasic3e.vhd":3976:10:3976:12|Synthesizing proasic3e.pll.syn_black_box 
+Post processing for proasic3e.pll.syn_black_box
+@N: CD630 :"C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\proasic3e.vhd":1894:10:1894:12|Synthesizing proasic3e.gnd.syn_black_box 
+Post processing for proasic3e.gnd.syn_black_box
+@N: CD630 :"C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\proasic3e.vhd":2999:10:2999:12|Synthesizing proasic3e.vcc.syn_black_box 
+Post processing for proasic3e.vcc.syn_black_box
+Post processing for work.roc_dcm.def_arch
+Post processing for work.roc_top.rtl
+@W: CL159 :"C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\hdl\ROC_top.vhd":31:10:31:16|Input LATCH_0 is unused
+@W: CL159 :"C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\hdl\ROC_top.vhd":33:10:33:20|Input SEND_DATA_0 is unused
+@W: CL159 :"C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\hdl\ROC_top.vhd":34:10:34:20|Input SEND_DATA_1 is unused

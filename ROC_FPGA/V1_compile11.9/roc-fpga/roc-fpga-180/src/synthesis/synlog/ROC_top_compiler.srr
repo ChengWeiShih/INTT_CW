@@ -1,0 +1,62 @@
+Synopsys HDL Compiler, version comp2016q4p1, Build 512R, built Oct 26 2017
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+Synopsys VHDL Compiler, version comp2016q4p1, Build 512R, built Oct 26 2017
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+@N: CD720 :"C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\lib\vhd2008\std.vhd":146:18:146:21|Setting time resolution to ps
+@N:"C:\Users\curlywei\Documents\roc-fpga\src_old\hdl\ROC_top.vhd":29:7:29:13|Top entity is set to ROC_top.
+VHDL syntax check successful!
+@N: CD231 :"C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
+@N: CD630 :"C:\Users\curlywei\Documents\roc-fpga\src_old\hdl\ROC_top.vhd":29:7:29:13|Synthesizing work.roc_top.rtl.
+@W: CD638 :"C:\Users\curlywei\Documents\roc-fpga\src_old\hdl\ROC_top.vhd":127:10:127:17|Signal test_out is undriven. Either assign the signal a value or remove the signal declaration.
+@N: CD630 :"C:\Users\curlywei\Documents\roc-fpga\src_old\component\work\roc_block\roc_block_syn.vhd":10:7:10:15|Synthesizing work.roc_block.def_arch.
+Post processing for work.roc_block.def_arch
+@N: CD630 :"C:\Users\curlywei\Documents\roc-fpga\src_old\smartgen\in_lvds\in_lvds.vhd":8:7:8:13|Synthesizing work.in_lvds.def_arch.
+@N: CD630 :"C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\lib\proasic\proasic3e.vhd":2038:10:2038:19|Synthesizing proasic3e.inbuf_lvds.syn_black_box.
+Post processing for proasic3e.inbuf_lvds.syn_black_box
+Post processing for work.in_lvds.def_arch
+@N: CD630 :"C:\Users\curlywei\Documents\roc-fpga\src_old\smartgen\roc_dcm\roc_dcm.vhd":8:7:8:13|Synthesizing work.roc_dcm.def_arch.
+@N: CD630 :"C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\lib\proasic\proasic3e.vhd":3976:10:3976:12|Synthesizing proasic3e.pll.syn_black_box.
+Post processing for proasic3e.pll.syn_black_box
+@N: CD630 :"C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\lib\proasic\proasic3e.vhd":2999:10:2999:12|Synthesizing proasic3e.vcc.syn_black_box.
+Post processing for proasic3e.vcc.syn_black_box
+@N: CD630 :"C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\lib\proasic\proasic3e.vhd":1894:10:1894:12|Synthesizing proasic3e.gnd.syn_black_box.
+Post processing for proasic3e.gnd.syn_black_box
+Post processing for work.roc_dcm.def_arch
+Post processing for work.roc_top.rtl
+@N: CL159 :"C:\Users\curlywei\Documents\roc-fpga\src_old\hdl\ROC_top.vhd":31:10:31:16|Input LATCH_0 is unused.
+@N: CL159 :"C:\Users\curlywei\Documents\roc-fpga\src_old\hdl\ROC_top.vhd":33:10:33:20|Input SEND_DATA_0 is unused.
+@N: CL159 :"C:\Users\curlywei\Documents\roc-fpga\src_old\hdl\ROC_top.vhd":34:10:34:20|Input SEND_DATA_1 is unused.
+
+At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 79MB peak: 80MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Wed Jun 02 22:13:19 2021
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q4p1, Build 512R, built Oct 26 2017
+@N|Running in 64-bit mode
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 68MB peak: 69MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Wed Jun 02 22:13:20 2021
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Wed Jun 02 22:13:20 2021
+
+###########################################################]

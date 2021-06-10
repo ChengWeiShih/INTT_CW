@@ -1,0 +1,495 @@
+KEY LIBERO "11.9"
+KEY CAPTURE "11.9.0.4"
+KEY DEFAULT_IMPORT_LOC "C:\FVTX_VHDL_code\ROC_FVTX_blocks\ROC_FVTX_blocks\ROC_FVTX_comb\Cores\roc_block"
+KEY DEFAULT_OPEN_LOC "C:\FVTX_VHDL_code\ROC_main_FPGA_A\hdl"
+KEY ProjectID "8b54832b-752b-4c90-8a99-1d1dd2753557"
+KEY HDLTechnology "VHDL"
+KEY VERILOGMODE "VERILOG2001"
+KEY VHDLMODE "VHDL2008"
+KEY UseConstraintFlowTechnology "FALSE"
+KEY VendorTechnology_Family "ProASIC3E"
+KEY VendorTechnology_Die "IT14X14M4"
+KEY VendorTechnology_Package "fg896"
+KEY VendorTechnology_Speed "-2"
+KEY VendorTechnology_DieVoltage "1.5"
+KEY VendorTechnology_PART_RANGE "COM"
+KEY VendorTechnology_DSW_VCCA_VOLTAGE_RAMP_RATE ""
+KEY VendorTechnology_IO_DEFT_STD ""
+KEY VendorTechnology_OPCONR ""
+KEY VendorTechnology_PLL_SUPPLY ""
+KEY VendorTechnology_RAD_EXPOSURE ""
+KEY VendorTechnology_RESERVEMIGRATIONPINS "1"
+KEY VendorTechnology_RESTRICTPROBEPINS "1"
+KEY VendorTechnology_RESTRICTSPIPINS "0"
+KEY VendorTechnology_SYSTEM_CONTROLLER_SUSPEND_MODE ""
+KEY VendorTechnology_TARGETDEVICESFORMIGRATION "A3PE3000;"
+KEY VendorTechnology_TEMPR "COM"
+KEY VendorTechnology_UNUSED_MSS_IO_RESISTOR_PULL "None"
+KEY VendorTechnology_VOLTR "COM"
+KEY ProjectLocation "C:\Users\curlywei\Documents\roc-foga\roc-fpga-90\src"
+KEY ProjectDescription ""
+KEY Pa4PeripheralNewSeq "GOOD"
+KEY SimulationType "VHDL"
+KEY Vendor "Actel"
+KEY ActiveRoot "ROC_top::work"
+LIST REVISIONS
+VALUE="Impl1",NUM=1
+CURREV=1
+ENDLIST
+LIST FileManager
+VALUE "<project>\component\work\roc_block\compile_report.log,log"
+STATE="utd"
+TIME="1622597624"
+SIZE="62097"
+PARENT="<project>\component\work\roc_block\roc_block.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\roc_block\datasheet_report.log,log"
+STATE="utd"
+TIME="1622597624"
+SIZE="103326"
+PARENT="<project>\component\work\roc_block\roc_block.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\roc_block\global_report.log,log"
+STATE="utd"
+TIME="1622597624"
+SIZE="510"
+PARENT="<project>\component\work\roc_block\roc_block.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\roc_block\header_report.log,log"
+STATE="utd"
+TIME="1622597624"
+SIZE="428"
+PARENT="<project>\component\work\roc_block\roc_block.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\roc_block\interface_report.log,log"
+STATE="utd"
+TIME="1622597624"
+SIZE="76717"
+PARENT="<project>\component\work\roc_block\roc_block.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\roc_block\roc_block.cdb,arm_db"
+STATE="utd"
+TIME="1622597624"
+SIZE="9887744"
+PARENT="<project>\component\work\roc_block\roc_block.cxf"
+BEGIN_USE_CONSTRAINT
+TOOL_CONSTRAINT_TYPE="ideDESIGNER"
+END_USE_CONSTRAINT
+USE_FOR_ANY_TOOL="FALSE"
+ENDFILE
+VALUE "<project>\component\work\roc_block\roc_block.cxf,actgen_cxf"
+STATE="utd"
+TIME="1622597624"
+SIZE="5462"
+ENDFILE
+VALUE "<project>\component\work\roc_block\roc_block_pre.vhd,hdl"
+STATE="utd"
+TIME="1622597624"
+SIZE="63074"
+PARENT="<project>\component\work\roc_block\roc_block.cxf"
+BEGIN_USE_CONSTRAINT
+TOOL_CONSTRAINT_TYPE="ideSYNTHESIS"
+TOOL_CONSTRAINT_USE="PRECISION_EXT"
+END_USE_CONSTRAINT
+USE_FOR_ANY_TOOL="FALSE"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\roc_block\roc_block_sim.vhd,hdl"
+STATE="utd"
+TIME="1622597624"
+SIZE="401426"
+PARENT="<project>\component\work\roc_block\roc_block.cxf"
+BEGIN_USE_CONSTRAINT
+TOOL_CONSTRAINT_TYPE="ideSIMULATION"
+END_USE_CONSTRAINT
+USE_FOR_ANY_TOOL="FALSE"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\roc_block\roc_block_syn.vhd,hdl"
+STATE="utd"
+TIME="1622597624"
+SIZE="62897"
+PARENT="<project>\component\work\roc_block\roc_block.cxf"
+BEGIN_USE_CONSTRAINT
+TOOL_CONSTRAINT_TYPE="ideSYNTHESIS"
+END_USE_CONSTRAINT
+USE_FOR_ANY_TOOL="FALSE"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\constraint\roc_top.pdc,pdc"
+STATE="utd"
+TIME="1622644716"
+SIZE="62460"
+ENDFILE
+VALUE "<project>\constraint\ROC_top.sdc,sdc"
+STATE="utd"
+TIME="1622597624"
+SIZE="1275"
+ENDFILE
+VALUE "<project>\designer\impl1\ROC_top.adb,adb"
+STATE="utd"
+TIME="1622645637"
+SIZE="58872320"
+ENDFILE
+VALUE "<project>\designer\impl1\ROC_top.ide_des,ide_des"
+STATE="utd"
+TIME="1622645651"
+SIZE="1439"
+ENDFILE
+VALUE "<project>\designer\impl1\ROC_top.pdb,pdb"
+STATE="ood"
+TIME="1622597624"
+SIZE="612352"
+ENDFILE
+VALUE "<project>\designer\impl1\ROC_top.stp,stp"
+STATE="ood"
+TIME="1622597624"
+SIZE="670603"
+ENDFILE
+VALUE "<project>\designer\impl1\ROC_top_1_fp\ROC_top.pro,pro"
+STATE="utd"
+TIME="1622644673"
+SIZE="1833"
+ENDFILE
+VALUE "<project>\designer\impl1\ROC_top_1_fp_1\ROC_top.pro,pro"
+STATE="utd"
+TIME="1622644673"
+SIZE="0"
+ENDFILE
+VALUE "<project>\designer\impl1\ROC_top_fp\ROC_top.pro,pro"
+STATE="utd"
+TIME="1622644673"
+SIZE="0"
+ENDFILE
+VALUE "<project>\designer\impl1\ROC_top_fp_1\ROC_top.pro,pro"
+STATE="utd"
+TIME="1622644673"
+SIZE="0"
+ENDFILE
+VALUE "<project>\hdl\ROC_top.vhd,hdl"
+STATE="utd"
+TIME="1622597624"
+SIZE="11930"
+ENDFILE
+VALUE "<project>\smartgen\in_lvds\in_lvds.cxf,actgen_cxf"
+STATE="utd"
+TIME="1622597624"
+SIZE="810"
+ENDFILE
+VALUE "<project>\smartgen\in_lvds\in_lvds.gen,gen"
+STATE="utd"
+TIME="1622597624"
+SIZE="389"
+PARENT="<project>\smartgen\in_lvds\in_lvds.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\smartgen\in_lvds\in_lvds.log,log"
+STATE="utd"
+TIME="1622597624"
+SIZE="566"
+PARENT="<project>\smartgen\in_lvds\in_lvds.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\smartgen\in_lvds\in_lvds.vhd,hdl"
+STATE="utd"
+TIME="1622597624"
+SIZE="1106"
+PARENT="<project>\smartgen\in_lvds\in_lvds.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\smartgen\roc_dcm\roc_dcm.cxf,actgen_cxf"
+STATE="utd"
+TIME="1622597624"
+SIZE="1626"
+ENDFILE
+VALUE "<project>\smartgen\roc_dcm\roc_dcm.gen,gen"
+STATE="utd"
+TIME="1622597624"
+SIZE="631"
+PARENT="<project>\smartgen\roc_dcm\roc_dcm.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\smartgen\roc_dcm\roc_dcm.log,log"
+STATE="utd"
+TIME="1622597624"
+SIZE="2873"
+PARENT="<project>\smartgen\roc_dcm\roc_dcm.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\smartgen\roc_dcm\roc_dcm.vhd,hdl"
+STATE="utd"
+TIME="1622597624"
+SIZE="4588"
+PARENT="<project>\smartgen\roc_dcm\roc_dcm.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\synthesis\in_lvds.edn,syn_edn"
+STATE="utd"
+TIME="1622597624"
+SIZE="3713"
+ENDFILE
+VALUE "<project>\synthesis\in_lvds_sdc.sdc,syn_sdc"
+STATE="utd"
+TIME="1622597624"
+SIZE="310"
+ENDFILE
+VALUE "<project>\synthesis\in_lvds_syn.prj,prj"
+STATE="utd"
+TIME="1622644673"
+SIZE="1462"
+ENDFILE
+VALUE "<project>\synthesis\ROC_top.edn,syn_edn"
+STATE="utd"
+TIME="1622644722"
+SIZE="619088"
+ENDFILE
+VALUE "<project>\synthesis\ROC_top.so,so"
+STATE="utd"
+TIME="1622644722"
+SIZE="232"
+ENDFILE
+VALUE "<project>\synthesis\ROC_top_sdc.sdc,syn_sdc"
+STATE="utd"
+TIME="1622644721"
+SIZE="490"
+ENDFILE
+VALUE "<project>\synthesis\ROC_top_syn.prj,prj"
+STATE="utd"
+TIME="1622644722"
+SIZE="2154"
+ENDFILE
+ENDLIST
+LIST UsedFile
+ENDLIST
+LIST NewModulesInfo
+LIST "in_lvds::work"
+FILE "<project>\smartgen\in_lvds\in_lvds.vhd,hdl"
+LIST ProjectState5.1
+LIST Impl1
+LiberoState=Post_Synthesis
+ideSYNTHESIS(<project>\synthesis\in_lvds.edn,syn_edn)=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+UseFhbAutoInst=FALSE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+ENDLIST
+LIST "roc_block::work"
+FILE "<project>\component\work\roc_block\roc_block_syn.vhd,hdl"
+LIST Other_Association
+VALUE "<project>\component\work\roc_block\roc_block_sim.vhd,hdl"
+VALUE "<project>\component\work\roc_block\roc_block.cdb,arm_db"
+ENDLIST
+ENDLIST
+LIST "ROC_top::work"
+FILE "<project>\hdl\ROC_top.vhd,hdl"
+LIST CDBOrder
+VALUE "<project>\component\work\roc_block\roc_block.cdb,arm_db"
+ENDLIST
+LIST SynthesisConstraints
+VALUE "<project>\constraint\ROC_top.sdc,sdc"
+ENDLIST
+LIST ProjectState5.1
+LIST Impl1
+LiberoState=Post_Layout
+ideSYNTHESIS(<project>\synthesis\ROC_top.edn,syn_edn)=StateSuccess
+ideDESIGNER(<project>\designer\impl1\ROC_top.adb,adb)=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+UseFhbAutoInst=FALSE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+ENDLIST
+ENDLIST
+LIST AssociatedStimulus
+ENDLIST
+LIST Other_Association
+LIST roc_block
+VALUE "<project>\component\work\roc_block\roc_block_sim.vhd,hdl"
+VALUE "<project>\component\work\roc_block\roc_block.cdb,arm_db"
+ENDLIST
+ENDLIST
+LIST SimulationOptions
+UseAutomaticDoFile=true
+IncludeWaveDo=false
+Type=max
+RunTime=1000ns
+Resolution=1ps
+VsimOpt=
+EntityName=testbench
+TopInstanceName=<top>_0
+DoFileName=
+DoFileName2=wave.do
+DoFileParams=
+DisplayDUTWave=false
+LogAllSignals=false
+DisablePulseFiltering=false
+DumpVCD=false
+VCDFileName=power.vcd
+VHDL2008=false
+Verilog2001=false
+SystemVerilog=false
+TimeUnit=1
+TimeUnitBase=ns
+Precision=100
+PrecisionBase=ps
+ENDLIST
+LIST ModelSimLibPath
+UseCustomPath=FALSE
+LibraryPath=
+ENDLIST
+LIST GlobalFlowOptions
+GenerateHDLAfterSynthesis=FALSE
+GenerateHDLAfterPhySynthesis=FALSE
+RunDRCAfterSynthesis=FALSE
+AutoCheckConstraints=TRUE
+UpdateModelSimIni=TRUE
+NoIOMode=FALSE
+PeriInitStandalone=FALSE
+EnableViewDraw=FALSE
+UpdateViewDrawIni=TRUE
+GenerateHDLFromSchematic=TRUE
+VmNetlistFlowOn=FALSE
+EnableDesignSeparationOn=FALSE
+EnableSETMitigationOn=FALSE
+DisplayFanoutLimit=10
+AbortFlowOnPDCErrorsOn=TRUE
+AbortFlowOnSDCErrorsOn=TRUE
+InstantiateInSmartDesign=TRUE
+FlashProInputFile=stp
+SmartGenCompileReport=T
+ENDLIST
+LIST PhySynthesisOptions
+ENDLIST
+LIST Profiles
+NAME="SoftConsole"
+FUNCTION="SoftwareIDE"
+TOOL="SoftConsole"
+LOCATION="eclipse.exe"
+PARAM=""
+BATCH=0
+LICENSE=""
+IS32BIT="1"
+EndProfile
+NAME="Synplify Pro ME"
+FUNCTION="Synthesis"
+TOOL="Synplify Pro ME"
+LOCATION="C:\Microsemi\Libero_SoC_v11.9\SynplifyPro\bin\synplify_pro.exe"
+PARAM=""
+BATCH=0
+LICENSE=""
+IS32BIT="1"
+EndProfile
+NAME="ModelSim ME"
+FUNCTION="Simulation"
+TOOL="ModelSim"
+LOCATION="C:\Microsemi\Libero_SoC_v11.9\Modelsim\win32acoem\modelsim.exe"
+PARAM=""
+BATCH=0
+LICENSE=""
+IS32BIT="1"
+EndProfile
+NAME="FPExpress"
+FUNCTION="Program"
+TOOL="FlashPro"
+LOCATION="C:\Microsemi\Libero_SoC_v11.9\Designer\bin\FPExpress.exe"
+PARAM=""
+BATCH=0
+LICENSE=""
+IS32BIT="1"
+EndProfile
+NAME="Identify Debugger"
+FUNCTION="IdentifyDebugger"
+TOOL="Identify Debugger"
+LOCATION="C:\Microsemi\Libero_SoC_v11.9\Identify\bin\identify_debugger.exe"
+PARAM=""
+BATCH=0
+LICENSE=""
+IS32BIT="1"
+EndProfile
+ENDLIST
+LIST ProjectState5.1
+LIST "in_lvds::work"
+LIST Impl1
+LiberoState=Post_Synthesis
+ideSYNTHESIS(<project>\synthesis\in_lvds.edn,syn_edn)=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+UseFhbAutoInst=FALSE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+LIST "ROC_top::work"
+LIST Impl1
+LiberoState=Post_Layout
+ideSYNTHESIS(<project>\synthesis\ROC_top.edn,syn_edn)=StateSuccess
+ideDESIGNER(<project>\designer\impl1\ROC_top.adb,adb)=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+UseFhbAutoInst=FALSE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+ENDLIST
+LIST ExcludePackageForSimulation
+ENDLIST
+LIST ExcludePackageForSynthesis
+ENDLIST
+LIST IncludeModuleForSimulation
+ENDLIST
+LIST CDBOrder
+LIST ROC_top
+VALUE "<project>\component\work\roc_block\roc_block.cdb,arm_db"
+ENDLIST
+ENDLIST
+LIST UserCustomizedFileList
+ENDLIST
+LIST OpenedFileList
+ORIENTATION;HORIZONTAL
+Reports;Reports;0
+ReportsCurrentItem;Place and Route:ROC_top_place_and_route_report.txt
+StartPage;StartPage;0
+ACTIVEVIEW;StartPage
+ENDLIST
+LIST ModuleSubBlockList
+LIST "in_lvds::work","smartgen\in_lvds\in_lvds.vhd","TRUE","FALSE"
+ENDLIST
+LIST "roc_block::work","component\work\roc_block\roc_block_syn.vhd","TRUE","FALSE"
+ENDLIST
+LIST "roc_dcm::work","smartgen\roc_dcm\roc_dcm.vhd","TRUE","FALSE"
+ENDLIST
+LIST "ROC_top::work","hdl\ROC_top.vhd","FALSE","FALSE"
+SUBBLOCK "in_lvds::work","smartgen\in_lvds\in_lvds.vhd","TRUE","FALSE"
+SUBBLOCK "roc_block::work","component\work\roc_block\roc_block_syn.vhd","TRUE","FALSE"
+SUBBLOCK "roc_dcm::work","smartgen\roc_dcm\roc_dcm.vhd","TRUE","FALSE"
+ENDLIST
+ENDLIST
+LIST ActiveTestBenchList
+ENDLIST
+LIST IOTabList
+ENDLIST
+LIST FPTabList
+ENDLIST
+LIST TimingTabList
+ENDLIST
+LIST FDCTabList
+ENDLIST

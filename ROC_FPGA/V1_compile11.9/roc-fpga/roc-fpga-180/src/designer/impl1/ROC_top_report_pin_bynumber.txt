@@ -1,0 +1,908 @@
+*****************************************************************
+Pin Report - Date: Wed Jun 02 22:30:56 2021 Pinchecksum: NOT-AVAILABLE
+Product: Designer
+Release: v11.9
+Version: 11.9.0.4
+Design Name: ROC_top
+Family: ProASIC3E
+Die: A3PE3000
+Package: 896 FBGA
+*****************************************************************
+Number |Port             |Function         |State       |I/O Std  |Output Drive (mA) |Slew |Resistor Pull |Schmitt Trigger |Input Delay |Skew |Output Load (pF) |Use I/O Reg |Hot Swappable |
+-------|-----------------|-----------------|------------|---------|------------------|-----|--------------|----------------|------------|-----|-----------------|------------|--------------|
+A2                        GND               Reserved
+A3                        GND               Reserved
+A4      DATA_IN_0_n[28]   IO14NPB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+A5                        GND               Reserved
+A6      DATA_IN_0_n[35]   IO07NPB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+A7                        GND               Reserved
+A8      DATA_IN_0_n[33]   IO09NDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+A9      DATA_IN_0_n[25]   IO17NDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+A10     DATA_IN_0_p[25]   IO17PDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+A11     DATA_IN_0_n[21]   IO21NDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+A12     DATA_IN_0_p[21]   IO21PDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+A13     DATA_OUT_0_1[9]   IO33NDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+A14     DATA_OUT_0_1[1]   IO33PDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+A15     DATA_OUT_0_1[11]  IO35NDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+A16     DATA_OUT_0_1[3]   IO35PDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+A17     DATA_OUT_0_0[16]  IO41NDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+A18     DATA_OUT_0_0[18]  IO43NDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+A19     DATA_OUT_0_0[27]  IO43PDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+A20     DATA_OUT_0_0[20]  IO45NDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+A21     DATA_OUT_0_0[29]  IO45PDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+A22     DATA_IN_0_n[19]   IO57NDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+A23     DATA_IN_0_p[19]   IO57PDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+A24                       GND               Reserved
+A25     DATA_IN_0_p[7]    IO69PPB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+A26                       GND               Reserved
+A27                       GBC1/IO79PPB1V4   Special
+A28                       GND               Reserved
+A29                       GND               Reserved
+AA1     DATA_IN_1_p[5]    IO256PDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA2     DATA_IN_1_p[13]   IO248PDB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA3     DATA_IN_1_n[13]   IO248NDB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA4     DATA_IN_1_n[15]   IO246NDB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA5     DATA_IN_1_p[27]   GEA1/IO234PDB6V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA6     DATA_IN_1_n[27]   GEA0/IO234NDB6V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA7     DATA_IN_1_p[18]   IO243PPB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA8     DATA_IN_1_n[16]   IO245NDB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA9     DATA_IN_1_p[26]   GEB1/IO235PPB6V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA10                      VCC               Reserved
+AA11    DATA_IN_1_p[35]   IO226PPB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA12                      VCCIB5            Reserved
+AA13                      VCCIB5            Reserved
+AA14                      VCCIB5            Reserved
+AA15                      VCCIB5            Reserved
+AA16                      VCCIB4            Reserved
+AA17                      VCCIB4            Reserved
+AA18                      VCCIB4            Reserved
+AA19                      VCCIB4            Reserved
+AA20    DATA_IN_1_p[54]   IO174PDB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA21                      VCC               Reserved
+AA22    DATA_IN_1_n[86]   IO142NPB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA23    DATA_IN_1_n[92]   IO144NDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA24    DATA_IN_1_p[92]   IO144PDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA25    DATA_IN_1_n[84]   IO146NDB3V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA26    DATA_IN_1_p[84]   IO146PDB3V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA27    DATA_IN_1_p[103]  IO147PDB3V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA28    DATA_IN_1_n[87]   IO139NDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA29    DATA_IN_1_p[87]   IO139PDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AA30                      IO133NDB3V2       Unassigned
+AB1     DATA_IN_1_n[5]    IO256NDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB2     DATA_IN_1_p[17]   IO244PDB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB3     DATA_IN_1_n[17]   IO244NDB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB4     DATA_IN_1_p[20]   IO241PDB6V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB5     DATA_IN_1_n[20]   IO241NDB6V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB6     DATA_IN_1_n[18]   IO243NPB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB7                       VCCIB6            Reserved
+AB8                       VCCPLE            Reserved
+AB9                       VCC               Reserved
+AB10    DATA_IN_1_p[39]   IO222PDB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB11    DATA_IN_1_p[43]   IO218PPB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB12    DATA_OUT_1_0[3]   IO206NDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AB13    DATA_OUT_1_0[12]  IO206PDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AB14    DATA_OUT_1_0[19]  IO198NDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AB15    DATA_OUT_1_0[28]  IO198PDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AB16    DATA_OUT_1_1[9]   IO192NDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AB17    DATA_OUT_1_1[1]   IO192PDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AB18    DATA_OUT_1_1[31]  IO178NDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AB19    DATA_OUT_1_1[23]  IO178PDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AB20    DATA_IN_1_n[54]   IO174NDB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB21    DATA_IN_1_n[66]   IO162NPB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB22                      VCC               Reserved
+AB23                      VCCPLD            Reserved
+AB24                      VCCIB3            Reserved
+AB25    DATA_IN_1_p[88]   IO150PDB3V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB26    DATA_IN_1_p[78]   IO148PDB3V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB27    DATA_IN_1_n[103]  IO147NDB3V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB28    DATA_IN_1_p[79]   IO145PDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB29    DATA_IN_1_p[95]   IO143PDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AB30    DATA_IN_1_p[91]   IO137PDB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC1     DATA_IN_1_p[7]    IO254PDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC2     DATA_IN_1_n[7]    IO254NDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC3     DATA_IN_1_p[21]   IO240PDB6V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC4     DATA_IN_1_p[25]   GEC1/IO236PDB6V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC5     DATA_IN_1_p[24]   IO237PDB6V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC6     DATA_IN_1_n[24]   IO237NDB6V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC7                       VCOMPLE           Reserved
+AC8                       GND               Reserved
+AC9     DATA_IN_1_n[35]   IO226NPB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC10    DATA_IN_1_n[39]   IO222NDB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC11    DATA_IN_1_n[45]   IO216NPB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC12    DATA_IN_1_n[51]   IO210NPB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC13    DATA_OUT_1_0[5]   IO204NDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AC14    DATA_OUT_1_0[14]  IO204PDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AC15    DATA_OUT_1_0[23]  IO194NDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AC16    DATA_OUT_1_1[13]  IO188NDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AC17    DATA_OUT_1_1[5]   IO188PDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AC18    DATA_OUT_1_1[19]  IO182PPB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AC19    DATA_IN_1_n[58]   IO170NPB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC20    DATA_IN_1_n[64]   IO164NDB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC21    DATA_IN_1_p[64]   IO164PDB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC22    DATA_IN_1_p[66]   IO162PPB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC23                      GND               Reserved
+AC24                      VCOMPLD           Reserved
+AC25    DATA_IN_1_n[88]   IO150NDB3V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC26    DATA_IN_1_n[78]   IO148NDB3V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC27    DATA_IN_1_p[82]   GDA1/IO153PDB3V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC28    DATA_IN_1_n[79]   IO145NDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC29    DATA_IN_1_n[95]   IO143NDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AC30    DATA_IN_1_n[91]   IO137NDB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD1                       GND               Reserved
+AD2     DATA_IN_1_n[19]   IO242NPB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD3     DATA_IN_1_n[21]   IO240NDB6V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD4     DATA_IN_1_n[25]   GEC0/IO236NDB6V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD5                       VCCIB6            Reserved
+AD6                       GNDQ              Reserved
+AD7                       VCC               Reserved
+AD8                       VMV5              Reserved
+AD9                       VCCIB5            Reserved
+AD10    DATA_IN_1_p[37]   IO224PPB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD11    DATA_IN_1_n[43]   IO218NPB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD12    DATA_IN_1_p[45]   IO216PPB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD13    DATA_IN_1_p[51]   IO210PPB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD14    DATA_OUT_1_0[8]   IO202PPB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AD15    DATA_OUT_1_0[24]  IO194PDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AD16    DATA_OUT_1_1[3]   IO190PDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AD17    DATA_OUT_1_1[27]  IO182NPB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AD18    DATA_IN_1_n[52]   IO176NDB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD19    DATA_IN_1_p[52]   IO176PDB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD20    DATA_IN_1_p[58]   IO170PPB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD21    DATA_IN_1_p[62]   IO166PDB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD22                      VCCIB4            Reserved
+AD23                      TCK               Reserved
+AD24                      VCC               Reserved
+AD25                      TRST              Reserved
+AD26                      VCCIB3            Reserved
+AD27    DATA_IN_1_n[82]   GDA0/IO153NDB3V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD28    DATA_IN_1_n[83]   GDC0/IO151NDB3V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD29    DATA_IN_1_p[83]   GDC1/IO151PDB3V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AD30                      GND               Reserved
+AE1     DATA_IN_1_p[19]   IO242PPB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE2                       VCC               Reserved
+AE3     DATA_IN_1_p[22]   IO239PDB6V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE4     DATA_IN_1_n[22]   IO239NDB6V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE5                       VMV6              Reserved
+AE6                       GND               Reserved
+AE7                       GNDQ              Reserved
+AE8     DATA_IN_1_n[31]   IO230NDB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE9     DATA_IN_1_n[37]   IO224NPB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE10    DATA_IN_1_n[47]   IO214NPB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE11    DATA_IN_1_n[49]   IO212NDB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE12    DATA_IN_1_p[49]   IO212PDB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE13    DATA_OUT_1_0[7]   IO202NPB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AE14    DATA_OUT_1_0[17]  IO200NDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AE15    DATA_OUT_1_0[30]  IO196PDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AE16    DATA_OUT_1_1[11]  IO190NDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AE17    DATA_OUT_1_1[17]  IO184PDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AE18    DATA_OUT_1_1[25]  IO184NDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AE19    DATA_IN_1_p[56]   IO172PDB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE20    DATA_IN_1_n[56]   IO172NDB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE21    DATA_IN_1_n[62]   IO166NDB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE22    DATA_IN_1_p[68]   IO160PDB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE23                      GNDQ              Reserved
+AE24                      VMV4              Reserved
+AE25                      GND               Reserved
+AE26    DATA_IN_1_n[99]   GDB0/IO152NDB3V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE27    DATA_IN_1_p[99]   GDB1/IO152PDB3V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AE28                      VMV3              Reserved
+AE29                      VCC               Reserved
+AE30    DATA_IN_1_p[80]   IO149PDB3V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF1                       GND               Reserved
+AF2     DATA_IN_1_p[23]   IO238PPB6V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF3                       VCCIB6            Reserved
+AF4     DATA_IN_1_n[41]   IO220NPB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF5                       VCC               Reserved
+AF6     DATA_IN_1_n[33]   IO228NDB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF7                       VCCIB5            Reserved
+AF8     DATA_IN_1_p[31]   IO230PDB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF9     DATA_IN_1_n[32]   IO229NDB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF10    DATA_IN_1_p[32]   IO229PDB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF11    DATA_IN_1_p[47]   IO214PPB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF12    DATA_OUT_1_0[1]   IO208NDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AF13    DATA_OUT_1_0[10]  IO208PDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AF14    DATA_OUT_1_0[26]  IO200PDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AF15    DATA_OUT_1_0[21]  IO196NDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AF16    DATA_OUT_1_1[15]  IO186NDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AF17    DATA_OUT_1_1[7]   IO186PDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AF18    DATA_OUT_1_1[29]  IO180NDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AF19    DATA_OUT_1_1[21]  IO180PDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AF20    DATA_IN_1_n[60]   IO168NDB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF21    DATA_IN_1_p[60]   IO168PDB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF22    DATA_IN_1_n[68]   IO160NDB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF23    DATA_IN_1_n[70]   IO158NPB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF24                      VCCIB4            Reserved
+AF25    DATA_IN_1_n[74]   IO154NPB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AF26                      VCC               Reserved
+AF27                      TDO               Reserved
+AF28                      VCCIB3            Reserved
+AF29                      GNDQ              Reserved
+AF30                      GND               Reserved
+AG1     DATA_IN_1_n[23]   IO238NPB6V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG2                       VCC               Reserved
+AG3     DATA_IN_1_n[29]   IO232NPB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG4                       GND               Reserved
+AG5     DATA_IN_1_p[41]   IO220PPB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG6     DATA_IN_1_p[33]   IO228PDB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG7     DATA_IN_1_n[30]   IO231NDB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG8     DATA_IN_1_p[30]   GEC2/IO231PDB5V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG9     DATA_IN_1_n[36]   IO225NPB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG10    DATA_IN_1_n[38]   IO223NPB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG11    DATA_IN_1_p[40]   IO221PDB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG12    DATA_IN_1_n[40]   IO221NDB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG13    DATA_OUT_1_0[4]   IO205NPB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AG14    DATA_OUT_1_0[18]  IO199NDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AG15    DATA_OUT_1_0[27]  IO199PDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AG16    DATA_OUT_1_1[14]  IO187NDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AG17    DATA_OUT_1_1[6]   IO187PDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AG18    DATA_OUT_1_1[28]  IO181NDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AG19    DATA_IN_1_p[57]   IO171PPB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG20    DATA_IN_1_n[63]   IO165NPB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG21    DATA_IN_1_n[67]   IO161NPB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG22    DATA_IN_1_n[69]   IO159NDB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG23    DATA_IN_1_p[69]   IO159PDB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG24    DATA_IN_1_p[70]   IO158PPB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG25    DATA_IN_1_p[73]   GDB2/IO155PDB4V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG26    DATA_IN_1_p[74]   GDA2/IO154PPB4V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AG27                      GND               Reserved
+AG28                      VJTAG             Reserved
+AG29                      VCC               Reserved
+AG30    DATA_IN_1_n[80]   IO149NDB3V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH1                       GND               Reserved
+AH2     DATA_IN_1_n[28]   IO233NPB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH3                       VCC               Reserved
+AH4     DATA_IN_1_p[29]   GEB2/IO232PPB5V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH5                       VCCIB5            Reserved
+AH6     DATA_IN_1_n[42]   IO219NDB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH7     DATA_IN_1_p[42]   IO219PDB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH8     DATA_IN_1_n[34]   IO227NDB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH9     DATA_IN_1_p[34]   IO227PDB5V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH10    DATA_IN_1_p[36]   IO225PPB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH11    DATA_IN_1_p[38]   IO223PPB5V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH12    DATA_IN_1_n[50]   IO211NDB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH13    DATA_IN_1_p[50]   IO211PDB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH14    DATA_OUT_1_0[13]  IO205PPB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AH15    DATA_OUT_1_0[22]  IO195NDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AH16    DATA_OUT_1_1[8]   IO185NDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AH17    DATA_OUT_1_1[16]  IO185PDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AH18    DATA_OUT_1_1[20]  IO181PDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AH19    DATA_OUT_1_1[24]  IO177NDB4V2       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AH20    DATA_IN_1_n[57]   IO171NPB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH21    DATA_IN_1_p[63]   IO165PPB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH22    DATA_IN_1_p[67]   IO161PPB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH23    DATA_IN_1_n[71]   IO157NDB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH24    DATA_IN_1_p[71]   IO157PDB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH25    DATA_IN_1_n[73]   IO155NDB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AH26                      VCCIB4            Reserved
+AH27                      TDI               Reserved
+AH28                      VCC               Reserved
+AH29                      VPUMP             Reserved
+AH30                      GND               Reserved
+AJ1                       GND               Reserved
+AJ2                       GND               Reserved
+AJ3     DATA_IN_1_p[28]   GEA2/IO233PPB5V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AJ4                       VCC               Reserved
+AJ5     DATA_IN_1_n[44]   IO217NPB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AJ6                       VCC               Reserved
+AJ7     DATA_IN_1_n[46]   IO215NPB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AJ8     DATA_IN_1_n[48]   IO213NDB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AJ9     DATA_IN_1_p[48]   IO213PDB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AJ10    DATA_OUT_1_0[0]   IO209NDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AJ11    DATA_OUT_1_0[9]   IO209PDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AJ12    DATA_OUT_1_0[6]   IO203NDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AJ13    DATA_OUT_1_0[15]  IO203PDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AJ14    DATA_OUT_1_0[20]  IO197NDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AJ15    DATA_OUT_1_0[31]  IO195PDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AJ16    DATA_OUT_1_1[26]  IO183NDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AJ17    DATA_OUT_1_1[18]  IO183PDB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AJ18    DATA_OUT_1_1[30]  IO179NPB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AJ19                      IO177PDB4V2       Unassigned
+AJ20    DATA_IN_1_n[55]   IO173NDB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AJ21    DATA_IN_1_p[55]   IO173PDB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AJ22    DATA_IN_1_n[65]   IO163NDB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AJ23    DATA_IN_1_p[65]   IO163PDB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AJ24    DATA_IN_1_n[61]   IO167NPB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AJ25                      VCC               Reserved
+AJ26    DATA_IN_1_n[72]   IO156NPB4V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AJ27                      VCC               Reserved
+AJ28                      TMS               Reserved
+AJ29                      GND               Reserved
+AJ30                      GND               Reserved
+AK2                       GND               Reserved
+AK3                       GND               Reserved
+AK4     DATA_IN_1_p[44]   IO217PPB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AK5                       GND               Reserved
+AK6     DATA_IN_1_p[46]   IO215PPB5V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AK7                       GND               Reserved
+AK8     DATA_OUT_1_0[2]   IO207NDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AK9     DATA_OUT_1_0[11]  IO207PDB5V1       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AK10    DATA_OUT_1_0[16]  IO201NDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AK11    DATA_OUT_1_0[25]  IO201PDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AK12                      IO193NDB4V4       Unassigned
+AK13    DATA_OUT_1_1[0]   IO193PDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AK14    DATA_OUT_1_0[29]  IO197PDB5V0       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AK15    DATA_OUT_1_1[10]  IO191NDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AK16    DATA_OUT_1_1[2]   IO191PDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AK17    DATA_OUT_1_1[12]  IO189NDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AK18    DATA_OUT_1_1[4]   IO189PDB4V4       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AK19    DATA_OUT_1_1[22]  IO179PPB4V3       Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+AK20    DATA_IN_1_n[53]   IO175NDB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AK21    DATA_IN_1_p[53]   IO175PDB4V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AK22    DATA_IN_1_n[59]   IO169NDB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AK23    DATA_IN_1_p[59]   IO169PDB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AK24                      GND               Reserved
+AK25    DATA_IN_1_p[61]   IO167PPB4V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AK26                      GND               Reserved
+AK27    DATA_IN_1_p[72]   GDC2/IO156PPB4V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+AK28                      GND               Reserved
+AK29                      GND               Reserved
+B1                        GND               Reserved
+B2                        GND               Reserved
+B3      DATA_IN_0_p[43]   GAA2/IO309PPB7V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B4                        VCC               Reserved
+B5      DATA_IN_0_p[28]   IO14PPB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B6                        VCC               Reserved
+B7      DATA_IN_0_p[35]   IO07PPB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B8      DATA_IN_0_p[33]   IO09PDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B9      DATA_IN_0_p[27]   IO15PPB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B10     DATA_IN_0_n[23]   IO19NDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B11     DATA_IN_0_p[23]   IO19PDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B12     DATA_OUT_0_1[29]  IO29NDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+B13     DATA_OUT_0_1[21]  IO29PDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+B14     DATA_OUT_0_1[23]  IO31PPB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+B15     DATA_OUT_0_1[5]   IO37NDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+B16     DATA_OUT_0_1[13]  IO37PDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+B17     DATA_OUT_0_0[25]  IO41PDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+B18     DATA_OUT_0_0[11]  IO51NDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+B19     DATA_IN_0_p[17]   IO59PDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B20     DATA_OUT_0_0[13]  IO53PDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+B21     DATA_OUT_0_0[4]   IO53NDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+B22     DATA_IN_0_n[15]   IO61NDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B23     DATA_IN_0_p[15]   IO61PDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B24     DATA_IN_0_n[7]    IO69NPB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B25                       VCC               Reserved
+B26                       GBC0/IO79NPB1V4   Special
+B27                       VCC               Reserved
+B28     DATA_IN_0_n[12]   IO64NPB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+B29                       GND               Reserved
+B30                       GND               Reserved
+C1                        GND               Reserved
+C2      DATA_IN_0_n[43]   IO309NPB7V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C3                        VCC               Reserved
+C4      DATA_IN_0_n[42]   GAA0/IO00NPB0V0   Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C5                        VCCIB0            Reserved
+C6      DATA_IN_0_p[39]   IO03PDB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C7      DATA_IN_0_n[39]   IO03NDB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C8      DATA_IN_0_p[41]   GAB1/IO01PDB0V0   Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C9      DATA_IN_0_p[37]   IO05PDB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C10     DATA_IN_0_n[27]   IO15NPB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C11     DATA_OUT_0_1[25]  IO25NDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+C12     DATA_OUT_0_1[17]  IO25PDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+C13     DATA_OUT_0_1[31]  IO31NPB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+C14     DATA_OUT_0_1[27]  IO27NDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+C15     DATA_OUT_0_1[7]   IO39NDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+C16     DATA_OUT_0_1[15]  IO39PDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+C17     DATA_OUT_0_0[6]   IO55PPB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+C18     DATA_OUT_0_0[2]   IO51PDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+C19     DATA_IN_0_n[17]   IO59NDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C20     DATA_IN_0_n[13]   IO63NDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C21     DATA_IN_0_p[13]   IO63PDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C22     DATA_IN_0_n[9]    IO67NDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C23     DATA_IN_0_p[9]    IO67PDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C24     DATA_IN_0_n[1]    IO75NDB1V4        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C25     DATA_IN_0_p[1]    IO75PDB1V4        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C26                       VCCIB1            Reserved
+C27     DATA_IN_0_p[12]   IO64PPB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+C28                       VCC               Reserved
+C29                       GBA1/IO81PPB1V4   Special
+C30                       GND               Reserved
+D1      DATA_IN_0_p[49]   IO303PPB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D2                        VCC               Reserved
+D3      DATA_IN_0_n[47]   IO305NPB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D4                        GND               Reserved
+D5      DATA_IN_0_p[42]   GAA1/IO00PPB0V0   Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D6      DATA_IN_0_p[40]   GAC1/IO02PDB0V0   Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D7      DATA_IN_0_n[36]   IO06NPB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D8      DATA_IN_0_n[41]   GAB0/IO01NDB0V0   Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D9      DATA_IN_0_n[37]   IO05NDB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D10     DATA_IN_0_n[31]   IO11NDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D11     DATA_IN_0_p[31]   IO11PDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D12     DATA_IN_0_n[20]   IO23NDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D13     DATA_IN_0_p[20]   IO23PDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D14     DATA_OUT_0_1[19]  IO27PDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+D15     DATA_OUT_0_1[8]   IO40PDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+D16     DATA_OUT_0_0[22]  IO47NDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+D17     DATA_OUT_0_0[31]  IO47PDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+D18     DATA_OUT_0_0[15]  IO55NPB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+D19     DATA_IN_0_n[11]   IO65NDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D20     DATA_IN_0_p[11]   IO65PDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D21     DATA_IN_0_n[5]    IO71NDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D22     DATA_IN_0_p[5]    IO71PDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D23     DATA_IN_0_n[3]    IO73NDB1V4        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D24     DATA_IN_0_p[3]    IO73PDB1V4        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D25     DATA_IN_0_n[2]    IO74NDB1V4        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+D26                       GBB0/IO80NPB1V4   Special
+D27                       GND               Reserved
+D28                       GBA0/IO81NPB1V4   Special
+D29                       VCC               Reserved
+D30                       GBA2/IO82PPB2V0   Special
+E1                        GND               Reserved
+E2      DATA_IN_0_n[49]   IO303NPB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+E3                        VCCIB7            Reserved
+E4      DATA_IN_0_p[47]   IO305PPB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+E5                        VCC               Reserved
+E6      DATA_IN_0_n[40]   GAC0/IO02NDB0V0   Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+E7                        VCCIB0            Reserved
+E8      DATA_IN_0_p[36]   IO06PPB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+E9                        IO24NDB0V2        Unassigned
+E10     DATA_OUT_0_1[16]  IO24PDB0V2        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+E11     DATA_IN_0_n[29]   IO13NDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+E12     DATA_IN_0_p[29]   IO13PDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+E13     DATA_OUT_0_1[10]  IO34NDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+E14     DATA_OUT_0_1[2]   IO34PDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+E15                       IO40NDB0V4        Unassigned
+E16     DATA_OUT_0_0[0]   IO49NDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+E17     DATA_OUT_0_0[9]   IO49PDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+E18     DATA_OUT_0_0[10]  IO50PDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+E19     DATA_IN_0_p[18]   IO58PDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+E20     DATA_IN_0_n[16]   IO60NDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+E21                       IO77PDB1V4        Unassigned
+E22     DATA_IN_0_n[8]    IO68NDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+E23     DATA_IN_0_p[8]    IO68PDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+E24                       VCCIB1            Reserved
+E25     DATA_IN_0_p[2]    IO74PDB1V4        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+E26                       VCC               Reserved
+E27                       GBB1/IO80PPB1V4   Special
+E28                       VCCIB2            Reserved
+E29                       IO82NPB2V0        Unassigned
+E30                       GND               Reserved
+F1      DATA_IN_0_p[56]   IO296PPB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+F2                        VCC               Reserved
+F3      DATA_IN_0_p[46]   IO306PDB7V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+F4      DATA_IN_0_p[55]   IO297PDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+F5                        VMV7              Reserved
+F6                        GND               Reserved
+F7                        GNDQ              Reserved
+F8      DATA_IN_0_n[30]   IO12NDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+F9      DATA_IN_0_p[30]   IO12PDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+F10     DATA_IN_0_p[32]   IO10PDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+F11     DATA_IN_0_p[26]   IO16PDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+F12                       IO22NDB0V2        Unassigned
+F13     DATA_OUT_0_1[30]  IO30NDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+F14     DATA_OUT_0_1[22]  IO30PDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+F15     DATA_OUT_0_1[4]   IO36PDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+F16     DATA_OUT_0_0[23]  IO48NDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+F17     DATA_OUT_0_0[24]  IO48PDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+F18     DATA_OUT_0_0[1]   IO50NDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+F19     DATA_IN_0_n[18]   IO58NDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+F20     DATA_IN_0_p[16]   IO60PDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+F21                       IO77NDB1V4        Unassigned
+F22     DATA_IN_0_n[4]    IO72NDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+F23     DATA_IN_0_p[4]    IO72PDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+F24                       GNDQ              Reserved
+F25                       GND               Reserved
+F26                       VMV2              Reserved
+F27     TKMSB_A01L        IO86PDB2V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                No           Yes
+F28     TKLSB_A11H        IO92PDB2V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+F29                       VCC               Reserved
+F30                       IO100NPB2V2       Unassigned
+G1                        GND               Reserved
+G2      DATA_IN_0_n[56]   IO296NPB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+G3      DATA_IN_0_n[46]   IO306NDB7V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+G4      DATA_IN_0_n[55]   IO297NDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+G5                        VCCIB7            Reserved
+G6                        GNDQ              Reserved
+G7                        VCC               Reserved
+G8                        VMV0              Reserved
+G9                        VCCIB0            Reserved
+G10     DATA_IN_0_n[32]   IO10NDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+G11     DATA_IN_0_n[26]   IO16NDB0V1        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+G12                       IO22PDB0V2        Unassigned
+G13     DATA_OUT_0_1[18]  IO26PPB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+G14     DATA_OUT_0_1[14]  IO38NPB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+G15     DATA_OUT_0_1[12]  IO36NDB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+G16     DATA_OUT_0_0[21]  IO46NDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+G17     DATA_OUT_0_0[30]  IO46PDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+G18     DATA_OUT_0_0[7]   IO56NDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+G19     DATA_OUT_0_0[8]   IO56PDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+G20     DATA_IN_0_n[10]   IO66NDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+G21     DATA_IN_0_p[10]   IO66PDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+G22                       VCCIB1            Reserved
+G23                       VMV1              Reserved
+G24                       VCC               Reserved
+G25                       GNDQ              Reserved
+G26                       VCCIB2            Reserved
+G27     TKMSB_A10H        IO86NDB2V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                No           Yes
+G28     TKLSB_A11L        IO92NDB2V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+G29                       IO100PPB2V2       Unassigned
+G30                       GND               Reserved
+H1      DATA_IN_0_p[58]   IO294PDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H2      DATA_IN_0_n[58]   IO294NDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H3      DATA_IN_0_n[52]   IO300NDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H4      DATA_IN_0_p[52]   IO300PDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H5      DATA_IN_0_p[57]   IO295PDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H6      DATA_IN_0_p[53]   IO299PDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H7                        VCOMPLA           Reserved
+H8                        GND               Reserved
+H9      DATA_IN_0_n[34]   IO08NDB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H10     DATA_IN_0_p[34]   IO08PDB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H11     DATA_IN_0_p[24]   IO18PDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H12     DATA_OUT_0_1[26]  IO26NPB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+H13     DATA_OUT_0_1[28]  IO28NDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+H14     DATA_OUT_0_1[20]  IO28PDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+H15     DATA_OUT_0_1[6]   IO38PPB0V4        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+H16     DATA_OUT_0_0[17]  IO42NDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+H17     DATA_OUT_0_0[3]   IO52NDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+H18     DATA_OUT_0_0[12]  IO52PDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+H19     DATA_IN_0_n[14]   IO62NDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H20     DATA_IN_0_p[14]   IO62PDB1V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H21     DATA_IN_0_n[6]    IO70NDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H22     DATA_IN_0_p[6]    IO70PDB1V3        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+H23                       GND               Reserved
+H24                       VCOMPLB           Reserved
+H25                       GBC2/IO84PDB2V0   Special
+H26     TKMSB_A00H        IO84NDB2V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                No           Yes
+H27                       IO96PDB2V1        Unassigned
+H28                       IO96NDB2V1        Unassigned
+H29     TKLSB_A00H        IO89PDB2V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+H30     TKLSB_A00L        IO89NDB2V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+J1      DATA_IN_0_n[62]   IO290NDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+J2      DATA_IN_0_p[62]   IO290PDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+J3      DATA_IN_0_n[50]   IO302NDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+J4      DATA_IN_0_p[50]   IO302PDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+J5      DATA_IN_0_n[57]   IO295NDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+J6      DATA_IN_0_n[53]   IO299NDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+J7                        VCCIB7            Reserved
+J8                        VCCPLA            Reserved
+J9                        VCC               Reserved
+J10     DATA_IN_0_n[38]   IO04NPB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+J11     DATA_IN_0_n[24]   IO18NDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+J12     DATA_IN_0_n[22]   IO20NDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+J13     DATA_IN_0_p[22]   IO20PDB0V2        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+J14     DATA_OUT_0_1[24]  IO32NDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+J15     DATA_OUT_0_1[0]   IO32PDB0V3        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+J16     DATA_OUT_0_0[26]  IO42PDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+J17     DATA_OUT_0_0[19]  IO44NDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+J18     DATA_OUT_0_0[28]  IO44PDB1V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+J19     DATA_OUT_0_0[5]   IO54NDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+J20     DATA_OUT_0_0[14]  IO54PDB1V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+J21     DATA_IN_0_n[0]    IO76NPB1V4        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+J22                       VCC               Reserved
+J23                       VCCPLB            Reserved
+J24                       VCCIB2            Reserved
+J25     TKLSB_A01H        IO90PDB2V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+J26     TKLSB_A01L        IO90NDB2V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+J27                       GBB2/IO83PDB2V0   Special
+J28                       IO83NDB2V0        Unassigned
+J29     TKLSB_A10H        IO91PDB2V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+J30     TKLSB_A10L        IO91NDB2V1        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                Yes          Yes
+K1      DATA_IN_0_n[64]   IO288NDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+K2      DATA_IN_0_p[64]   IO288PDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+K3      DATA_IN_0_n[48]   IO304NDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+K4      DATA_IN_0_p[48]   IO304PDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+K5      DATA_IN_0_p[44]   GAB2/IO308PDB7V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+K6      DATA_IN_0_n[44]   IO308NDB7V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+K7      DATA_IN_0_p[51]   IO301PDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+K8      DATA_IN_0_n[51]   IO301NDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+K9      DATA_IN_0_p[45]   GAC2/IO307PPB7V4  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+K10                       VCC               Reserved
+K11     DATA_IN_0_p[38]   IO04PPB0V0        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+K12                       VCCIB0            Reserved
+K13                       VCCIB0            Reserved
+K14                       VCCIB0            Reserved
+K15                       VCCIB0            Reserved
+K16                       VCCIB1            Reserved
+K17                       VCCIB1            Reserved
+K18                       VCCIB1            Reserved
+K19                       VCCIB1            Reserved
+K20     DATA_IN_0_p[0]    IO76PPB1V4        Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+K21                       VCC               Reserved
+K22                       IO78PPB1V4        Unassigned
+K23                       IO88NDB2V0        Unassigned
+K24     TKMSB_A11L        IO88PDB2V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                No           Yes
+K25                       IO94PDB2V1        Unassigned
+K26                       IO94NDB2V1        Unassigned
+K27     TKMSB_A00L        IO85PDB2V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                No           Yes
+K28     TKMSB_A01H        IO85NDB2V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                No           Yes
+K29                       IO93PDB2V1        Unassigned
+K30                       IO93NDB2V1        Unassigned
+L1      DATA_IN_0_n[66]   IO286NDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+L2      DATA_IN_0_p[66]   IO286PDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+L3      DATA_IN_0_n[54]   IO298NDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+L4      DATA_IN_0_p[54]   IO298PDB7V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+L5      DATA_IN_0_p[69]   IO283PDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+L6      DATA_IN_0_n[61]   IO291NDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+L7      DATA_IN_0_p[61]   IO291PDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+L8      DATA_IN_0_p[59]   IO293PDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+L9      DATA_IN_0_n[59]   IO293NDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+L10     DATA_IN_0_n[45]   IO307NPB7V4       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+L11                       VCC               Reserved
+L12                       VCC               Reserved
+L13                       VCC               Reserved
+L14                       VCC               Reserved
+L15                       VCC               Reserved
+L16                       VCC               Reserved
+L17                       VCC               Reserved
+L18                       VCC               Reserved
+L19                       VCC               Reserved
+L20                       VCC               Reserved
+L21                       IO78NPB1V4        Unassigned
+L22                       IO104NPB2V2       Unassigned
+L23     SHIFT_OUT         IO98NDB2V2        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                No           Yes
+L24     SHIFT_IN          IO98PDB2V2        Fixed        LVCMOS25  ---                ---   Down           No               Off          ---   ---               No           Yes
+L25     TKMSB_A10L        IO87PDB2V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                No           Yes
+L26     TKMSB_A11H        IO87NDB2V0        Fixed        LVCMOS25  12                 High  None           ---              ---          No    35                No           Yes
+L27                       IO97PDB2V1        Unassigned
+L28                       IO101PDB2V2       Unassigned
+L29                       IO103PDB2V2       Unassigned
+L30                       IO119NDB3V0       Unassigned
+M1      DATA_IN_0_n[70]   IO282NDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+M2      DATA_IN_0_p[70]   IO282PDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+M3      DATA_IN_0_n[60]   IO292NDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+M4      DATA_IN_0_p[60]   IO292PDB7V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+M5      DATA_IN_0_n[69]   IO283NDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+M6      DATA_IN_0_p[67]   IO285PDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+M7      DATA_IN_0_p[65]   IO287PDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+M8      DATA_IN_0_p[63]   IO289PDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+M9      DATA_IN_0_n[63]   IO289NDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+M10                       VCCIB7            Reserved
+M11                       VCC               Reserved
+M12                       GND               Reserved
+M13                       GND               Reserved
+M14                       GND               Reserved
+M15                       GND               Reserved
+M16                       GND               Reserved
+M17                       GND               Reserved
+M18                       GND               Reserved
+M19                       GND               Reserved
+M20                       VCC               Reserved
+M21                       VCCIB2            Reserved
+M22                       Not Bonded        Unconnected
+M23                       IO104PPB2V2       Unassigned
+M24                       IO102PDB2V2       Unassigned
+M25                       IO102NDB2V2       Unassigned
+M26                       IO95PDB2V1        Unassigned
+M27                       IO97NDB2V1        Unassigned
+M28                       IO101NDB2V2       Unassigned
+M29                       IO103NDB2V2       Unassigned
+M30                       IO119PDB3V0       Unassigned
+N1                        IO276PDB7V0       Unassigned
+N2                        IO278PDB7V0       Unassigned
+N3                        IO280PDB7V0       Unassigned
+N4      DATA_IN_0_p[68]   IO284PDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+N5                        IO279PDB7V0       Unassigned
+N6      DATA_IN_0_n[67]   IO285NDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+N7      DATA_IN_0_n[65]   IO287NDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+N8      DATA_IN_0_n[71]   IO281NDB7V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+N9      DATA_IN_0_p[71]   IO281PDB7V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+N10                       VCCIB7            Reserved
+N11                       VCC               Reserved
+N12                       GND               Reserved
+N13                       GND               Reserved
+N14                       GND               Reserved
+N15                       GND               Reserved
+N16                       GND               Reserved
+N17                       GND               Reserved
+N18                       GND               Reserved
+N19                       GND               Reserved
+N20                       VCC               Reserved
+N21                       VCCIB2            Reserved
+N22                       IO106NDB2V3       Unassigned
+N23                       IO106PDB2V3       Unassigned
+N24                       IO108PDB2V3       Unassigned
+N25                       IO108NDB2V3       Unassigned
+N26                       IO95NDB2V1        Unassigned
+N27                       IO99NDB2V2        Unassigned
+N28     SHIFT_EN          IO99PDB2V2        Fixed        LVCMOS25  ---                ---   None           No               Off          ---   ---               No           Yes
+N29                       IO107PDB2V3       Unassigned
+N30                       IO107NDB2V3       Unassigned
+P1                        IO276NDB7V0       Unassigned
+P2                        IO278NDB7V0       Unassigned
+P3                        IO280NDB7V0       Unassigned
+P4      DATA_IN_0_n[68]   IO284NDB7V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+P5                        IO279NDB7V0       Unassigned
+P6                        GFC1/IO275PDB7V0  Special
+P7                        GFC0/IO275NDB7V0  Special
+P8                        IO277PDB7V0       Unassigned
+P9                        IO277NDB7V0       Unassigned
+P10                       VCCIB7            Reserved
+P11                       VCC               Reserved
+P12                       GND               Reserved
+P13                       GND               Reserved
+P14                       GND               Reserved
+P15                       GND               Reserved
+P16                       GND               Reserved
+P17                       GND               Reserved
+P18                       GND               Reserved
+P19                       GND               Reserved
+P20                       VCC               Reserved
+P21                       VCCIB2            Reserved
+P22                       GCC1/IO112PDB2V3  Special
+P23                       IO110PDB2V3       Unassigned
+P24                       IO110NDB2V3       Unassigned
+P25                       IO109PPB2V3       Unassigned
+P26                       IO111NPB2V3       Unassigned
+P27                       IO105PDB2V2       Unassigned
+P28                       IO105NDB2V2       Unassigned
+P29                       GCC2/IO117PDB3V0  Special
+P30                       IO117NDB3V0       Unassigned
+R1                        GFC2/IO270PDB6V4  Special
+R2      OUT_CLK_p         GFB1/IO274PPB7V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+R3                        VCOMPLF           Reserved
+R4      RST               GFA0/IO273NDB6V4  Special      LVCMOS25  ---                ---   None           No               Off          ---   ---               No           Yes
+R5      OUT_CLK_n         GFB0/IO274NPB7V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+R6                        IO271NDB6V4       Unassigned
+R7                        GFB2/IO271PDB6V4  Special
+R8                        IO269PDB6V4       Unassigned
+R9                        IO269NDB6V4       Unassigned
+R10                       VCCIB7            Reserved
+R11                       VCC               Reserved
+R12                       GND               Reserved
+R13                       GND               Reserved
+R14                       GND               Reserved
+R15                       GND               Reserved
+R16                       GND               Reserved
+R17                       GND               Reserved
+R18                       GND               Reserved
+R19                       GND               Reserved
+R20                       VCC               Reserved
+R21                       VCCIB2            Reserved
+R22                       GCC0/IO112NDB2V3  Special
+R23     DATA_IN_1_p[76]   GCB2/IO116PDB3V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+R24     DATA_IN_1_p[75]   IO118PDB3V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+R25                       IO111PPB2V3       Unassigned
+R26     DATA_IN_1_p[77]   IO122PPB3V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+R27                       GCA0/IO114NPB3V0  Special
+R28                       VCOMPLC           Reserved
+R29                       GCB1/IO113PPB2V3  Special
+R30     BCO_CLK_n         IO115NPB3V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+T1                        IO270NDB6V4       Unassigned
+T2                        VCCPLF            Reserved
+T3                        GFA2/IO272PPB6V4  Special
+T4                        GFA1/IO273PDB6V4  Special
+T5                        IO272NPB6V4       Unassigned
+T6                        IO267NDB6V4       Unassigned
+T7                        IO267PDB6V4       Unassigned
+T8                        IO265PDB6V3       Unassigned
+T9                        IO263PDB6V3       Unassigned
+T10                       VCCIB6            Reserved
+T11                       VCC               Reserved
+T12                       GND               Reserved
+T13                       GND               Reserved
+T14                       GND               Reserved
+T15                       GND               Reserved
+T16                       GND               Reserved
+T17                       GND               Reserved
+T18                       GND               Reserved
+T19                       GND               Reserved
+T20                       VCC               Reserved
+T21                       VCCIB3            Reserved
+T22                       IO109NPB2V3       Unassigned
+T23     DATA_IN_1_n[76]   IO116NDB3V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+T24     DATA_IN_1_n[75]   IO118NDB3V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+T25     DATA_IN_1_n[77]   IO122NPB3V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+T26                       GCA1/IO114PPB3V0  Special
+T27                       GCB0/IO113NPB2V3  Special
+T28     BCO_CLK_p         GCA2/IO115PPB3V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+T29                       VCCPLC            Reserved
+T30                       IO121PDB3V0       Unassigned
+U1                        IO268PDB6V4       Unassigned
+U2                        IO264NDB6V3       Unassigned
+U3                        IO264PDB6V3       Unassigned
+U4      DATA_IN_1_p[3]    IO258PDB6V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+U5      DATA_IN_1_n[3]    IO258NDB6V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+U6      DATA_IN_1_p[4]    IO257PPB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+U7      DATA_IN_1_p[0]    IO261PPB6V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+U8                        IO265NDB6V3       Unassigned
+U9                        IO263NDB6V3       Unassigned
+U10                       VCCIB6            Reserved
+U11                       VCC               Reserved
+U12                       GND               Reserved
+U13                       GND               Reserved
+U14                       GND               Reserved
+U15                       GND               Reserved
+U16                       GND               Reserved
+U17                       GND               Reserved
+U18                       GND               Reserved
+U19                       GND               Reserved
+U20                       VCC               Reserved
+U21                       VCCIB3            Reserved
+U22     DATA_IN_1_p[93]   IO120PDB3V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+U23     DATA_IN_1_p[101]  IO128PDB3V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+U24     DATA_IN_1_p[102]  IO124PDB3V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+U25     DATA_IN_1_n[102]  IO124NDB3V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+U26     DATA_IN_1_p[100]  IO126PDB3V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+U27                       IO129PDB3V1       Unassigned
+U28                       IO127PDB3V1       Unassigned
+U29                       IO125PDB3V1       Unassigned
+U30                       IO121NDB3V0       Unassigned
+V1      LATCH_1           IO268NDB6V4       Fixed        LVCMOS25  ---                ---   None           No               Off          ---   ---               No           Yes
+V2                        IO262PDB6V3       Unassigned
+V3      DATA_IN_1_p[1]    IO260PDB6V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V4      DATA_IN_1_p[9]    IO252PDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V5      DATA_IN_1_n[4]    IO257NPB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V6      DATA_IN_1_n[0]    IO261NPB6V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V7      DATA_IN_1_p[6]    IO255PDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V8      DATA_IN_1_p[2]    IO259PDB6V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V9      DATA_IN_1_n[2]    IO259NDB6V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V10                       VCCIB6            Reserved
+V11                       VCC               Reserved
+V12                       GND               Reserved
+V13                       GND               Reserved
+V14                       GND               Reserved
+V15                       GND               Reserved
+V16                       GND               Reserved
+V17                       GND               Reserved
+V18                       GND               Reserved
+V19                       GND               Reserved
+V20                       VCC               Reserved
+V21                       VCCIB3            Reserved
+V22     DATA_IN_1_n[93]   IO120NDB3V0       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V23     DATA_IN_1_n[101]  IO128NDB3V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V24     DATA_IN_1_p[97]   IO132PDB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V25     DATA_IN_1_p[98]   IO130PPB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V26     DATA_IN_1_n[100]  IO126NDB3V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+V27                       IO129NDB3V1       Unassigned
+V28                       IO127NDB3V1       Unassigned
+V29                       IO125NDB3V1       Unassigned
+V30                       IO123PDB3V1       Unassigned
+W1                        IO266NDB6V4       Unassigned
+W2                        IO262NDB6V3       Unassigned
+W3      DATA_IN_1_n[1]    IO260NDB6V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W4      DATA_IN_1_n[9]    IO252NDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W5      DATA_IN_1_n[10]   IO251NDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W6      DATA_IN_1_p[10]   IO251PDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W7      DATA_IN_1_n[6]    IO255NDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W8      DATA_IN_1_p[12]   IO249PPB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W9      DATA_IN_1_p[8]    IO253PDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W10                       VCCIB6            Reserved
+W11                       VCC               Reserved
+W12                       GND               Reserved
+W13                       GND               Reserved
+W14                       GND               Reserved
+W15                       GND               Reserved
+W16                       GND               Reserved
+W17                       GND               Reserved
+W18                       GND               Reserved
+W19                       GND               Reserved
+W20                       VCC               Reserved
+W21                       VCCIB3            Reserved
+W22     DATA_IN_1_p[94]   IO134PDB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W23     DATA_IN_1_p[90]   IO138PDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W24     DATA_IN_1_n[97]   IO132NDB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W25     DATA_IN_1_n[89]   IO136NPB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W26     DATA_IN_1_n[98]   IO130NPB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W27     DATA_IN_1_p[85]   IO141PDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W28     DATA_IN_1_p[81]   IO135PDB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+W29                       IO131PDB3V2       Unassigned
+W30                       IO123NDB3V1       Unassigned
+Y1                        IO266PDB6V4       Unassigned
+Y2      DATA_IN_1_p[11]   IO250PDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y3      DATA_IN_1_n[11]   IO250NDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y4      DATA_IN_1_p[15]   IO246PDB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y5      DATA_IN_1_n[14]   IO247NDB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y6      DATA_IN_1_p[14]   IO247PDB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y7      DATA_IN_1_n[12]   IO249NPB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y8      DATA_IN_1_p[16]   IO245PDB6V1       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y9      DATA_IN_1_n[8]    IO253NDB6V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y10     DATA_IN_1_n[26]   GEB0/IO235NPB6V0  Special      LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y11                       VCC               Reserved
+Y12                       VCC               Reserved
+Y13                       VCC               Reserved
+Y14                       VCC               Reserved
+Y15                       VCC               Reserved
+Y16                       VCC               Reserved
+Y17                       VCC               Reserved
+Y18                       VCC               Reserved
+Y19                       VCC               Reserved
+Y20                       VCC               Reserved
+Y21     DATA_IN_1_p[86]   IO142PPB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y22     DATA_IN_1_n[94]   IO134NDB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y23     DATA_IN_1_n[90]   IO138NDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y24     DATA_IN_1_n[96]   IO140NDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y25     DATA_IN_1_p[96]   IO140PDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y26     DATA_IN_1_p[89]   IO136PPB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y27     DATA_IN_1_n[85]   IO141NDB3V3       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y28     DATA_IN_1_n[81]   IO135NDB3V2       Fixed        LVDS      ---                ---   ---            ---              Off          ---   ---               No           Yes
+Y29                       IO131NDB3V2       Unassigned
+Y30                       IO133PDB3V2       Unassigned

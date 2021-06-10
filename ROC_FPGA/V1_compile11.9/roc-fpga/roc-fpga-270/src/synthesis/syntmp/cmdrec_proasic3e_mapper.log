@@ -1,0 +1,14 @@
+C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\bin\m_proasic.exe  -prodtype synplify_pro -encrypt  -pro  -part A3PE3000  -package PQFP208  -grade -2   -maxfan 24  -globalthreshold 50 -opcond COMWC    -report_path 0       -top_level_module  work.ROC_top  -mp 1 -prjfile  C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\scratchproject.prs  -implementation synthesis -licensetype  synplifypro_actel  -oedif C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.edn  -freq 1.000  -tcl  C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\constraint\ROC_top.sdc  C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.srs  -sap  C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.sap  -otap  C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.tap  -omap  C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.map  -devicelib  C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\proasic3e.v  -sap  C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.sap  -ologparam  C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\syntmp\ROC_top.plg  -osyn  C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.srm  -prjdir C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\  -log  C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\synlog\ROC_top_ProASIC3E_Mapper.srr 
+rc:1 success:1
+C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\scratchproject.prs|o|1377902363
+C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\constraint\ROC_top.sdc|i|1339780396
+C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.srs|i|1382566116
+C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.sap|o|0
+C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.tap|o|0
+C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.map|o|1382566117
+C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\proasic3e.v|i|1286470304
+C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.sap|o|0
+C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\syntmp\ROC_top.plg|o|1382566117
+C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\ROC_top.srm|o|1382566117
+C:\FVTX_VHDL_code\ROC_main_FPGA_B_D\synthesis\synlog\ROC_top_ProASIC3E_Mapper.srr|o|1382566117
+C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\bin\m_proasic.exe|i|1286470282

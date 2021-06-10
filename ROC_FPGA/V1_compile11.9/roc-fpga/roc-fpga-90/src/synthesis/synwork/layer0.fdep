@@ -1,0 +1,50 @@
+#defaultlanguage:vhdl
+#OPTIONS:"|-layerid|0|-orig_srs|C:\\Users\\curlywei\\Documents\\roc-fpga-old\\src_old\\synthesis\\synwork\\ROC_top_comp.srs|-top|work.ROC_top|-prodtype|synplify_pro|-nram|-fixsmult|-divnmod|-encrypt|-pro|-lite|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-vhdl2008|-ignore_undefined_lib|-lib|work|-lib|work|-lib|work|-lib|work"
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\bin64\\c_vhdl.exe":1508986828
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd2008\\location.map":1508992836
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd2008\\std.vhd":1508986328
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd\\snps_haps_pkg.vhd":1508986328
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd2008\\std1164.vhd":1508986328
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd2008\\std_textio.vhd":1508986328
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd2008\\numeric.vhd":1508986646
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd\\umr_capim.vhd":1508986328
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd2008\\arith.vhd":1508986328
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd2008\\unsigned.vhd":1508986328
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd\\hyperents.vhd":1508986328
+#CUR:"C:\\Users\\curlywei\\Documents\\roc-fpga-old\\src_old\\smartgen\\in_lvds\\in_lvds.vhd":1622597624
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\proasic\\proasic3e.vhd":1508984288
+#CUR:"C:\\Users\\curlywei\\Documents\\roc-fpga-old\\src_old\\component\\work\\roc_block\\roc_block_syn.vhd":1622597624
+#CUR:"C:\\Users\\curlywei\\Documents\\roc-fpga-old\\src_old\\smartgen\\roc_dcm\\roc_dcm.vhd":1622597624
+#CUR:"C:\\Users\\curlywei\\Documents\\roc-fpga-old\\src_old\\hdl\\ROC_top.vhd":1622597624
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd2008\\signed.vhd":1508986328
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhdl_sim\\synplify.vhd":1508986328
+#CUR:"C:\\Microsemi\\Libero_SoC_v11.9\\SynplifyPro\\lib\\vhd\\synattr.vhd":1508984326
+0 "C:\Users\curlywei\Documents\roc-fpga-old\src_old\smartgen\in_lvds\in_lvds.vhd" vhdl
+1 "C:\Users\curlywei\Documents\roc-fpga-old\src_old\component\work\roc_block\roc_block_syn.vhd" vhdl
+2 "C:\Users\curlywei\Documents\roc-fpga-old\src_old\smartgen\roc_dcm\roc_dcm.vhd" vhdl
+3 "C:\Users\curlywei\Documents\roc-fpga-old\src_old\hdl\ROC_top.vhd" vhdl
+
+# Dependency Lists (Uses list)
+0 -1
+1 -1
+2 -1
+3 0 2 1 
+
+# Dependency Lists (Users Of)
+0 3 
+1 3 
+2 3 
+3 -1
+
+# Design Unit to File Association
+arch work in_lvds def_arch 0
+module work in_lvds 0
+arch work roc_block def_arch 1
+module work roc_block 1
+arch work roc_dcm def_arch 2
+module work roc_dcm 2
+arch work roc_top rtl 3
+module work roc_top 3
+
+
+# Configuration files used

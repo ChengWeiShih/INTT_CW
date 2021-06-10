@@ -1,0 +1,92 @@
+ ** Message System Log
+ ** Database: 
+ ** Date:   Fri Aug 30 16:37:58 2013
+
+
+****************
+Macro Parameters
+****************
+
+Name                            : roc_dcm
+Family                          : ProASIC3E
+Output Format                   : VHDL
+Type                            : Static PLL
+PowerDown                       : Active Low
+Lock                            : Active High
+Input Freq(Mhz)                 : 9.400000
+CLKA Source                     : Hardwired I/O
+Feedback Delay Value Index      : 1
+Feedback Mux Select             : 1
+XDLY Mux Select                 : No
+Primary Freq(Mhz)               : 188.000000
+Primary PhaseShift              : 0
+Primary Delay Value Index       : 1
+Primary Mux Select              : 4
+Secondary1 Freq(Mhz)            : 188.000000
+Use GLB                         : YES
+Use YB                          : NO
+GLB Delay Value Index           : 1
+YB Delay Value Index            : 1
+Secondary1 PhaseShift           : 90
+Secondary1 Mux Select           : 4
+Secondary2 Freq(Mhz)            : 0.000000
+Use GLC                         : NO
+Use YC                          : NO
+GLC Delay Value Index           : 32
+YC Delay Value Index            : 32
+Secondary2 PhaseShift           : 0
+Secondary2 Mux Select           : 0
+Lock Control                    : Yes
+
+Configuration Bits:
+FINDIV[6:0]     0000001
+FBDIV[6:0]      0100111
+OADIV[4:0]      00000
+OBDIV[4:0]      00000
+OCDIV[4:0]      00000
+OAMUX[2:0]      100
+OBMUX[2:0]      101
+OCMUX[2:0]      000
+FBSEL[1:0]      01
+FBDLY[4:0]      00000
+XDLYSEL         0
+DLYGLA[4:0]     00000
+DLYGLB[4:0]     00000
+DLYGLC[4:0]     00000
+DLYYB[4:0]      00000
+DLYYC[4:0]      00000
+VCOSEL[2:0]     111
+
+
+Primary Clock Frequency 188.000
+Primary Clock Phase Shift 0.000
+Primary Clock Output Delay from CLKA 1.695
+
+Secondary1 Clock Frequency 188.000
+Secondary1 Clock Phase Shift 90.000
+Secondary1 Clock Global Output Delay from CLKA 3.025
+
+
+**************
+Compile Report
+**************
+
+
+Netlist Resource Report
+=======================
+
+    CORE                       Used:      0  Total:  75264   (0.00%)
+    IO (W/ clocks)             Used:      0  Total:    620   (0.00%)
+    Differential IO            Used:      0  Total:    310   (0.00%)
+    GLOBAL (Chip+Quadrant)     Used:      2  Total:     18   (11.11%)
+    PLL                        Used:      1  Total:      6   (16.67%)
+    RAM/FIFO                   Used:      0  Total:    112   (0.00%)
+    Low Static ICC             Used:      0  Total:      1   (0.00%)
+    FlashROM                   Used:      0  Total:      1   (0.00%)
+    User JTAG                  Used:      0  Total:      1   (0.00%)
+
+Wrote VHDL netlist to
+C:/FVTX_VHDL_code/ROC_main_FPGA_B_D/smartgen\roc_dcm\roc_dcm.vhd.
+
+ ** Log Ended:   Fri Aug 30 16:37:59 2013
+

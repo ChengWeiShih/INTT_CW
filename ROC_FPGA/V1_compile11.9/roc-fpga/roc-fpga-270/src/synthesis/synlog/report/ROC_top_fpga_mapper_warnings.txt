@@ -1,0 +1,2 @@
+@W: MT420 |Found inferred clock roc_dcm|GLA_inferred_clock with period 10.00ns. Please declare a user-defined clock on object "n:Inst_roc_dcm.GLA"
+@W: MT420 |Found inferred clock roc_dcm|GLB_inferred_clock with period 10.00ns. Please declare a user-defined clock on object "n:Inst_roc_dcm.GLB"

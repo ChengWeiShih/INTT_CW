@@ -1,0 +1,29 @@
+********************************************************************
+                            Global Usage Report
+********************************************************************
+  
+Product: Designer
+Release: v11.9
+Version: 11.9.0.4
+Date: Fri Jun 04 00:51:12 2021
+Design Name: ROC_top  Family: ProASIC3E  Die: A3PE3000  Package: 896 FBGA
+Design State: Post-Layout
+
+The following nets have been routed to a chip global resource:
+
+    Fanout            Name
+    ----------------------
+    30379             Net   : GLOBAL_RST
+                      Driver: GLOBAL_RST_RNI9LF/U_GL
+    1193              Net   : OUT_CLK
+                      Driver: Inst_out_clk/INBUF_LVDS_0_inst/U0/U1_CLKINT/U_GL
+    177               Net   : BCO_CLK
+                      Driver: Inst_clk/INBUF_LVDS_0_inst/U0/U1_CLKINT/U_GL
+    704               Net   : GLB
+                      Driver: Inst_roc_dcm/Core/U_GLB
+    28333             Net   : GLA
+                      Driver: Inst_roc_dcm/Core/U_PLL
+
+
+
+

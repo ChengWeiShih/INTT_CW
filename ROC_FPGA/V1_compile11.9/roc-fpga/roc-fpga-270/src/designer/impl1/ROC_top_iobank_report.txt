@@ -1,0 +1,53 @@
+********************************************************************
+                            I/O Bank Report
+********************************************************************
+  
+Product: Designer
+Release: v11.9
+Version: 11.9.0.4
+Date: Fri Jun 04 00:51:19 2021
+Design Name: ROC_top  Family: ProASIC3E  Die: A3PE3000  Package: 896 FBGA
+
+
+I/O Function:
+
+    Type                                  | w/o register  | w/ register  | w/ DDR register
+    --------------------------------------|---------------|--------------|----------------
+    Input I/O                             | 4             | 0            | 0
+    Output I/O                            | 9             | 136          | 0
+    Bidirectional I/O                     | 0             | 0            | 0
+    Differential Input I/O Pairs          | 178           | 0            | 0
+    Differential Output I/O Pairs         | 0             | 0            | 0
+
+I/O Technology:
+
+                                    |   Voltages    |             I/Os
+    --------------------------------|-------|-------|-------|--------|--------------
+    I/O Standard(s)                 | Vcci  | Vref  | Input | Output | Bidirectional
+    --------------------------------|-------|-------|-------|--------|--------------
+    LVCMOS25                        | 2.50v | N/A   | 4     | 145    | 0
+    LVDS                            | 2.50v | N/A   | 356   | 0      | 0
+
+I/O Bank Resource Usage:
+
+          |   Voltages    | Single I/Os  | Diff I/O Pairs |        Vref I/Os
+          |-------|-------|------|-------|-------|--------|------|-------|----------
+          | Vcci  | Vref  | Used | Total | Used  | Total  | Used | Total | Vref Pins
+    ------|-------|-------|------|-------|-------|--------|------|-------|----------
+    Bank0 | 2.50v | N/A   | 32   | 82    | 23    | 41     | N/A  | N/A   | N/A
+    Bank1 | 2.50v | N/A   | 32   | 82    | 20    | 41     | N/A  | N/A   | N/A
+    Bank2 | 2.50v | N/A   | 19   | 64    | 0     | 32     | N/A  | N/A   | N/A
+    Bank3 | 2.50v | N/A   | 0    | 80    | 30    | 40     | N/A  | N/A   | N/A
+    Bank4 | 2.50v | N/A   | 32   | 80    | 23    | 40     | N/A  | N/A   | N/A
+    Bank5 | 2.50v | N/A   | 32   | 80    | 24    | 40     | N/A  | N/A   | N/A
+    Bank6 | 2.50v | N/A   | 2    | 80    | 28    | 40     | N/A  | N/A   | N/A
+    Bank7 | 2.50v | N/A   | 0    | 72    | 30    | 36     | N/A  | N/A   | N/A
+
+I/O Voltage Usage:
+
+       Voltages    |     I/Os
+    -------|-------|------|-------
+     Vcci  | Vref  | Used | Total
+    -------|-------|------|-------
+     2.50v | N/A   | 505  | 620
+

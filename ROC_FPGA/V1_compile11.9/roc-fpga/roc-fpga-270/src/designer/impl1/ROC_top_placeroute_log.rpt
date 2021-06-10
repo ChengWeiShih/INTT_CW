@@ -1,0 +1,92 @@
+Microsemi Libero Software
+Version: 11.9.0.4
+Release: v11.9
+
+Info: The design ROC_top.adb was last modified by software version 11.9.0.4.
+Opened an existing Libero design ROC_top.adb.
+'BA_NAME' set to 'ROC_top_ba'
+'IDE_DESIGNERVIEW_NAME' set to 'Impl1'
+'IDE_DESIGNERVIEW_COUNT' set to '1'
+'IDE_DESIGNERVIEW_REV0' set to 'Impl1'
+'IDE_DESIGNERVIEW_REVNUM0' set to '1'
+'IDE_DESIGNERVIEW_ROOTDIR' set to 'C:\Users\curlywei\Documents\roc-fpga-270\src_old\designer'
+'IDE_DESIGNERVIEW_LASTREV' set to '1'
+***** Layout Variables *********************************************
+
+Mode: TIMING_DRIVEN
+Power-driven Layout: OFF
+Incremental Placement: OFF
+Incremental Route: OFF
+
+
+
+Running I/O Bank Assigner.
+
+I/O Bank Assigner completed successfully.
+ 
+
+Planning global net placement...
+
+
+Global net placement completed successfully.
+
+                        o - o - o - o - o - o
+
+Timing-driven Placer Started: Fri Jun 04 00:38:21 2021
+
+Placer Finished: Fri Jun 04 00:40:15 2021
+Total Placer CPU Time:     00:01:54
+
+                        o - o - o - o - o - o
+
+Info: 52000 nets to be preserved from the Designer Block.
+INFO: Writing the file:
+C:\Users\curlywei\Documents\roc-fpga-270\src_old\designer\impl1\ROC_top.dtf\swloc
+
+Timing-driven Router 
+Design: ROC_top                         Started: Fri Jun 04 00:41:31 2021
+
+511 nets of 52513 have to be routed incrementally.
+ 
+Iterative improvement...
+
+Timing-driven Router completed successfully.
+
+Design: ROC_top                         
+Finished: Fri Jun 04 00:48:04 2021
+Total CPU Time:     00:06:30            Total Elapsed Time: 00:06:33
+Total Memory Usage: 1761.8 Mbytes
+                        o - o - o - o - o - o
+
+status 257
+status 257
+Loading the Timing data for the design.
+Finished loading the Timing data.
+TIMER: Max delay timing requirements have NOT been met.
+TIMER: Min delay timing requirements have been met.
+
+The Layout command succeeded ( 00:13:20 )
+Wrote status report to file: ROC_top_place_and_route_report.txt
+
+The Report command succeeded ( 00:00:00 )
+Wrote globalnet report to file: ROC_top_globalnet_report.txt
+
+The Report command succeeded ( 00:00:00 )
+Wrote globalusage report to file: ROC_top_globalusage_report.txt
+
+The Report command succeeded ( 00:00:07 )
+Wrote iobank report to file: ROC_top_iobank_report.txt
+
+The Report command succeeded ( 00:00:07 )
+Wrote pin report to file: ROC_top_report_pin_byname.txt
+
+The Report command succeeded ( 00:00:15 )
+Wrote pin report to file: ROC_top_report_pin_bynumber.txt
+
+The Report command succeeded ( 00:00:00 )
+Design saved to file
+C:\Users\curlywei\Documents\roc-fpga-270\src_old\designer\impl1\ROC_top.adb.
+
+The Execute Script command succeeded ( 00:14:39 )
+Design closed.
+

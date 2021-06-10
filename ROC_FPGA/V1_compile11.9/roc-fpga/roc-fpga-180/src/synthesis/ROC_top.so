@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SynplifyOutput>
+	<result>Success</result>
+	<design>ROC_top</design>
+	<target_edif>C:\Users\curlywei\Documents\roc-fpga\src_old\synthesis\ROC_top.edn</target_edif>
+</SynplifyOutput>

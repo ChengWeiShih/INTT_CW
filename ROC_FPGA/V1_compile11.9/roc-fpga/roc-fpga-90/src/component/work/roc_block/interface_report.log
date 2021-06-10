@@ -1,0 +1,1383 @@
+
+Interface Report:
+=================
+
+Block Name : roc_block
+Date       : Tue Oct 22 17:13:25 2013
+
+
+Placement Information: (can be used to move the block in the top design, if necessary)
+--------------------------------------------------------------------------------------
+
+   Die                      |   Entire block             |   Logic instances
+                            |                            |                  
+         453                |         450                |         448        
+    ____________ (453,179)  |   ..............(452,175)  |   ..............(450,173)  
+   |            |           |   .            .           |   .            .
+   |            |179        |   .            .172        |   .            .168        
+   |            |           |   .            .           |   .            .
+   |____________|           |   ..............           |   ..............
+(0,0)                       |(3,4)                       |(3,6)      
+                            |                            |                          
+                            |                            |                          
+  ----------------------------------------------------------------------------------
+                            |                            |                          
+    Maximum move possible : | -up   4    or -down  4     | -up   0    or -down  0   
+                            | -left 3    or -right 1     | -left 0    or -right 0   
+                            |                            |                          
+
+
+Notes:
+------
+    . Coordinates describe ( Colum number, Row number )
+    . Logic describe COMB/SEQ instances
+
+    . You can move the entire block, or just the COMB/SEQ elements.
+    . If you move the block in the <top> design you will loose all the routing for the block.
+
+
+
+
+Ports that are candidates for global sharing:
+---------------------------------------------
+
+
+    Fanout  Type      Direction  Name 
+    -------------------------------------------------------------------
+
+    1       INT_NET   INPUT      Port        : RST
+                                 Instance    : RST_CLKINT
+                                 Placement   : ( 452,91 )
+                                 Int Globals : 1
+
+
+
+Port Interface:
+---------------
+
+
+    Fanout  Type      Direction  Name 
+    -------------------------------------------------------------------
+
+    176     CLK_NET   INPUT      Port        : BCO_CLK
+
+    28333   INT_NET   INPUT      Port        : CLK
+
+    704     CLK_NET   INPUT      Port        : CLK90
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[0]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_0/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 369,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[1]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_0/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 365,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[2]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_0/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 361,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[3]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_0/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 357,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[4]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_0/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 353,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[5]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_0/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 349,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[6]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_1/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 345,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[7]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_1/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 341,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[8]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_1/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 337,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[9]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_1/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 333,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[10]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_1/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 329,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[11]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_1/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 325,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[12]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_2/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 321,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[13]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_2/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 317,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[14]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_2/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 313,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[15]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_2/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 309,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[16]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_2/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 305,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[17]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_2/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 301,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[18]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_3/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 297,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[19]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_3/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 293,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[20]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_0/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 209,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[21]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_0/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 205,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[22]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_0/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 201,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[23]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_0/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 197,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[24]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_0/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 193,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[25]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_0/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 189,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[26]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_1/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 185,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[27]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_1/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 181,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[28]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_1/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 177,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[29]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_1/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 173,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[30]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_1/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 169,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[31]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_1/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 165,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[32]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_2/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 161,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[33]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_2/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 157,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[34]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_2/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 153,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[35]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_2/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 149,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[36]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_2/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 145,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[37]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_2/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 141,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[38]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_3/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 137,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[39]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_3/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 133,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[40]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_3/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 129,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[41]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_3/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 125,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[42]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_3/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 121,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[43]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_3/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 117,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[44]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_4/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 113,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[45]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_1/Inst_pf_4/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 109,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[46]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_0/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 105,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[47]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_0/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 101,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[48]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_0/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 97,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[49]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_0/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 93,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[50]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_0/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 89,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[51]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_0/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 85,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[52]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_1/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 81,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[53]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_1/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 77,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[54]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_1/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 73,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[55]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_1/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 69,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[56]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_1/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 65,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[57]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_1/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 61,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[58]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_2/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 57,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[59]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_2/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 53,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[60]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_2/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 49,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[61]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_2/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 45,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[62]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_2/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 41,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[63]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_2/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 37,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[64]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_3/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 33,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[65]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_3/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 29,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[66]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_3/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 25,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[67]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_3/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 21,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[68]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_3/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 17,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[69]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_3/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 13,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[70]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_4/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 9,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_0[71]
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_2/Inst_pf_4/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 5,161 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[0]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_0/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 4,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[1]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_0/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 8,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[2]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_0/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 12,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[3]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_0/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 16,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[4]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_0/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 20,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[5]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_0/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 24,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[6]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_1/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 28,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[7]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_1/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 32,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[8]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_1/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 36,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[9]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_1/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 40,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[10]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_1/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 44,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[11]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_1/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 48,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[12]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_2/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 52,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[13]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_2/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 56,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[14]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_2/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 60,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[15]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_2/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 64,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[16]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_2/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 68,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[17]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_2/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 72,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[18]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_3/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 76,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[19]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_3/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 80,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[20]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_3/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 84,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[21]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_3/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 88,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[22]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_3/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 92,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[23]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_3/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 96,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[24]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_4/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 100,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[25]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_0/Inst_pf_4/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 104,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[26]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_0/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 108,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[27]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_0/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 112,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[28]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_0/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 116,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[29]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_0/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 120,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[30]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_0/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 124,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[31]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_0/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 128,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[32]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_1/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 132,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[33]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_1/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 136,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[34]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_1/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 140,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[35]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_1/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 144,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[36]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_1/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 148,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[37]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_1/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 152,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[38]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_2/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 156,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[39]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_2/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 160,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[40]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_2/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 164,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[41]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_2/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 168,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[42]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_2/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 172,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[43]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_2/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 176,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[44]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_3/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 180,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[45]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_3/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 184,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[46]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_3/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 188,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[47]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_3/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 192,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[48]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_3/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 196,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[49]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_3/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 200,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[50]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_4/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 204,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[51]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_1/Inst_pf_4/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 208,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[52]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_0/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 244,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[53]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_0/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 248,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[54]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_0/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 252,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[55]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_0/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 256,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[56]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_0/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 260,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[57]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_0/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 264,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[58]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_1/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 268,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[59]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_1/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 272,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[60]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_1/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 276,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[61]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_1/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 280,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[62]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_1/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 284,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[63]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_1/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 288,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[64]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_2/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 292,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[65]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_2/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 296,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[66]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_2/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 300,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[67]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_2/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 304,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[68]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_2/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 308,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[69]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_2/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 312,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[70]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_3/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 316,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[71]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_3/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 320,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[72]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_3/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 324,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[73]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_3/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 328,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[74]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_3/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 332,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[75]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_3/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 336,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[76]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_4/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 340,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[77]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_2/Inst_pf_4/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 344,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[78]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_0/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 348,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[79]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_0/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 352,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[80]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_0/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 356,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[81]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_0/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 360,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[82]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_0/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 364,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[83]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_0/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 368,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[84]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_1/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 372,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[85]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_1/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 376,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[86]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_1/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 380,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[87]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_1/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 384,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[88]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_1/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 388,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[89]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_1/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 392,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[90]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_2/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 396,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[91]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_2/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 400,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[92]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_2/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 404,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[93]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_2/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 408,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[94]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_2/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 412,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[95]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_2/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 416,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[96]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_3/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 420,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[97]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_3/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 424,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[98]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_3/Inst_pf_2/Inst_in_buf
+                                 Placement   : ( 428,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[99]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_3/Inst_pf_3/Inst_in_buf
+                                 Placement   : ( 432,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[100]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_3/Inst_pf_4/Inst_in_buf
+                                 Placement   : ( 436,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[101]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_3/Inst_pf_5/Inst_in_buf
+                                 Placement   : ( 440,18 )
+
+    1       INT_NET   INPUT      Port        : DATA_IN_1[102]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_4/Inst_pf_0/Inst_in_buf
+                                 Placement   : ( 444,18 )
+
+    2       INT_NET   INPUT      Port        : DATA_IN_1[103]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_4/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 448,18 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[0]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[0]
+                                 Placement   : ( 209,12 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[1]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[1]
+                                 Placement   : ( 199,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[2]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[2]
+                                 Placement   : ( 205,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[3]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[3]
+                                 Placement   : ( 204,14 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[4]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[4]
+                                 Placement   : ( 207,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[5]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[5]
+                                 Placement   : ( 203,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[6]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[6]
+                                 Placement   : ( 196,10 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[7]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[7]
+                                 Placement   : ( 204,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[8]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[8]
+                                 Placement   : ( 210,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[9]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[9]
+                                 Placement   : ( 197,7 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[10]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[10]
+                                 Placement   : ( 197,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[11]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[11]
+                                 Placement   : ( 202,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[12]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[12]
+                                 Placement   : ( 202,7 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[13]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[13]
+                                 Placement   : ( 209,11 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[14]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[14]
+                                 Placement   : ( 197,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[15]
+                                 Instance    : Inst_sync_block/Inst_ds_0/DATA_OUT[15]
+                                 Placement   : ( 198,14 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[16]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[0]
+                                 Placement   : ( 225,12 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[17]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[1]
+                                 Placement   : ( 215,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[18]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[2]
+                                 Placement   : ( 221,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[19]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[3]
+                                 Placement   : ( 220,14 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[20]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[4]
+                                 Placement   : ( 223,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[21]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[5]
+                                 Placement   : ( 219,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[22]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[6]
+                                 Placement   : ( 212,10 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[23]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[7]
+                                 Placement   : ( 220,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[24]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[8]
+                                 Placement   : ( 226,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[25]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[9]
+                                 Placement   : ( 213,7 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[26]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[10]
+                                 Placement   : ( 213,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[27]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[11]
+                                 Placement   : ( 218,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[28]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[12]
+                                 Placement   : ( 218,7 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[29]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[13]
+                                 Placement   : ( 225,11 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[30]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[14]
+                                 Placement   : ( 213,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_0[31]
+                                 Instance    : Inst_sync_block/Inst_ds_1/DATA_OUT[15]
+                                 Placement   : ( 214,14 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[0]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[0]
+                                 Placement   : ( 241,12 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[1]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[1]
+                                 Placement   : ( 231,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[2]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[2]
+                                 Placement   : ( 237,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[3]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[3]
+                                 Placement   : ( 236,14 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[4]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[4]
+                                 Placement   : ( 239,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[5]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[5]
+                                 Placement   : ( 235,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[6]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[6]
+                                 Placement   : ( 228,10 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[7]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[7]
+                                 Placement   : ( 236,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[8]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[8]
+                                 Placement   : ( 242,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[9]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[9]
+                                 Placement   : ( 229,7 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[10]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[10]
+                                 Placement   : ( 229,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[11]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[11]
+                                 Placement   : ( 234,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[12]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[12]
+                                 Placement   : ( 234,7 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[13]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[13]
+                                 Placement   : ( 241,11 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[14]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[14]
+                                 Placement   : ( 229,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[15]
+                                 Instance    : Inst_sync_block/Inst_ds_2/DATA_OUT[15]
+                                 Placement   : ( 230,14 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[16]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[0]
+                                 Placement   : ( 257,12 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[17]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[1]
+                                 Placement   : ( 247,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[18]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[2]
+                                 Placement   : ( 253,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[19]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[3]
+                                 Placement   : ( 252,14 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[20]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[4]
+                                 Placement   : ( 255,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[21]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[5]
+                                 Placement   : ( 251,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[22]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[6]
+                                 Placement   : ( 244,10 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[23]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[7]
+                                 Placement   : ( 252,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[24]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[8]
+                                 Placement   : ( 258,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[25]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[9]
+                                 Placement   : ( 245,7 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[26]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[10]
+                                 Placement   : ( 245,9 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[27]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[11]
+                                 Placement   : ( 250,8 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[28]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[12]
+                                 Placement   : ( 250,7 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[29]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[13]
+                                 Placement   : ( 257,11 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[30]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[14]
+                                 Placement   : ( 245,16 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_1[31]
+                                 Instance    : Inst_sync_block/Inst_ds_3/DATA_OUT[15]
+                                 Placement   : ( 246,14 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[0]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[0]
+                                 Placement   : ( 227,170 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[1]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[1]
+                                 Placement   : ( 228,170 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[2]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[2]
+                                 Placement   : ( 235,164 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[3]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[3]
+                                 Placement   : ( 235,167 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[4]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[4]
+                                 Placement   : ( 235,168 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[5]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[5]
+                                 Placement   : ( 233,172 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[6]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[6]
+                                 Placement   : ( 232,163 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[7]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[7]
+                                 Placement   : ( 235,172 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[8]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[8]
+                                 Placement   : ( 239,163 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[9]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[9]
+                                 Placement   : ( 239,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[10]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[10]
+                                 Placement   : ( 235,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[11]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[11]
+                                 Placement   : ( 237,164 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[12]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[12]
+                                 Placement   : ( 240,166 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[13]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[13]
+                                 Placement   : ( 238,167 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[14]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[14]
+                                 Placement   : ( 237,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[15]
+                                 Instance    : Inst_sync_block/Inst_ds_4/DATA_OUT[15]
+                                 Placement   : ( 236,166 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[16]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[0]
+                                 Placement   : ( 243,170 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[17]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[1]
+                                 Placement   : ( 244,170 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[18]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[2]
+                                 Placement   : ( 251,164 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[19]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[3]
+                                 Placement   : ( 251,167 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[20]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[4]
+                                 Placement   : ( 251,168 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[21]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[5]
+                                 Placement   : ( 249,172 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[22]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[6]
+                                 Placement   : ( 248,163 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[23]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[7]
+                                 Placement   : ( 251,172 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[24]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[8]
+                                 Placement   : ( 255,163 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[25]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[9]
+                                 Placement   : ( 255,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[26]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[10]
+                                 Placement   : ( 251,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[27]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[11]
+                                 Placement   : ( 253,164 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[28]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[12]
+                                 Placement   : ( 256,166 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[29]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[13]
+                                 Placement   : ( 254,167 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[30]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[14]
+                                 Placement   : ( 253,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_2[31]
+                                 Instance    : Inst_sync_block/Inst_ds_5/DATA_OUT[15]
+                                 Placement   : ( 252,166 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[0]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[0]
+                                 Placement   : ( 195,170 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[1]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[1]
+                                 Placement   : ( 196,170 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[2]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[2]
+                                 Placement   : ( 203,164 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[3]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[3]
+                                 Placement   : ( 203,167 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[4]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[4]
+                                 Placement   : ( 203,168 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[5]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[5]
+                                 Placement   : ( 201,172 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[6]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[6]
+                                 Placement   : ( 200,163 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[7]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[7]
+                                 Placement   : ( 203,172 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[8]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[8]
+                                 Placement   : ( 207,163 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[9]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[9]
+                                 Placement   : ( 207,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[10]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[10]
+                                 Placement   : ( 203,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[11]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[11]
+                                 Placement   : ( 205,164 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[12]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[12]
+                                 Placement   : ( 208,166 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[13]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[13]
+                                 Placement   : ( 206,167 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[14]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[14]
+                                 Placement   : ( 205,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[15]
+                                 Instance    : Inst_sync_block/Inst_ds_6/DATA_OUT[15]
+                                 Placement   : ( 204,166 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[16]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[0]
+                                 Placement   : ( 211,170 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[17]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[1]
+                                 Placement   : ( 212,170 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[18]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[2]
+                                 Placement   : ( 219,164 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[19]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[3]
+                                 Placement   : ( 219,167 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[20]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[4]
+                                 Placement   : ( 219,168 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[21]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[5]
+                                 Placement   : ( 217,172 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[22]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[6]
+                                 Placement   : ( 216,163 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[23]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[7]
+                                 Placement   : ( 219,172 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[24]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[8]
+                                 Placement   : ( 223,163 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[25]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[9]
+                                 Placement   : ( 223,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[26]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[10]
+                                 Placement   : ( 219,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[27]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[11]
+                                 Placement   : ( 221,164 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[28]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[12]
+                                 Placement   : ( 224,166 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[29]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[13]
+                                 Placement   : ( 222,167 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[30]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[14]
+                                 Placement   : ( 221,165 )
+
+    1       INT_NET   OUTPUT     Port        : DATA_OUT_3[31]
+                                 Instance    : Inst_sync_block/Inst_ds_7/DATA_OUT[15]
+                                 Placement   : ( 220,166 )
+
+    194     INT_NET   INPUT      Port        : LATCH
+
+    1       INT_NET   OUTPUT     Port        : LSB[0]
+                                 Instance    : Inst_sync_block/Inst_ds_0/LSB
+                                 Placement   : ( 200,15 )
+
+    1       INT_NET   OUTPUT     Port        : LSB[1]
+                                 Instance    : Inst_sync_block/Inst_ds_1/LSB
+                                 Placement   : ( 216,15 )
+
+    1       INT_NET   OUTPUT     Port        : LSB[2]
+                                 Instance    : Inst_sync_block/Inst_ds_2/LSB
+                                 Placement   : ( 232,15 )
+
+    1       INT_NET   OUTPUT     Port        : LSB[3]
+                                 Instance    : Inst_sync_block/Inst_ds_3/LSB
+                                 Placement   : ( 248,15 )
+
+    1       INT_NET   OUTPUT     Port        : LSB[4]
+                                 Instance    : Inst_sync_block/Inst_ds_4/LSB
+                                 Placement   : ( 231,172 )
+
+    1       INT_NET   OUTPUT     Port        : LSB[5]
+                                 Instance    : Inst_sync_block/Inst_ds_5/LSB
+                                 Placement   : ( 247,172 )
+
+    1       INT_NET   OUTPUT     Port        : LSB[6]
+                                 Instance    : Inst_sync_block/Inst_ds_6/LSB
+                                 Placement   : ( 199,172 )
+
+    1       INT_NET   OUTPUT     Port        : LSB[7]
+                                 Instance    : Inst_sync_block/Inst_ds_7/LSB
+                                 Placement   : ( 215,172 )
+
+    4       INT_NET   OUTPUT     Port        : MSB[0]
+
+    4       INT_NET   OUTPUT     Port        : MSB[1]
+
+    4       INT_NET   OUTPUT     Port        : MSB[2]
+
+    4       INT_NET   OUTPUT     Port        : MSB[3]
+
+    4       INT_NET   OUTPUT     Port        : MSB[4]
+
+    4       INT_NET   OUTPUT     Port        : MSB[5]
+
+    4       INT_NET   OUTPUT     Port        : MSB[6]
+
+    4       INT_NET   OUTPUT     Port        : MSB[7]
+
+    888     INT_NET   INPUT      Port        : OUT_CLK
+
+    1       INT_NET   INPUT      Port        : RST
+                                 Instance    : RST_CLKINT
+                                 Placement   : ( 452,91 )
+                                 Int Globals : 1
+
+    2       INT_NET   INPUT      Port        : SEND_DATA_0
+
+    2       INT_NET   INPUT      Port        : SEND_DATA_1
+
+    176     INT_NET   INPUT      Port        : SHIFT_EN
+
+    1       INT_NET   INPUT      Port        : SHIFT_IN
+                                 Instance    : Inst_pf_array/Inst_pf_array_top/Inst_pf_0/Inst_pf_0/Inst_pf_0/SHIFT_OUT_int
+                                 Placement   : ( 369,153 )
+
+    2       INT_NET   OUTPUT     Port        : SHIFT_OUT
+
+    2       INT_NET   OUTPUT     Port        : TEST_OUT[0]
+                                 Instance    : Inst_pf_array/Inst_pf_array_bot/Inst_pf_3/Inst_pf_4/Inst_pf_1/Inst_in_buf
+                                 Placement   : ( 448,18 )
+
+    2       INT_NET   OUTPUT     Port        : TEST_OUT[1]
+
+    2       INT_NET   OUTPUT     Port        : TEST_OUT[2]
+
+    2       INT_NET   OUTPUT     Port        : TEST_OUT[3]
+
+    2       INT_NET   OUTPUT     Port        : TEST_OUT[4]
+
+    1333    INT_NET   OUTPUT     Port        : TEST_OUT[5]
+
+    1333    INT_NET   OUTPUT     Port        : TEST_OUT[6]
+
+    1333    INT_NET   OUTPUT     Port        : TEST_OUT[7]
+
+-----------------------------------------------------------------------------------------------------------
+
+    Types:
+    ------
+      PAD_NET : The port is driving a PAD pin.
+      CLK_NET : The port is driving only clock pins of instances.
+      INT_NET : The port is driving other type of pins.
+      NC_NET  : The port is floating.
+
+    Globals:
+    --------
+      Int Globals : <Number of internal globals the port is driving>
+      Global net  : YES if a port is driven by a global net

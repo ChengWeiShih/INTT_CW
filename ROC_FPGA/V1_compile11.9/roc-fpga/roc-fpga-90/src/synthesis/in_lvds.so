@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SynplifyOutput>
+	<result>Success</result>
+	<design>in_lvds</design>
+	<target_edif>C:\FPGA\ROC_FVTX\ROC_main_FPGA_B_D\synthesis\in_lvds.edn</target_edif>
+</SynplifyOutput>

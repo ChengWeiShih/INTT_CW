@@ -1,0 +1,22 @@
+ ** Message System Log
+ ** Database: 
+ ** Date:   Thu Jun 14 14:06:40 2007
+
+
+****************
+Macro Parameters
+****************
+
+Name                            : in_lvds
+Family                          : ProASIC3E
+Output Format                   : VHDL
+Type                            : Input Buffers
+Variation                       : Special
+Width                           : 1
+Technology                      : LVDS
+
+Written VHDL netlist to
+D:/Anuj/daq/roc_fem_8chip/smartgen\in_lvds\in_lvds.vhd.
+
+ ** Log Ended:   Thu Jun 14 14:06:40 2007
+

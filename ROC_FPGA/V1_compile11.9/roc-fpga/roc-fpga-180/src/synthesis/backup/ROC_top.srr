@@ -1,0 +1,290 @@
+#Build: Synplify Pro E-2010.09A-1, Build 006R, Oct  6 2010
+#install: C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1
+#OS: Windows XP 5.1
+#Hostname: SB_LAPTOP
+
+#Implementation: synthesis
+
+#Sat Jul 30 22:04:18 2011
+
+$ Start of Compile
+#Sat Jul 30 22:04:18 2011
+
+Synopsys VHDL Compiler, version comp520rcp1, Build 028R, built Sep 23 2010
+@N|Running in 32-bit mode
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+
+@N: CD720 :"C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
+@N:"C:\FPGA\ROC_FVTX\ROC_main_FPGA_A\hdl\ROC_top.vhd":29:7:29:13|Top entity is set to ROC_top.
+VHDL syntax check successful!
+@N: CD630 :"C:\FPGA\ROC_FVTX\ROC_main_FPGA_A\hdl\ROC_top.vhd":29:7:29:13|Synthesizing work.roc_top.rtl 
+@N: CD630 :"C:\FPGA\ROC_FVTX\ROC_main_FPGA_A\component\work\roc_block\roc_block_syn.vhd":10:7:10:15|Synthesizing work.roc_block.def_arch 
+Post processing for work.roc_block.def_arch
+@N: CD630 :"C:\FPGA\ROC_FVTX\ROC_main_FPGA_A\smartgen\in_lvds\in_lvds.vhd":8:7:8:13|Synthesizing work.in_lvds.def_arch 
+@N: CD630 :"C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\proasic3e.vhd":2038:10:2038:19|Synthesizing proasic3e.inbuf_lvds.syn_black_box 
+Post processing for proasic3e.inbuf_lvds.syn_black_box
+Post processing for work.in_lvds.def_arch
+@N: CD630 :"C:\FPGA\ROC_FVTX\ROC_main_FPGA_A\smartgen\roc_dcm\roc_dcm.vhd":8:7:8:13|Synthesizing work.roc_dcm.def_arch 
+@N: CD630 :"C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\proasic3e.vhd":3976:10:3976:12|Synthesizing proasic3e.pll.syn_black_box 
+Post processing for proasic3e.pll.syn_black_box
+@N: CD630 :"C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\proasic3e.vhd":1894:10:1894:12|Synthesizing proasic3e.gnd.syn_black_box 
+Post processing for proasic3e.gnd.syn_black_box
+@N: CD630 :"C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\proasic3e.vhd":2999:10:2999:12|Synthesizing proasic3e.vcc.syn_black_box 
+Post processing for proasic3e.vcc.syn_black_box
+Post processing for work.roc_dcm.def_arch
+Post processing for work.roc_top.rtl
+@W: CL159 :"C:\FPGA\ROC_FVTX\ROC_main_FPGA_A\hdl\ROC_top.vhd":32:10:32:16|Input LATCH_1 is unused
+@W: CL159 :"C:\FPGA\ROC_FVTX\ROC_main_FPGA_A\hdl\ROC_top.vhd":33:10:33:20|Input SEND_DATA_0 is unused
+@W: CL159 :"C:\FPGA\ROC_FVTX\ROC_main_FPGA_A\hdl\ROC_top.vhd":34:10:34:20|Input SEND_DATA_1 is unused
+@W: CL159 :"C:\FPGA\ROC_FVTX\ROC_main_FPGA_A\hdl\ROC_top.vhd":43:12:43:19|Input SHIFT_IN is unused
+@END
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Jul 30 22:04:19 2011
+
+###########################################################]
+Synopsys Actel Technology Mapper, Version mapact, Build 023R, Built Sep 29 2010 09:29:00
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+Product Version E-2010.09A-1
+@N: MF249 |Running in 32-bit mode.
+@N: MF258 |Gated clock conversion disabled 
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@W:"c:\fpga\roc_fvtx\roc_main_fpga_a\smartgen\in_lvds\in_lvds.vhd":22:4:22:20|Net BCO_CLK appears to be a clock source which was not identfied. Assuming default frequency. 
+@W:"c:\fpga\roc_fvtx\roc_main_fpga_a\smartgen\roc_dcm\roc_dcm.vhd":48:4:48:7|Net CLK appears to be a clock source which was not identfied. Assuming default frequency. 
+@W:"c:\fpga\roc_fvtx\roc_main_fpga_a\smartgen\roc_dcm\roc_dcm.vhd":48:4:48:7|Net CLK90 appears to be a clock source which was not identfied. Assuming default frequency. 
+@W:"c:\fpga\roc_fvtx\roc_main_fpga_a\smartgen\in_lvds\in_lvds.vhd":22:4:22:20|Net OUT_CLK appears to be a clock source which was not identfied. Assuming default frequency. 
+Finished RTL optimizations (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished factoring (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished gated-clock and generated-clock conversion (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished generic timing optimizations - Pass 1 (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Starting Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished generic timing optimizations - Pass 2 (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished preparing to map (Time elapsed 0h:00m:01s; Memory used current: 55MB peak: 56MB)
+
+
+High Fanout Net Report
+**********************
+
+Driver Instance / Pin Name     Fanout, notes                   
+---------------------------------------------------------------
+GLOBAL_RST / Y                 266 : 264 asynchronous set/reset
+===============================================================
+
+@N: FP130 |Promoting Net OUT_CLK on CLKINT  Inst_out_clk.OUT_CLK_inferred_clock 
+@N: FP130 |Promoting Net GLOBAL_RST on CLKINT  I_1 
+@N: FP130 |Promoting Net BCO_CLK on CLKINT  Inst_clk.BCO_CLK_inferred_clock 
+Finished technology mapping (Time elapsed 0h:00m:01s; Memory used current: 55MB peak: 56MB)
+
+Finished technology timing optimizations and critical path resynthesis (Time elapsed 0h:00m:01s; Memory used current: 55MB peak: 56MB)
+
+
+Added 0 Buffers
+Added 0 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 0 Combinational Cells via replication
+Finished restoring hierarchy (Time elapsed 0h:00m:01s; Memory used current: 56MB peak: 57MB)
+
+Writing Analyst data base C:\FPGA\ROC_FVTX\ROC_main_FPGA_A\synthesis\ROC_top.srm
+Finished Writing Netlist Databases (Time elapsed 0h:00m:01s; Memory used current: 57MB peak: 58MB)
+
+Writing EDIF Netlist and constraint files
+E-2010.09A-1
+Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:01s; Memory used current: 57MB peak: 58MB)
+
+@W: MT420 |Found inferred clock in_lvds|OUT_CLK_inferred_clock with period 3.33ns. A user-defined clock should be declared on object "n:OUT_CLK"
+
+@W: MT420 |Found inferred clock in_lvds|BCO_CLK_inferred_clock with period 3.33ns. A user-defined clock should be declared on object "n:BCO_CLK"
+
+@W: MT420 |Found inferred clock roc_dcm|CLK90_inferred_clock with period 3.33ns. A user-defined clock should be declared on object "n:CLK90"
+
+@W: MT420 |Found inferred clock roc_dcm|CLK_inferred_clock with period 3.33ns. A user-defined clock should be declared on object "n:CLK"
+
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sat Jul 30 22:04:21 2011
+#
+
+
+Top view:               ROC_top
+Library name:           PA3
+Operating conditions:   COMWC-2 ( T = 70.0, V = 1.42, P = 1.30, tree_type = balanced_tree )
+Requested Frequency:    300.0 MHz
+Wire load mode:         top
+Wire load model:        proasic3e
+Paths requested:        5
+Constraint File(s):    
+@N: MT320 |This timing report estimates place and route data. Please look at the place and route timing report for final timing..
+
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock..
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: 2.067
+
+                                   Requested     Estimated     Requested     Estimated               Clock        Clock              
+Starting Clock                     Frequency     Frequency     Period        Period        Slack     Type         Group              
+-------------------------------------------------------------------------------------------------------------------------------------
+in_lvds|OUT_CLK_inferred_clock     300.0 MHz     789.4 MHz     3.333         1.267         2.067     inferred     Inferred_clkgroup_3
+=====================================================================================================================================
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks                                                          |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Starting                        Ending                          |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+------------------------------------------------------------------------------------------------------------------------------------------------------
+in_lvds|OUT_CLK_inferred_clock  in_lvds|OUT_CLK_inferred_clock  |  3.333       2.067  |  No paths    -      |  No paths    -      |  No paths    -    
+======================================================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+		No IO constraint found 
+
+
+
+====================================
+Detailed Report for Clock: in_lvds|OUT_CLK_inferred_clock
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                        Starting                                                                        Arrival          
+Instance                Reference                          Type       Pin     Net                       Time        Slack
+                        Clock                                                                                            
+-------------------------------------------------------------------------------------------------------------------------
+DATA_OUT_1_0_tmp[0]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     Q       DATA_OUT_1_0_tmp_c[0]     0.550       2.067
+DATA_OUT_0_0_tmp[0]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     Q       DATA_OUT_0_0_tmp[0]       0.550       2.115
+DATA_OUT_0_0_tmp[1]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     Q       DATA_OUT_0_0_tmp[1]       0.550       2.115
+DATA_OUT_0_0_tmp[2]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     Q       DATA_OUT_0_0_tmp[2]       0.550       2.115
+DATA_OUT_0_0_tmp[3]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     Q       DATA_OUT_0_0_tmp[3]       0.550       2.115
+DATA_OUT_0_0_tmp[4]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     Q       DATA_OUT_0_0_tmp[4]       0.550       2.115
+DATA_OUT_0_0_tmp[5]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     Q       DATA_OUT_0_0_tmp[5]       0.550       2.115
+DATA_OUT_0_0_tmp[6]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     Q       DATA_OUT_0_0_tmp[6]       0.550       2.115
+DATA_OUT_0_0_tmp[7]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     Q       DATA_OUT_0_0_tmp[7]       0.550       2.115
+DATA_OUT_0_0_tmp[8]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     Q       DATA_OUT_0_0_tmp[8]       0.550       2.115
+=========================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                    Starting                                                                        Required          
+Instance            Reference                          Type       Pin     Net                       Time         Slack
+                    Clock                                                                                             
+----------------------------------------------------------------------------------------------------------------------
+DATA_OUT_1_0[0]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     D       DATA_OUT_1_0_tmp_c[0]     2.905        2.067
+DATA_OUT_0_0[0]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     D       DATA_OUT_1_1_tmp[0]       2.905        2.115
+DATA_OUT_0_0[1]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     D       DATA_OUT_1_1_tmp[1]       2.905        2.115
+DATA_OUT_0_0[2]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     D       DATA_OUT_1_1_tmp[2]       2.905        2.115
+DATA_OUT_0_0[3]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     D       DATA_OUT_1_1_tmp[3]       2.905        2.115
+DATA_OUT_0_0[4]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     D       DATA_OUT_1_1_tmp[4]       2.905        2.115
+DATA_OUT_0_0[5]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     D       DATA_OUT_1_1_tmp[5]       2.905        2.115
+DATA_OUT_0_0[6]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     D       DATA_OUT_1_1_tmp[6]       2.905        2.115
+DATA_OUT_0_0[7]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     D       DATA_OUT_1_1_tmp[7]       2.905        2.115
+DATA_OUT_0_0[8]     in_lvds|OUT_CLK_inferred_clock     DFN1C1     D       DATA_OUT_1_1_tmp[8]       2.905        2.115
+======================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      3.333
+    - Setup time:                            0.428
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         2.905
+
+    - Propagation time:                      0.839
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     2.066
+
+    Number of logic level(s):                0
+    Starting point:                          DATA_OUT_1_0_tmp[0] / Q
+    Ending point:                            DATA_OUT_1_0[0] / D
+    The start point is clocked by            in_lvds|OUT_CLK_inferred_clock [rising] on pin CLK
+    The end   point is clocked by            in_lvds|OUT_CLK_inferred_clock [rising] on pin CLK
+
+Instance / Net                       Pin      Pin               Arrival     No. of    
+Name                      Type       Name     Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------
+DATA_OUT_1_0_tmp[0]       DFN1C1     Q        Out     0.550     0.550       -         
+DATA_OUT_1_0_tmp_c[0]     Net        -        -       0.288     -           2         
+DATA_OUT_1_0[0]           DFN1C1     D        In      -         0.839       -         
+======================================================================================
+Total path delay (propagation time + setup) of 1.267 is 0.979(77.2%) logic and 0.288(22.8%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+--------------------------------------------------------------------------------
+Target Part: A3PE3000_FBGA896_-2
+Report for cell ROC_top.rtl
+  Core Cell usage:
+              cell count     area count*area
+            CLKINT     3      0.0        0.0
+               GND   180      0.0        0.0
+               INV     4      1.0        4.0
+              OR2A     1      1.0        1.0
+               PLL     1      0.0        0.0
+               VCC   180      0.0        0.0
+
+
+            DFN1C1   264      1.0      264.0
+                   -----          ----------
+             TOTAL   633               269.0
+
+
+  IO Cell usage:
+              cell count
+             INBUF     2
+        INBUF_LVDS   178
+            OUTBUF   146
+         roc_block     1
+                   -----
+             TOTAL   327
+
+
+Core Cells         : 269 of 75264 (0%)
+IO Cells           : 327
+
+  RAM/ROM Usage Summary
+Block Rams : 0 of 112 (0%)
+
+Mapper successful!
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Jul 30 22:04:21 2011
+
+###########################################################]

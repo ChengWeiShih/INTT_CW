@@ -1,0 +1,4 @@
+CKID0001:@|S:Inst_roc_dcm.Core@|E:Inst_roc_block@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 
+CKID0002:@|S:Inst_roc_dcm.Core@|E:Inst_roc_block@|F:@syn_sample_clock_path1==CKID0002@|M:ClockId0002 
+CKID0003:@|S:Inst_out_clk.INBUF_LVDS_0_inst@|E:DATA_OUT_0_1_tmp[10]@|F:@syn_sample_clock_path==CKID0003@|M:ClockId0003 
+CKID0004:@|S:Inst_clk.INBUF_LVDS_0_inst@|E:Inst_roc_block@|F:@syn_sample_clock_path2==CKID0004@|M:ClockId0004 
