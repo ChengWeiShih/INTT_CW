@@ -17,6 +17,7 @@ For more detailed introduction, please check "Channel classification instruction
 =======================================================================================
 
 INTT Channel classification V2
-Not yet
+
+new feature : input file formate : .dat, not .root
 
 =======================================================================================
