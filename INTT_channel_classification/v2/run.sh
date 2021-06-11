@@ -1,4 +1,4 @@
-folder_direction="/home/5202011/INTT_cal/INTT_cal_test/INTT_multi_run_v2_test"
+folder_direction="/home/5202011/INTT_cal/INTT_cal_test/INTT_multi_run_v2_test4"
 number_of_file=15
 merge_file_name="aaa_test_summary"
 module_ID=2
@@ -21,11 +21,11 @@ do
 	sed -i "s/data_index/${seed}/g" check_chip_prototypeMaximam_new_copy.c
 	root -l -b -q check_chip_prototypeMaximam_new_copy.c\($module_ID\)
 	rm check_chip_prototypeMaximam_new_copy.c
-	sleep 15
+	sleep 5
 done 
 
 ls *.root > total_file.txt
-sleep 15
+sleep 5
 
 for seed in $(seq 0 $number_for_final)
 do
@@ -33,7 +33,7 @@ do
     sed -i "s/data_index/${seed}/g" calibration_ana_code_multi_copy.c
     root -l -b -q calibration_ana_code_multi_copy.c\(\"$folder_direction\",$module_ID,true,false,0,true,false,false,true\)
     rm calibration_ana_code_multi_copy.c
-    sleep 15
+    sleep 5
 done
 
 sleep 15
