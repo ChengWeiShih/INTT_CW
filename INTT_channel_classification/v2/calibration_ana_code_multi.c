@@ -397,9 +397,7 @@ void calibration_ana_code_multi_copy(TString folder_name, int module_number, boo
 				{
 					ampl_adc[i4]->Fill(chip_ampl[i4][i2][i3], chip_adc[i4][i2][i3]);
 					if (chip_adc[i4][i2][i3] == noise_level_check)
-					{
 						noise_level->Fill(chip_ampl[i4][i2][i3]);
-					}
 				}
 			}
 		}
@@ -427,9 +425,7 @@ void calibration_ana_code_multi_copy(TString folder_name, int module_number, boo
 	//cout<<"\r\n"<<"#the file fpall rewriting is finish#"<<"\r\n"<<endl;
 
 	for (int i5 = 0; i5 < 26; i5++)
-	{
 		ampl_adc[i5]->Reset("ICESM");
-	}
 
 	cout << " " << endl;
 	cout << " " << endl;
@@ -514,10 +510,7 @@ void calibration_ana_code_multi_copy(TString folder_name, int module_number, boo
 	c4->Clear();
 	c5->Clear();
 	for (int i5 = 0; i5 < 26; i5++)
-	{
 		chan_ampl[i5]->Reset("ICESM");
-	}
-	
 	cout << " " << endl;
 	cout << " " << endl;
 	cout << " " << endl;
@@ -532,10 +525,8 @@ void calibration_ana_code_multi_copy(TString folder_name, int module_number, boo
 	TH2F *ampladc_detail = new TH2F("", "", 70, 0, 70, 8, 0, 8);
 
 	TH1F *check_new = new TH1F("", "", 70, 0, 70);
-	check_new->Reset();
 	check_new->GetXaxis()->SetTitle("offset_ampl");
 	check_new->GetYaxis()->SetTitle("entries");
-
 	TF1 *gaus_fit_new = new TF1("gaus_fit_new", "gaus", 0, 70);
 	vector<double> response_width[26];
 
@@ -588,8 +579,6 @@ void calibration_ana_code_multi_copy(TString folder_name, int module_number, boo
 	//ampladc_detail->SetStats(0);
 	TCanvas *c6 = new TCanvas("c6", "c6", 1200, 1200);
 	int channel_entries_outsider = 0;
-	double amount_offset = 0;
-	bool redraw = false;
 
 	for (int i4 = 0; i4 < 26; i4++)
 	{
@@ -603,17 +592,14 @@ void calibration_ana_code_multi_copy(TString folder_name, int module_number, boo
 			c6->cd();
 			c6->Print(Form("%s/folder_%s/chip%d_detail_amploffset.pdf(", folder_name.Data(), the_name.Data(), i4 + 1));
 		}
-
 		for (int i2 = 0; i2 < 128; i2++)
 		{
-			redraw=false;
-			
 			ampladc_detail->SetTitle(Form("chip_id=%d, chan_id = %d", i4 + 1, i2));
 			check_new->SetTitle(Form("chip_id=%d, chan_id = %d", i4 + 1, i2));
 			//if (chip_ampl[i4][i2].size()>700 || chip_ampl[i4][i2].size()<200) cout<<" Need to check, the entries of each channel, chip : "<<i4+1<<" channel : "<<i2<<" " <<chip_ampl[i4][i2].size()<<endl;
 			for (int i3 = 0; i3 < chip_ampl[i4][i2].size(); i3++)
 			{
-				if (chip_ampl[i4][i2][i3] > 0 && chip_ampl[i4][i2][i3]<70 )
+				if (chip_ampl[i4][i2][i3] > 0)
 				{
 					//if (i4+1==16 && i2==0) cout<<i2<<" "<<chip_ampl[i4][i2][i3]<<" "<<chip_adc[i4][i2][i3]<<endl;
 					ampladc_detail->Fill(chip_ampl[i4][i2][i3], chip_adc[i4][i2][i3]);
@@ -637,135 +623,111 @@ void calibration_ana_code_multi_copy(TString folder_name, int module_number, boo
 
 			for (int i3 = 0; i3 < chip_ampl[i4][i2].size(); i3++)
 			{
-				if (chip_ampl[i4][i2][i3] > 0 && chip_ampl[i4][i2][i3]<70)
+				if (chip_ampl[i4][i2][i3] > 0)
 				{
-					amount_offset = average_adc[chip_adc[i4][i2][i3]] - average_adc[0];
-					if ((chip_ampl[i4][i2][i3] - amount_offset)>0 && (chip_ampl[i4][i2][i3] - amount_offset)<70 )
-					{
-						//cout<<"line : 427 check "<<endl;
-						
-						check_new->Fill(chip_ampl[i4][i2][i3] - amount_offset);	
-					}
-					
+					//cout<<"line : 427 check "<<endl;
+					check_new->Fill(chip_ampl[i4][i2][i3] - (average_adc[chip_adc[i4][i2][i3]] - average_adc[0]));
 				}
 			}
 
-			if ((check_new->GetBinContent(71) + check_new->GetBinContent(0)) == 0)
+			c1->cd();
+			ampladc_detail->Draw("COLZ0");
+			ampladc_detail->Fit("slope", "NQ");
+			c1->cd();
+			slope->Draw("lsame");
+			slope_TH2->Fill(i2, slope->GetParameter(0));
+			ampl_adc_slope[i4].push_back(slope->GetParameter(0));
+			ampl_adc_offset[i4].push_back(slope->GetParameter(1));
+			//ampl_adc_chiNDF[i4].push_back(slope->GetChisquare()/slope->GetNDF());
+
+			//fp<<slope->GetParameter(0)<<" "<<slope->GetParameter(1)<<" "<<slope->GetChisquare()/slope->GetNDF()<<"\r"<<endl;
+			slop_detail_TH->Fill(slope->GetParameter(0));
+			if (assembly_check == true)
 			{
-				redraw = false;
-				c1->cd();
-				ampladc_detail->Draw("COLZ0");
-				ampladc_detail->Fit("slope", "NQ");
-				c1->cd();
-				slope->Draw("lsame");
-				slope_TH2->Fill(i2, slope->GetParameter(0));
-				ampl_adc_slope[i4].push_back(slope->GetParameter(0));
-				ampl_adc_offset[i4].push_back(slope->GetParameter(1));
-				//ampl_adc_chiNDF[i4].push_back(slope->GetChisquare()/slope->GetNDF());
-
-				//fp<<slope->GetParameter(0)<<" "<<slope->GetParameter(1)<<" "<<slope->GetChisquare()/slope->GetNDF()<<"\r"<<endl;
-				slop_detail_TH->Fill(slope->GetParameter(0));
-				if (assembly_check == true) // default is false 
+				if (i4 == 0 && i2 == 0)
+					cout << " =========== pad performance check =========" << endl;
+				if (slope->GetParameter(0) > 0.115)
 				{
-					if (i4 == 0 && i2 == 0)
-						cout << " =========== pad performance check =========" << endl;
-					if (slope->GetParameter(0) > 0.115)
-					{
-						//cout<<" the error pads check, chip_id : "<<i4+1<<" channel : "<<128-(i2/2)<<" slope : "<< slope->GetParameter(0)<<endl;
+					//cout<<" the error pads check, chip_id : "<<i4+1<<" channel : "<<128-(i2/2)<<" slope : "<< slope->GetParameter(0)<<endl;
 
-						if (i4 < 13)
+					if (i4 < 13)
+					{
+						if (i2 % 2 == 0)
 						{
-							if (i2 % 2 == 0)
-							{
-								cout << "1_the error pads check, chip_id : " << i4 + 1 << " channel : " << 128 - (i2 / 2) << " slope : " << slope->GetParameter(0) << endl;
-							}
-							else
-							{
-								cout << "2_the error pads check, chip_id : " << i4 + 1 << " channel : " << 64 - ((i2 / 2) - 1) << " slope : " << slope->GetParameter(0) << endl;
-							}
+							cout << "1_the error pads check, chip_id : " << i4 + 1 << " channel : " << 128 - (i2 / 2) << " slope : " << slope->GetParameter(0) << endl;
 						}
-						else if (i4 < 26)
+						else
 						{
-							if (i2 % 2 == 0)
-							{
-								cout << "4_the error pads check, chip_id : " << i4 + 1 << " channel : " << 65 + ((i2 / 2)) << " slope : " << slope->GetParameter(0) << endl;
-							}
-							else
-							{
-								cout << "3_the error pads check, chip_id : " << i4 + 1 << " channel : " << 1 + (i2 / 2) << " slope : " << slope->GetParameter(0) << endl;
-							}
+							cout << "2_the error pads check, chip_id : " << i4 + 1 << " channel : " << 64 - ((i2 / 2) - 1) << " slope : " << slope->GetParameter(0) << endl;
+						}
+					}
+					else if (i4 < 26)
+					{
+						if (i2 % 2 == 0)
+						{
+							cout << "4_the error pads check, chip_id : " << i4 + 1 << " channel : " << 65 + ((i2 / 2)) << " slope : " << slope->GetParameter(0) << endl;
+						}
+						else
+						{
+							cout << "3_the error pads check, chip_id : " << i4 + 1 << " channel : " << 1 + (i2 / 2) << " slope : " << slope->GetParameter(0) << endl;
 						}
 					}
 				}
+			}
 
-				c1->cd();
-				tex11->DrawLatex(0.12, 0.750, Form("slope : %.4f", slope->GetParameter(0)));
-				c1->cd();
-				tex11->DrawLatex(0.12, 0.720, Form("offset : %.2f", slope->GetParameter(1)));
-				//c1->cd(); tex11 -> DrawLatex (0.12, 0.690, Form("chi2/NDF : %.2f", slope->GetChisquare()/slope->GetNDF()));
+			c1->cd();
+			tex11->DrawLatex(0.12, 0.750, Form("slope : %.4f", slope->GetParameter(0)));
+			c1->cd();
+			tex11->DrawLatex(0.12, 0.720, Form("offset : %.2f", slope->GetParameter(1)));
+			//c1->cd(); tex11 -> DrawLatex (0.12, 0.690, Form("chi2/NDF : %.2f", slope->GetChisquare()/slope->GetNDF()));
 
-				if (run_option == true)
-				{
-					c1->cd();
-					c1->Print(Form("%s/folder_%s/chip%d_detail_ampladc.pdf", folder_name.Data(), the_name.Data(), i4 + 1));
-				}
-
-				c6->cd();
-				check_new->Draw("hist");
-				check_new->Fit("gaus_fit_new", "NQ");
-				c6->cd();
-				gaus_fit_new->Draw("lsame");
-				c6->cd();
-				tex11->DrawLatex(0.12, 0.750, Form("gaus width : %.4f", gaus_fit_new->GetParameter(2)));
-				c6->cd();
-				tex11->DrawLatex(0.12, 0.720, Form("gaus size  : %.2f", gaus_fit_new->GetParameter(0)));
-				c6->cd();
-				tex11->DrawLatex(0.12, 0.690, Form("gaus mean  : %.2f", gaus_fit_new->GetParameter(1)));
-				response_width[i4].push_back(gaus_fit_new->GetParameter(2));
-				channel_entries_check->Fill(check_new->GetEntries());
-				if (check_new->GetEntries() < 280 || check_new->GetEntries() > 400)
-				{
-					//cout<<"Outsider entries, please check : "<<Form("chip_id=%d, chan_id = %d",i4+1,i2)<<" Entries : "<<check_new->GetEntries()<<endl;
-					entries_chip.push_back(i4 + 1);
-					entries_channel.push_back(i2);
-					entries_entries.push_back(check_new->GetEntries());
-					channel_entries_outsider += 1;
-				}
-
-				if (new_check == true)
-				{
-					c6->cd();
-					c6->Print(Form("%s/folder_%s/chip%d_detail_amploffset.pdf", folder_name.Data(), the_name.Data(), i4 + 1));
-				}
-			} //redraw
-			else 
+			if (run_option == true)
 			{
-				redraw=true;
-				check_new->Fit("gaus_fit_new", "NQ");
-				cout<<"Magic happen !!! restore Start !!!, chip :"<<i4+1<<" chan : "<<i2<<endl;
-				cout<<"under : "<<check_new->GetBinContent(0)<<" over : "<<check_new->GetBinContent(71)<<endl;
-				cout<<"Fit width : "<<gaus_fit_new->GetParameter(2)<<endl;
-				cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;
-				i2-=1;
+				c1->cd();
+				c1->Print(Form("%s/folder_%s/chip%d_detail_ampladc.pdf", folder_name.Data(), the_name.Data(), i4 + 1));
+			}
+
+			c6->cd();
+			check_new->Draw("hist");
+			check_new->Fit("gaus_fit_new", "NQ");
+			c6->cd();
+			gaus_fit_new->Draw("lsame");
+			c6->cd();
+			tex11->DrawLatex(0.12, 0.750, Form("gaus width : %.4f", gaus_fit_new->GetParameter(2)));
+			c6->cd();
+			tex11->DrawLatex(0.12, 0.720, Form("gaus size  : %.2f", gaus_fit_new->GetParameter(0)));
+			c6->cd();
+			tex11->DrawLatex(0.12, 0.690, Form("gaus mean  : %.2f", gaus_fit_new->GetParameter(1)));
+			response_width[i4].push_back(gaus_fit_new->GetParameter(2));
+			channel_entries_check->Fill(check_new->GetEntries());
+			if (check_new->GetEntries() < 280 || check_new->GetEntries() > 400)
+			{
+				//cout<<"Outsider entries, please check : "<<Form("chip_id=%d, chan_id = %d",i4+1,i2)<<" Entries : "<<check_new->GetEntries()<<endl;
+				entries_chip.push_back(i4 + 1);
+				entries_channel.push_back(i2);
+				entries_entries.push_back(check_new->GetEntries());
+				channel_entries_outsider += 1;
+			}
+
+			if (new_check == true)
+			{
+				c6->cd();
+				c6->Print(Form("%s/folder_%s/chip%d_detail_amploffset.pdf", folder_name.Data(), the_name.Data(), i4 + 1));
 			}
 			ampladc_detail->Reset("ICESM");
 			check_new->Reset("ICESM");
 			c1->Clear();
 			c6->Clear();
-			if (assembly_check == true && i4 == 25 && i2 == 127) // default is false 
-			{
+			if (assembly_check == true && i4 == 25 && i2 == 127)
 				cout << " =========== pad performance check done =========" << endl;
-			}
-			
 			for (int i8 = 0; i8 < 8; i8++)
 			{
 				sum_adc[i8] = 0;
 				count_adc[i8] = 0;
 				average_adc[i8] = 0;
 			}
-		} //channel ends
+		}
 		cout << " " << endl;
-
 		if (run_option == true)
 		{
 			c1->cd();
@@ -776,7 +738,7 @@ void calibration_ana_code_multi_copy(TString folder_name, int module_number, boo
 			c6->cd();
 			c6->Print(Form("%s/folder_%s/chip%d_detail_amploffset.pdf)", folder_name.Data(), the_name.Data(), i4 + 1));
 		}
-	}//chip ends
+	}
 
 	cout << "==============information of ampladc_detail ==========" << endl;
 	c1->Clear();
@@ -807,10 +769,7 @@ void calibration_ana_code_multi_copy(TString folder_name, int module_number, boo
 	vector<double> xaxis_plot;
 	xaxis_plot.clear();
 	for (int i6 = 0; i6 < 128; i6++)
-	{
 		xaxis_plot.push_back(i6);
-	}
-	
 	c1->Print(Form("%s/folder_%s/ampl_adc_slope_detail.pdf(", folder_name.Data(), the_name.Data()));
 	cout << " the size of file : " << ampl_adc_slope[0].size() << endl;
 
@@ -840,10 +799,7 @@ void calibration_ana_code_multi_copy(TString folder_name, int module_number, boo
 	c4->Print(Form("%s/folder_%s/ampl_adc_slope.pdf", folder_name.Data(), the_name.Data()));
 	c4->Clear();
 	for (int i6 = 0; i6 < 26; i6++)
-	{
 		delete grr[i6];
-	}
-	
 	c1->Print(Form("%s/folder_%s/ampl_adc_slope_detail.pdf)", folder_name.Data(), the_name.Data()));
 	c1->Clear();
 
@@ -925,9 +881,8 @@ void calibration_ana_code_multi_copy(TString folder_name, int module_number, boo
 	c1->Print(Form("%s/folder_%s/ampl_adc_offset_detail.pdf)", folder_name.Data(), the_name.Data()));
 	c1->Clear();
 	for (int i6 = 0; i6 < 26; i6++)
-	{	
 		delete grr[i6];
-	}
+
 	// c1->Print(Form("%s/%s/ampl_adc_ChiNDF_detail.pdf(",the_name.Data()));
 	// TGraph * grr[26];
 
