@@ -1,4 +1,5 @@
 =======================================================================================
+
 INTT Channel classification V3, 2021/06/19
 
 new feature  : 
@@ -11,7 +12,10 @@ new feature  :
 
 *final good channel ratio calculation is added.
 
+*One .root file is created in each folder of each run to record the status of the problem channel. 
+
 =======================================================================================
+
 INTT Channel classification V2, 2021/06/10
 
 root version : 5.34
@@ -26,6 +30,7 @@ in the run.sh, I add "sleep 15" aiming to make the code more stable when running
 
 
 =======================================================================================
+
 INTT Channel classification V1, 2021/06/07
 This macro requires 4 files to run.
 1. calibration_ana_code_multi.c
