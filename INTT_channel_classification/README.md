@@ -2,9 +2,13 @@
 INTT Channel classification V3, 2021/06/19
 
 new feature  : 
+
 *formate of input file : .dat (not .root)
+
 *root version : 6.06/01
+
 *new plot     : Summary_average_entry.pdf
+
 *final good channel ratio calculation is added.
 
 =======================================================================================
