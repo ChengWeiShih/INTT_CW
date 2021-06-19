@@ -2,6 +2,8 @@
 
 INTT Channel classification V3, 2021/06/19
 
+Please read the instruction file before use !
+
 new feature  : 
 
 *formate of input file : .dat (not .root)
