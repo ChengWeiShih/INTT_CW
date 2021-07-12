@@ -1,10 +1,10 @@
 const int PUL = 8; //define Pulse pin
 const int DIR = 7; //define Pulse pin
 const int ENA = 4; //define Enable pin
-const int time_mea = 1000;
-int steps_gap_A = 10; // (cycles)
-int steps_gap_B = 10; // (cycles)
-int AB_gap = 10;      // (cycles)
+const int time_mea = 2000;
+int steps_gap_A = 4; // (cycles)
+int steps_gap_B = 8; // (cycles)
+int AB_gap = 15;      // (cycles)
 
 
 void setup() {
