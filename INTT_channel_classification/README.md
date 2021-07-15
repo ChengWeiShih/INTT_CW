@@ -9,7 +9,7 @@ New feature :
 *entry & gaus_width of each channel are stored in root file
 
 
-*new plot in summart_plot_time.pdf
+*new plot in Summary_plots_time.pdf
 
 
 =======================================================================================
