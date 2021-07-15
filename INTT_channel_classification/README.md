@@ -1,5 +1,19 @@
 =======================================================================================
 
+INTT channel classification v5, 2021/7/15
+
+
+New feature :
+
+
+*entry & gaus_width of each channel are stored in root file
+
+
+*new plot in summart_plot_time.pdf
+
+
+=======================================================================================
+
 INTT Channel classification V4, 2021/06/25
 
 Please read the instruction file v4 before use !

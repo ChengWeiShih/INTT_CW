@@ -1,5 +1,17 @@
 =======================================================================================
 
+INTT Channel classification V4, 2021/06/25
+
+Please read the instruction file v4 before use !
+
+new feature  :
+
+*root version : 6.06/01
+
+*the histogram plots of number of noise & entry failed channels are added.
+
+=======================================================================================
+
 INTT Channel classification V3, 2021/06/19
 
 Please read the instruction file before use !
