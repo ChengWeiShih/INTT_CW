@@ -9,10 +9,10 @@
 
 TString color_code [8]={"#343434","#1A3947","#566575","#797983","#EFBD9D","#FCA26E","#F5751D","#F5321D"};
 TString color_code_2 [8]={"#CC768D","#19768D","#DDA573","#009193","#6E9193","#941100","#A08144","#517E66"};
-double noise_hit_distance = 0.1374; // note : 3 sigma of the l1 residual width
-double actual_xpos [3] = {0,26.1,52.2}; // note : the actual ladder position (unit : mm)
+double noise_hit_distance = 0.234; // note : 3 sigma of the l1 residual width
+double actual_xpos [3] = {0,29.552,59.104}; 
 
-double slope_cut = 0.4; // note : the parameter for the DUT
+// double slope_cut = 0.4; // note : the parameter for the DUT
 
 // note : the structure for event profile
 struct profile_str {
@@ -82,6 +82,43 @@ struct DUT_str{
     vector<double> middle_layer_residual; 
     vector<double> good_combination_slope; 
 };
+
+
+void Characterize_Pad (TPad *pad, float left, float right, float top, float bottom, int logY, int setgrid_bool)
+{
+	if (setgrid_bool == true) {pad -> SetGrid (1, 1);}
+	pad -> SetLeftMargin   (left);
+	pad -> SetRightMargin  (right);
+	pad -> SetTopMargin    (top);
+	pad -> SetBottomMargin (bottom);
+	pad -> SetLogy (logY);
+}
+
+void Characterize_Rate1D (TH1F *hist,  int hcolour)
+{
+	float ratio = 7.0/3.0;
+	hist -> SetTitle       ("");
+	hist -> SetLineColor   (hcolour);
+	hist -> SetMarkerColor (hcolour);
+	hist -> SetMarkerStyle (20);
+	hist -> SetMarkerSize  (0.8);
+	hist -> SetFillColor   (hcolour);
+
+	hist -> GetXaxis() -> SetTitleSize   (0.052*ratio);
+	hist -> GetXaxis() -> SetTitleOffset (0.940);
+	hist -> GetXaxis() -> SetLabelSize   (0.042*ratio);
+	hist -> GetXaxis() -> SetLabelOffset (0.004*ratio);
+
+	hist -> GetYaxis() -> SetTitle       ("Data/MC");
+	hist -> GetYaxis() -> SetTitleSize   (0.052*ratio);
+	hist -> GetYaxis() -> SetTitleOffset (0.360);
+	hist -> GetYaxis() -> SetLabelSize   (0.042*ratio);
+	hist -> GetYaxis() -> SetLabelOffset (0.006);
+	hist -> GetYaxis() -> SetRangeUser   (0.4, 3);
+	hist -> GetYaxis() -> SetNdivisions  (505);
+
+    hist -> SetStats(0);
+}
 
 vector<cluster_str> cluster_read_and_build (TString folder_direction, TString file_name, TString cluster_file_name, int study_chip)
 {
@@ -836,45 +873,6 @@ void set_hist_par (TH1F * hist, TString color_code, TString title, TString X_nam
     hist -> GetYaxis() -> SetTitle(Y_name);
 } 
 
-// note : to draw the cluster size distribution.
-void cluster_size_all_dist (vector<cluster_str> input_cluster_vec, TString folder_direction)
-{
-    TCanvas * c1 = new TCanvas("c1","c1",800,800);
-    c1 -> cd();
-    c1 -> SetLogy();
-
-    TH1F * hist[3];
-
-    for (int i = 0; i < 3; i++)
-    {
-        hist[i] = new TH1F ("","",20,0-3,20-3);
-        hist[i] -> SetLineColor( TColor::GetColor("#1A3947") );
-        hist[i] -> SetLineWidth(3);
-        hist[i] -> SetTitle(Form("Run52, cluster size, all clusters, layer : %i",i));
-        hist[i] -> GetXaxis() -> SetTitle("Cluster size");
-        hist[i] -> GetYaxis() -> SetTitle("Entry");
-    }
-
-    for (int i = 0; i < input_cluster_vec.size(); i++)
-    {
-        for (int i1 = 0; i1 < input_cluster_vec[i].cluster_layer.size(); i1++)
-        {
-            hist[ input_cluster_vec[i].cluster_layer[i1] ] -> Fill( input_cluster_vec[i].cluster_hit[i1] );
-        }
-    }
-
-    c1 -> Print( Form("%s/cluster_size_dist_all.pdf(",folder_direction.Data()) );
-    for (int i = 0; i < 3; i++)
-    {
-        hist[i] -> Draw("hist");
-        c1 -> Print( Form("%s/cluster_size_dist_all.pdf",folder_direction.Data()) );
-    }
-    c1 -> Print( Form("%s/cluster_size_dist_all.pdf)",folder_direction.Data()) );
-
-    c1 -> Clear();
-
-}
-
 // note : GT stands for good track
 void cluster_size_GT_dist ( vector<cluster_reformat_str> input_cluster_vec, vector<profile_str> input_profile_vec, int study_chip, TString folder_direction )
 {
@@ -943,7 +941,7 @@ void cluster_size_all_dist (vector<cluster_str> input_cluster_vec, TString folde
         hist[i] = new TH1F ("","",20,0-3,20-3);
         hist[i] -> SetLineColor( TColor::GetColor("#1A3947") );
         hist[i] -> SetLineWidth(3);
-        hist[i] -> SetTitle(Form("Run61, cluster size, all clusters, layer : %i",i));
+        hist[i] -> SetTitle(Form("Run52, cluster size, all clusters, layer : %i",i));
         hist[i] -> GetXaxis() -> SetTitle("Cluster size");
         hist[i] -> GetYaxis() -> SetTitle("Entry");
     }
@@ -968,60 +966,83 @@ void cluster_size_all_dist (vector<cluster_str> input_cluster_vec, TString folde
 
 }
 
+
+
 // note : to draw the cluster size distribution. and compare
-void cluster_size_all_dist_compare (vector<cluster_str> input_cluster_vec, vector<cluster_str> input_cluster_vec_compare, TString folder_direction)
+void cluster_size_all_dist_compare (vector<cluster_str> input_cluster_vec, vector<cluster_str> input_cluster_vec_compare, TString folder_direction, TString run_ID, bool linear_or_log, bool statsbox_bool)
 {
     TCanvas * c1 = new TCanvas("c1","c1",800,800);
     c1 -> cd();
 
-    TPad *pad = new TPad(Form("pad1"), "", 0.0, 0.0, 1.0, 1.0);
-	//pad -> SetTopMargin(0.12);
-	//pad -> SetBottomMargin(0.120);
-	pad -> SetLeftMargin(0.15);
-	pad -> SetRightMargin(0.05);
-	//pad -> SetGrid(1, 1);
-	pad -> Draw("same");
-	pad -> cd();
-    pad -> SetLogy();
-    // c1 -> SetLogy();
+    // note : 0) is for SetGrid
+    // note : 0,0) is for logY
+    TPad *pad_obj = new TPad(Form("pad_obj"), "", 0.0, 0.30, 1.0, 1.0);
+    Characterize_Pad(pad_obj, 0.15, 0.05, 0.1, 0.005, 0, 0);
+    pad_obj -> Draw();
 
-    TH1F * hist[3];
+    TPad *pad_ratio = new TPad(Form("pad_ratio"), "", 0.0, 0.0, 1.0, 0.30);
+    Characterize_Pad(pad_ratio, 0.15, 0.05, 0.02, 0.350, 0, 1);
+    pad_ratio -> Draw();
+    
 
-    TH1F * hist_comp[3];
+    TH1F * hist_data[3];
+
+    TH1F * hist_MC[3];
+
+    TH1F *hist_ratio[3];
+
+
 
     TLegend *legend1 = new TLegend (0.5, 0.7, 0.75, 0.85);
-	legend1 -> SetTextSize (0.030);
+	legend1 -> SetTextSize (0.050);
 	// legend1 -> SetNColumns (4);
+
+    TString rest_plot_name;
+    if (linear_or_log == true) // note : linear
+    {
+        rest_plot_name = "cluster_size_dist_comp_all_linear";
+    }
+    else if (linear_or_log == false) // note : log
+    {   
+        pad_obj -> SetLogy();
+        rest_plot_name = "cluster_size_dist_comp_all_log";
+    }
 
     for (int i = 0; i < 3; i++)
     {
-        hist[i] = new TH1F ("","",20,0-3,20-3);
-        hist[i] -> SetLineColor( TColor::GetColor("#A08144") );
-        hist[i] -> SetLineWidth(3);
-        hist[i] -> SetTitle(Form("Run61 comparison, all clusters, layer : %i",i));
-        hist[i] -> GetXaxis() -> SetTitle("Cluster size");
-        hist[i] -> GetYaxis() -> SetTitle("A.U.");
+        hist_data[i] = new TH1F ("","",20,0-3,20-3);
+        hist_data[i] -> SetLineColor( TColor::GetColor("#1A3947") );
+        hist_data[i] -> SetLineWidth(3);
+        hist_data[i] -> SetMarkerColor(TColor::GetColor("#1A3947"));
+        hist_data[i] -> SetMarkerSize(1);
+        hist_data[i] -> SetMarkerStyle(20);
 
-        hist_comp[i] = new TH1F ("","",20,0-3,20-3);
-        hist_comp[i] -> SetLineColor( TColor::GetColor("#1A3947") );
-        hist_comp[i] -> SetMarkerColor(TColor::GetColor("#1A3947"));
-        hist_comp[i] -> SetMarkerSize(1);
-        hist_comp[i] -> SetMarkerStyle(20);
+        hist_data[i] -> GetXaxis() -> SetTitle("Cluster size");
+        hist_data[i] -> GetYaxis() -> SetTitle("A.U.");
+        // hist_data[i] -> GetYaxis() -> SetRangeUser(0,1);
 
-        hist_comp[i] -> SetLineWidth(3);
-        // hist_comp[i] -> SetTitle(Form("Run61, cluster size, all clusters, layer : %i",i));
-        hist_comp[i] -> GetXaxis() -> SetTitle("Cluster size");
-        hist_comp[i] -> GetYaxis() -> SetTitle("A.U.");
+        hist_MC[i] = new TH1F ("","",20,0-3,20-3);
+        hist_MC[i] -> SetLineColor( TColor::GetColor("#A08144") );
+        hist_MC[i] -> SetLineWidth(3);
+        hist_MC[i] -> SetTitle(Form("%s, all clusters, layer-%i",run_ID.Data(),i));
+        if (statsbox_bool == false) hist_MC[i] -> SetStats(0); // note : remove the box
+
+        // hist_MC[i] -> SetTitle(Form("Run61, cluster size, all clusters, layer : %i",i));
+        hist_MC[i] -> GetXaxis() -> SetTitle("Cluster size");
+        hist_MC[i] -> GetYaxis() -> SetTitle("A.U.");
+        hist_MC[i] -> GetYaxis() -> SetTitleSize   (0.06);
+        hist_MC[i] -> GetYaxis() -> SetTitleOffset (0.70);
+        hist_MC[i] -> GetYaxis() -> SetRangeUser(0,1);
     }
 
-    legend1 -> AddEntry (hist_comp[0], "Run61, Data",  "pl");
-    legend1 -> AddEntry (hist[0], "Run61, MC",  "f");
+    legend1 -> AddEntry (hist_data[0], Form("%s, Data",run_ID.Data()),  "pl");
+    legend1 -> AddEntry (hist_MC[0], Form("%s, MC",run_ID.Data()),  "f");
 
     for (int i = 0; i < input_cluster_vec.size(); i++)
     {
         for (int i1 = 0; i1 < input_cluster_vec[i].cluster_layer.size(); i1++)
         {
-            hist[ input_cluster_vec[i].cluster_layer[i1] ] -> Fill( input_cluster_vec[i].cluster_hit[i1] );
+            hist_data[ input_cluster_vec[i].cluster_layer[i1] ] -> Fill( input_cluster_vec[i].cluster_hit[i1] );
         }
     }
 
@@ -1029,28 +1050,44 @@ void cluster_size_all_dist_compare (vector<cluster_str> input_cluster_vec, vecto
     {
         for (int i1 = 0; i1 < input_cluster_vec_compare[i].cluster_layer.size(); i1++)
         {
-            hist_comp[ input_cluster_vec_compare[i].cluster_layer[i1] ] -> Fill( input_cluster_vec_compare[i].cluster_hit[i1] );
+            hist_MC[ input_cluster_vec_compare[i].cluster_layer[i1] ] -> Fill( input_cluster_vec_compare[i].cluster_hit[i1] );
         }
     }
 
-    hist[0]->Scale(1./hist[0]->Integral(-1,-1));
-    hist[1]->Scale(1./hist[1]->Integral(-1,-1));
-    hist[2]->Scale(1./hist[2]->Integral(-1,-1));
+    hist_data[0]->Scale(1./hist_data[0]->Integral(-1,-1));
+    hist_data[1]->Scale(1./hist_data[1]->Integral(-1,-1));
+    hist_data[2]->Scale(1./hist_data[2]->Integral(-1,-1));
 
-    hist_comp[0]->Scale(1./hist_comp[0]->Integral(-1,-1));
-    hist_comp[1]->Scale(1./hist_comp[1]->Integral(-1,-1));
-    hist_comp[2]->Scale(1./hist_comp[2]->Integral(-1,-1));
+    hist_MC[0]->Scale(1./hist_MC[0]->Integral(-1,-1));
+    hist_MC[1]->Scale(1./hist_MC[1]->Integral(-1,-1));
+    hist_MC[2]->Scale(1./hist_MC[2]->Integral(-1,-1));
     
+    double Y_axis_max = (linear_or_log) ? 1.1 : 10;
 
-    c1 -> Print( Form("%s/cluster_size_dist_comp_all.pdf(",folder_direction.Data()) );
+    hist_MC[0] -> SetMaximum(Y_axis_max);
+    hist_MC[1] -> SetMaximum(Y_axis_max);
+    hist_MC[2] -> SetMaximum(Y_axis_max);
+
+    c1 -> Print( Form("%s/%s_%s.pdf(",folder_direction.Data(),run_ID.Data(),rest_plot_name.Data()) );
     for (int i = 0; i < 3; i++)
     {
-        hist[i] -> Draw("hist");
-        hist_comp[i] -> Draw("ep same");
+        hist_ratio[i] = (TH1F*)hist_data[i] -> Clone(); 
+        hist_ratio[i] -> Divide (hist_MC[i]);
+
+        Characterize_Rate1D(hist_ratio[i],1);
+        
+        pad_obj -> cd();
+        hist_MC[i] -> Draw("hist");
+        hist_data[i] -> Draw("ep same");
         legend1 -> Draw("same");
-        c1 -> Print( Form("%s/cluster_size_dist_comp_all.pdf",folder_direction.Data()) );
+
+        pad_ratio -> cd();
+        hist_ratio[i] -> Draw("ep");
+
+
+        c1 -> Print( Form("%s/%s_%s.pdf",folder_direction.Data(),run_ID.Data(),rest_plot_name.Data()) );
     }
-    c1 -> Print( Form("%s/cluster_size_dist_comp_all.pdf)",folder_direction.Data()) );
+    c1 -> Print( Form("%s/%s_%s.pdf)",folder_direction.Data(),run_ID.Data(),rest_plot_name.Data()) );
 
     c1 -> Clear();
 
