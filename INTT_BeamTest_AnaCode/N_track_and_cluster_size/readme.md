@@ -9,7 +9,9 @@ The MC and data comparison is also included.
 
 The directory of data is "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/data/...". The results are also there.
 
-The main functions are in the NTrack_ClusterSize.h
+The main functions are in the "NTrack_ClusterSize.h"
+
+The runXX_dataMC.C calls the header file and gives the parameters
 
 Note that : 
 * for the MC file, the "track_single_cluster_v1.C" should be used to generate the cluster_information file
