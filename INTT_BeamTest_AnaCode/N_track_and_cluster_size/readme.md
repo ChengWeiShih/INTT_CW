@@ -7,7 +7,7 @@ The analysis mainly focus on :
 
 The MC and data comparison is also included.
 
-The directory of data is "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/data/..."
+The directory of data is "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/data/...". The results are also there.
 
 The main functions are in the NTrack_ClusterSize.h
 
