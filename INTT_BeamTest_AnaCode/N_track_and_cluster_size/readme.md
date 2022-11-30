@@ -11,3 +11,9 @@ The directory of data is "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/data/
 
 The main functions are in the NTrack_ClusterSize.h
 
+Note that : 
+* for the MC file, the "track_single_cluster_v1.C" should be used to generate the cluster_information file
+  * because the the ladder tilted problem doesn't need to be considered in MC 
+* for the data file, the "track_single_cluster_v2.C".
+  *the tilted of ladder along the longitudinal axis has to be taken into account.
+
