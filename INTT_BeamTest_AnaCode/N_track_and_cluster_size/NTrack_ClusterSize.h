@@ -11,6 +11,9 @@ TString color_code [8]={"#343434","#1A3947","#566575","#797983","#EFBD9D","#FCA2
 TString color_code_2 [8]={"#CC768D","#19768D","#DDA573","#009193","#6E9193","#941100","#A08144","#517E66"};
 double noise_hit_distance = 0.234; // note : 3 sigma of the l1 residual width
 double actual_xpos [3] = {0,29.552,59.104}; 
+double distance_to_sci = 183.5;
+
+#include "vector_stddev.h"
 
 // double slope_cut = 0.4; // note : the parameter for the DUT
 
@@ -57,6 +60,8 @@ struct noise_event_str{
 };
 
 struct pol1_info{
+    int eID;
+    int chip_id;
     double slope;
     double offset;
 };
@@ -74,6 +79,10 @@ struct multi_track_str{
     
 };
 
+struct edge_finder_str{
+    double hist_left_edge;
+    double hist_right_edge;
+};
 
 
 struct DUT_str{
@@ -84,7 +93,7 @@ struct DUT_str{
 };
 
 
-void Characterize_Pad (TPad *pad, float left, float right, float top, float bottom, int logY, int setgrid_bool)
+void Characterize_Pad (TPad *pad, float left = 0.2, float right = 0.05, float top = 0.1, float bottom = 0.15, int logY = 0, int setgrid_bool = 1)
 {
 	if (setgrid_bool == true) {pad -> SetGrid (1, 1);}
 	pad -> SetLeftMargin   (left);
@@ -94,7 +103,7 @@ void Characterize_Pad (TPad *pad, float left, float right, float top, float bott
 	pad -> SetLogy (logY);
 }
 
-void Characterize_Rate1D (TH1F *hist,  int hcolour)
+void Characterize_Rate1F (TH1F *hist,  int hcolour)
 {
 	float ratio = 7.0/3.0;
 	hist -> SetTitle       ("");
@@ -118,6 +127,38 @@ void Characterize_Rate1D (TH1F *hist,  int hcolour)
 	hist -> GetYaxis() -> SetNdivisions  (505);
 
     hist -> SetStats(0);
+}
+
+void Characterize_Hist1F (TH1F *hist,  int statsbox = 0, TString color_ID = "#1A3947")
+{
+	float ratio = 1.;
+	hist -> SetTitle       ("");
+
+	hist -> SetLineColor   (TColor::GetColor(color_ID));
+    hist -> SetLineWidth   (2);
+
+	hist -> SetMarkerColor (TColor::GetColor(color_ID));
+	hist -> SetMarkerStyle (20);
+	hist -> SetMarkerSize  (0.8);
+	// hist -> SetFillColor   (TColor::GetColor(color_ID));
+
+	hist -> GetXaxis() -> SetTitleSize   (0.052*ratio);
+	hist -> GetXaxis() -> SetTitleOffset (0.940);
+
+	hist -> GetXaxis() -> SetLabelSize   (0.042*ratio);
+	hist -> GetXaxis() -> SetLabelOffset (0.004*ratio);
+
+	hist -> GetYaxis() -> SetTitle       ("Data/MC");
+	hist -> GetYaxis() -> SetTitleSize   (0.052*ratio);
+	hist -> GetYaxis() -> SetTitleOffset (1.8);
+
+	hist -> GetYaxis() -> SetLabelSize   (0.042*ratio);
+	hist -> GetYaxis() -> SetLabelOffset (0.006);
+	// hist -> GetYaxis() -> SetRangeUser   (0.4, 3);
+
+	hist -> GetYaxis() -> SetNdivisions  (505);
+
+    if (statsbox == 0) {hist -> SetStats(0);}
 }
 
 vector<cluster_str> cluster_read_and_build (TString folder_direction, TString file_name, TString cluster_file_name, int study_chip)
@@ -336,7 +377,12 @@ multi_track_str multiple_track_removal ( vector<cluster_reformat_str> input_clus
                 else 
                 {
                     multi_track_count += 1;
+
                     cout<<"find the "<< multi_track_count <<"th track !! chip ID : "<< i1+1<<" eID : "<<input_cluster_vec[i].eID<<" position : "<<hit3_best_fit_picker_info[3]<<" "<<hit3_best_fit_picker_info[4]<<" "<<hit3_best_fit_picker_info[5]<<endl;
+
+                    // if ( multi_track_count > 1 ) {cout<<"find the "<< multi_track_count <<"th track !! chip ID : "<< i1+1<<" eID : "<<input_cluster_vec[i].eID<<" position : "<<hit3_best_fit_picker_info[3]<<" "<<hit3_best_fit_picker_info[4]<<" "<<hit3_best_fit_picker_info[5]<<endl;}
+                    // else if ( i % 1000 == 0 ) {cout<<"find the "<< multi_track_count <<"th track !! chip ID : "<< i1+1<<" eID : "<<input_cluster_vec[i].eID<<" position : "<<hit3_best_fit_picker_info[3]<<" "<<hit3_best_fit_picker_info[4]<<" "<<hit3_best_fit_picker_info[5]<<endl;}
+                    
 
                     chip_track_count[i1]+=1;
 
@@ -355,6 +401,8 @@ multi_track_str multiple_track_removal ( vector<cluster_reformat_str> input_clus
 
                     // note : for the track correlation study
                     pol1_info pol1_info_unit;
+                    pol1_info_unit.eID = input_cluster_vec[i].eID;
+                    pol1_info_unit.chip_id = i1 + 1;
                     pol1_info_unit.slope = hit3_best_fit_picker_info[7];
                     pol1_info_unit.offset = hit3_best_fit_picker_info[6]; // note : offset
 
@@ -442,20 +490,82 @@ void post_multi_N_track (multi_track_str input_vec, TString folder_direction)
     c1 -> Clear();
 }
 
+edge_finder_str hist_edge_finder_hist (TH1F * input_hist)
+{   
+    int N_bins = input_hist -> GetNbinsX();
+    vector<double> bin_content_vec; bin_content_vec.clear();
+
+    int sort_bin_content_index[N_bins];
+
+    for (int i = 0; i < N_bins; i++)
+    {
+        bin_content_vec.push_back( input_hist -> GetBinContent(i+1) );
+        cout<<i+1<<" "<<input_hist -> GetBinContent(i+1)<<endl;
+    }
+
+    TMath::Sort(N_bins, &bin_content_vec[0], sort_bin_content_index);
+    
+    // note : to calculate average of the top N bins, in order to find the edges 
+    int top_N = 45;
+    vector<double> top_N_vec; top_N_vec.clear(); 
+    for (int i = 0; i < top_N; i++)
+    {
+        top_N_vec.push_back( bin_content_vec[ sort_bin_content_index[i] ] );
+    }
+
+    double top_N_avg = vector_average(top_N_vec); // note : calculate the average of the top 20 bins
+    double top_N_stddev = vector_stddev(top_N_vec); // note : calculate the stddev of the top 20 bins
+
+    double left_edge = 1; // note : first bin for func "BinContent"
+    double right_edge = N_bins; 
+
+    cout<<"the mean entry of top "<<top_N<<" : "<<top_N_avg<<" std : "<<top_N_stddev<<endl;
+    
+    // note : run when condition is achieved.
+    while ( input_hist -> GetBinContent(left_edge) < top_N_avg ) // note : left edge
+    {
+        left_edge += 1;
+    }
+
+    while ( input_hist -> GetBinContent(right_edge) < top_N_avg ) // note : right edge
+    {
+        right_edge -= 1; 
+    }
+
+    cout<<"extrapolation edge finder, left : "<<left_edge<<" right edge : "<<right_edge<<endl;
+
+    edge_finder_str output_str;
+    output_str.hist_left_edge = left_edge;
+    output_str.hist_right_edge = right_edge;
+
+    return output_str;
+
+}
+
 // note : this is the more advanced version of the N_track_distribution
 // note : because some of the track may not from the beam
 // note : what we can do is to check the extrapolation position, and to see whether the position is within the scintillator area
-void post_multi_N_track_extrapolation (multi_track_str input_vec, TString folder_direction)
+edge_finder_str post_multi_N_track_extrapolation (multi_track_str input_vec, TString folder_direction, TString file_name)
 {
     TCanvas * c1 = new TCanvas("c1","c1",800,800);
     c1 -> cd();
-    // c1 -> SetLogy();
 
+    TPad *pad_obj = new TPad(Form("pad_obj"), "", 0.0, 0.0, 1.0, 1.0);
+    Characterize_Pad(pad_obj);
+    pad_obj -> Draw();
+
+    cout<<"making the extrapolation hist"<<endl;
+    sleep(2);
+        
     int good_tracking_counting = 0;
 
-    double distance_to_sci = 183.5;
-
     TH1F * extra_pos_hist = new TH1F("","",100,-20,20);
+    Characterize_Hist1F(extra_pos_hist, 1);
+
+    extra_pos_hist -> SetTitle("extrapolation position of the tracks");
+    extra_pos_hist -> GetXaxis() -> SetTitle("position (mm)");
+    extra_pos_hist -> GetYaxis() -> SetTitle("Entry");
+
     for (int i = 0; i < input_vec.track_fit_info_vec.size(); i++) // note : number of event which has at least one good track 
     {
         for ( int i1 = 0; i1 < input_vec.track_fit_info_vec[i].size(); i1++ ) // note : number of good track (criteria by fitting) in single event.
@@ -465,14 +575,70 @@ void post_multi_N_track_extrapolation (multi_track_str input_vec, TString folder
 
     }
 
-    extra_pos_hist -> SetTitle("extrapolation position of the tracks");
-    extra_pos_hist -> GetXaxis() -> SetTitle("position (mm)");
-    extra_pos_hist -> GetYaxis() -> SetTitle("Entry");
-
+    pad_obj -> cd();
     extra_pos_hist -> Draw("hist");
 
-    c1 -> Print( Form("%s/PostTrack_track_extrapolation.pdf",folder_direction.Data()) );
+    c1 -> Print( Form("%s/%s_PostTrack_track_extrapolation.pdf",folder_direction.Data(),file_name.Data()) );
     c1 -> Clear();
+
+    edge_finder_str output_str = hist_edge_finder_hist(extra_pos_hist);
+
+    return output_str;
+}
+
+void post_multi_N_track_check (multi_track_str input_vec, TString run_ID, TString folder_direction, TString file_name)
+{
+
+    TCanvas * c1 = new TCanvas("c1","c1",800,800);
+    c1 -> cd();
+
+    TPad *pad_obj = new TPad(Form("pad_obj"), "", 0.0, 0.0, 1.0, 1.0);
+    Characterize_Pad(pad_obj, 0.2,  0.05,  0.1,  0.15, 1, 1);
+    pad_obj -> Draw();
+
+    double left_edge = -8.;
+    double right_edge = 6.;
+
+    cout<<"working on checking the extrapolation position"<<endl;
+    sleep(3);
+    cout<<"size of the imput vec : "<<input_vec.track_fit_info_vec.size()<<endl;
+
+    double extrapolation_pos;
+    int event_track_counting = 0;
+
+    TH1F * event_N_track_hist = new TH1F("","",20,0-3,20-3);
+    Characterize_Hist1F(event_N_track_hist,0);
+
+    event_N_track_hist -> SetTitle(Form("%s, N track distribution",run_ID.Data()));
+    event_N_track_hist -> GetXaxis() -> SetTitle("N track");
+    event_N_track_hist -> GetYaxis() -> SetTitle("Entry");
+
+
+    for ( int i = 0; i < input_vec.track_fit_info_vec.size(); i++ )
+    {
+        for ( int i1 = 0; i1 < input_vec.track_fit_info_vec[i].size(); i1++  )
+        {
+
+            extrapolation_pos = input_vec.track_fit_info_vec[i][i1].slope * distance_to_sci + input_vec.track_fit_info_vec[i][i1].offset;
+
+            if ( extrapolation_pos > left_edge && extrapolation_pos < right_edge )
+            {
+                event_track_counting += 1;
+            }
+        }
+        
+        if (event_track_counting == 3) cout<<"Post-check, 3-tracks event found !, eID : "<<input_vec.track_fit_info_vec[i][0].eID<<endl;
+
+        if ( event_track_counting != 0 ) event_N_track_hist -> Fill(event_track_counting);
+        event_track_counting = 0;
+    }
+
+    pad_obj -> cd();
+
+    event_N_track_hist -> Draw("hist");
+    c1 -> Print( Form("%s/%s_NTrack_PostCheck_Ledge_%.2f_Redge_%.2f.pdf",folder_direction.Data(),file_name.Data(),left_edge,right_edge) );
+    c1 -> Clear();
+    
 }
 
 
@@ -1074,7 +1240,7 @@ void cluster_size_all_dist_compare (vector<cluster_str> input_cluster_vec, vecto
         hist_ratio[i] = (TH1F*)hist_data[i] -> Clone(); 
         hist_ratio[i] -> Divide (hist_MC[i]);
 
-        Characterize_Rate1D(hist_ratio[i],1);
+        Characterize_Rate1F(hist_ratio[i],1);
         
         pad_obj -> cd();
         hist_MC[i] -> Draw("hist");

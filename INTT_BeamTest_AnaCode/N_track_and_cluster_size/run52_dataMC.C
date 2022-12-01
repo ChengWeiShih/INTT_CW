@@ -22,11 +22,19 @@ void run52_dataMC ()
     vector<cluster_str> cluster_str_vec_MC; cluster_str_vec_MC.clear();
     cluster_str_vec_MC = cluster_read_and_build(folder_direction_MC, file_name, cluster_file_name_MC, study_chip_MC);
 
+    // note : reformat
+    vector<cluster_reformat_str> cluster_reformat_str_vec_data; cluster_reformat_str_vec_data.clear();
+    cluster_reformat_str_vec_data = cluster_reformat(cluster_str_vec_data);
 
+    multi_track_str post_multi_vec_data = multiple_track_removal(cluster_reformat_str_vec_data);
 
     // cluster_size_all_dist(cluster_str_vec,folder_direction);
 
-    cluster_size_all_dist_compare(cluster_str_vec_data, cluster_str_vec_MC,folder_direction_data, run_ID, linear_or_log, statsbox_bool);
+    // note : make the plot
+    // cluster_size_all_dist_compare(cluster_str_vec_data, cluster_str_vec_MC,folder_direction_data, run_ID, linear_or_log, statsbox_bool);
+    // post_multi_N_track(post_multi_vec_data);
 
+    edge_finder_str hist_edge_data = post_multi_N_track_extrapolation(post_multi_vec_data,folder_direction_data,cluster_file_name_data);
+    post_multi_N_track_check(post_multi_vec_data,run_ID,folder_direction_data,cluster_file_name_data);
 
 }
