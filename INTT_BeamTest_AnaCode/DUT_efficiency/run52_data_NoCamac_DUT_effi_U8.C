@@ -1,11 +1,11 @@
-#include "run52_par.h"
+#include "run52_par_U8.h"
 #include "DUT_test_v1.h"
 #include "SU.h" // note : read the run scan result.
 
 // note : the directory   /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/DUT_efficiency
 // note : the directory   /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency
 
-void run52_data_NoCamac_DUT_effi ()
+void run52_data_NoCamac_DUT_effi_U8 ()
 {
     //title : the parameters are now all moved to the "run52_par.h"
     

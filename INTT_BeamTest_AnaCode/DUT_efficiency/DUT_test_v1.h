@@ -633,6 +633,10 @@ DUT_str efficiency_DUT_method_v2 (vector<cluster_reformat_str> input_cluster_vec
 
                     }
                 }
+
+                grr->Delete();
+                linear_fit->Delete();
+
             }
 
             event_residual = hit3_best_fit_picker_info[4] - ( l0_l2_avg_pos );
@@ -892,6 +896,9 @@ vector<vector<double>> efficiency_DUT_method_v2_SU (vector<cluster_reformat_str>
 
                             }
                         }
+
+                        grr->Delete();
+                        linear_fit->Delete();
                     }
 
                     event_residual = hit3_best_fit_picker_info[4] - ( l0_l2_avg_pos );
@@ -1055,6 +1062,9 @@ vector<vector<double>> efficiency_DUT_method_v2_SU (vector<cluster_reformat_str>
 
                             }
                         }
+
+                        grr->Delete();
+                        linear_fit->Delete();
                     }
 
                     event_residual = hit3_best_fit_picker_info[4] - ( l0_l2_avg_pos );
@@ -1218,6 +1228,9 @@ vector<vector<double>> efficiency_DUT_method_v2_SU (vector<cluster_reformat_str>
 
                             }
                         }
+
+                        grr->Delete();
+                        linear_fit->Delete();
                     }
 
                     event_residual = hit3_best_fit_picker_info[4] - ( l0_l2_avg_pos );

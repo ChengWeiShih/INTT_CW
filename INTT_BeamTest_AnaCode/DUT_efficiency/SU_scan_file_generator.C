@@ -1,5 +1,6 @@
 // note : add the runXX_par.h in advance
-// #include "run52_par.h"
+// #include "run52_par_U9.h"
+// #include "run52_par_U8.h"
 // #include "run89_par.h" 
 #include "DUT_test_v1.h"
 

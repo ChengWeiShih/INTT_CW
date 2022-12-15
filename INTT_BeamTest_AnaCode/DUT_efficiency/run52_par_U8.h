@@ -19,7 +19,7 @@ bool file_generated = true; // note : this is the protection key, to avoid re-ge
 // note ============== ============== ============== we may change the following ============== ============== ==============
 
 // todo : changed
-TString folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency/run52_data_NoCamac";
+TString folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency/run52_data_NoCamac_U8";
 TString file_name = "not_used"; // note : not used
 TString cluster_file_name = "cluster_information_offset-0.2908_adcinfo_NoCamac";
 int study_chip = 8; 
