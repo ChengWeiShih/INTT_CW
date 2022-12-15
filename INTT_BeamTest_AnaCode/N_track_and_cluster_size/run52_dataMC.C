@@ -16,25 +16,43 @@ void run52_dataMC ()
     bool linear_or_log = false; // note : true -> linear
     bool statsbox_bool = false; // note : with the box, false -> remove the box
 
+    // note : data
     vector<cluster_str> cluster_str_vec_data; cluster_str_vec_data.clear();
     cluster_str_vec_data = cluster_read_and_build(folder_direction_data, file_name, cluster_file_name_data, study_chip_data);
 
+    // note : MC
     vector<cluster_str> cluster_str_vec_MC; cluster_str_vec_MC.clear();
     cluster_str_vec_MC = cluster_read_and_build(folder_direction_MC, file_name, cluster_file_name_MC, study_chip_MC);
 
-    // note : reformat
+    // note : reformat data
     vector<cluster_reformat_str> cluster_reformat_str_vec_data; cluster_reformat_str_vec_data.clear();
     cluster_reformat_str_vec_data = cluster_reformat(cluster_str_vec_data);
 
+    // note : reformat MC
+    vector<cluster_reformat_str> cluster_reformat_str_vec_MC; cluster_reformat_str_vec_MC.clear();
+    cluster_reformat_str_vec_MC = cluster_reformat(cluster_str_vec_MC);
+
+    // note : do the tracking, data
     multi_track_str post_multi_vec_data = multiple_track_removal(cluster_reformat_str_vec_data);
 
-    // cluster_size_all_dist(cluster_str_vec,folder_direction);
+    // note : do the tracking, MC
+    multi_track_str post_multi_vec_MC = multiple_track_removal(cluster_reformat_str_vec_MC);
+
 
     // note : make the plot
     // cluster_size_all_dist_compare(cluster_str_vec_data, cluster_str_vec_MC,folder_direction_data, run_ID, linear_or_log, statsbox_bool);
     // post_multi_N_track(post_multi_vec_data);
 
+    // note : make the extrapolation position distribution, data
     edge_finder_str hist_edge_data = post_multi_N_track_extrapolation(post_multi_vec_data,folder_direction_data,cluster_file_name_data);
-    post_multi_N_track_check(post_multi_vec_data,run_ID,folder_direction_data,cluster_file_name_data);
+    TH1F* Ntrack_hist_data = post_multi_N_track_check(post_multi_vec_data,run_ID,folder_direction_data,cluster_file_name_data);
+
+    // note : make the extrapolation position distribution, MC
+    edge_finder_str hist_edge_MC = post_multi_N_track_extrapolation(post_multi_vec_MC,folder_direction_MC,cluster_file_name_MC);
+    TH1F * Ntrack_hist_MC = post_multi_N_track_check(post_multi_vec_MC,run_ID,folder_direction_MC,cluster_file_name_MC);
+    
+    // note : N track distribution comparison data, MC
+    N_track_dataMC_comp(Ntrack_hist_data, Ntrack_hist_MC, folder_direction_data, run_ID);
+
 
 }

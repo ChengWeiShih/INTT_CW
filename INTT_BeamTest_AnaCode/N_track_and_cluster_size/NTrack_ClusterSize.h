@@ -257,7 +257,7 @@ vector<cluster_reformat_str> cluster_reformat ( vector<cluster_str> input_vec )
 }
 
 // note : to remove the multi-tracks in the event
-multi_track_str multiple_track_removal ( vector<cluster_reformat_str> input_cluster_vec )
+multi_track_str multiple_track_removal ( vector<cluster_reformat_str> input_cluster_vec, bool print_all_track = false )
 {
     vector<noise_event_str> output_vec; output_vec.clear();
     noise_event_str noise_container; noise_container.noise_event.clear();
@@ -378,10 +378,18 @@ multi_track_str multiple_track_removal ( vector<cluster_reformat_str> input_clus
                 {
                     multi_track_count += 1;
 
-                    cout<<"find the "<< multi_track_count <<"th track !! chip ID : "<< i1+1<<" eID : "<<input_cluster_vec[i].eID<<" position : "<<hit3_best_fit_picker_info[3]<<" "<<hit3_best_fit_picker_info[4]<<" "<<hit3_best_fit_picker_info[5]<<endl;
+                    if (print_all_track == true)
+                    {
+                        cout<<"find the "<< multi_track_count <<"th track !! chip ID : "<< i1+1<<" eID : "<<input_cluster_vec[i].eID<<" position : "<<hit3_best_fit_picker_info[3]<<" "<<hit3_best_fit_picker_info[4]<<" "<<hit3_best_fit_picker_info[5]<<endl;
+                    }
+                    else if (print_all_track != true)
+                    {
+                        if ( multi_track_count > 1 ) {cout<<"find the "<< multi_track_count <<"th track !! chip ID : "<< i1+1<<" eID : "<<input_cluster_vec[i].eID<<" position : "<<hit3_best_fit_picker_info[3]<<" "<<hit3_best_fit_picker_info[4]<<" "<<hit3_best_fit_picker_info[5]<<endl;}
+                        else if ( i % 1000 == 0 ) {cout<<"find the "<< multi_track_count <<"th track !! chip ID : "<< i1+1<<" eID : "<<input_cluster_vec[i].eID<<" position : "<<hit3_best_fit_picker_info[3]<<" "<<hit3_best_fit_picker_info[4]<<" "<<hit3_best_fit_picker_info[5]<<endl;}
+                    }
+                    
 
-                    // if ( multi_track_count > 1 ) {cout<<"find the "<< multi_track_count <<"th track !! chip ID : "<< i1+1<<" eID : "<<input_cluster_vec[i].eID<<" position : "<<hit3_best_fit_picker_info[3]<<" "<<hit3_best_fit_picker_info[4]<<" "<<hit3_best_fit_picker_info[5]<<endl;}
-                    // else if ( i % 1000 == 0 ) {cout<<"find the "<< multi_track_count <<"th track !! chip ID : "<< i1+1<<" eID : "<<input_cluster_vec[i].eID<<" position : "<<hit3_best_fit_picker_info[3]<<" "<<hit3_best_fit_picker_info[4]<<" "<<hit3_best_fit_picker_info[5]<<endl;}
+                    
                     
 
                     chip_track_count[i1]+=1;
@@ -586,7 +594,25 @@ edge_finder_str post_multi_N_track_extrapolation (multi_track_str input_vec, TSt
     return output_str;
 }
 
-void post_multi_N_track_check (multi_track_str input_vec, TString run_ID, TString folder_direction, TString file_name)
+vector<double> fill_value()
+{
+
+    double left_edge;
+    double right_edge;
+    cout<<"the lefe edge : ";
+    cin>>left_edge;
+
+    cout<<" "<<endl;
+    cout<<"the right edge : ";
+    cin>>right_edge;
+    
+    vector<double> output_vec; output_vec.clear();
+    output_vec.push_back(left_edge);
+    output_vec.push_back(right_edge);
+    return output_vec;
+}
+
+TH1F* post_multi_N_track_check (multi_track_str input_vec, TString run_ID, TString folder_direction, TString file_name)
 {
 
     TCanvas * c1 = new TCanvas("c1","c1",800,800);
@@ -596,8 +622,10 @@ void post_multi_N_track_check (multi_track_str input_vec, TString run_ID, TStrin
     Characterize_Pad(pad_obj, 0.2,  0.05,  0.1,  0.15, 1, 1);
     pad_obj -> Draw();
 
-    double left_edge = -8.;
-    double right_edge = 6.;
+    vector<double> left_right_edge_vec = fill_value();
+
+    double left_edge = left_right_edge_vec[0];
+    double right_edge = left_right_edge_vec[1];
 
     cout<<"working on checking the extrapolation position"<<endl;
     sleep(3);
@@ -638,9 +666,96 @@ void post_multi_N_track_check (multi_track_str input_vec, TString run_ID, TStrin
     event_N_track_hist -> Draw("hist");
     c1 -> Print( Form("%s/%s_NTrack_PostCheck_Ledge_%.2f_Redge_%.2f.pdf",folder_direction.Data(),file_name.Data(),left_edge,right_edge) );
     c1 -> Clear();
+
+    return event_N_track_hist;
     
 }
 
+void N_track_dataMC_comp (TH1F* hist_data, TH1F* hist_MC, TString folder_direction, TString run_ID, bool linear_or_log = false, bool statsbox_bool = false)
+{
+
+    TCanvas * c3 = new TCanvas("c3","c3",800,800);
+    c3 -> cd();
+
+    // note : 0) is for SetGrid
+    // note : 0,0) is for logY
+    TPad *pad_obj = new TPad(Form("pad_obj"), "", 0.0, 0.30, 1.0, 1.0);
+    Characterize_Pad(pad_obj, 0.15, 0.05, 0.1, 0.005, 0, 0);
+    pad_obj -> Draw();
+
+    TPad *pad_ratio = new TPad(Form("pad_ratio"), "", 0.0, 0.0, 1.0, 0.30);
+    Characterize_Pad(pad_ratio, 0.15, 0.05, 0.02, 0.350, 0, 1);
+    pad_ratio -> Draw();
+
+    TLegend *legend1 = new TLegend (0.5, 0.7, 0.75, 0.85);
+	legend1 -> SetTextSize (0.050);
+	// legend1 -> SetNColumns (4);
+
+    TString rest_plot_name;
+    if (linear_or_log == true) // note : linear
+    {
+        rest_plot_name = "PostCheck_NTrack_Linear";
+    }
+    else if (linear_or_log == false) // note : log
+    {   
+        pad_obj -> SetLogy();
+        rest_plot_name = "PostCheck_NTrack_Log";
+    }
+
+    hist_data -> SetLineColor( TColor::GetColor("#1A3947") );
+    hist_data -> SetLineWidth(3);
+    hist_data -> SetMarkerColor(TColor::GetColor("#1A3947"));
+    hist_data -> SetMarkerSize(1);
+    hist_data -> SetMarkerStyle(20);
+
+    hist_data -> GetXaxis() -> SetTitle("N tracks");
+    hist_data -> GetYaxis() -> SetTitle("A.U.");
+    // hist_data -> GetYaxis() -> SetRangeUser(0,1);
+
+    hist_MC -> SetLineColor( TColor::GetColor("#A08144") );
+    hist_MC -> SetLineWidth(3);
+    hist_MC -> SetTitle(Form("%s, Post extrapolation check",run_ID.Data()));
+    if (statsbox_bool == false) hist_MC -> SetStats(0); // note : remove the box
+
+    // hist_MC -> SetTitle(Form("Run61, cluster size, all clusters, layer : %i",i));
+    hist_MC -> GetXaxis() -> SetTitle("N tracks");
+    hist_MC -> GetYaxis() -> SetTitle("A.U.");
+    hist_MC -> GetYaxis() -> SetTitleSize   (0.06);
+    hist_MC -> GetYaxis() -> SetTitleOffset (0.70);
+    hist_MC -> GetYaxis() -> SetRangeUser(0,1);
+
+    // note : normalize
+    hist_data->Scale(1./hist_data->Integral(-1,-1));
+    hist_MC->Scale(1./hist_MC->Integral(-1,-1));
+    
+
+    legend1 -> AddEntry (hist_data, Form("%s, Data",run_ID.Data()),  "pl");
+    legend1 -> AddEntry (hist_MC, Form("%s, MC",run_ID.Data()),  "f");
+    
+     
+    double Y_axis_max = (linear_or_log) ? 1.1 : 10;
+
+    hist_MC -> SetMaximum(Y_axis_max);
+
+
+    TH1F * hist_ratio = (TH1F*)hist_data -> Clone(); 
+    hist_ratio -> Divide (hist_MC);
+
+    Characterize_Rate1F(hist_ratio,1);
+    
+    pad_obj -> cd();
+    hist_MC -> Draw("hist");
+    hist_data -> Draw("ep same");
+    legend1 -> Draw("same");
+
+    pad_ratio -> cd();
+    hist_ratio -> Draw("ep");
+
+
+    c3 -> Print( Form("%s/%s_%s.pdf",folder_direction.Data(),run_ID.Data(),rest_plot_name.Data()) );
+    c3 -> Clear();
+    
+}
 
 void post_multi_noise_hitmap (vector<noise_event_str> input_noise_vec, TString folder_direction)
 {
