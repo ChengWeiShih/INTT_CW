@@ -103,7 +103,7 @@ vector<cluster_str> cluster_read_and_build (TString folder_direction, TString fi
 }
 
 // note : change the structure of the data
-vector<cluster_reformat_str> cluster_reformat ( vector<cluster_str> input_vec )
+vector<cluster_reformat_str> cluster_reformat ( vector<cluster_str> input_vec, int study_chip, double amount_of_alignment )
 {
 
     vector<cluster_reformat_str> output_vec; output_vec.clear();
@@ -126,8 +126,17 @@ vector<cluster_reformat_str> cluster_reformat ( vector<cluster_str> input_vec )
         for (int i1 = 0; i1 < input_vec[i].cluster_layer.size(); i1++)
         {
             output_vec[ output_vec.size() - 1 ].cluster_hit[ input_vec[i].cluster_chip[i1] - 1 ][ input_vec[i].cluster_layer[i1] ].push_back( input_vec[i].cluster_hit[i1] );
-            output_vec[ output_vec.size() - 1 ].cluster_pos[ input_vec[i].cluster_chip[i1] - 1 ][ input_vec[i].cluster_layer[i1] ].push_back( input_vec[i].cluster_position[i1] );
             output_vec[ output_vec.size() - 1 ].cluster_adc[ input_vec[i].cluster_chip[i1] - 1 ][ input_vec[i].cluster_layer[i1] ].push_back( input_vec[i].cluster_adc[i1] );
+            
+            if (input_vec[i].cluster_chip[i1] == study_chip && input_vec[i].cluster_layer[i1] == 1) // note : the study_chip of the middle layer is aligned.
+            {
+                output_vec[ output_vec.size() - 1 ].cluster_pos[ input_vec[i].cluster_chip[i1] - 1 ][ input_vec[i].cluster_layer[i1] ].push_back( input_vec[i].cluster_position[i1] + amount_of_alignment);
+            }
+            else 
+            {
+                output_vec[ output_vec.size() - 1 ].cluster_pos[ input_vec[i].cluster_chip[i1] - 1 ][ input_vec[i].cluster_layer[i1] ].push_back( input_vec[i].cluster_position[i1] );
+            }
+            
         }
     }
 
@@ -702,6 +711,270 @@ DUT_str efficiency_DUT_method_v2 (vector<cluster_reformat_str> input_cluster_vec
 
 }
 
+// note : this is just for the alignment plots
+// note : after tracking, only apply two criteria
+DUT_str Alignment_DUT (vector<cluster_reformat_str> input_cluster_vec, int study_chip)
+{ 
+	double edge_exclusion_bottom = (lower_section_initial - INTT_strip_width / 2.) + INTT_strip_width * double(boundary_cut);
+	double edge_exclusion_upper = ( INTT_strip_width * 128. ) - INTT_strip_width * double(boundary_cut);
+
+    vector<int> receiver_unit_clu_size[13][3]; // note : for abbreviation, for hit 
+    vector<double> receiver_unit_clu_pos[13][3];
+    vector<double> receiver_unit_clu_adc[13][3];
+
+    // note : the clusters that pass the pre-selections (cluster cut / event cut) will be saved here.
+
+    TF1 * linear_fit;
+    TGraph * grr;
+
+    double chi2_register = 0; 
+    double cluster_register_l0 = 0;
+    double cluster_register_l1 = 0;
+    double cluster_register_l2 = 0;
+    double hit3_best_fit_picker_info[7]; // note : first 3 : residual by fittting, second 3 : the selected positions, the 7th : the middle-layer residual by the DUT method
+    double hit2_best_fit_picker_info[2]; // note : first 2 : the selected positions of the first and last layers.
+
+    int multi_track_count = 0; // note : this is for finding the multi_track, if we find a new good track, then +=1;
+
+    double hit2_slope;
+    double event_residual;
+
+    // note : for the output 
+    int track_111_count = 0;
+    int track_101_count = 0;
+    vector<double> middle_layer_residual; middle_layer_residual.clear();
+    vector<double> good_combination_slope_hit3; good_combination_slope_hit3.clear();
+    vector<double> good_combination_slope_hit2; good_combination_slope_hit2.clear();
+
+    vector<double> good_combination_l0_pos_hit3; good_combination_l0_pos_hit3.clear();
+    vector<double> good_combination_l1_pos_hit3; good_combination_l1_pos_hit3.clear();
+    vector<double> good_combination_l2_pos_hit3; good_combination_l2_pos_hit3.clear();
+
+    int event_counting_1  = 0;
+    int event_counting_2  = 0;
+    int event_counting_3  = 0;
+    int event_counting_4  = 0;
+    int event_counting_5  = 0;
+    int event_counting_6  = 0;
+    int event_counting_7  = 0;
+    int event_counting_8  = 0;
+    int event_counting_9  = 0;
+    int event_counting_10 = 0;
+    int event_counting_11 = 0;
+    int event_counting_12 = 0;
+
+    double l0_l2_avg_pos;
+
+    // note : in order to make the efficiency plot as function of position
+    vector<double> passed_middle_pos; passed_middle_pos.clear();
+    // note : middle layer no hits : 0
+    // note : middle layer has close hit : 1
+    // note : middle layer has a hit far from the prediction pos : 2.
+    vector<int> final_event_result; final_event_result.clear(); 
+
+
+    for (int i = 0; i < input_cluster_vec.size(); i++)
+    {
+        if (i % 1000 == 0){ cout<<"Doing the DUT test, eID : "<<input_cluster_vec[i].eID<<endl;}
+
+        // note : abbreviation
+        for (int i1 = 0; i1 < 13; i1++)
+        {
+            for (int i2 = 0; i2 < 3; i2++)
+            {
+                receiver_unit_clu_size[i1][i2] = input_cluster_vec[i].cluster_hit[ i1 ][i2];
+                receiver_unit_clu_pos[i1][i2] = input_cluster_vec[i].cluster_pos[ i1 ][i2];
+                receiver_unit_clu_adc[i1][i2] = input_cluster_vec[i].cluster_adc[ i1 ][i2];
+
+            }
+        }
+
+        // todo : the LoE
+        // todo :       -> right now, what I try is to make sure there is no cluster in the adjacent chips for all three layers (chip 8 and 10, for example)
+        // todo :       -> to avoid any suspicious events. 
+        // todo :       -> works well !!! 2022/11/23
+        // todo : the adc cut
+        // todo : cluster size 
+        // todo : cluster size combined
+        // todo : N cluster in layer 0 and layer 2
+        // todo : slope cut
+        // todo : the edge exclusion
+
+        // todo : residual cut
+        
+        event_counting_1 += 1;
+
+        // note : zero cluster in adjacent chips
+        if ( (receiver_unit_clu_size[study_chip-1-1][0].size()+receiver_unit_clu_size[study_chip-1-1][1].size()+receiver_unit_clu_size[study_chip-1-1][2].size()+receiver_unit_clu_size[study_chip-1+1][0].size()+receiver_unit_clu_size[study_chip-1+1][1].size()+receiver_unit_clu_size[study_chip-1+1][2].size()) != 0 ) continue;
+        event_counting_2 += 1;
+
+        // note : single cluster in l0 and l2
+        if (receiver_unit_clu_size[study_chip-1][0].size() != hit_allowed_in_adjacent_layers || receiver_unit_clu_size[study_chip-1][2].size() != hit_allowed_in_adjacent_layers) continue;
+        event_counting_3 += 1;
+
+        // note : standalone cluster size cut of l0 and l2
+        // if ( receiver_unit_clu_size[study_chip-1][0][0] <= cluster_size_requirement || receiver_unit_clu_size[study_chip-1][2][0] <= cluster_size_requirement ) continue;
+        // event_counting_4 += 1;
+
+        // note : standalone cluster adc cut
+        // if ( receiver_unit_clu_adc[study_chip-1][0][0] <= cluster_adc_value_requirement || receiver_unit_clu_adc[study_chip-1][2][0] <= cluster_adc_value_requirement ) continue;
+        // event_counting_5 += 1;
+
+        // note : combined cluster size cut
+        // if ( receiver_unit_clu_size[study_chip-1][0][0]+receiver_unit_clu_size[study_chip-1][2][0] <= cluster_size_requirement_combine ) continue;
+        // event_counting_6 += 1;
+
+
+        // note : edge exclusion cut of the l0
+        // if ( receiver_unit_clu_pos[study_chip-1][0][0] <= edge_exclusion_bottom || receiver_unit_clu_pos[study_chip-1][0][0] >= edge_exclusion_upper ) continue;
+        // event_counting_7 += 1;
+
+        // note : edge exclusion cut of the l2
+        // if ( receiver_unit_clu_pos[study_chip-1][2][0] <= edge_exclusion_bottom || receiver_unit_clu_pos[study_chip-1][2][0] >= edge_exclusion_upper ) continue;
+        // event_counting_8 += 1;
+
+        hit2_slope = (receiver_unit_clu_pos[study_chip-1][2][0] - receiver_unit_clu_pos[study_chip-1][0][0]) / actual_xpos[2] + slope_correction;
+        good_combination_slope_hit2.push_back(hit2_slope);
+
+        // note : the slope cut
+        // if ( fabs(hit2_slope) >= slope_cut ) continue;
+        // event_counting_9 += 1;
+        
+        l0_l2_avg_pos = ( receiver_unit_clu_pos[study_chip-1][0][0] + receiver_unit_clu_pos[study_chip-1][2][0] ) / 2.;
+
+        passed_middle_pos.push_back( l0_l2_avg_pos );
+
+        // note : to check the N clusters of the middle layer
+        if ( receiver_unit_clu_pos[study_chip-1][1].size() == 0 ) // note : no hits in the middle
+        {
+            event_counting_10 += 1;
+
+            final_event_result.push_back(0); // note : in order to make the detection efficiency as function of pos.
+
+            track_101_count += 1;
+            // cout<<"101 event, eID : "<<input_cluster_vec[i].eID<<" -> no cluster"<<endl;
+        }
+        else if ( receiver_unit_clu_pos[study_chip-1][1].size() > 0 ) // note : at least one hit in the middle
+        {
+            
+            for ( int l1 = 0; l1 < receiver_unit_clu_pos[study_chip-1][1].size(); l1++ )
+            {
+                double hit3_Y_data[3] = {receiver_unit_clu_pos[study_chip-1][0][0], receiver_unit_clu_pos[study_chip-1][1][l1], receiver_unit_clu_pos[study_chip-1][2][0]};
+
+                grr = new TGraph(3,actual_xpos,hit3_Y_data);
+                linear_fit = new TF1("linear_fit","pol1",-1,actual_xpos[2]+2);
+                grr -> Fit("linear_fit","NQ");
+
+                if (l1 == 0) // note : the first one
+                {
+                    chi2_register = ( linear_fit->GetChisquare()/double (linear_fit->GetNDF()) );
+                    
+                    cluster_register_l1 = l1;
+
+                    hit3_best_fit_picker_info[0] = ( hit3_Y_data[0] - ( linear_fit -> GetParameter(1) * actual_xpos[0] + linear_fit -> GetParameter(0) ) );
+                    hit3_best_fit_picker_info[1] = ( hit3_Y_data[1] - ( linear_fit -> GetParameter(1) * actual_xpos[1] + linear_fit -> GetParameter(0) ) );
+                    hit3_best_fit_picker_info[2] = ( hit3_Y_data[2] - ( linear_fit -> GetParameter(1) * actual_xpos[2] + linear_fit -> GetParameter(0) ) );
+                    
+                    hit3_best_fit_picker_info[3] = hit3_Y_data[0];
+                    hit3_best_fit_picker_info[4] = hit3_Y_data[1];
+                    hit3_best_fit_picker_info[5] = hit3_Y_data[2];
+
+                    // note : the middle-layer residual of the DUT method
+                    hit3_best_fit_picker_info[6] = hit3_Y_data[1] - (hit3_Y_data[0]+hit3_Y_data[2])/2.;
+
+                }
+                else 
+                {
+                    if ( linear_fit->GetChisquare()/double (linear_fit->GetNDF()) < chi2_register )
+                    {
+                        chi2_register = ( linear_fit->GetChisquare()/double (linear_fit->GetNDF()) );
+                        
+                        cluster_register_l1 = l1;
+
+                        hit3_best_fit_picker_info[0] = ( hit3_Y_data[0] - ( linear_fit -> GetParameter(1) * actual_xpos[0] + linear_fit -> GetParameter(0) ) );
+                        hit3_best_fit_picker_info[1] = ( hit3_Y_data[1] - ( linear_fit -> GetParameter(1) * actual_xpos[1] + linear_fit -> GetParameter(0) ) );
+                        hit3_best_fit_picker_info[2] = ( hit3_Y_data[2] - ( linear_fit -> GetParameter(1) * actual_xpos[2] + linear_fit -> GetParameter(0) ) );
+                        
+                        hit3_best_fit_picker_info[3] = hit3_Y_data[0];
+                        hit3_best_fit_picker_info[4] = hit3_Y_data[1];
+                        hit3_best_fit_picker_info[5] = hit3_Y_data[2];
+
+                        // note : the middle-layer residual of the DUT method
+                        hit3_best_fit_picker_info[6] = hit3_Y_data[1] - (hit3_Y_data[0]+hit3_Y_data[2])/2.;
+                        
+
+                    }
+                }
+
+                grr->Delete();
+                linear_fit->Delete();
+
+            }
+
+            event_residual = hit3_best_fit_picker_info[4] - ( l0_l2_avg_pos );
+
+            middle_layer_residual.push_back( event_residual );
+
+            good_combination_l0_pos_hit3.push_back( receiver_unit_clu_pos[study_chip-1][0][0] );
+            good_combination_l1_pos_hit3.push_back( hit3_best_fit_picker_info[4] );
+            good_combination_l2_pos_hit3.push_back( receiver_unit_clu_pos[study_chip-1][2][0] );
+
+            if ( fabs(event_residual) < noise_hit_distance )
+            {
+                event_counting_11 += 1;
+
+                final_event_result.push_back(1); // note : in order to make the detection efficiency as function of pos.
+
+                track_111_count += 1;
+            }
+            else 
+            {
+                event_counting_12 += 1;
+
+                final_event_result.push_back(2); // note : in order to make the detection efficiency as function of pos.
+
+                track_101_count += 1;   
+                // cout<<"101 event, eID : "<<input_cluster_vec[i].eID<<" -> middle has cluster"<<endl;
+            }
+
+        }
+        // note : start clean
+
+    } // note : end of for loop, event
+
+
+    DUT_str output_space;
+    output_space.track_111_count = track_111_count;
+    output_space.track_101_count = track_101_count;
+    output_space.middle_layer_residual = middle_layer_residual;
+    output_space.good_combination_slope_hit3 = good_combination_slope_hit3; // note : empty, 2022/12/03
+    output_space.good_combination_slope_hit2 = good_combination_slope_hit2; // note : 3hits or 2hits cases are included
+    output_space.good_combination_l0_pos_hit3 = good_combination_l0_pos_hit3; 
+    output_space.good_combination_l1_pos_hit3 = good_combination_l1_pos_hit3;
+    output_space.good_combination_l2_pos_hit3 = good_combination_l2_pos_hit3;
+    
+    // note : in order to make the plot of the detection efficiency as a function of position. 
+    output_space.passed_middle_pos = passed_middle_pos;
+    output_space.final_event_result = final_event_result;
+
+    cout<<"event counting 1 \t : "<<event_counting_1<<" all "<<endl;
+    cout<<"event counting 2 \t : "<<event_counting_2<<" adjacent chip, no cluster  "<<endl;
+    cout<<"event counting 3 \t : "<<event_counting_3<<" single cluster "<<endl;
+    cout<<"event counting 4 \t : "<<event_counting_4<<" standalone cluster requirement "<<endl;
+    cout<<"event counting 5 \t : "<<event_counting_5<<" cluster adc "<<endl;
+    cout<<"event counting 6 \t : "<<event_counting_6<<" cluster size combine "<<endl;
+    cout<<"event counting 7 \t : "<<event_counting_7<<" l0 cluster edge exclusion "<<endl;
+    cout<<"event counting 8 \t : "<<event_counting_8<<" l2 cluster edge exclusion "<<endl;
+    cout<<"event counting 9 \t : "<<event_counting_9<<" slope cut "<<endl;
+    cout<<"event counting 10 \t : "<<event_counting_10<<" no hits in middle layer "<<endl;
+    cout<<"event counting 11 \t : "<<event_counting_11<<" have good cluster in middle "<<endl;
+    cout<<"event counting 12 \t : "<<event_counting_12<<" no good cluster in middle "<<endl;
+    
+    return output_space;
+
+}
+
+
 // note : try to study the systematic uncertainty, by checking the 
 // note : residual cut 
 // note : slope cut
@@ -1270,106 +1543,6 @@ vector<vector<double>> efficiency_DUT_method_v2_SU (vector<cluster_reformat_str>
 
 }
 
-// note : make the plot of the middle-layer residual distribution, full range
-TH1F* plot_residual (vector<double> input_vec, TString folder_direction)
-{
-    TCanvas * c1 = new TCanvas("c1","c1",800,800);
-    c1 -> cd();
-    c1 -> SetLogy();
-
-    int N_in_range = 0;
-
-    TH1F * l1_residual_hist = new TH1F("","",100,-10,10);
-    for (int i = 0; i < input_vec.size(); i++)
-    {
-        l1_residual_hist -> Fill(input_vec[i]);
-
-        if ( input_vec[i] > -1 * noise_hit_distance && input_vec[i] < noise_hit_distance )
-        {
-            N_in_range += 1;
-        }
-    }
-
-    l1_residual_hist -> SetTitle("DUT layer 1 residual");
-    l1_residual_hist -> GetXaxis() -> SetTitle("Unit : mm");
-    l1_residual_hist -> GetYaxis() -> SetTitle("Entry");
-
-    l1_residual_hist -> Draw("hist");
-
-    cout<<"N event in the range  #pm"<<noise_hit_distance<<" mm : "<< N_in_range<<endl;    
-
-    c1 -> Print( Form("%s/DUT_residual_full_range.pdf",folder_direction.Data()) );
-    c1 -> Clear();
-
-    return l1_residual_hist;
-}
-
-// note : make the plot of the middle-layer residual distribution, narrow range, and fit with double-gaus function and single-gaus function
-TH1F* plot_residual_narrow (vector<double> input_vec, TString folder_direction)
-{
-    TCanvas * c1 = new TCanvas("c1","c1",800,800);
-    c1 -> cd();
-    c1 -> SetLogy();
-
-    TF1 * gaus_fit = new TF1 ("gaus_fit","gaus",-0.5,0.5);
-		
-    TF1 * D_gaus_fit = new TF1 ("D_gaus_fit",double_gaus,-10,10,5);
-    // note : par[0] could be 10000 for data
-    // note : par[0] could be 40000 for MC
-    D_gaus_fit -> SetParameters(10000,0.987,0,0.03,0.1);
-    // D_gaus_fit -> SetParLimits  (1, 0.5,      1); // fraction
-    // D_gaus_fit -> SetParLimits  (3, 0.025,      1); // note : ON for MC
-    // D_gaus_fit -> SetParLimits  (1, 0.97,      1);  // note : ON for MC
-    D_gaus_fit -> SetLineColor(TColor::GetColor("#F5751D"));
-
-    TH1F * l1_residual_hist = new TH1F("","",100,-1.5,1.5);
-    for (int i = 0; i < input_vec.size(); i++)
-    {
-        l1_residual_hist -> Fill(input_vec[i]);
-    }
-
-    l1_residual_hist -> SetTitle("DUT layer 1 residual");
-    l1_residual_hist -> GetXaxis() -> SetTitle("Unit : mm");
-    l1_residual_hist -> GetYaxis() -> SetTitle("Entry");
-
-    l1_residual_hist -> Draw("hist");
-
-    TLatex *gaus_fit_latex = new TLatex();
-    gaus_fit_latex -> SetNDC();
-    gaus_fit_latex -> SetTextSize(0.028);
-
-    double D_gaus_xmin = -10;
-    double D_gaus_xmax =  10;
-    double the_portion = 0.9973;
-
-    l1_residual_hist -> Fit("gaus_fit","NQ");
-    // note : data for -0.5 ~ 0.5
-    // note : MC could be -0.3 ~ 0.3
-    l1_residual_hist -> Fit(D_gaus_fit,"N","",-1,1);
-    bool run_fit_effisig = double_gaus_getsigmarange (D_gaus_fit,the_portion,D_gaus_xmin,D_gaus_xmax);
-    
-    gaus_fit -> SetNpx(10000);
-    D_gaus_fit -> SetNpx(10000);
-
-    gaus_fit->Draw("lsame");	
-    D_gaus_fit->Draw("lsame");	
-    
-    gaus_fit_latex -> DrawLatex(0.12, 0.750, Form("fit gaus mean :  %.4f, fit gaus width %.4f", gaus_fit->GetParameter(1),gaus_fit->GetParameter(2)));
-    gaus_fit_latex -> DrawLatex(0.12, 0.720, Form("#chi^{2} : %.2f, NDF : %d, #chi^{2}/NDF : %.4f", gaus_fit->GetChisquare(),gaus_fit->GetNDF(),gaus_fit->GetChisquare()/double(gaus_fit->GetNDF())));
-    
-    gaus_fit_latex -> DrawLatex(0.12, 0.660, Form("double gaussian fit"));
-    gaus_fit_latex -> DrawLatex(0.12, 0.630, Form("mean : %.4f, fraction : %.3f",D_gaus_fit->GetParameter(2),D_gaus_fit->GetParameter(1)));
-    gaus_fit_latex -> DrawLatex(0.12, 0.600, Form("first width : %.4f, second width : %.4f",D_gaus_fit->GetParameter(3),D_gaus_fit->GetParameter(4)));
-    gaus_fit_latex -> DrawLatex(0.12, 0.570, Form("3 sigma width : %.4f %.4f = %.4f",D_gaus_xmax,D_gaus_xmin,D_gaus_xmax-D_gaus_xmin));
-    gaus_fit_latex -> DrawLatex(0.12, 0.540, Form("#chi^{2} : %.2f, NDF : %d, #chi^{2}/NDF : %.4f", D_gaus_fit->GetChisquare(),D_gaus_fit->GetNDF(),D_gaus_fit->GetChisquare()/double(D_gaus_fit->GetNDF())));
-    
-    gaus_fit_latex -> Draw("same");
-
-    c1 -> Print( Form("%s/DUT_residual_narrow.pdf",folder_direction.Data()) );
-    c1 -> Clear();
-
-    return l1_residual_hist;
-}
 
 void Characterize_Pad (TPad *pad, float left = 0.2, float right = 0.05, float top = 0.1, float bottom = 0.15, int logY = 0, int setgrid_bool = 1)
 {
@@ -1413,22 +1586,22 @@ void Characterize_Hist1F (TH1F *hist,  int statsbox = 0, TString color_ID = "#1A
 	hist -> SetTitle       ("");
 
 	hist -> SetLineColor   (TColor::GetColor(color_ID));
-    hist -> SetLineWidth   (2);
+    hist -> SetLineWidth   (3);
 
 	hist -> SetMarkerColor (TColor::GetColor(color_ID));
 	hist -> SetMarkerStyle (20);
 	hist -> SetMarkerSize  (0.8);
 	// hist -> SetFillColor   (TColor::GetColor(color_ID));
 
-	hist -> GetXaxis() -> SetTitleSize   (0.052*ratio);
-	hist -> GetXaxis() -> SetTitleOffset (0.940);
+	hist -> GetXaxis() -> SetTitleSize   (0.05);
+	hist -> GetXaxis() -> SetTitleOffset (0.8);
 
 	hist -> GetXaxis() -> SetLabelSize   (0.042*ratio);
 	hist -> GetXaxis() -> SetLabelOffset (0.004*ratio);
 
 	// hist -> GetYaxis() -> SetTitle       ("Data/MC");
-	hist -> GetYaxis() -> SetTitleSize   (0.052*ratio);
-	hist -> GetYaxis() -> SetTitleOffset (1.8);
+	hist -> GetYaxis() -> SetTitleSize   (0.05);
+	hist -> GetYaxis() -> SetTitleOffset (1.5);
 
 	hist -> GetYaxis() -> SetLabelSize   (0.042*ratio);
 	hist -> GetYaxis() -> SetLabelOffset (0.006);
@@ -1438,6 +1611,356 @@ void Characterize_Hist1F (TH1F *hist,  int statsbox = 0, TString color_ID = "#1A
 
     if (statsbox == 0) {hist -> SetStats(0);}
 }
+
+
+// note : make the plot of the middle-layer residual distribution, full range
+TH1F* plot_residual (vector<double> input_vec, TString folder_direction, int study_chip)
+{
+    TCanvas * c1 = new TCanvas("c1","c1",800,800);
+    c1 -> cd();
+    c1 -> SetLogy();
+
+    int N_in_range = 0;
+
+    TH1F * l1_residual_hist = new TH1F("","",100,-10,10);
+    for (int i = 0; i < input_vec.size(); i++)
+    {
+        l1_residual_hist -> Fill(input_vec[i]);
+
+        if ( input_vec[i] > -1 * noise_hit_distance && input_vec[i] < noise_hit_distance )
+        {
+            N_in_range += 1;
+        }
+    }
+
+    l1_residual_hist -> SetTitle(Form("DUT layer 1 residual, U%i",study_chip));
+    l1_residual_hist -> GetXaxis() -> SetTitle("Unit : mm");
+    l1_residual_hist -> GetYaxis() -> SetTitle("Entry");
+
+    l1_residual_hist -> Draw("hist");
+
+    cout<<"N event in the range  #pm"<<noise_hit_distance<<" mm : "<< N_in_range<<endl;    
+
+    c1 -> Print( Form("%s/DUT_residual_full_range_U%i.pdf",folder_direction.Data(),study_chip) );
+    c1 -> Clear();
+
+    return l1_residual_hist;
+}
+
+// note : make the plot of the middle-layer residual distribution, narrow range, and fit with double-gaus function and single-gaus function
+TH1F* plot_residual_narrow (vector<double> input_vec, TString folder_direction, int study_chip)
+{
+    TCanvas * c1 = new TCanvas("c1","c1",800,800);
+    c1 -> cd();
+    c1 -> SetLogy();
+
+    TF1 * gaus_fit = new TF1 ("gaus_fit","gaus",-0.5,0.5);
+		
+    TF1 * D_gaus_fit = new TF1 ("D_gaus_fit",double_gaus,-10,10,5);
+    // note : par[0] could be 10000 for data
+    // note : par[0] could be 40000 for MC
+    D_gaus_fit -> SetParameters(10000,0.987,0,0.03,0.1);
+    // D_gaus_fit -> SetParLimits  (1, 0.5,      1); // fraction
+    // D_gaus_fit -> SetParLimits  (3, 0.025,      1); // note : ON for MC
+    // D_gaus_fit -> SetParLimits  (1, 0.97,      1);  // note : ON for MC
+    D_gaus_fit -> SetLineColor(TColor::GetColor("#F5751D"));
+
+    TH1F * l1_residual_hist = new TH1F("","",100,-1.5,1.5);
+    for (int i = 0; i < input_vec.size(); i++)
+    {
+        l1_residual_hist -> Fill(input_vec[i]);
+    }
+
+    l1_residual_hist -> SetTitle(Form("DUT layer 1 residual, U%i",study_chip));
+    l1_residual_hist -> GetXaxis() -> SetTitle("Unit : mm");
+    l1_residual_hist -> GetYaxis() -> SetTitle("Entry");
+
+    l1_residual_hist -> Draw("hist");
+
+    TLatex *gaus_fit_latex = new TLatex();
+    gaus_fit_latex -> SetNDC();
+    gaus_fit_latex -> SetTextSize(0.028);
+
+    double D_gaus_xmin = -10;
+    double D_gaus_xmax =  10;
+    double the_portion = 0.9973;
+
+    l1_residual_hist -> Fit("gaus_fit","NQ");
+    // note : data for -0.5 ~ 0.5
+    // note : MC could be -0.3 ~ 0.3
+    l1_residual_hist -> Fit(D_gaus_fit,"N","",-1,1);
+    bool run_fit_effisig = double_gaus_getsigmarange (D_gaus_fit,the_portion,D_gaus_xmin,D_gaus_xmax);
+    
+    gaus_fit -> SetNpx(10000);
+    D_gaus_fit -> SetNpx(10000);
+
+    gaus_fit->Draw("lsame");	
+    D_gaus_fit->Draw("lsame");	
+    
+    gaus_fit_latex -> DrawLatex(0.12, 0.750, Form("fit gaus mean :  %.4f, fit gaus width %.4f", gaus_fit->GetParameter(1),gaus_fit->GetParameter(2)));
+    gaus_fit_latex -> DrawLatex(0.12, 0.720, Form("#chi^{2} : %.2f, NDF : %d, #chi^{2}/NDF : %.4f", gaus_fit->GetChisquare(),gaus_fit->GetNDF(),gaus_fit->GetChisquare()/double(gaus_fit->GetNDF())));
+    
+    gaus_fit_latex -> DrawLatex(0.12, 0.660, Form("double gaussian fit"));
+    gaus_fit_latex -> DrawLatex(0.12, 0.630, Form("mean : %.4f, fraction : %.3f",D_gaus_fit->GetParameter(2),D_gaus_fit->GetParameter(1)));
+    gaus_fit_latex -> DrawLatex(0.12, 0.600, Form("first width : %.4f, second width : %.4f",D_gaus_fit->GetParameter(3),D_gaus_fit->GetParameter(4)));
+    gaus_fit_latex -> DrawLatex(0.12, 0.570, Form("3 sigma width : %.4f %.4f = %.4f",D_gaus_xmax,D_gaus_xmin,D_gaus_xmax-D_gaus_xmin));
+    gaus_fit_latex -> DrawLatex(0.12, 0.540, Form("#chi^{2} : %.2f, NDF : %d, #chi^{2}/NDF : %.4f", D_gaus_fit->GetChisquare(),D_gaus_fit->GetNDF(),D_gaus_fit->GetChisquare()/double(D_gaus_fit->GetNDF())));
+    
+    gaus_fit_latex -> Draw("same");
+
+    c1 -> Print( Form("%s/DUT_residual_narrow_U%i.pdf",folder_direction.Data(),study_chip) );
+    c1 -> Clear();
+
+    return l1_residual_hist;
+}
+
+// note : the function to print the plot for publish
+// note : make the plot of the middle-layer residual distribution, narrow range, No fitting.
+TH1F* plot_residual_narrow_publish (vector<double> input_vec, TString folder_direction, int study_chip)
+{
+    TCanvas * c1 = new TCanvas("c1","c1",850 ,800);
+    c1 -> cd();
+    // c1 -> SetLogy();
+
+    TPad * pad_c1 = new TPad(Form("pad_c1"), "", 0.0, 0.0, 1.0, 1.0);
+    Characterize_Pad(pad_c1, 0.15,  0.1,  0.1,  0.12, 1, 0);
+    pad_c1 -> SetTicks(1,1);
+    pad_c1 -> Draw();
+    pad_c1 -> cd();
+
+    TF1 * gaus_fit = new TF1 ("gaus_fit","gaus",-0.5,0.5);
+		
+    TF1 * D_gaus_fit = new TF1 ("D_gaus_fit",double_gaus,-10,10,5);
+    // note : par[0] could be 10000 for data
+    // note : par[0] could be 40000 for MC
+    D_gaus_fit -> SetParameters(10000,0.987,0,0.03,0.1);
+    // D_gaus_fit -> SetParLimits  (1, 0.5,      1); // fraction
+    // D_gaus_fit -> SetParLimits  (3, 0.025,      1); // note : ON for MC
+    // D_gaus_fit -> SetParLimits  (1, 0.97,      1);  // note : ON for MC
+    // D_gaus_fit -> SetLineColor(TColor::GetColor("#F5751D"));
+
+    TH1F * l1_residual_hist = new TH1F("","",100,-1.5,1.5);
+    Characterize_Hist1F(l1_residual_hist);
+
+    for (int i = 0; i < input_vec.size(); i++)
+    {
+        l1_residual_hist -> Fill(input_vec[i]);
+    }
+
+    // l1_residual_hist -> SetTitle(Form("DUT layer 1 residual, U%i",study_chip));
+    l1_residual_hist -> SetTitle("");
+    l1_residual_hist -> GetXaxis() -> SetTitle("Residual [mm]");
+    l1_residual_hist -> GetYaxis() -> SetTitle("Events");
+
+    l1_residual_hist -> Draw("hist");
+
+    TLatex *gaus_fit_latex = new TLatex();
+    gaus_fit_latex -> SetNDC();
+    gaus_fit_latex -> SetTextSize(0.028);
+
+    double D_gaus_xmin = -10;
+    double D_gaus_xmax =  10;
+    double the_portion = 0.9973;
+
+    l1_residual_hist -> Fit("gaus_fit","NQ");
+    // note : data for -0.5 ~ 0.5
+    // note : MC could be -0.3 ~ 0.3
+    l1_residual_hist -> Fit(D_gaus_fit,"N","",-1,1);
+    bool run_fit_effisig = double_gaus_getsigmarange (D_gaus_fit,the_portion,D_gaus_xmin,D_gaus_xmax);
+    
+    gaus_fit -> SetNpx(10000);
+    D_gaus_fit -> SetNpx(10000);
+
+    // gaus_fit->Draw("lsame");	
+    // D_gaus_fit->Draw("lsame");	
+    
+    l1_residual_hist -> SetMaximum(35000.);
+
+    TLine * noise_hit_distance_positive = new TLine(noise_hit_distance,l1_residual_hist -> GetMinimum(),noise_hit_distance,l1_residual_hist -> GetMaximum());
+    noise_hit_distance_positive -> SetLineWidth(4);
+    noise_hit_distance_positive -> SetLineColor(TColor::GetColor("#A08144"));
+    noise_hit_distance_positive -> SetLineStyle(2);
+
+    TLine * noise_hit_distance_negative = new TLine(-1 * noise_hit_distance,l1_residual_hist -> GetMinimum(),-1 * noise_hit_distance,l1_residual_hist -> GetMaximum());
+    noise_hit_distance_negative -> SetLineWidth(4);
+    noise_hit_distance_negative -> SetLineColor(TColor::GetColor("#A08144"));
+    noise_hit_distance_negative -> SetLineStyle(2);
+
+    // gaus_fit_latex -> DrawLatex(0.12, 0.750, Form("fit gaus mean :  %.4f, fit gaus width %.4f", gaus_fit->GetParameter(1),gaus_fit->GetParameter(2)));
+    // gaus_fit_latex -> DrawLatex(0.12, 0.720, Form("#chi^{2} : %.2f, NDF : %d, #chi^{2}/NDF : %.4f", gaus_fit->GetChisquare(),gaus_fit->GetNDF(),gaus_fit->GetChisquare()/double(gaus_fit->GetNDF())));
+    
+    // gaus_fit_latex -> DrawLatex(0.12, 0.660, Form("double gaussian fit"));
+    gaus_fit_latex -> DrawLatex(0.12+0.1, 0.74, Form("Mean : %.3f mm",D_gaus_fit->GetParameter(2)));
+    // gaus_fit_latex -> DrawLatex(0.12, 0.600, Form("first width : %.4f, second width : %.4f",D_gaus_fit->GetParameter(3),D_gaus_fit->GetParameter(4)));
+    // gaus_fit_latex -> DrawLatex(0.12, 0.570, Form("3 sigma width : %.4f %.4f = %.4f",D_gaus_xmax,D_gaus_xmin,D_gaus_xmax-D_gaus_xmin));
+    // gaus_fit_latex -> DrawLatex(0.12, 0.540, Form("#chi^{2} : %.2f, NDF : %d, #chi^{2}/NDF : %.4f", D_gaus_fit->GetChisquare(),D_gaus_fit->GetNDF(),D_gaus_fit->GetChisquare()/double(D_gaus_fit->GetNDF())));
+    
+    // gaus_fit_latex -> Draw("same");
+
+    TLegend *legend1 = new TLegend (0.65, 0.7, 0.82, 0.78);
+	legend1 -> SetTextSize (0.028);
+	// legend1 -> SetNColumns (4);
+    legend1 -> SetBorderSize(0);
+    legend1 -> AddEntry (noise_hit_distance_positive, Form("Residual cut"),  "l");
+
+    noise_hit_distance_positive -> Draw("lsame");
+    noise_hit_distance_negative -> Draw("lsame");
+    legend1 -> Draw("same");
+
+
+    c1 -> Print( Form("%s/DUT_residual_narrow_U%i_pub.pdf",folder_direction.Data(),study_chip) );
+    c1 -> Clear();
+
+    return l1_residual_hist;
+}
+
+// note : make the plot of the middle-layer residual distribution, full range
+// TH1F* plot_residual_align (vector<double> input_vec, TString folder_direction, int study_chip)
+// {
+//     TCanvas * c1 = new TCanvas("c1","c1",800,800);
+//     c1 -> cd();
+
+//     TPad * pad_c1 = new TPad(Form("pad_c1"), "", 0.0, 0.0, 1.0, 1.0);
+//     Characterize_Pad(pad_c1, 0.2,  0.05,  0.1,  0.15, 1, 0);
+//     pad_c1 -> SetTicks(1,1);
+//     pad_c1 -> Draw();
+//     pad_c1 -> cd();
+
+//     // c1 -> SetLogy();
+
+//     int N_in_range = 0;
+
+//     TH1F * l1_residual_hist = new TH1F("","",100,-10,10);
+//     Characterize_Hist1F(l1_residual_hist);
+
+//     for (int i = 0; i < input_vec.size(); i++)
+//     {
+//         l1_residual_hist -> Fill(input_vec[i]);
+
+//         if ( input_vec[i] > -1 * noise_hit_distance && input_vec[i] < noise_hit_distance )
+//         {
+//             N_in_range += 1;
+//         }
+//     }
+
+//     // l1_residual_hist -> SetTitle(Form("DUT layer 1 residual, U%i",study_chip));
+//     l1_residual_hist -> SetTitle("");
+//     l1_residual_hist -> GetXaxis() -> SetTitle("Residual [mm]");
+//     l1_residual_hist -> GetYaxis() -> SetTitle("Entry");
+
+//     l1_residual_hist -> Draw("hist");
+
+//     cout<<"N event in the range  #pm"<<noise_hit_distance<<" mm : "<< N_in_range<<endl;    
+
+//     c1 -> Print( Form("%s/DUT_residual_full_range_U%i.pdf",folder_direction.Data(),study_chip) );
+//     c1 -> Clear();
+
+//     return l1_residual_hist;
+// }
+
+// note : to make the misalignment plot
+// note : the function to print the plot for publish
+TH1F* plot_align_narrow_publish (vector<double> input_vec, TString folder_direction, int study_chip)
+{
+    TCanvas * c1 = new TCanvas("c1","c1",850,800);
+    c1 -> cd();
+
+    TPad * pad_c1 = new TPad(Form("pad_c1"), "", 0.0, 0.0, 1.0, 1.0);
+    Characterize_Pad(pad_c1, 0.15,  0.1,  0.1,  0.12, 0, 0);
+    pad_c1 -> SetTicks(1,1);
+    pad_c1 -> Draw();
+
+    TF1 * gaus_fit = new TF1 ("gaus_fit","gaus",-1,1);
+		
+    TF1 * D_gaus_fit = new TF1 ("D_gaus_fit",double_gaus,-10,10,5);
+    // note : par[0] could be 10000 for data
+    // note : par[0] could be 40000 for MC
+    D_gaus_fit -> SetParameters(10000,0.987,0,0.03,0.1);
+    // D_gaus_fit -> SetParLimits  (1, 0.5,      1); // fraction
+    // D_gaus_fit -> SetParLimits  (3, 0.025,      1); // note : ON for MC
+    // D_gaus_fit -> SetParLimits  (1, 0.97,      1);  // note : ON for MC
+    D_gaus_fit -> SetLineColor(TColor::GetColor("#F5751D"));
+
+    TH1F * l1_residual_hist = new TH1F("","",50,-0.4,1);
+    l1_residual_hist -> SetStats(0);
+    for (int i = 0; i < input_vec.size(); i++)
+    {
+        l1_residual_hist -> Fill(input_vec[i]);
+    }
+
+    // l1_residual_hist -> SetTitle(Form("DUT layer 1 residual, U%i",study_chip));
+    l1_residual_hist -> GetXaxis() -> SetTitle("Residual [mm]");
+    l1_residual_hist -> GetYaxis() -> SetTitle("Events");
+    l1_residual_hist -> SetLineWidth(3);
+    l1_residual_hist -> SetLineColor(TColor::GetColor("#1A3947"));
+
+    // l1_residual_hist -> GetXaxis() -> SetNdivisions  (505);
+
+    l1_residual_hist -> GetXaxis() -> SetTitleSize   (0.05);
+	l1_residual_hist -> GetXaxis() -> SetTitleOffset (0.8);
+
+	l1_residual_hist -> GetYaxis() -> SetTitleSize   (0.05);
+	l1_residual_hist -> GetYaxis() -> SetTitleOffset (1.5);
+
+
+    pad_c1 -> cd();
+
+    l1_residual_hist -> Draw("hist");
+
+    TLatex *gaus_fit_latex = new TLatex();
+    gaus_fit_latex -> SetNDC();
+    gaus_fit_latex -> SetTextSize(0.028);
+
+    TLatex * Column_ID_tex = new TLatex();
+    Column_ID_tex -> SetNDC();
+    Column_ID_tex -> SetTextSize(0.028);
+
+    double D_gaus_xmin = -10;
+    double D_gaus_xmax =  10;
+    double the_portion = 0.9973;
+
+    l1_residual_hist -> Fit("gaus_fit","NQ");
+    // note : data for -0.5 ~ 0.5
+    // note : MC could be -0.3 ~ 0.3
+    l1_residual_hist -> Fit(D_gaus_fit,"N","",-1,1);
+    bool run_fit_effisig = double_gaus_getsigmarange (D_gaus_fit,the_portion,D_gaus_xmin,D_gaus_xmax);
+    
+    gaus_fit -> SetNpx(10000);
+    D_gaus_fit -> SetNpx(10000);
+
+    gaus_fit->Draw("lsame");	
+    // D_gaus_fit->Draw("lsame");	 
+    
+    Column_ID_tex -> DrawLatex(0.25, 0.750, Form("Column ID : %i",study_chip));
+    gaus_fit_latex -> DrawLatex(0.25, 0.710, Form("Mean :  %.4f mm", gaus_fit->GetParameter(1)));
+    // gaus_fit_latex -> DrawLatex(0.25, 0.710, Form("Width %.4f",gaus_fit->GetParameter(2)));
+    // gaus_fit_latex -> DrawLatex(0.25, 0.680, Form("#chi^{2}/NDF = %.2f/%i", gaus_fit->GetChisquare(),int(gaus_fit->GetNDF())));
+    
+    // gaus_fit_latex -> DrawLatex(0.12, 0.660, Form("double gaussian fit"));
+    // gaus_fit_latex -> DrawLatex(0.12, 0.630, Form("mean : %.4f, fraction : %.3f",D_gaus_fit->GetParameter(2),D_gaus_fit->GetParameter(1)));
+    // gaus_fit_latex -> DrawLatex(0.12, 0.600, Form("first width : %.4f, second width : %.4f",D_gaus_fit->GetParameter(3),D_gaus_fit->GetParameter(4)));
+    // gaus_fit_latex -> DrawLatex(0.12, 0.570, Form("3 sigma width : %.4f %.4f = %.4f",D_gaus_xmax,D_gaus_xmin,D_gaus_xmax-D_gaus_xmin));
+    // gaus_fit_latex -> DrawLatex(0.12, 0.540, Form("#chi^{2} : %.2f, NDF : %d, #chi^{2}/NDF : %.4f", D_gaus_fit->GetChisquare(),D_gaus_fit->GetNDF(),D_gaus_fit->GetChisquare()/double(D_gaus_fit->GetNDF())));
+    
+    gaus_fit_latex -> Draw("same");
+
+    c1 -> Print( Form("%s/DUT_align_narrow_U%i_pub.pdf",folder_direction.Data(),study_chip) );
+    c1 -> Clear();
+
+    cout<<"=============================Alignment narrow information==============================="<<endl;
+    cout<<"chip : "<<study_chip<<endl;
+    cout<<"fit mean : "<<gaus_fit -> GetParameter(1)<<" width : "<<gaus_fit -> GetParameter(2)<<endl;
+    cout<<"stat mean : "<<l1_residual_hist -> GetMean()<<" stat width : "<<l1_residual_hist -> GetStdDev()<<endl;
+    cout<<"stat entry : "<<l1_residual_hist -> GetEntries()<<endl;
+    cout<<"=============================Alignment narrow information==============================="<<endl;
+
+    return l1_residual_hist;
+}
+
+
+
+
+
 
 // note : for the comparison of data and MC
 void dataMC_comp (TH1F* hist_data, TH1F* hist_MC, TString folder_direction, TString plot_name, bool linear_or_log = false, bool statsbox_bool = false)
@@ -1532,11 +2055,16 @@ void dataMC_comp (TH1F* hist_data, TH1F* hist_MC, TString folder_direction, TStr
 }
 
 // note : plot the slope distribution, the (l2-l0)/distance
-TH1F* plot_angle (vector<double> input_vec_hit3, vector<double> input_vec_hit2, TString folder_direction)
+TH1F* plot_angle (vector<double> input_vec_hit3, vector<double> input_vec_hit2, TString folder_direction, int study_chip)
 {
-    TCanvas * c1 = new TCanvas("c1","c1",800,800);
+    TCanvas * c1 = new TCanvas("c1","c1",850,800);
     c1 -> cd();
-    // c1 -> SetLogy();
+
+    TPad * pad_c1 = new TPad(Form("pad_c1"), "", 0.0, 0.0, 1.0, 1.0);
+    Characterize_Pad(pad_c1, 0.15,  0.1,  0.1,  0.12, 0, 0);
+    pad_c1 -> Draw();
+    pad_c1 -> SetTicks(1,1);
+    pad_c1 -> cd();
 
     cout<<"--------------------------------------------------------------------------------------------------------"<<endl;
     cout<<"----- Now we are doing the plot_angle "<<endl;
@@ -1545,6 +2073,18 @@ TH1F* plot_angle (vector<double> input_vec_hit3, vector<double> input_vec_hit2, 
     cout<<"--------------------------------------------------------------------------------------------------------"<<endl;
 
     TH1F * angle_hist = new TH1F("","",50,-0.05,0.05);
+
+    angle_hist -> SetLineWidth(3);
+    angle_hist -> SetLineColor(TColor::GetColor("#1A3947")); 
+
+    angle_hist -> GetXaxis() -> SetNdivisions  (505);
+
+    angle_hist -> GetXaxis() -> SetTitleSize   (0.05);
+	angle_hist -> GetXaxis() -> SetTitleOffset (0.8);
+
+	angle_hist -> GetYaxis() -> SetTitleSize   (0.05);
+	angle_hist -> GetYaxis() -> SetTitleOffset (1.5);
+
     for (int i = 0; i < input_vec_hit3.size(); i++)
     {
         angle_hist -> Fill(input_vec_hit3[i]);
@@ -1555,9 +2095,10 @@ TH1F* plot_angle (vector<double> input_vec_hit3, vector<double> input_vec_hit2, 
         angle_hist -> Fill(input_vec_hit2[i]);
     }
 
-    angle_hist -> SetTitle("DUT candidate track slope");
-    angle_hist -> GetXaxis() -> SetTitle("(l2-l1)/distance");
-    angle_hist -> GetYaxis() -> SetTitle("Entry");
+    // angle_hist -> SetTitle(Form("DUT candidate track slope, U%i",study_chip));
+    angle_hist -> SetStats(0);
+    angle_hist -> GetXaxis() -> SetTitle("Track slope");
+    angle_hist -> GetYaxis() -> SetTitle("Events");
 
     angle_hist -> Draw("hist");
 
@@ -1566,17 +2107,47 @@ TH1F* plot_angle (vector<double> input_vec_hit3, vector<double> input_vec_hit2, 
 
     angle_hist -> Fit("gaus_fit","NQ");
 
-    gaus_fit->Draw("lsame");
+    // gaus_fit->Draw("lsame");
+
+    TLine * slope_cut_positive = new TLine(slope_cut,angle_hist -> GetMinimum(),slope_cut,angle_hist -> GetMaximum()*1.05);
+    slope_cut_positive -> SetLineWidth(3);
+    slope_cut_positive -> SetLineColor(TColor::GetColor("#A08144"));
+    slope_cut_positive -> SetLineStyle(2);
+
+    TLine * slope_cut_negative = new TLine(-1 * slope_cut,angle_hist -> GetMinimum(),-1 * slope_cut,angle_hist -> GetMaximum()*1.05);
+    slope_cut_negative -> SetLineWidth(3);
+    slope_cut_negative -> SetLineColor(TColor::GetColor("#A08144"));
+    slope_cut_negative -> SetLineStyle(2);
 
     TLatex *gaus_fit_latex = new TLatex();
     gaus_fit_latex -> SetNDC();
     gaus_fit_latex -> SetTextSize(0.028);
 
-    gaus_fit_latex -> DrawLatex(0.12, 0.750, Form("fit gaus mean :  %.4f, fit gaus width %.4f", gaus_fit->GetParameter(1),gaus_fit->GetParameter(2)));
-    gaus_fit_latex -> DrawLatex(0.12, 0.720, Form("#chi^{2} : %.2f, NDF : %d, #chi^{2}/NDF : %.4f", gaus_fit->GetChisquare(),gaus_fit->GetNDF(),gaus_fit->GetChisquare()/double(gaus_fit->GetNDF())));
-    gaus_fit_latex -> Draw("same");
+    cout<<"Fit slope mean : "<<gaus_fit->GetParameter(1)<<endl;
+    cout<<"Fit slope width : "<<gaus_fit->GetParameter(2)<<endl;
+    cout<<"stat slope mean : "<<angle_hist -> GetMean()<<endl;
+    cout<<"stat slope width : "<<angle_hist -> GetStdDev()<<endl;
+    cout<<"stat entry : "<<angle_hist -> GetEntries()<<endl;
 
-    c1 -> Print( Form("%s/DUT_candidate_track_slope.pdf",folder_direction.Data()) );
+
+    // gaus_fit_latex -> DrawLatex(0.12+0.15, 0.750, Form("Mean :  %.4f, ", gaus_fit->GetParameter(1)));
+    // gaus_fit_latex -> DrawLatex(0.12+0.15, 0.710, Form("Width : %.4f", gaus_fit->GetParameter(2)));
+    // gaus_fit_latex -> DrawLatex(0.12, 0.720, Form("#chi^{2} : %.2f, NDF : %d, #chi^{2}/NDF : %.4f", gaus_fit->GetChisquare(),gaus_fit->GetNDF(),gaus_fit->GetChisquare()/double(gaus_fit->GetNDF())));
+    // gaus_fit_latex -> Draw("same");
+
+    TLegend *legend1 = new TLegend (0.62, 0.7, 0.85, 0.78);
+	legend1 -> SetTextSize (0.03);
+	// legend1 -> SetNColumns (4);
+    legend1 -> SetBorderSize(0);
+    legend1 -> AddEntry (slope_cut_positive, Form("Slope cut %.2f",slope_cut),  "l");
+
+
+    slope_cut_negative -> Draw("l same");
+    slope_cut_positive -> Draw("l same");
+
+    legend1 -> Draw("l same");
+
+    c1 -> Print( Form("%s/DUT_candidate_track_slope_U%i.pdf",folder_direction.Data(),study_chip) );
     c1 -> Clear();
 
     return angle_hist;
@@ -1662,16 +2233,19 @@ void hit3_plot_residual_position_2D (vector<double> input_vec_1, vector<double> 
     c3 -> Clear();
 }
 
-void effi_pos_plot (vector<double> input_vec_pos, vector<int> input_vec_2, TString folder_direction)
+void effi_pos_plot (vector<double> input_vec_pos, vector<int> input_vec_2, TString folder_direction, int study_chip, double beam_spot_range[2],double effi_pos_legend_offset)
 {
+    double edge_exclusion_bottom = (lower_section_initial - INTT_strip_width / 2.) + INTT_strip_width * double(boundary_cut);
+	double edge_exclusion_upper = ( INTT_strip_width * 128. ) - INTT_strip_width * double(boundary_cut);
 
     cout<<"============== we are making the detection efficiency plot ============== "<<endl;
     sleep(2);
-    TCanvas * c6 = new TCanvas("c6","c6",800,800);
+    TCanvas * c6 = new TCanvas("c6","c6",850,800);
     c6 -> cd();
 
     TPad *pad_obj = new TPad(Form("pad_obj"), "", 0.0, 0.0, 1.0, 1.0);
-    Characterize_Pad(pad_obj, 0.2,  0.05,  0.1,  0.15, 0, 1);
+    Characterize_Pad(pad_obj, 0.15,  0.1,  0.1,  0.12, 0, 0);
+    pad_obj -> SetTicks(1,1);
     pad_obj -> Draw();
 
     cout<<"size of vec 1 : "<<input_vec_pos.size()<<endl;
@@ -1684,14 +2258,17 @@ void effi_pos_plot (vector<double> input_vec_pos, vector<int> input_vec_2, TStri
     TH1F * good_event_hist = new TH1F ("","",N_bins_pos_hist,left_pos_edge,right_pos_edge);
     TH1F * total_event_hist = new TH1F ("","",N_bins_pos_hist,left_pos_edge,right_pos_edge);
 
+    double plot_high = 1.02;
+    double plot_low  = 0.85;
+
     Characterize_Hist1F(good_event_hist,0);
     Characterize_Hist1F(total_event_hist,0);
 
-    good_event_hist -> GetXaxis() -> SetTitle("(Pos_l0+Pos_l2)/2, unit : mm");
-    good_event_hist -> GetYaxis() -> SetTitle("Efficiency");
+    good_event_hist -> GetXaxis() -> SetTitle("Track-interpolated position [mm]");
+    good_event_hist -> GetYaxis() -> SetTitle("Detection efficiency");
 
-    total_event_hist -> GetXaxis() -> SetTitle("(Pos_l0+Pos_l2)/2, unit : mm");
-    total_event_hist -> GetYaxis() -> SetTitle("Efficiency");
+    total_event_hist -> GetXaxis() -> SetTitle("Track-interpolated position [mm]");
+    total_event_hist -> GetYaxis() -> SetTitle("Detection efficiency");
 
     for (int i = 0; i < input_vec_pos.size(); i++)
     {
@@ -1709,12 +2286,18 @@ void effi_pos_plot (vector<double> input_vec_pos, vector<int> input_vec_2, TStri
     // detection_effi_pos -> SetMarkerStyle(4);
     detection_effi_pos -> SetLineColor(TColor::GetColor("#1A3947"));
     detection_effi_pos -> SetLineWidth(2);
-    detection_effi_pos -> SetTitle("Detection efficiency vs Position");
+    // detection_effi_pos -> SetTitle("Detection efficiency vs Position");
+    
+    
+	// detection_effi_pos -> GetPaintedGraph() -> GetYaxis() -> SetRangeUser   (0.4, 3);
+
+	// detection_effi_pos -> GetPaintedGraph() -> GetYaxis() -> SetNdivisions  (505);
+
 
     TLine * line_99 = new TLine(-12,0.99,12,0.99);
     line_99 -> SetLineColor(TColor::GetColor("#941100"));
-    line_99 -> SetLineWidth(2);
-    line_99 -> SetLineStyle(7);
+    line_99 -> SetLineWidth(3);
+    line_99 -> SetLineStyle(2);
 
     pad_obj -> cd();
     detection_effi_pos -> Draw("ap");
@@ -1723,11 +2306,57 @@ void effi_pos_plot (vector<double> input_vec_pos, vector<int> input_vec_2, TStri
 
     gPad->Update(); 
     auto graph = detection_effi_pos->GetPaintedGraph(); 
-    graph->SetMinimum(0.9);
-    graph->SetMaximum(1.05); 
+    graph->SetMinimum(plot_low);
+    graph->SetMaximum(plot_high); 
     gPad->Update(); 
 
-    c6 -> Print( Form("%s/Effi_Pos.pdf",folder_direction.Data()) );
+    TLine * edge_exclusion_line_pos = new TLine(edge_exclusion_upper, plot_low, edge_exclusion_upper, plot_high);
+    edge_exclusion_line_pos -> SetLineWidth(3);
+    edge_exclusion_line_pos -> SetLineColor(TColor::GetColor("#A08144"));
+    edge_exclusion_line_pos -> SetLineStyle(2);
+
+    TLine * edge_exclusion_line_neg = new TLine(edge_exclusion_bottom, plot_low, edge_exclusion_bottom, plot_high);
+    edge_exclusion_line_neg -> SetLineWidth(3);
+    edge_exclusion_line_neg -> SetLineColor(TColor::GetColor("#A08144"));
+    edge_exclusion_line_neg -> SetLineStyle(2);
+
+    double beam_spot_line_height = 1.007;
+    double beam_spot_edge_width = 0.002;
+
+    // note : for the beam spot region
+    TLine * beam_spot_hor = new TLine(beam_spot_range[0], beam_spot_line_height, beam_spot_range[1], beam_spot_line_height);
+    beam_spot_hor -> SetLineWidth(3);
+    beam_spot_hor -> SetLineColor(TColor::GetColor("#009193"));
+    beam_spot_hor -> SetLineStyle(2);
+    // note : for the beam spot region
+    TLine * beam_spot_ver_l = new TLine(beam_spot_range[0], beam_spot_line_height - beam_spot_edge_width, beam_spot_range[0], beam_spot_line_height + beam_spot_edge_width);
+    beam_spot_ver_l -> SetLineWidth(3);
+    beam_spot_ver_l -> SetLineColor(TColor::GetColor("#009193"));
+    beam_spot_ver_l -> SetLineStyle(2);
+    // note : for the beam spot region
+    TLine * beam_spot_ver_r = new TLine(beam_spot_range[1], beam_spot_line_height - beam_spot_edge_width, beam_spot_range[1], beam_spot_line_height + beam_spot_edge_width);
+    beam_spot_ver_r -> SetLineWidth(3);
+    beam_spot_ver_r -> SetLineColor(TColor::GetColor("#009193 "));
+    beam_spot_ver_r -> SetLineStyle(2);
+
+
+    TLegend *legend1 = new TLegend (0.38-effi_pos_legend_offset, 0.35, 0.6-effi_pos_legend_offset, 0.5);
+	legend1 -> SetTextSize (0.032);
+	// legend1 -> SetNColumns (4);
+    legend1 -> SetBorderSize(0);
+    legend1 -> AddEntry (edge_exclusion_line_pos, Form("Edge exclusion cut"),  "l");
+    legend1 -> AddEntry (line_99, Form("Effi. 99%% line"),  "l");
+    legend1 -> AddEntry (beam_spot_hor, Form("Beam-spot region"),  "l");
+
+
+    edge_exclusion_line_pos -> Draw("lsame");
+    edge_exclusion_line_neg -> Draw("lsame");
+    beam_spot_hor -> Draw("lsame");
+    beam_spot_ver_l -> Draw("lsame");
+    beam_spot_ver_r -> Draw("lsame");
+    legend1 -> Draw("same");
+
+    c6 -> Print( Form("%s/Effi_Pos_U%i_pub.pdf",folder_direction.Data(),study_chip) );
     c6 -> Clear();
 
 }
@@ -1741,6 +2370,8 @@ void print_used_par ()
     cout<<"the INTT_strip_width :                     "<<INTT_strip_width<<endl;
     cout<<"the lower_initial :                        "<<lower_section_initial<<endl;
     cout<<"the upper_initial :                        "<<upper_section_initial<<endl;
+    cout<<"study chip :                               "<<study_chip<<endl;
+    cout<<"l1 alignment correction :                  "<<amount_of_alignment<<endl;
     cout<<" "<<endl;
     cout<<"the residual tolerance :                   "<<noise_hit_distance<<endl;
     cout<<"tge slope cut :                            "<<slope_cut<<endl;
