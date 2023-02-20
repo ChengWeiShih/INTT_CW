@@ -41,9 +41,9 @@ void run52_data_NoCamac_DUT_align ()
         cout<<"SU file generator, edge is submitted"<<endl;
     }
 
-    
+    // note : after tracking (post-two rough cuts)
     // DUT_str align_DUT_data = Alignment_DUT(cluster_reformat_str_vec,study_chip);
-    // plot_residual_publish( align_DUT_data.middle_layer_residual, folder_direction, study_chip );
+    // plot_residual_publish( align_DUT_data.middle_layer_residual, folder_direction, study_chip ); // note use 
     // plot_align_narrow_publish( align_DUT_data.middle_layer_residual, folder_direction, study_chip );
     // plot_angle( align_DUT_data.good_combination_slope_hit3, align_DUT_data.good_combination_slope_hit2, folder_direction, study_chip );
 
@@ -56,7 +56,7 @@ void run52_data_NoCamac_DUT_align ()
     // note : make plot
     // plot_residual( DUT_data_v2.middle_layer_residual, folder_direction );
     // plot_residual_narrow_publish( DUT_data_v2.middle_layer_residual, folder_direction, study_chip );
-    effi_pos_plot(DUT_data_v2.passed_middle_pos, DUT_data_v2.final_event_result,folder_direction,study_chip,beam_spot_range,effi_pos_legend_offset);
+    // effi_pos_plot(DUT_data_v2.passed_middle_pos, DUT_data_v2.final_event_result,folder_direction,study_chip,beam_spot_range,effi_pos_legend_offset);
     // plot_angle( DUT_data_v2.good_combination_slope_hit3, DUT_data_v2.good_combination_slope_hit2, folder_direction );
 
     // note : print the used parameters
@@ -65,6 +65,7 @@ void run52_data_NoCamac_DUT_align ()
     // note : print the efficiency
     double golden_effi = print_effi(DUT_data_v2);
 
+    // note : print the systematic uncertainty
     // if (file_generated == true)
     // {   
     //     cout<<"======================= Print the systematic uncertainty ======================="<<endl;

@@ -464,7 +464,7 @@ DUT_str efficiency_DUT_method_v2 (vector<cluster_reformat_str> input_cluster_vec
     TF1 * linear_fit;
     TGraph * grr;
 
-    double chi2_register = 0; 
+    double chi2_register = 10000000; 
     double cluster_register_l0 = 0;
     double cluster_register_l1 = 0;
     double cluster_register_l2 = 0;
@@ -596,6 +596,8 @@ DUT_str efficiency_DUT_method_v2 (vector<cluster_reformat_str> input_cluster_vec
             
             for ( int l1 = 0; l1 < receiver_unit_clu_pos[study_chip-1][1].size(); l1++ )
             {
+                // if (receiver_unit_clu_adc[study_chip-1][1][l1] <= cluster_adc_value_requirement ) continue; // note : to add the ADC0 cut at L1
+
                 double hit3_Y_data[3] = {receiver_unit_clu_pos[study_chip-1][0][0], receiver_unit_clu_pos[study_chip-1][1][l1], receiver_unit_clu_pos[study_chip-1][2][0]};
 
                 grr = new TGraph(3,actual_xpos,hit3_Y_data);
@@ -676,6 +678,8 @@ DUT_str efficiency_DUT_method_v2 (vector<cluster_reformat_str> input_cluster_vec
 
         }
         // note : start clean
+
+        chi2_register = 10000000;
 
     } // note : end of for loop, event
 
@@ -1756,7 +1760,7 @@ TH1F* plot_residual_narrow_publish (vector<double> input_vec, TString folder_dir
 
     TLatex *gaus_fit_latex = new TLatex();
     gaus_fit_latex -> SetNDC();
-    gaus_fit_latex -> SetTextSize(0.028);
+    gaus_fit_latex -> SetTextSize(0.035);
 
     double D_gaus_xmin = -10;
     double D_gaus_xmax =  10;
@@ -1777,12 +1781,12 @@ TH1F* plot_residual_narrow_publish (vector<double> input_vec, TString folder_dir
     l1_residual_hist -> SetMaximum(35000.);
 
     TLine * noise_hit_distance_positive = new TLine(noise_hit_distance,l1_residual_hist -> GetMinimum(),noise_hit_distance,l1_residual_hist -> GetMaximum());
-    noise_hit_distance_positive -> SetLineWidth(4);
+    noise_hit_distance_positive -> SetLineWidth(5);
     noise_hit_distance_positive -> SetLineColor(TColor::GetColor("#A08144"));
     noise_hit_distance_positive -> SetLineStyle(2);
 
     TLine * noise_hit_distance_negative = new TLine(-1 * noise_hit_distance,l1_residual_hist -> GetMinimum(),-1 * noise_hit_distance,l1_residual_hist -> GetMaximum());
-    noise_hit_distance_negative -> SetLineWidth(4);
+    noise_hit_distance_negative -> SetLineWidth(5);
     noise_hit_distance_negative -> SetLineColor(TColor::GetColor("#A08144"));
     noise_hit_distance_negative -> SetLineStyle(2);
 
@@ -1790,15 +1794,15 @@ TH1F* plot_residual_narrow_publish (vector<double> input_vec, TString folder_dir
     // gaus_fit_latex -> DrawLatex(0.12, 0.720, Form("#chi^{2} : %.2f, NDF : %d, #chi^{2}/NDF : %.4f", gaus_fit->GetChisquare(),gaus_fit->GetNDF(),gaus_fit->GetChisquare()/double(gaus_fit->GetNDF())));
     
     // gaus_fit_latex -> DrawLatex(0.12, 0.660, Form("double gaussian fit"));
-    gaus_fit_latex -> DrawLatex(0.12+0.1, 0.74, Form("Mean : %.3f mm",D_gaus_fit->GetParameter(2)));
+    gaus_fit_latex -> DrawLatex(0.12+0.05, 0.74, Form("Mean : %.3f mm",D_gaus_fit->GetParameter(2)));
     // gaus_fit_latex -> DrawLatex(0.12, 0.600, Form("first width : %.4f, second width : %.4f",D_gaus_fit->GetParameter(3),D_gaus_fit->GetParameter(4)));
     // gaus_fit_latex -> DrawLatex(0.12, 0.570, Form("3 sigma width : %.4f %.4f = %.4f",D_gaus_xmax,D_gaus_xmin,D_gaus_xmax-D_gaus_xmin));
     // gaus_fit_latex -> DrawLatex(0.12, 0.540, Form("#chi^{2} : %.2f, NDF : %d, #chi^{2}/NDF : %.4f", D_gaus_fit->GetChisquare(),D_gaus_fit->GetNDF(),D_gaus_fit->GetChisquare()/double(D_gaus_fit->GetNDF())));
     
     // gaus_fit_latex -> Draw("same");
 
-    TLegend *legend1 = new TLegend (0.65, 0.7, 0.82, 0.78);
-	legend1 -> SetTextSize (0.028);
+    TLegend *legend1 = new TLegend (0.6, 0.7, 0.82, 0.78);
+	legend1 -> SetTextSize (0.04 );
 	// legend1 -> SetNColumns (4);
     legend1 -> SetBorderSize(0);
     legend1 -> AddEntry (noise_hit_distance_positive, Form("Residual cut"),  "l");
@@ -1919,7 +1923,7 @@ TH1F* plot_align_narrow_publish (vector<double> input_vec, TString folder_direct
     double D_gaus_xmax =  10;
     double the_portion = 0.9973;
 
-    l1_residual_hist -> Fit("gaus_fit","NQ");
+    l1_residual_hist -> Fit("gaus_fit","N");
     // note : data for -0.5 ~ 0.5
     // note : MC could be -0.3 ~ 0.3
     l1_residual_hist -> Fit(D_gaus_fit,"N","",-1,1);
@@ -1931,8 +1935,9 @@ TH1F* plot_align_narrow_publish (vector<double> input_vec, TString folder_direct
     gaus_fit->Draw("lsame");	
     // D_gaus_fit->Draw("lsame");	 
     
-    Column_ID_tex -> DrawLatex(0.25, 0.750, Form("Column ID : %i",study_chip));
-    gaus_fit_latex -> DrawLatex(0.25, 0.710, Form("Mean :  %.4f mm", gaus_fit->GetParameter(1)));
+    Column_ID_tex -> DrawLatex(0.2, 0.750, Form("Column ID : %i",study_chip));
+    gaus_fit_latex -> DrawLatex(0.2, 0.710, Form("Mean :  %.4f mm", gaus_fit->GetParameter(1)));
+    gaus_fit_latex -> DrawLatex(0.2, 0.670, Form("Mean error :  %.4f mm", gaus_fit->GetParError(1)));
     // gaus_fit_latex -> DrawLatex(0.25, 0.710, Form("Width %.4f",gaus_fit->GetParameter(2)));
     // gaus_fit_latex -> DrawLatex(0.25, 0.680, Form("#chi^{2}/NDF = %.2f/%i", gaus_fit->GetChisquare(),int(gaus_fit->GetNDF())));
     
@@ -1950,6 +1955,8 @@ TH1F* plot_align_narrow_publish (vector<double> input_vec, TString folder_direct
     cout<<"=============================Alignment narrow information==============================="<<endl;
     cout<<"chip : "<<study_chip<<endl;
     cout<<"fit mean : "<<gaus_fit -> GetParameter(1)<<" width : "<<gaus_fit -> GetParameter(2)<<endl;
+    cout<<"fit mean error : "<<gaus_fit->GetParError(1)<<endl;
+    cout<<"CHi2 : "<<gaus_fit->GetChisquare()<<" NDF "<<gaus_fit->GetNDF()<<" = "<<gaus_fit->GetChisquare()/double(gaus_fit->GetNDF())<<endl;
     cout<<"stat mean : "<<l1_residual_hist -> GetMean()<<" stat width : "<<l1_residual_hist -> GetStdDev()<<endl;
     cout<<"stat entry : "<<l1_residual_hist -> GetEntries()<<endl;
     cout<<"=============================Alignment narrow information==============================="<<endl;

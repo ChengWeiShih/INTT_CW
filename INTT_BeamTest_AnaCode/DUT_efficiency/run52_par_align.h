@@ -22,9 +22,16 @@ bool file_generated = true; // note : this is the protection key, to avoid re-ge
 TString folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency/run52_new_alignment";
 TString file_name = "not_used"; // note : not used
 TString cluster_file_name = "cluster_information_offset-0.0000_adcinfo_NoCamac";
-int study_chip = 8; 
+ 
+
+// note : official, Column 8
+int study_chip = 8;
 double amount_of_alignment = -0.2975;
-double slope_correction = 0.001712; // note : to correct the slope distribution. 
+double slope_correction = 0.001712; // note : to correct the slope distribution, easy to apply the cut
+
+// note : for test
+// double amount_of_alignment = -0.;
+// double slope_correction = 0.001712;
 
 // todo : changed
 double slope_cut = 0.01; // note : the parameter for the DUT 
