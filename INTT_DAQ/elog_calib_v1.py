@@ -5,7 +5,7 @@ from datetime import date
 # Create the GUI window
 window = tk.Tk()
 window.title("ELOG calibration test update")
-window.geometry("1000x350")
+window.geometry("1000x300")
 
 n_row = 1
 
