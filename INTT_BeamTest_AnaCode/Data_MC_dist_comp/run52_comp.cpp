@@ -22,14 +22,19 @@ void run52_comp()
     // double Hist_redge = 0.15;
 
     // note : for scattering 
-    // int Hist_nbins = 39;
+    int Hist_nbins = 39;
+    double Hist_ledge = -0.051468710;
+    double Hist_redge = 0.051468710;
+
+    // note : TEST TEST TEST for scattering TEST TEST TEST
+    // int Hist_nbins = 21;
     // double Hist_ledge = -0.051468710;
     // double Hist_redge = 0.051468710;
 
     // note : for residual
-    int Hist_nbins = 31;
-    double Hist_ledge = -1.209;
-    double Hist_redge = 1.209;
+    // int Hist_nbins = 31;
+    // double Hist_ledge = -1.209;
+    // double Hist_redge = 1.209;
 
     // // note : for cluster size
     // int Hist_nbins = 20;
@@ -108,11 +113,12 @@ void run52_comp()
     // cluster_adc_dist_all_layers_data[2] -> Draw("hist");
 
     // note : for scattering
-    // TH1F * scattering_hist_data = data_class->Get_scattering_dist(Hist_nbins,Hist_ledge,Hist_redge,data_class->get_cluster_reformat());
+    TH1F * scattering_hist_data = data_class -> Get_scattering_dist(Hist_nbins,Hist_ledge,Hist_redge,data_class->get_cluster_reformat());
+    cout<<"data, RMS : "<<scattering_hist_data -> GetRMS()<<" RMS error : "<<scattering_hist_data -> GetRMSError()<<" StdDev : "<<scattering_hist_data -> GetStdDev()<<" StdDev error : "<<scattering_hist_data -> GetStdDevError()<<endl;
     // Characterize_Hist1F(scattering_hist_data,1,"#A08144","","((Cl2-Cl1)/dis)-((Cl1-Cl0)/dis)","Events");
 
     // note : for residual dist
-    TH1F * residual_hist_data = data_class->Get_residual_dist(Hist_nbins,Hist_ledge,Hist_redge,data_class->get_cluster_reformat());
+    // TH1F * residual_hist_data = data_class->Get_residual_dist(Hist_nbins,Hist_ledge,Hist_redge,data_class->get_cluster_reformat());
     // Characterize_Hist1F(residual_hist_data,1,"#A08144",set_logY,false,"","Residual [mm]","Events");
 
     //note : for the track-candidates slope 
@@ -133,10 +139,10 @@ void run52_comp()
     // TString folder_direction_MC = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency/run52_MC_AlFoil/folder_run52_X0_Y-5_1M_WithSciAlFoil_10PercentHDIMetalMaterial_BeamSmear_EMZ_40umCut_Run52DataU8Offset_L1_2.91425e-01mm_Run52DataU8TrackCandidateSlope_9.809e-02deg_RoughTrigger";
 
     //note : WVI MC5 20 um
-    // TString folder_direction_MC = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency/run52_MC_AlFoil/folder_run52_X0_Y-5_1M_WithSciAlFoil_10PercentHDIMetalMaterial_BeamSmear_WVI_20umCut_Run52DataU8Offset_L1_2.91425e-01mm_Run52DataU8TrackCandidateSlope_9.809e-02deg_RoughTrigger";
+    TString folder_direction_MC = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency/run52_MC_AlFoil/folder_run52_X0_Y-5_1M_WithSciAlFoil_10PercentHDIMetalMaterial_BeamSmear_WVI_20umCut_Run52DataU8Offset_L1_2.91425e-01mm_Run52DataU8TrackCandidateSlope_9.809e-02deg_RoughTrigger";
 
     //note : SS MC5 20 um
-    TString folder_direction_MC = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency/run52_MC_AlFoil/folder_run52_X0_Y-5_1M_WithSciAlFoil_10PercentHDIMetalMaterial_BeamSmear_SS_20umCut_Run52DataU8Offset_L1_2.91425e-01mm_Run52DataU8TrackCandidateSlope_9.809e-02deg_RoughTrigger";
+    // TString folder_direction_MC = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency/run52_MC_AlFoil/folder_run52_X0_Y-5_1M_WithSciAlFoil_10PercentHDIMetalMaterial_BeamSmear_SS_20umCut_Run52DataU8Offset_L1_2.91425e-01mm_Run52DataU8TrackCandidateSlope_9.809e-02deg_RoughTrigger";
     
     TString cluster_file_name_MC = "cluster_information_offset-0.0000_adcinfo_SingleTrigger";
     int study_chip_MC = 8;
@@ -144,11 +150,11 @@ void run52_comp()
     // double amount_of_alignment_MC = -2.89928e-01; // note : EMZ 40um MC run52 U8 offset, obtained in MC4
     // double slope_correction_MC = -1.56313e-03; // note : EMZ 40um  MC run52 U8 track slope, from MC5
 
-    // double amount_of_alignment_MC = -2.90258e-01; // note : WVI 20um MC run52 U8 offset, obtained in MC5
-    // double slope_correction_MC = 0; // note : WVI 20um MC run52 U8 track slope, from MC5
+    double amount_of_alignment_MC = -2.90258e-01; // note : WVI 20um MC run52 U8 offset, obtained in MC5
+    double slope_correction_MC = 0; // note : WVI 20um MC run52 U8 track slope, from MC5
 
-    double amount_of_alignment_MC = -2.89824e-01; // note : SS 20um MC run52 U8 offset, obtained in MC5
-    double slope_correction_MC = 0; // note : SS 20um MC run52 U8 track slope, from MC5
+    // double amount_of_alignment_MC = -2.89824e-01; // note : SS 20um MC run52 U8 offset, obtained in MC5
+    // double slope_correction_MC = 0; // note : SS 20um MC run52 U8 track slope, from MC5
     
     // double amount_of_alignment_MC = -2.66304e-01; // note : MC run52 U9 offset
     // double slope_correction_MC = 0.;
@@ -179,11 +185,12 @@ void run52_comp()
     // track_candi_slope_MC -> Draw("hist");
 
     // note : for scattering
-    // TH1F * scattering_hist_MC = MC_class->Get_scattering_dist(Hist_nbins,Hist_ledge,Hist_redge,MC_class->get_cluster_reformat());
+    TH1F * scattering_hist_MC = MC_class->Get_scattering_dist(Hist_nbins,Hist_ledge,Hist_redge,MC_class->get_cluster_reformat());
+    cout<<"MC, RMS : "<<scattering_hist_MC -> GetRMS()<<" RMS error : "<<scattering_hist_MC -> GetRMSError()<<" StdDev : "<<scattering_hist_MC -> GetStdDev()<<" StdDev error : "<<scattering_hist_MC -> GetStdDevError()<<endl;
     // Characterize_Hist1F(scattering_hist_MC,1,"#A08144","","((Cl2-Cl1)/dis)-((Cl1-Cl0)/dis)","Events");
 
     // note : for residual distribution
-    TH1F * residual_hist_MC = MC_class->Get_residual_dist(Hist_nbins,Hist_ledge,Hist_redge,MC_class->get_cluster_reformat());
+    // TH1F * residual_hist_MC = MC_class->Get_residual_dist(Hist_nbins,Hist_ledge,Hist_redge,MC_class->get_cluster_reformat());
     // Characterize_Hist1F(residual_hist_MC,0,"#A08144",set_logY,false,"","Residual [mm]","Events");
 
     // note : for alignment dist
@@ -199,18 +206,18 @@ void run52_comp()
 
     // note : //////////// //////////// //////////// //////////// //////////// for comparison //////////// //////////// //////////// //////////// ////////////
     // TString plot_name = "WVI20um_run52U8_comp_residual_Nbin_"+std::to_string(Hist_nbins);
-    // TString plot_name = "WVI20um_run52U8_comp_scattering_Nbin_"+std::to_string(Hist_nbins); 
+    TString plot_name = "BinTest_WVI20um_run52U8_comp_scattering_Nbin_"+std::to_string(Hist_nbins); 
 
     // TString plot_name = "EMZ40um_run52U8_comp_residual_Nbin_"+std::to_string(Hist_nbins);
     // TString plot_name = "EMZ40um_run52U8_comp_scattering_Nbin_"+std::to_string(Hist_nbins); 
 
-    TString plot_name = "SS20um_run52U8_comp_residual_Nbin_"+std::to_string(Hist_nbins);
+    // TString plot_name = "SS20um_run52U8_comp_residual_Nbin_"+std::to_string(Hist_nbins);
     // TString plot_name = "SS20um_run52U8_comp_scattering_Nbin_"+std::to_string(Hist_nbins); 
 
-    // vector<TString> titles_vec = {"Scattering slope [tan(#theta)]","A.U."};
-    vector<TString> titles_vec = {"Residual [mm]","A.U."};
+    vector<TString> titles_vec = {"Scattering slope [tan(#theta)]","A.U."};
+    // vector<TString> titles_vec = {"Residual [mm]","A.U."};
      
-    dataMC_comp (residual_hist_data, residual_hist_MC, folder_direction_MC, plot_name, titles_vec ,set_logY, false);
+    dataMC_comp (scattering_hist_data, scattering_hist_MC, folder_direction_MC, plot_name, titles_vec ,set_logY, false);
 
     
 
