@@ -1,0 +1,85 @@
+import numpy as np
+from dam import *
+import time
+import datetime
+import intt
+import ROOT
+
+def read_dead_map ()
+
+
+
+RC_DAQ = False
+
+# note : initialize dam
+d = dam()
+# note : reset dam
+d.reset()
+
+# note : disable all readout channels, 0 = 00->both ROCs off, 1 = 01-> Felix port 0 ON, 2 = 10->Felix port 1 ON, 3 = 11->both ROCs ON
+d.reg.ldd_enable=0
+
+# note : reset FELIX logic
+d.reg.rst=3
+d.reg.rst=0
+
+d.reg.sc_target = 0x3 #note : felix port selection, maybe
+
+today = datetime.datetime.now()
+filename = ("/home/inttdev/data/IR/"+"pedestal_packv5_"+today.strftime("%m%d%y_%H%M"))
+
+intt.macro_calib(d)
+
+# note : sort like the comment out the BCO filter
+d.reg.n_collisions=130
+d.reg.roc_wildcard |= 1<<6 # start of run
+
+# note : Felix channel
+for ch in [0,1,2,3,4,5,6]:
+    intt.enable_channel(d, ch)
+
+# note : 0xff wildcard
+#for channel in range(128):
+#    if channel <= 32:
+#        intt.unmask_channel(d, 21, 0xff, channel=channel)
+
+#intt.unmask_channel(d, 21, 0xff)
+intt.enable_ro(d)
+
+start = time.time()
+end = time.time()
+
+a = []
+b = []
+PEDACO = 10000000
+MINUTES = 1
+SECONDS = 0
+TIME = MINUTES*60 + SECONDS # [s]
+
+while (end - start < TIME):
+    if RC_DAQ == True:
+        rd = []
+    else:
+        rd = d.read(PEDACO)
+    if len(rd) == 0:
+        time.sleep(0.1)
+    else:
+        a.append(rd)
+
+    if len(rd) < int(PEDACO/2) and len(rd) != 0:
+        time.sleep(0.1)
+        print(len(rd))
+    if len(rd) == int(PEDACO/2):
+        print("NO LIMITE ----------")
+    end = time.time()
+
+d.reg.ldd_enable = 0
+
+d.reg.n_collisions = 0
+d.reg.roc_wildcard &= ~(1<<6)
+
+a.append(d.read(PEDACO))
+
+if len(a) != 0:
+	np.save(filename,a)
+
