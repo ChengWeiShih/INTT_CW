@@ -1,0 +1,9 @@
+#felix_ch       ROC_port        Ladder
+4   B3  B0L110S
+2   C1  B1L005S
+11   A2  B1L014S
+# File : /home/inttdev/work/cwshih/calib_db/fake_folder/fake_gen_map.txt
+# Time : 2023-03-20 15:57:52.309411
+# ROC1 : ROC-1S
+# ROC2 : ROC-2S
+# update check

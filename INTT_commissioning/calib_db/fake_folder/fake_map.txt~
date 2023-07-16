@@ -1,0 +1,9 @@
+#felix_ch       ROC_port        Ladder
+0   D1  B0L106N
+1   C1  B0L006N
+2   B1  B0L107N
+#3   D2  B1L008N # seems to be bad
+#4   C2  B1L108N
+#5   B2  B1L009N
+6   A1  B1L109N
+7    C3  B1L007N

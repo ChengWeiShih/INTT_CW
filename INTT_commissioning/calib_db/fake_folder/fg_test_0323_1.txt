@@ -1,0 +1,22 @@
+#felix_ch       ROC_port        Ladder
+# 0   A1  B0L109S
+# 1   B1  B0L009S
+# 2   C1  B0L110S
+# 3   A2  B1L112S
+# 4   B3  B1L012S
+# 5   C2  B1L113S
+6   D1  B1L013S
+
+# 7   A1  B0L010S
+# 8   B1  B0L111S
+# 9   C1  B0L011S
+# 10   A2  B1L114S
+# 11   B3  B1L014S
+# 12   C3  B1L115S
+# 13   D2  B1L015S
+
+# File : /home/inttdev/work/cwshih/calib_db/fake_folder/fg_test_0323_1.txt
+# Time : 2023-03-23 16:27:44.721033
+# ROC1 : AAA
+# ROC2 : BBB
+# map source : /home/inttdev/map/RC-6S_7S_map_test9.txt

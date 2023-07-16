@@ -1,0 +1,5 @@
+while : ; do ls ~/sphenix_inttpy/data/* | xargs -I {} ln -s {} 2>/dev/null ; date; sleep 5 ; done
+ls calib_packv5_032723_2119_module*.pdf | xargs -I {} -P 10 open {}
+
+
+select id, cali_time, data_server, regexp_replace(cali_file, '^.*/', '' ), regexp_replace(map_file, '^.*/', '' ), direction, roc, ladder_pos, module_id, port, cali_status, total_n_bad_ch, run_mode, threshold  from cali_info where cali_time > '2023-04-21' order by cali_time DESC;

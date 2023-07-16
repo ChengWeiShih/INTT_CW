@@ -1,0 +1,2 @@
+while : ; do ls ~/sphenix_inttpy/data/* | xargs -I {} ln -s {} 2>/dev/null ; date; sleep 5 ; done
+ls calib_packv5_032723_2119_module*.pdf | xargs -I {} -P 10 open {}

@@ -1,0 +1,35 @@
+#!/bin/bash
+
+felix_ch=(0 1 2 3 4 5 6)
+folder="/home/inttdev/data/IR/commissioning/202303_1st/data_analyzer"
+RC_array=()
+#threshold=(15 15 15 15 15 15 15 15) # note : 0404
+threshold=(30 30 30 28 28 28 30 30) # note : 202303_1st, north
+l=0
+
+test_direc="/home/inttdev/data/IR"
+
+for i in {0..7}
+do
+    RC_array+=(RC-${i}N)
+done
+
+while read line #ROC
+do
+    for i in {0..6} #ladder
+    do
+	echo run ${RC_array[l]} - Felix_ch ${i}
+	#nohup root -l -b -q analyzer_multi.cpp\(${i},\"$(dirname "${line}")\",\"${folder}/${RC_array[i]}\",\"$(basename "${line}")\",${l},${threshold[l]} \)&>${folder}/${RC_array[i]}/run_${i}.out&
+
+	nohup root -l -b -q  analyzer_multi.cpp\(${i},\"$(dirname "${line}")\",\"${folder}/${RC_array[l]}\",\"$(basename "${line}")\",${l},${threshold[l]}\)&>${folder}/${RC_array[i]}/run_${i}.out&
+
+	#nohup root -l -b -q analyzer_multi.cpp\(${i},\"$(dirname "${line}")\",\"${folder}/${RC_array[l]}\",\"$(basename "${line}")\",${l},${threshold[l]}\)&>${folder}/${RC_array[l]}/run_${i}.out&
+	
+	echo ""
+	sleep 1
+	
+    done
+
+    l=$((l+1))
+    
+done
