@@ -1,0 +1,1175 @@
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/new_class/run52_scan_code/run52_U8_comp_scan.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_8","cluster_information_offset-0.0000_adcinfo_DoubleTrigger")...
+NNow you are using the initialize mode : 1
+The misalignment correction will be applied to single column of L1TTree cluster size : 172560ccluster size check : 172560
+ 
+ rreformat output check : 172560
+ 
+ 
+the class : data_run52_U8 has been initiated by using the mode 1 
+ 
+ 
+Doing the DUT test, eID : 17001DDoing the DUT test, eID : 226004DDoing the DUT test, eID : 438048
+Doing the DUT test, eID : 649021
+Doing the DUT test, eID : 868022
+Doing the DUT test, eID : 1087012
+Doing the DUT test, eID : 1305019
+Doing the DUT test, eID : 1527052
+Doing the DUT test, eID : 1741037
+Doing the DUT test, eID : 1959047
+Doing the DUT test, eID : 2177041
+Doing the DUT test, eID : 2391028
+Doing the DUT test, eID : 2606042
+Doing the DUT test, eID : 2823026
+Doing the DUT test, eID : 3046002
+Doing the DUT test, eID : 3259039
+Doing the DUT test, eID : 3481005
+Doing the DUT test, eID : 3703046
+ 
+ 
+ FCN=5583.06 FROM MIGRAD    STATUS=CONVERGED     107 CALLS         108 TOTAL
+                     EDM=1.64515e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.4 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.71020e+04   1.25954e+02  -2.87213e-02   2.38628e-07
+   2  Mean         2.97467e-01   1.41941e-04   1.16494e-07   4.56320e-01
+   3  Sigma        2.83099e-02   1.54956e-04  -4.06075e-07   3.08860e-03
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_align_narrow_U8_pub.pdf has been created
+=============================Alignment narrow information===============================
+chip : 8
+fit mean : 0.297467 width : 0.0283099
+fit mean error : 0.000141941
+CHi2 : 5583.06 NDF 47 = 118.789
+stat mean : 0.29175 stat width : 0.0615153
+stat entry : 49089
+=============================Alignment narrow information===============================
+Final l1 alignment : 0.2975
+ 
+ 
+ 
+ 
+running function Get_l0l2_slope
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the plot_angle 
+correction_data.good_combination_slope_hit2 size : 49300
+--------------------------------------------------------------------------------------------------------
+Fit slope mean : -0.00171211
+Fit slope width : 0.00286491
+stat slope mean : -0.00215917
+stat slope width : 0.0056885
+stat entry : 49300
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_candidate_track_slope_U8_before_nofitting.pdf has been created
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_candidate_track_slope_U8_before.pdf has been created
+Final l0l2 slope : -0.001712
+ 
+ 
+l1 alignment : -0.2975
+l0l2 slope correction : 0.001712
+the "l1 alignment " and " l0l2 slope correction " are not zero, running this function
+Doing the DUT test, eID : 17001
+Doing the DUT test, eID : 226004
+Doing the DUT test, eID : 438048
+Doing the DUT test, eID : 649021
+Doing the DUT test, eID : 868022
+Doing the DUT test, eID : 1087012
+Doing the DUT test, eID : 1305019
+Doing the DUT test, eID : 1527052
+Doing the DUT test, eID : 1741037
+Doing the DUT test, eID : 1959047
+Doing the DUT test, eID : 2177041
+Doing the DUT test, eID : 2391028
+Doing the DUT test, eID : 2606042
+Doing the DUT test, eID : 2823026
+Doing the DUT test, eID : 3046002
+Doing the DUT test, eID : 3259039
+Doing the DUT test, eID : 3481005
+Doing the DUT test, eID : 3703046
+ 
+ 
+ 
+ 
+running function Get_l0l2_slope
+the given l0l2 slope correction is 0.001712
+the l0l2 slope correction is given
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the plot_angle 
+correction_data.good_combination_slope_hit2 size : 49300
+--------------------------------------------------------------------------------------------------------
+Fit slope mean : -0.000229111
+Fit slope width : 0.00292218
+stat slope mean : -0.00046417
+stat slope width : 0.00572371
+stat entry : 49300
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_candidate_track_slope_U8_after_nofitting.pdf has been created
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_candidate_track_slope_U8_after.pdf has been created
+Final l0l2 slope : -0.000229
+ 
+ 
+the alignment tag is 1, new alignment value is given, run the apply coderreformat output check : 172560
+ 
+ 
+Doing the DUT test, eID : 17001
+101 event, eID : 17047 -> middle has cluster
+101 event, eID : 22005 -> middle has cluster
+Doing the DUT test, eID : 36036
+101 event, eID : 38029 -> middle has cluster
+101 event, eID : 44048 -> middle has cluster
+101 event, eID : 55045 -> middle has cluster
+Doing the DUT test, eID : 59001
+101 event, eID : 75037 -> middle has cluster
+Doing the DUT test, eID : 78032
+101 event, eID : 79043 -> no cluster
+101 event, eID : 86020 -> middle has cluster
+Doing the DUT test, eID : 101028
+101 event, eID : 107021 -> middle has cluster
+101 event, eID : 115030 -> middle has cluster
+Doing the DUT test, eID : 122028
+101 event, eID : 122029 -> middle has cluster
+Doing the DUT test, eID : 142041
+101 event, eID : 145006 -> no cluster
+101 event, eID : 155184 -> middle has cluster
+101 event, eID : 160041 -> no cluster
+Doing the DUT test, eID : 161030
+Doing the DUT test, eID : 183028
+Doing the DUT test, eID : 205014
+Doing the DUT test, eID : 226004
+Doing the DUT test, eID : 248009
+101 event, eID : 250030 -> no cluster
+Doing the DUT test, eID : 271009
+Doing the DUT test, eID : 292044
+Doing the DUT test, eID : 315003
+101 event, eID : 316038 -> no cluster
+101 event, eID : 319040 -> middle has cluster
+101 event, eID : 321009 -> middle has cluster
+101 event, eID : 323039 -> middle has cluster
+101 event, eID : 326026 -> no cluster
+Doing the DUT test, eID : 336014
+101 event, eID : 344042 -> no cluster
+Doing the DUT test, eID : 357048
+Doing the DUT test, eID : 377003
+101 event, eID : 395035 -> middle has cluster
+Doing the DUT test, eID : 396036
+101 event, eID : 399050 -> middle has cluster
+101 event, eID : 407003 -> no cluster
+101 event, eID : 417039 -> middle has cluster
+Doing the DUT test, eID : 418020
+101 event, eID : 427062 -> no cluster
+Doing the DUT test, eID : 438048
+101 event, eID : 450050 -> middle has cluster
+Doing the DUT test, eID : 460031
+101 event, eID : 464029 -> middle has cluster
+Doing the DUT test, eID : 481011
+101 event, eID : 492001 -> middle has cluster
+101 event, eID : 495049 -> no cluster
+Doing the DUT test, eID : 502016
+101 event, eID : 508032 -> middle has cluster
+101 event, eID : 508040 -> middle has cluster
+101 event, eID : 508068 -> middle has cluster
+101 event, eID : 518040 -> middle has cluster
+101 event, eID : 519013 -> no cluster
+101 event, eID : 522001 -> middle has cluster
+Doing the DUT test, eID : 522030
+101 event, eID : 535043 -> middle has cluster
+101 event, eID : 536006 -> no cluster
+101 event, eID : 544003 -> middle has cluster
+Doing the DUT test, eID : 544032
+101 event, eID : 553026 -> no cluster
+101 event, eID : 558010 -> no cluster
+101 event, eID : 562007 -> middle has cluster
+Doing the DUT test, eID : 565016
+101 event, eID : 567010 -> middle has cluster
+101 event, eID : 570027 -> middle has cluster
+101 event, eID : 584049 -> middle has cluster
+Doing the DUT test, eID : 587035
+101 event, eID : 595008 -> no cluster
+101 event, eID : 599083 -> no cluster
+101 event, eID : 600018 -> middle has cluster
+101 event, eID : 605018 -> middle has cluster
+Doing the DUT test, eID : 607047
+101 event, eID : 613025 -> no cluster
+Doing the DUT test, eID : 628011
+101 event, eID : 629030 -> no cluster
+101 event, eID : 632009 -> middle has cluster
+101 event, eID : 635036 -> no cluster
+Doing the DUT test, eID : 649021
+101 event, eID : 655012 -> middle has cluster
+101 event, eID : 663042 -> no cluster
+101 event, eID : 670024 -> no cluster
+Doing the DUT test, eID : 671045
+101 event, eID : 677037 -> middle has cluster
+101 event, eID : 678000 -> middle has cluster
+101 event, eID : 678012 -> no cluster
+101 event, eID : 692029 -> middle has cluster
+101 event, eID : 692032 -> middle has cluster
+Doing the DUT test, eID : 693033
+101 event, eID : 704045 -> middle has cluster
+Doing the DUT test, eID : 714048
+101 event, eID : 718042 -> no cluster
+101 event, eID : 723021 -> no cluster
+101 event, eID : 725002 -> no cluster
+Doing the DUT test, eID : 737025
+101 event, eID : 743007 -> no cluster
+101 event, eID : 747016 -> no cluster
+101 event, eID : 749022 -> no cluster
+101 event, eID : 751021 -> no cluster
+Doing the DUT test, eID : 759050
+101 event, eID : 769044 -> middle has cluster
+101 event, eID : 770007 -> no cluster
+101 event, eID : 778006 -> no cluster
+Doing the DUT test, eID : 781031
+Doing the DUT test, eID : 803034
+101 event, eID : 805022 -> no cluster
+101 event, eID : 807015 -> middle has cluster
+101 event, eID : 812013 -> middle has cluster
+Doing the DUT test, eID : 825010
+101 event, eID : 842018 -> middle has cluster
+Doing the DUT test, eID : 847019
+101 event, eID : 852042 -> no cluster
+Doing the DUT test, eID : 868022
+Doing the DUT test, eID : 888037
+101 event, eID : 901028 -> middle has cluster
+101 event, eID : 904003 -> no cluster
+Doing the DUT test, eID : 908042
+101 event, eID : 927037 -> middle has cluster
+Doing the DUT test, eID : 930054
+101 event, eID : 932005 -> middle has cluster
+101 event, eID : 932020 -> no cluster
+101 event, eID : 945001 -> no cluster
+101 event, eID : 951003 -> middle has cluster
+Doing the DUT test, eID : 951036
+101 event, eID : 959001 -> no cluster
+Doing the DUT test, eID : 974017
+101 event, eID : 978021 -> middle has cluster
+101 event, eID : 991043 -> no cluster
+Doing the DUT test, eID : 995021
+101 event, eID : 1012022 -> no cluster
+Doing the DUT test, eID : 1018034
+101 event, eID : 1026019 -> middle has cluster
+Doing the DUT test, eID : 1041005
+101 event, eID : 1043017 -> no cluster
+Doing the DUT test, eID : 1064031
+101 event, eID : 1070045 -> middle has cluster
+101 event, eID : 1081014 -> middle has cluster
+Doing the DUT test, eID : 1087012
+101 event, eID : 1087038 -> middle has cluster
+101 event, eID : 1091034 -> no cluster
+101 event, eID : 1104050 -> middle has cluster
+Doing the DUT test, eID : 1110017
+101 event, eID : 1110021 -> middle has cluster
+101 event, eID : 1114001 -> middle has cluster
+Doing the DUT test, eID : 1130038
+101 event, eID : 1135040 -> middle has cluster
+101 event, eID : 1146047 -> no cluster
+Doing the DUT test, eID : 1153018
+101 event, eID : 1162030 -> no cluster
+Doing the DUT test, eID : 1175001
+101 event, eID : 1181038 -> middle has cluster
+Doing the DUT test, eID : 1196052
+101 event, eID : 1206041 -> middle has cluster
+Doing the DUT test, eID : 1215037
+101 event, eID : 1222029 -> no cluster
+101 event, eID : 1228035 -> no cluster
+Doing the DUT test, eID : 1238023
+101 event, eID : 1242043 -> middle has cluster
+101 event, eID : 1248011 -> no cluster
+Doing the DUT test, eID : 1260012
+101 event, eID : 1262041 -> middle has cluster
+101 event, eID : 1280024 -> middle has cluster
+Doing the DUT test, eID : 1283031
+101 event, eID : 1294025 -> middle has cluster
+Doing the DUT test, eID : 1305019
+101 event, eID : 1311024 -> middle has cluster
+101 event, eID : 1319042 -> middle has cluster
+Doing the DUT test, eID : 1328022
+Doing the DUT test, eID : 1350040
+101 event, eID : 1355017 -> no cluster
+101 event, eID : 1356030 -> no cluster
+101 event, eID : 1365038 -> middle has cluster
+101 event, eID : 1367020 -> middle has cluster
+Doing the DUT test, eID : 1374038
+101 event, eID : 1378035 -> no cluster
+101 event, eID : 1387021 -> no cluster
+101 event, eID : 1387023 -> no cluster
+101 event, eID : 1392020 -> middle has cluster
+Doing the DUT test, eID : 1396026
+101 event, eID : 1400003 -> no cluster
+Doing the DUT test, eID : 1419044
+101 event, eID : 1437006 -> no cluster
+Doing the DUT test, eID : 1440000
+101 event, eID : 1451024 -> no cluster
+Doing the DUT test, eID : 1463005
+101 event, eID : 1468027 -> middle has cluster
+101 event, eID : 1483015 -> no cluster
+Doing the DUT test, eID : 1484028
+101 event, eID : 1484047 -> no cluster
+Doing the DUT test, eID : 1506044
+101 event, eID : 1510023 -> middle has cluster
+101 event, eID : 1516032 -> middle has cluster
+101 event, eID : 1521007 -> middle has cluster
+Doing the DUT test, eID : 1527052
+101 event, eID : 1537035 -> no cluster
+101 event, eID : 1540006 -> middle has cluster
+101 event, eID : 1548033 -> no cluster
+Doing the DUT test, eID : 1549039
+101 event, eID : 1565022 -> middle has cluster
+Doing the DUT test, eID : 1571006
+101 event, eID : 1572036 -> middle has cluster
+101 event, eID : 1576012 -> middle has cluster
+101 event, eID : 1590024 -> middle has cluster
+Doing the DUT test, eID : 1592046
+101 event, eID : 1602063 -> no cluster
+101 event, eID : 1602065 -> middle has cluster
+101 event, eID : 1611033 -> middle has cluster
+Doing the DUT test, eID : 1612036
+101 event, eID : 1616024 -> middle has cluster
+101 event, eID : 1617021 -> middle has cluster
+101 event, eID : 1628011 -> no cluster
+Doing the DUT test, eID : 1634039
+101 event, eID : 1639037 -> middle has cluster
+Doing the DUT test, eID : 1654019
+101 event, eID : 1661039 -> no cluster
+Doing the DUT test, eID : 1676028
+101 event, eID : 1683056 -> no cluster
+101 event, eID : 1687033 -> middle has cluster
+Doing the DUT test, eID : 1698024
+101 event, eID : 1715036 -> middle has cluster
+101 event, eID : 1716029 -> middle has cluster
+Doing the DUT test, eID : 1720035
+101 event, eID : 1722006 -> no cluster
+101 event, eID : 1725053 -> middle has cluster
+101 event, eID : 1735039 -> no cluster
+101 event, eID : 1741010 -> middle has cluster
+Doing the DUT test, eID : 1741037
+101 event, eID : 1743027 -> no cluster
+Doing the DUT test, eID : 1765038
+101 event, eID : 1772066 -> middle has cluster
+101 event, eID : 1776032 -> no cluster
+Doing the DUT test, eID : 1787011
+Doing the DUT test, eID : 1809034
+101 event, eID : 1816042 -> no cluster
+Doing the DUT test, eID : 1830043
+101 event, eID : 1840014 -> middle has cluster
+101 event, eID : 1850000 -> no cluster
+Doing the DUT test, eID : 1853048
+101 event, eID : 1859045 -> no cluster
+101 event, eID : 1866006 -> middle has cluster
+101 event, eID : 1873015 -> middle has cluster
+Doing the DUT test, eID : 1875022
+Doing the DUT test, eID : 1898026
+101 event, eID : 1899044 -> no cluster
+Doing the DUT test, eID : 1920025
+Doing the DUT test, eID : 1938054
+101 event, eID : 1942025 -> middle has cluster
+101 event, eID : 1942052 -> middle has cluster
+Doing the DUT test, eID : 1959047
+101 event, eID : 1969023 -> middle has cluster
+Doing the DUT test, eID : 1981049
+101 event, eID : 1994031 -> no cluster
+101 event, eID : 1995004 -> middle has cluster
+Doing the DUT test, eID : 2004012
+101 event, eID : 2023055 -> no cluster
+101 event, eID : 2024008 -> middle has cluster
+101 event, eID : 2026030 -> no cluster
+Doing the DUT test, eID : 2027014
+Doing the DUT test, eID : 2049021
+Doing the DUT test, eID : 2071027
+101 event, eID : 2075010 -> middle has cluster
+Doing the DUT test, eID : 2094003
+101 event, eID : 2103010 -> middle has cluster
+101 event, eID : 2112041 -> no cluster
+Doing the DUT test, eID : 2115015
+101 event, eID : 2117017 -> middle has cluster
+101 event, eID : 2121015 -> no cluster
+101 event, eID : 2127026 -> no cluster
+Doing the DUT test, eID : 2135040
+Doing the DUT test, eID : 2156001
+101 event, eID : 2157037 -> middle has cluster
+101 event, eID : 2158019 -> middle has cluster
+101 event, eID : 2169002 -> middle has cluster
+101 event, eID : 2169035 -> middle has cluster
+Doing the DUT test, eID : 2177041
+101 event, eID : 2187019 -> middle has cluster
+101 event, eID : 2191039 -> no cluster
+101 event, eID : 2195016 -> middle has cluster
+101 event, eID : 2197045 -> middle has cluster
+Doing the DUT test, eID : 2199034
+Doing the DUT test, eID : 2221015
+101 event, eID : 2235003 -> middle has cluster
+101 event, eID : 2237027 -> middle has cluster
+Doing the DUT test, eID : 2242051
+101 event, eID : 2257009 -> middle has cluster
+Doing the DUT test, eID : 2264034
+101 event, eID : 2266024 -> middle has cluster
+Doing the DUT test, eID : 2285036
+101 event, eID : 2287044 -> no cluster
+101 event, eID : 2288005 -> no cluster
+101 event, eID : 2289051 -> no cluster
+Doing the DUT test, eID : 2306018
+Doing the DUT test, eID : 2327037
+101 event, eID : 2340007 -> middle has cluster
+Doing the DUT test, eID : 2347003
+101 event, eID : 2348026 -> middle has cluster
+Doing the DUT test, eID : 2368028
+101 event, eID : 2386025 -> middle has cluster
+Doing the DUT test, eID : 2391028
+101 event, eID : 2407041 -> middle has cluster
+Doing the DUT test, eID : 2412003
+Doing the DUT test, eID : 2435006
+101 event, eID : 2443040 -> middle has cluster
+101 event, eID : 2446009 -> middle has cluster
+101 event, eID : 2448004 -> middle has cluster
+101 event, eID : 2455003 -> middle has cluster
+Doing the DUT test, eID : 2455041
+101 event, eID : 2467022 -> no cluster
+Doing the DUT test, eID : 2476010
+101 event, eID : 2477030 -> middle has cluster
+101 event, eID : 2479023 -> middle has cluster
+101 event, eID : 2496047 -> middle has cluster
+Doing the DUT test, eID : 2497038
+101 event, eID : 2499006 -> middle has cluster
+101 event, eID : 2505037 -> middle has cluster
+101 event, eID : 2513007 -> no cluster
+101 event, eID : 2513013 -> middle has cluster
+Doing the DUT test, eID : 2519017
+101 event, eID : 2529023 -> middle has cluster
+101 event, eID : 2533029 -> no cluster
+Doing the DUT test, eID : 2540034
+101 event, eID : 2544032 -> middle has cluster
+101 event, eID : 2553011 -> middle has cluster
+101 event, eID : 2554031 -> middle has cluster
+Doing the DUT test, eID : 2561026
+101 event, eID : 2577020 -> no cluster
+Doing the DUT test, eID : 2583023
+101 event, eID : 2593007 -> middle has cluster
+Doing the DUT test, eID : 2606042
+101 event, eID : 2611000 -> no cluster
+101 event, eID : 2612030 -> no cluster
+101 event, eID : 2613008 -> middle has cluster
+101 event, eID : 2622006 -> no cluster
+Doing the DUT test, eID : 2628000
+101 event, eID : 2628036 -> middle has cluster
+101 event, eID : 2630003 -> middle has cluster
+101 event, eID : 2633035 -> no cluster
+Doing the DUT test, eID : 2650034
+101 event, eID : 2657032 -> no cluster
+101 event, eID : 2658004 -> no cluster
+101 event, eID : 2660015 -> middle has cluster
+101 event, eID : 2661009 -> middle has cluster
+Doing the DUT test, eID : 2669030
+101 event, eID : 2680014 -> no cluster
+101 event, eID : 2680016 -> middle has cluster
+101 event, eID : 2690027 -> middle has cluster
+Doing the DUT test, eID : 2692036
+101 event, eID : 2706041 -> middle has cluster
+Doing the DUT test, eID : 2713010
+101 event, eID : 2715003 -> no cluster
+Doing the DUT test, eID : 2736019
+101 event, eID : 2752005 -> middle has cluster
+Doing the DUT test, eID : 2757013
+Doing the DUT test, eID : 2779033
+101 event, eID : 2797015 -> middle has cluster
+Doing the DUT test, eID : 2799065
+101 event, eID : 2804012 -> middle has cluster
+101 event, eID : 2815029 -> no cluster
+Doing the DUT test, eID : 2823026
+Doing the DUT test, eID : 2843038
+101 event, eID : 2847046 -> middle has cluster
+101 event, eID : 2863053 -> middle has cluster
+101 event, eID : 2864004 -> no cluster
+Doing the DUT test, eID : 2867026
+Doing the DUT test, eID : 2886023
+101 event, eID : 2893007 -> no cluster
+101 event, eID : 2896036 -> middle has cluster
+101 event, eID : 2898002 -> no cluster
+Doing the DUT test, eID : 2909001
+101 event, eID : 2913030 -> middle has cluster
+101 event, eID : 2922024 -> middle has cluster
+101 event, eID : 2923004 -> no cluster
+101 event, eID : 2927037 -> middle has cluster
+Doing the DUT test, eID : 2930043
+101 event, eID : 2937022 -> middle has cluster
+Doing the DUT test, eID : 2955036
+101 event, eID : 2956029 -> no cluster
+101 event, eID : 2967046 -> no cluster
+101 event, eID : 2973047 -> middle has cluster
+Doing the DUT test, eID : 2975055
+101 event, eID : 2988042 -> middle has cluster
+101 event, eID : 2995019 -> no cluster
+101 event, eID : 2996019 -> no cluster
+Doing the DUT test, eID : 2999035
+101 event, eID : 3010031 -> middle has cluster
+101 event, eID : 3011040 -> no cluster
+101 event, eID : 3017049 -> middle has cluster
+Doing the DUT test, eID : 3021014
+101 event, eID : 3038006 -> middle has cluster
+101 event, eID : 3042021 -> no cluster
+101 event, eID : 3043009 -> middle has cluster
+Doing the DUT test, eID : 3046002
+101 event, eID : 3061021 -> no cluster
+Doing the DUT test, eID : 3067018
+101 event, eID : 3070022 -> middle has cluster
+Doing the DUT test, eID : 3089022
+101 event, eID : 3094049 -> middle has cluster
+Doing the DUT test, eID : 3109013
+Doing the DUT test, eID : 3131017
+101 event, eID : 3141052 -> middle has cluster
+Doing the DUT test, eID : 3148050
+101 event, eID : 3164013 -> no cluster
+Doing the DUT test, eID : 3172036
+101 event, eID : 3186046 -> middle has cluster
+101 event, eID : 3190000 -> middle has cluster
+Doing the DUT test, eID : 3193012
+101 event, eID : 3200005 -> middle has cluster
+Doing the DUT test, eID : 3216017
+101 event, eID : 3218043 -> middle has cluster
+101 event, eID : 3220006 -> no cluster
+101 event, eID : 3221008 -> middle has cluster
+101 event, eID : 3221030 -> no cluster
+101 event, eID : 3229041 -> middle has cluster
+101 event, eID : 3229043 -> middle has cluster
+Doing the DUT test, eID : 3237021
+101 event, eID : 3238004 -> no cluster
+101 event, eID : 3240007 -> middle has cluster
+101 event, eID : 3248045 -> middle has cluster
+101 event, eID : 3256030 -> no cluster
+Doing the DUT test, eID : 3259039
+101 event, eID : 3262048 -> middle has cluster
+101 event, eID : 3263006 -> no cluster
+101 event, eID : 3281003 -> no cluster
+Doing the DUT test, eID : 3281006
+101 event, eID : 3287040 -> no cluster
+Doing the DUT test, eID : 3304018
+Doing the DUT test, eID : 3325004
+101 event, eID : 3332032 -> middle has cluster
+Doing the DUT test, eID : 3348031
+101 event, eID : 3348046 -> middle has cluster
+Doing the DUT test, eID : 3370022
+101 event, eID : 3372020 -> middle has cluster
+101 event, eID : 3373020 -> middle has cluster
+101 event, eID : 3377017 -> no cluster
+101 event, eID : 3382012 -> middle has cluster
+Doing the DUT test, eID : 3394005
+101 event, eID : 3400024 -> middle has cluster
+Doing the DUT test, eID : 3412034
+Doing the DUT test, eID : 3435033
+101 event, eID : 3445041 -> middle has cluster
+101 event, eID : 3452016 -> middle has cluster
+Doing the DUT test, eID : 3456026
+101 event, eID : 3457014 -> middle has cluster
+101 event, eID : 3471025 -> no cluster
+Doing the DUT test, eID : 3481005
+101 event, eID : 3482021 -> no cluster
+101 event, eID : 3492047 -> middle has cluster
+101 event, eID : 3498030 -> middle has cluster
+Doing the DUT test, eID : 3502007
+101 event, eID : 3516042 -> no cluster
+101 event, eID : 3518006 -> no cluster
+101 event, eID : 3524004 -> middle has cluster
+Doing the DUT test, eID : 3525023
+101 event, eID : 3536042 -> no cluster
+Doing the DUT test, eID : 3547000
+Doing the DUT test, eID : 3570044
+101 event, eID : 3572022 -> middle has cluster
+101 event, eID : 3578018 -> middle has cluster
+101 event, eID : 3587040 -> no cluster
+Doing the DUT test, eID : 3594023
+Doing the DUT test, eID : 3617021
+101 event, eID : 3628038 -> middle has cluster
+Doing the DUT test, eID : 3639019
+Doing the DUT test, eID : 3661019
+Doing the DUT test, eID : 3681051
+101 event, eID : 3686044 -> no cluster
+101 event, eID : 3687043 -> no cluster
+101 event, eID : 3695011 -> middle has cluster
+101 event, eID : 3701017 -> middle has cluster
+Doing the DUT test, eID : 3703046
+101 event, eID : 3707035 -> middle has cluster
+101 event, eID : 3708006 -> middle has cluster
+101 event, eID : 3719034 -> no cluster
+Doing the DUT test, eID : 3722030
+101 event, eID : 3741018 -> no cluster
+Doing the DUT test, eID : 3744016
+101 event, eID : 3745034 -> middle has cluster
+event counting 1 	 : 172560 all 
+event counting 2 	 : 70452 adjacent chip, no cluster  
+event counting 3 	 : 49300 single cluster 
+event counting 4 	 : 0 standalone cluster requirement 
+event counting 5 	 : 48684 cluster adc 
+event counting 6 	 : 0 cluster size combine 
+event counting 7 	 : 48646 l0 cluster edge exclusion 
+event counting 8 	 : 48584 l2 cluster edge exclusion 
+event counting 9 	 : 45807 slope cut 
+event counting 10 	 : 123 no hits in middle layer 
+event counting 11 	 : 45498 have good cluster in middle 
+event counting 12 	 : 186 no good cluster in middle 
+=========================== Detection efficiency ===================================
+# of 111 : 45498
+# of 101 : 309
+Efficiency : 0.993254
+Efficiency by TEfficiency 
+99.32543	+0.03824	-0.04045 
+=========================== Detection efficiency ===================================
+Doing the DUT test, eID : 17001
+Doing the DUT test, eID : 226004
+Doing the DUT test, eID : 438048
+Doing the DUT test, eID : 649021
+Doing the DUT test, eID : 868022
+Doing the DUT test, eID : 1087012
+Doing the DUT test, eID : 1305019
+Doing the DUT test, eID : 1527052
+Doing the DUT test, eID : 1741037
+Doing the DUT test, eID : 1959047
+Doing the DUT test, eID : 2177041
+Doing the DUT test, eID : 2391028
+Doing the DUT test, eID : 2606042
+Doing the DUT test, eID : 2823026
+Doing the DUT test, eID : 3046002
+Doing the DUT test, eID : 3259039
+Doing the DUT test, eID : 3481005
+Doing the DUT test, eID : 3703046
+event counting 1 	 : 172560 all 
+event counting 2 	 : 78426 single cluster each layer 
+event counting 3 	 : 26919 selected chip 1 cluster, all layers  
+event counting 4 	 : 26468 cluster adc 
+event counting 5 	 : 24922 l0_l1_slope cut 
+event counting 6 	 : 12278 l0_l1_pos cut 
+ 
+ 
+running function Get_l0l1_slope
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the plot_angle l0l1 
+l0l1_correction_data.l0_l1_slope_vec size : 26468
+--------------------------------------------------------------------------------------------------------
+Fit slope mean : -0.00225418
+Fit slope width : 0.00303244
+stat slope mean : -0.0023786
+stat slope width : 0.00540251
+stat entry : 26468
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_candidate_l0l1_track_slope_U8_before_nofitting.pdf has been created
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_candidate_l0l1_track_slope_U8_before.pdf has been created
+Final l0l1 slope : -0.002254
+ 
+ 
+Doing the DUT test, eID : 17001
+Doing the DUT test, eID : 226004
+Doing the DUT test, eID : 438048
+Doing the DUT test, eID : 649021
+Doing the DUT test, eID : 868022
+Doing the DUT test, eID : 1087012
+Doing the DUT test, eID : 1305019
+Doing the DUT test, eID : 1527052
+Doing the DUT test, eID : 1741037
+Doing the DUT test, eID : 1959047
+Doing the DUT test, eID : 2177041
+Doing the DUT test, eID : 2391028
+Doing the DUT test, eID : 2606042
+Doing the DUT test, eID : 2823026
+Doing the DUT test, eID : 3046002
+Doing the DUT test, eID : 3259039
+Doing the DUT test, eID : 3481005
+Doing the DUT test, eID : 3703046
+event counting 1 	 : 172560 all 
+event counting 2 	 : 78465 single cluster each layer 
+event counting 3 	 : 26937 selected chip 1 cluster, all layers  
+event counting 4 	 : 26488 cluster adc 
+event counting 5 	 : 25141 l0_l1_slope cut 
+event counting 6 	 : 12376 l0_l1_pos cut 
+ 
+ 
+running function Get_l0l1_slope
+the given l0l1 slope correction is 0.002254
+the l0l1 slope correction is given
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the plot_angle l0l1 
+l0l1_correction_data.l0_l1_slope_vec size : 26488
+--------------------------------------------------------------------------------------------------------
+Fit slope mean : 0.000250753
+Fit slope width : 0.00299151
+stat slope mean : -0.000137713
+stat slope width : 0.00535909
+stat entry : 26488
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_candidate_l0l1_track_slope_U8_after_nofitting.pdf has been created
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_candidate_l0l1_track_slope_U8_after.pdf has been created
+Final l0l1 slope : 0.000251
+ 
+ 
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the plot_angle&pos plot 
+input_slope size : 26488
+input_pos size   : 26488
+--------------------------------------------------------------------------------------------------------
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_candidate_track_slope_Pos_U8_after.pdf has been created
+Final, correction check, l0l2_slope 0.001712, l1_alignment -0.2975, l0l1_slope :  0.002254
+ 
+ 
+running function Get_l0l1 method, scattering : 
+the given l0l1 slope correction is 0.002254
+the l0l1 slope correction is given
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the scattering dist. by using l0l1 method 
+l0l1_correction_data.scattering_vec size : 12376
+--------------------------------------------------------------------------------------------------------
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_candidate_l0l1_scattering_U8_after_nofitting.pdf has been created
+ 
+ 
+running function Get_l0l1 method, residual : 
+the given l0l1 slope correction is 0.002254
+the l0l1 slope correction is given
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the residual dist. by using l0l1 method 
+l0l1_correction_data.middle_layer_residual size : 12376
+--------------------------------------------------------------------------------------------------------
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/new_class_attempt/DUT_candidate_l0l1_residual_U8_after_nofitting.pdf has been created
+Now you are using the initialize mode : 1
+The misalignment correction will be applied to single column of L1
+Tree cluster size : 74837
+cluster size check : 74837
+ 
+ 
+reformat output check : 74837
+ 
+ 
+the class : MC_run52_U11 has been initiated by using the mode 1 
+ 
+ 
+Doing the DUT test, eID : 0
+Doing the DUT test, eID : 10000
+Doing the DUT test, eID : 20001
+Doing the DUT test, eID : 30002
+Doing the DUT test, eID : 40002
+Doing the DUT test, eID : 50003
+Doing the DUT test, eID : 60003
+Doing the DUT test, eID : 70003
+ 
+ 
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+ FCN=14460.6 FROM MIGRAD    STATUS=CONVERGED     139 CALLS         140 TOTAL
+                     EDM=7.35346e-10    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   1.8 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     2.74556e+04   1.45764e+02  -2.07005e-01  -3.11707e-07
+   2  Mean         3.06034e-01   1.02974e-04  -9.02265e-08  -1.54946e-01
+   3  Sigma        2.23470e-02   7.09268e-05   4.11848e-07   1.81023e-02
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_align_narrow_U11_pub.pdf has been created
+=============================Alignment narrow information===============================
+chip : 11
+fit mean : 0.306034 width : 0.022347
+fit mean error : 0.000102974
+CHi2 : 14460.6 NDF 44 = 328.65
+stat mean : 0.291688 stat width : 0.0515107
+stat entry : 69422
+=============================Alignment narrow information===============================
+Final l1 alignment : 0.3060
+ 
+ 
+ 
+ 
+running function Get_l0l2_slope
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the plot_angle 
+correction_data.good_combination_slope_hit2 size : 69422
+--------------------------------------------------------------------------------------------------------
+Fit slope mean : -0.00156812
+Fit slope width : 0.00319414
+stat slope mean : -0.00179661
+stat slope width : 0.00400878
+stat entry : 69422
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_candidate_track_slope_U11_before_nofitting.pdf has been created
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_candidate_track_slope_U11_before.pdf has been created
+Final l0l2 slope : -0.001568
+ 
+ 
+l1 alignment : -0.306
+l0l2 slope correction : 0.001568
+the "l1 alignment " and " l0l2 slope correction " are not zero, running this function
+Doing the DUT test, eID : 0
+Doing the DUT test, eID : 10000
+Doing the DUT test, eID : 20001
+Doing the DUT test, eID : 30002
+Doing the DUT test, eID : 40002
+Doing the DUT test, eID : 50003
+Doing the DUT test, eID : 60003
+Doing the DUT test, eID : 70003
+ 
+ 
+ 
+ 
+running function Get_l0l2_slope
+the given l0l2 slope correction is 0.001568
+the l0l2 slope correction is given
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the plot_angle 
+correction_data.good_combination_slope_hit2 size : 69422
+--------------------------------------------------------------------------------------------------------
+Fit slope mean : -0.000167867
+Fit slope width : 0.00332908
+stat slope mean : -0.000231453
+stat slope width : 0.00401695
+stat entry : 69422
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_candidate_track_slope_U11_after_nofitting.pdf has been created
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_candidate_track_slope_U11_after.pdf has been created
+Final l0l2 slope : -0.000168
+ 
+ 
+the alignment tag is 1, new alignment value is given, run the apply code
+reformat output check : 74837
+ 
+ 
+Doing the DUT test, eID : 0
+101 event, eID : 428 -> middle has cluster
+Doing the DUT test, eID : 1000
+Doing the DUT test, eID : 2000
+101 event, eID : 2077 -> middle has cluster
+101 event, eID : 2568 -> middle has cluster
+101 event, eID : 2667 -> middle has cluster
+101 event, eID : 2954 -> middle has cluster
+Doing the DUT test, eID : 3000
+101 event, eID : 3299 -> middle has cluster
+Doing the DUT test, eID : 4000
+101 event, eID : 4402 -> middle has cluster
+101 event, eID : 4531 -> middle has cluster
+101 event, eID : 4749 -> middle has cluster
+101 event, eID : 4831 -> middle has cluster
+Doing the DUT test, eID : 5000
+101 event, eID : 5187 -> middle has cluster
+101 event, eID : 5701 -> middle has cluster
+Doing the DUT test, eID : 6000
+101 event, eID : 6640 -> middle has cluster
+Doing the DUT test, eID : 7000
+101 event, eID : 7542 -> middle has cluster
+Doing the DUT test, eID : 8000
+101 event, eID : 8747 -> middle has cluster
+Doing the DUT test, eID : 9000
+101 event, eID : 9090 -> middle has cluster
+101 event, eID : 9793 -> middle has cluster
+Doing the DUT test, eID : 10000
+101 event, eID : 10275 -> middle has cluster
+101 event, eID : 10423 -> middle has cluster
+101 event, eID : 10932 -> middle has cluster
+Doing the DUT test, eID : 11000
+101 event, eID : 11035 -> middle has cluster
+Doing the DUT test, eID : 12000
+101 event, eID : 12008 -> middle has cluster
+101 event, eID : 12483 -> middle has cluster
+101 event, eID : 12853 -> middle has cluster
+101 event, eID : 12997 -> middle has cluster
+Doing the DUT test, eID : 13000
+101 event, eID : 13384 -> middle has cluster
+101 event, eID : 13827 -> middle has cluster
+Doing the DUT test, eID : 14001
+101 event, eID : 14022 -> middle has cluster
+Doing the DUT test, eID : 15001
+Doing the DUT test, eID : 16001
+101 event, eID : 16010 -> middle has cluster
+101 event, eID : 16808 -> middle has cluster
+Doing the DUT test, eID : 17001
+101 event, eID : 17576 -> middle has cluster
+Doing the DUT test, eID : 18001
+101 event, eID : 18667 -> middle has cluster
+101 event, eID : 18670 -> middle has cluster
+101 event, eID : 18688 -> middle has cluster
+Doing the DUT test, eID : 19001
+101 event, eID : 19073 -> middle has cluster
+101 event, eID : 19832 -> middle has cluster
+Doing the DUT test, eID : 20001
+101 event, eID : 20445 -> middle has cluster
+Doing the DUT test, eID : 21002
+101 event, eID : 21496 -> middle has cluster
+101 event, eID : 21760 -> middle has cluster
+Doing the DUT test, eID : 22002
+Doing the DUT test, eID : 23002
+101 event, eID : 23826 -> middle has cluster
+Doing the DUT test, eID : 24002
+101 event, eID : 24014 -> middle has cluster
+101 event, eID : 24872 -> middle has cluster
+101 event, eID : 24892 -> middle has cluster
+Doing the DUT test, eID : 25002
+101 event, eID : 25066 -> middle has cluster
+101 event, eID : 25498 -> middle has cluster
+Doing the DUT test, eID : 26002
+101 event, eID : 26068 -> middle has cluster
+101 event, eID : 26171 -> middle has cluster
+101 event, eID : 26738 -> middle has cluster
+Doing the DUT test, eID : 27002
+Doing the DUT test, eID : 28002
+101 event, eID : 28121 -> middle has cluster
+101 event, eID : 28706 -> middle has cluster
+101 event, eID : 28730 -> middle has cluster
+Doing the DUT test, eID : 29002
+Doing the DUT test, eID : 30002
+101 event, eID : 30012 -> middle has cluster
+Doing the DUT test, eID : 31002
+101 event, eID : 31016 -> middle has cluster
+101 event, eID : 31030 -> middle has cluster
+101 event, eID : 31522 -> middle has cluster
+101 event, eID : 31966 -> middle has cluster
+Doing the DUT test, eID : 32002
+101 event, eID : 32208 -> middle has cluster
+101 event, eID : 32381 -> middle has cluster
+Doing the DUT test, eID : 33002
+101 event, eID : 33579 -> middle has cluster
+Doing the DUT test, eID : 34002
+101 event, eID : 34537 -> middle has cluster
+Doing the DUT test, eID : 35002
+101 event, eID : 35321 -> middle has cluster
+101 event, eID : 35438 -> middle has cluster
+101 event, eID : 35585 -> middle has cluster
+101 event, eID : 35752 -> middle has cluster
+101 event, eID : 35858 -> middle has cluster
+101 event, eID : 35950 -> middle has cluster
+Doing the DUT test, eID : 36002
+101 event, eID : 36375 -> middle has cluster
+101 event, eID : 36998 -> middle has cluster
+Doing the DUT test, eID : 37002
+Doing the DUT test, eID : 38002
+101 event, eID : 38930 -> middle has cluster
+101 event, eID : 38965 -> middle has cluster
+Doing the DUT test, eID : 39002
+101 event, eID : 39104 -> middle has cluster
+101 event, eID : 39496 -> middle has cluster
+101 event, eID : 39793 -> middle has cluster
+Doing the DUT test, eID : 40002
+101 event, eID : 40216 -> middle has cluster
+101 event, eID : 40302 -> middle has cluster
+101 event, eID : 40671 -> middle has cluster
+Doing the DUT test, eID : 41002
+101 event, eID : 41155 -> middle has cluster
+101 event, eID : 41336 -> middle has cluster
+101 event, eID : 41670 -> middle has cluster
+101 event, eID : 41715 -> middle has cluster
+101 event, eID : 41885 -> middle has cluster
+Doing the DUT test, eID : 42002
+101 event, eID : 42066 -> middle has cluster
+Doing the DUT test, eID : 43002
+101 event, eID : 43107 -> middle has cluster
+101 event, eID : 43138 -> middle has cluster
+Doing the DUT test, eID : 44002
+101 event, eID : 44613 -> middle has cluster
+Doing the DUT test, eID : 45002
+Doing the DUT test, eID : 46002
+101 event, eID : 46358 -> middle has cluster
+101 event, eID : 46825 -> middle has cluster
+Doing the DUT test, eID : 47002
+101 event, eID : 47161 -> middle has cluster
+101 event, eID : 47266 -> middle has cluster
+101 event, eID : 47691 -> middle has cluster
+Doing the DUT test, eID : 48002
+101 event, eID : 48332 -> middle has cluster
+101 event, eID : 48442 -> middle has cluster
+Doing the DUT test, eID : 49002
+101 event, eID : 49157 -> middle has cluster
+101 event, eID : 49572 -> middle has cluster
+101 event, eID : 49843 -> middle has cluster
+Doing the DUT test, eID : 50003
+101 event, eID : 50857 -> middle has cluster
+101 event, eID : 50887 -> middle has cluster
+Doing the DUT test, eID : 51003
+101 event, eID : 51576 -> middle has cluster
+101 event, eID : 51636 -> middle has cluster
+Doing the DUT test, eID : 52003
+101 event, eID : 52552 -> middle has cluster
+Doing the DUT test, eID : 53003
+101 event, eID : 53741 -> middle has cluster
+Doing the DUT test, eID : 54003
+101 event, eID : 54277 -> middle has cluster
+Doing the DUT test, eID : 55003
+101 event, eID : 55401 -> middle has cluster
+101 event, eID : 55574 -> middle has cluster
+101 event, eID : 55739 -> middle has cluster
+Doing the DUT test, eID : 56003
+Doing the DUT test, eID : 57003
+101 event, eID : 57463 -> middle has cluster
+101 event, eID : 57940 -> middle has cluster
+Doing the DUT test, eID : 58003
+Doing the DUT test, eID : 59003
+101 event, eID : 59401 -> middle has cluster
+101 event, eID : 59424 -> middle has cluster
+Doing the DUT test, eID : 60003
+101 event, eID : 60360 -> middle has cluster
+101 event, eID : 60599 -> middle has cluster
+Doing the DUT test, eID : 61003
+Doing the DUT test, eID : 62003
+101 event, eID : 62065 -> middle has cluster
+101 event, eID : 62166 -> middle has cluster
+Doing the DUT test, eID : 63003
+101 event, eID : 63284 -> middle has cluster
+101 event, eID : 63397 -> middle has cluster
+101 event, eID : 63558 -> middle has cluster
+101 event, eID : 63784 -> middle has cluster
+Doing the DUT test, eID : 64003
+101 event, eID : 64182 -> middle has cluster
+101 event, eID : 64524 -> middle has cluster
+101 event, eID : 64647 -> middle has cluster
+101 event, eID : 64771 -> middle has cluster
+101 event, eID : 64947 -> middle has cluster
+Doing the DUT test, eID : 65003
+Doing the DUT test, eID : 66003
+101 event, eID : 66089 -> middle has cluster
+101 event, eID : 66095 -> middle has cluster
+101 event, eID : 66425 -> middle has cluster
+101 event, eID : 66501 -> middle has cluster
+101 event, eID : 66587 -> middle has cluster
+101 event, eID : 66770 -> middle has cluster
+Doing the DUT test, eID : 67003
+101 event, eID : 67046 -> middle has cluster
+101 event, eID : 67175 -> middle has cluster
+101 event, eID : 67411 -> middle has cluster
+Doing the DUT test, eID : 68003
+101 event, eID : 68910 -> middle has cluster
+101 event, eID : 68930 -> middle has cluster
+Doing the DUT test, eID : 69003
+Doing the DUT test, eID : 70003
+101 event, eID : 70368 -> middle has cluster
+101 event, eID : 70661 -> middle has cluster
+Doing the DUT test, eID : 71003
+101 event, eID : 71575 -> middle has cluster
+Doing the DUT test, eID : 72003
+101 event, eID : 72136 -> middle has cluster
+Doing the DUT test, eID : 73003
+101 event, eID : 73721 -> middle has cluster
+101 event, eID : 73925 -> middle has cluster
+Doing the DUT test, eID : 74003
+101 event, eID : 74446 -> middle has cluster
+101 event, eID : 74785 -> middle has cluster
+event counting 1 	 : 74837 all 
+event counting 2 	 : 71935 adjacent chip, no cluster  
+event counting 3 	 : 69422 single cluster 
+event counting 4 	 : 0 standalone cluster requirement 
+event counting 5 	 : 69422 cluster adc 
+event counting 6 	 : 0 cluster size combine 
+event counting 7 	 : 69422 l0 cluster edge exclusion 
+event counting 8 	 : 69421 l2 cluster edge exclusion 
+event counting 9 	 : 68025 slope cut 
+event counting 10 	 : 0 no hits in middle layer 
+event counting 11 	 : 67884 have good cluster in middle 
+event counting 12 	 : 141 no good cluster in middle 
+=========================== Detection efficiency ===================================
+# of 111 : 67884
+# of 101 : 141
+Efficiency : 0.997927
+Efficiency by TEfficiency 
+99.79272	+0.01742	-0.01895 
+=========================== Detection efficiency ===================================
+Doing the DUT test, eID : 0
+Doing the DUT test, eID : 10000
+Doing the DUT test, eID : 20001
+Doing the DUT test, eID : 30002
+Doing the DUT test, eID : 40002
+Doing the DUT test, eID : 50003
+Doing the DUT test, eID : 60003
+Doing the DUT test, eID : 70003
+event counting 1 	 : 74837 all 
+event counting 2 	 : 66007 single cluster each layer 
+event counting 3 	 : 65986 selected chip 1 cluster, all layers  
+event counting 4 	 : 65985 cluster adc 
+event counting 5 	 : 64014 l0_l1_slope cut 
+event counting 6 	 : 64013 l0_l1_pos cut 
+ 
+ 
+running function Get_l0l1_slope
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the plot_angle l0l1 
+l0l1_correction_data.l0_l1_slope_vec size : 65985
+--------------------------------------------------------------------------------------------------------
+Fit slope mean : -0.00236231
+Fit slope width : 0.00375749
+stat slope mean : -0.00226615
+stat slope width : 0.00391666
+stat entry : 65985
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_candidate_l0l1_track_slope_U11_before_nofitting.pdf has been created
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_candidate_l0l1_track_slope_U11_before.pdf has been created
+Final l0l1 slope : -0.002362
+ 
+ 
+Doing the DUT test, eID : 0
+Doing the DUT test, eID : 10000
+Doing the DUT test, eID : 20001
+Doing the DUT test, eID : 30002
+Doing the DUT test, eID : 40002
+Doing the DUT test, eID : 50003
+Doing the DUT test, eID : 60003
+Doing the DUT test, eID : 70003
+event counting 1 	 : 74837 all 
+event counting 2 	 : 66620 single cluster each layer 
+event counting 3 	 : 66599 selected chip 1 cluster, all layers  
+event counting 4 	 : 66598 cluster adc 
+event counting 5 	 : 65289 l0_l1_slope cut 
+event counting 6 	 : 65288 l0_l1_pos cut 
+ 
+ 
+running function Get_l0l1_slope
+the given l0l1 slope correction is 0.002362
+the l0l1 slope correction is given
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the plot_angle l0l1 
+l0l1_correction_data.l0_l1_slope_vec size : 66598
+--------------------------------------------------------------------------------------------------------
+Fit slope mean : -0.00207355
+Fit slope width : 0.00148406
+stat slope mean : 9.20145e-05
+stat slope width : 0.00391362
+stat entry : 66598
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_candidate_l0l1_track_slope_U11_after_nofitting.pdf has been created
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_candidate_l0l1_track_slope_U11_after.pdf has been created
+Final l0l1 slope : -0.002074
+ 
+ 
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the plot_angle&pos plot 
+input_slope size : 66598
+input_pos size   : 66598
+--------------------------------------------------------------------------------------------------------
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_candidate_track_slope_Pos_U11_after.pdf has been created
+Final, correction check, l0l2_slope 0.001568, l1_alignment -0.306, l0l1_slope :  0.002362
+ 
+ 
+running function Get_l0l1 method, scattering : 
+the given l0l1 slope correction is 0.002362
+the l0l1 slope correction is given
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the scattering dist. by using l0l1 method 
+l0l1_correction_data.scattering_vec size : 65288
+--------------------------------------------------------------------------------------------------------
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_candidate_l0l1_scattering_U11_after_nofitting.pdf has been created
+ 
+ 
+running function Get_l0l1 method, residual : 
+the given l0l1 slope correction is 0.002362
+the l0l1 slope correction is given
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c1
+--------------------------------------------------------------------------------------------------------
+----- Now we are doing the residual dist. by using l0l1 method 
+l0l1_correction_data.middle_layer_residual size : 65288
+--------------------------------------------------------------------------------------------------------
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DUT_candidate_l0l1_residual_U11_after_nofitting.pdf has been created
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DataRun52U8_MCU11_scattering_folder_e+_934MeV_93__Log.pdf has been created
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c3
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DataRun52U8_MCU11_residual_folder_e+_934MeV_93__Log.pdf has been created
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c3
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DataRun52U8_MCU11_l1alignment_folder_e+_934MeV_93__Linear.pdf has been created
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c3
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DataRun52U8_MCU11_l0l2slope_folder_e+_934MeV_93__Linear.pdf has been created
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c3
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_93/DataRun52U8_MCU11_l0l1slope_folder_e+_934MeV_93__Linear.pdf has been created
+uctor>: Deleting canvas with same name: c3
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_89/DataRun52U8_MCU11_l0l1slope_folder_e+_934MeV_89__Linear.pdf has been created
+_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_91/DataRun52U8_MCU11_residual_folder_e+_934MeV_91__Log.pdf has been created
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c3
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_91/DataRun52U8_MCU11_l1alignment_folder_e+_934MeV_91__Linear.pdf has been created
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c3
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_91/DataRun52U8_MCU11_l0l2slope_folder_e+_934MeV_91__Linear.pdf has been created
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: c3
+Info in <TCanvas::Print>: pdf file /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_91/DataRun52U8_MCU11_l0l1slope_folder_e+_934MeV_91__Linear.pdf has been created

@@ -568,12 +568,12 @@ void L1_save_data (TTree * tree_both_in, long event_N, int module_ID[4], int ana
 //title ========================================================================================================================
 
 
-void MC_cluster_file_generator (/*TString file_name*/) // by analyzing the tree_both
+void MC_cluster_file_generator (TString folder_direction, TString file_name) // by analyzing the tree_both
 {
 	
-	TString file_name = "run52_X0_Y-5_1M_WithSciAlFoil_10PercentHDIMetalMaterial_BeamSmear_SS_20umCut_Run52DataU8Offset_L1_2.91425e-01mm_Run52DataU8TrackCandidateSlope_9.809e-02deg_RoughTrigger";
+	// TString file_name = "run52_X0_Y-5_1M_WithSciAlFoil_10PercentHDIMetalMaterial_BeamSmear_SS_20umCut_Run52DataU8Offset_L1_2.91425e-01mm_Run52DataU8TrackCandidateSlope_9.809e-02deg_RoughTrigger";
 	//todo : for different runs, change here
-	TString folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency/run52_MC_AlFoil/folder_run52_X0_Y-5_1M_WithSciAlFoil_10PercentHDIMetalMaterial_BeamSmear_SS_20umCut_Run52DataU8Offset_L1_2.91425e-01mm_Run52DataU8TrackCandidateSlope_9.809e-02deg_RoughTrigger";
+	// TString folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency/run52_MC_AlFoil/folder_run52_X0_Y-5_1M_WithSciAlFoil_10PercentHDIMetalMaterial_BeamSmear_SS_20umCut_Run52DataU8Offset_L1_2.91425e-01mm_Run52DataU8TrackCandidateSlope_9.809e-02deg_RoughTrigger";
 	// note : this line creates a folder to save all the informations and plot of this root file 
 
 	TFile *f1 = new TFile (Form("%s/%s.root", folder_direction.Data(), file_name.Data()), "read");

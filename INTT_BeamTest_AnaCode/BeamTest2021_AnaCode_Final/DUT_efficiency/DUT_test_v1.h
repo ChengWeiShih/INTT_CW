@@ -35,6 +35,10 @@ struct DUT_str{
     vector<double> good_combination_l1_pos_hit3;
     vector<double> good_combination_l2_pos_hit3;
 
+    vector<double> l0_l1_slope_vec; // note : this is for new scattering study, 2023_06_30
+    vector<double> l0_l1_pos_vec;   // note : this is for new scattering study, 2023_06_30
+    vector<double> scattering_vec;   // note : this is for new scattering study, 2023_06_30
+
     vector<double> passed_middle_pos;
     vector<int> final_event_result;
 };
@@ -716,7 +720,7 @@ DUT_str efficiency_DUT_method_v2 (vector<cluster_reformat_str> input_cluster_vec
 }
 
 
-DUT_str efficiency_DUT_method_residual_test (vector<cluster_reformat_str> input_cluster_vec, int study_chip)
+DUT_str efficiency_DUT_method_residual_test (vector<cluster_reformat_str> input_cluster_vec, int study_chip, int selection_level)
 { 
 	double edge_exclusion_bottom = (lower_section_initial - INTT_strip_width / 2.) + INTT_strip_width * double(boundary_cut);
 	double edge_exclusion_upper = ( INTT_strip_width * 128. ) - INTT_strip_width * double(boundary_cut);
@@ -807,45 +811,52 @@ DUT_str efficiency_DUT_method_residual_test (vector<cluster_reformat_str> input_
         
         event_counting_1 += 1;
 
-        // note : zero cluster in adjacent chips
-        if ( (receiver_unit_clu_size[study_chip-1-1][0].size()+receiver_unit_clu_size[study_chip-1-1][1].size()+receiver_unit_clu_size[study_chip-1-1][2].size()+receiver_unit_clu_size[study_chip-1+1][0].size()+receiver_unit_clu_size[study_chip-1+1][1].size()+receiver_unit_clu_size[study_chip-1+1][2].size()) != 0 ) continue;
-        event_counting_2 += 1;
+        // note : 2023_06_29 the order of the "zero cluster in adjacent chips" and "single cluster in l0 & l2" is swapped
 
         // note : single cluster in l0 and l2
         if (receiver_unit_clu_size[study_chip-1][0].size() != hit_allowed_in_adjacent_layers || receiver_unit_clu_size[study_chip-1][2].size() != hit_allowed_in_adjacent_layers) continue;
-        event_counting_3 += 1;
+        event_counting_2 += 1;
 
-        // note : standalone cluster size cut of l0 and l2
-        if ( receiver_unit_clu_size[study_chip-1][0][0] <= cluster_size_requirement || receiver_unit_clu_size[study_chip-1][2][0] <= cluster_size_requirement ) continue;
-        event_counting_4 += 1;
+        if ( selection_level > 1 )
+            // note : zero cluster in adjacent chips
+            if ( (receiver_unit_clu_size[study_chip-1-1][0].size()+receiver_unit_clu_size[study_chip-1-1][1].size()+receiver_unit_clu_size[study_chip-1-1][2].size()+receiver_unit_clu_size[study_chip-1+1][0].size()+receiver_unit_clu_size[study_chip-1+1][1].size()+receiver_unit_clu_size[study_chip-1+1][2].size()) != 0 ) continue;
+            event_counting_3 += 1;
 
-        // note : standalone cluster adc cut
-        if ( receiver_unit_clu_adc[study_chip-1][0][0] <= cluster_adc_value_requirement || receiver_unit_clu_adc[study_chip-1][2][0] <= cluster_adc_value_requirement ) continue;
-        event_counting_5 += 1;
+        // if ( selection_level > 2 )
+        //     // note : standalone cluster size cut of l0 and l2
+        //     if ( receiver_unit_clu_size[study_chip-1][0][0] <= cluster_size_requirement || receiver_unit_clu_size[study_chip-1][2][0] <= cluster_size_requirement ) continue;
+        //     event_counting_4 += 1;
 
-        // note : combined cluster size cut
-        if ( receiver_unit_clu_size[study_chip-1][0][0]+receiver_unit_clu_size[study_chip-1][2][0] <= cluster_size_requirement_combine ) continue;
-        event_counting_6 += 1;
+        if ( selection_level > 2 )
+            // note : standalone cluster adc cut
+            if ( receiver_unit_clu_adc[study_chip-1][0][0] <= cluster_adc_value_requirement || receiver_unit_clu_adc[study_chip-1][2][0] <= cluster_adc_value_requirement ) continue;
+            event_counting_4 += 1;
 
+        // if ( selection_level > 4 )
+        //     // note : combined cluster size cut
+        //     if ( receiver_unit_clu_size[study_chip-1][0][0]+receiver_unit_clu_size[study_chip-1][2][0] <= cluster_size_requirement_combine ) continue;
+        //     event_counting_6 += 1;
 
-        // note : edge exclusion cut of the l0
-        if ( receiver_unit_clu_pos[study_chip-1][0][0] <= edge_exclusion_bottom || receiver_unit_clu_pos[study_chip-1][0][0] >= edge_exclusion_upper ) continue;
-        event_counting_7 += 1;
+        if ( selection_level > 3 )
+            // note : edge exclusion cut of the l0
+            if ( receiver_unit_clu_pos[study_chip-1][0][0] <= edge_exclusion_bottom || receiver_unit_clu_pos[study_chip-1][0][0] >= edge_exclusion_upper ) continue;
+            event_counting_5+= 1;
 
-        // note : edge exclusion cut of the l2
-        if ( receiver_unit_clu_pos[study_chip-1][2][0] <= edge_exclusion_bottom || receiver_unit_clu_pos[study_chip-1][2][0] >= edge_exclusion_upper ) continue;
-        event_counting_8 += 1;
+        if ( selection_level > 4 )
+            // note : edge exclusion cut of the l2
+            if ( receiver_unit_clu_pos[study_chip-1][2][0] <= edge_exclusion_bottom || receiver_unit_clu_pos[study_chip-1][2][0] >= edge_exclusion_upper ) continue;
+            event_counting_6 += 1;
 
         hit2_slope = (receiver_unit_clu_pos[study_chip-1][2][0] - receiver_unit_clu_pos[study_chip-1][0][0]) / actual_xpos[2] + slope_correction;
         good_combination_slope_hit2.push_back(hit2_slope);
 
-        // note : the slope cut
-        if ( fabs(hit2_slope) >= slope_cut ) continue;
-        event_counting_9 += 1;
-        
         l0_l2_avg_pos = ( receiver_unit_clu_pos[study_chip-1][0][0] + receiver_unit_clu_pos[study_chip-1][2][0] ) / 2.;
-
         passed_middle_pos.push_back( l0_l2_avg_pos );
+
+        if ( selection_level > 5 )
+            // note : the slope cut
+            if ( fabs(hit2_slope) >= slope_cut ) continue;
+            event_counting_7 += 1;
 
         // note : to check the N clusters of the middle layer
         if ( receiver_unit_clu_pos[study_chip-1][1].size() == 0 ) // note : no hits in the middle
@@ -965,17 +976,305 @@ DUT_str efficiency_DUT_method_residual_test (vector<cluster_reformat_str> input_
     output_space.final_event_result = final_event_result;
 
     cout<<"event counting 1 \t : "<<event_counting_1<<" all "<<endl;
-    cout<<"event counting 2 \t : "<<event_counting_2<<" adjacent chip, no cluster  "<<endl;
-    cout<<"event counting 3 \t : "<<event_counting_3<<" single cluster "<<endl;
-    cout<<"event counting 4 \t : "<<event_counting_4<<" standalone cluster requirement "<<endl;
-    cout<<"event counting 5 \t : "<<event_counting_5<<" cluster adc "<<endl;
-    cout<<"event counting 6 \t : "<<event_counting_6<<" cluster size combine "<<endl;
-    cout<<"event counting 7 \t : "<<event_counting_7<<" l0 cluster edge exclusion "<<endl;
-    cout<<"event counting 8 \t : "<<event_counting_8<<" l2 cluster edge exclusion "<<endl;
-    cout<<"event counting 9 \t : "<<event_counting_9<<" slope cut "<<endl;
+    cout<<"event counting 2 \t : "<<event_counting_2<<" single cluster "<<endl;
+    cout<<"event counting 3 \t : "<<event_counting_3<<" adjacent chip, no cluster  "<<endl;
+    // cout<<"event counting 4 \t : "<<event_counting_4<<" standalone cluster requirement "<<endl;
+    cout<<"event counting 4 \t : "<<event_counting_4<<" cluster adc "<<endl;
+    // cout<<"event counting 6 \t : "<<event_counting_6<<" cluster size combine "<<endl;
+    cout<<"event counting 5 \t : "<<event_counting_5<<" l0 cluster edge exclusion "<<endl;
+    cout<<"event counting 6 \t : "<<event_counting_6<<" l2 cluster edge exclusion "<<endl;
+    cout<<"event counting 7 \t : "<<event_counting_7<<" slope cut "<<endl;
+
     cout<<"event counting 10 \t : "<<event_counting_10<<" no hits in middle layer "<<endl;
     cout<<"event counting 11 \t : "<<event_counting_11<<" have good cluster in middle "<<endl;
     cout<<"event counting 12 \t : "<<event_counting_12<<" no good cluster in middle "<<endl;
+    
+    return output_space;
+
+}
+
+// note : this is kinda for the scattering study or the residual distribution. 
+// note : set the slope angle seems to be not sense. 
+DUT_str efficiency_DUT_method_residual_test_2 (vector<cluster_reformat_str> input_cluster_vec, int study_chip)
+{ 
+	double edge_exclusion_bottom = (lower_section_initial - INTT_strip_width / 2.) + INTT_strip_width * double(boundary_cut);
+	double edge_exclusion_upper = ( INTT_strip_width * 128. ) - INTT_strip_width * double(boundary_cut);
+
+    vector<int> receiver_unit_clu_size[13][3]; // note : for abbreviation, for hit 
+    vector<double> receiver_unit_clu_pos[13][3];
+    vector<double> receiver_unit_clu_adc[13][3];
+
+    // note : the clusters that pass the pre-selections (cluster cut / event cut) will be saved here.
+
+    TF1 * linear_fit;
+    TGraph * grr;
+
+    double chi2_register = 10000000; 
+    double cluster_register_l0 = 0;
+    double cluster_register_l1 = 0;
+    double cluster_register_l2 = 0;
+    double hit3_best_fit_picker_info[7]; // note : first 3 : residual by fittting, second 3 : the selected positions, the 7th : the middle-layer residual by the DUT method
+    double hit2_best_fit_picker_info[2]; // note : first 2 : the selected positions of the first and last layers.
+
+    int multi_track_count = 0; // note : this is for finding the multi_track, if we find a new good track, then +=1;
+
+    double hit2_slope;
+    double event_residual;
+    
+
+    int N_cluster_l0 = 0;
+    int N_cluster_l1 = 0;
+    int N_cluster_l2 = 0;
+
+    double l0_l1_pos, l0_l1_slope;
+    vector<double> l0_l1_pos_vec; l0_l1_pos_vec.clear();
+    vector<double> l0_l1_slope_vec; l0_l1_slope_vec.clear();
+    vector<double> scattering_vec; scattering_vec.clear();
+
+    // note : for the output 
+    int track_111_count = 0;
+    int track_101_count = 0;
+    vector<double> middle_layer_residual; middle_layer_residual.clear();
+    vector<double> good_combination_slope_hit3; good_combination_slope_hit3.clear();
+    vector<double> good_combination_slope_hit2; good_combination_slope_hit2.clear();
+
+    vector<double> good_combination_l0_pos_hit3; good_combination_l0_pos_hit3.clear();
+    vector<double> good_combination_l1_pos_hit3; good_combination_l1_pos_hit3.clear();
+    vector<double> good_combination_l2_pos_hit3; good_combination_l2_pos_hit3.clear();
+
+    int event_counting_1  = 0;
+    int event_counting_2  = 0;
+    int event_counting_3  = 0;
+    int event_counting_4  = 0;
+    int event_counting_5  = 0;
+    int event_counting_6  = 0;
+    int event_counting_7  = 0;
+    int event_counting_8  = 0;
+    int event_counting_9  = 0;
+    int event_counting_10 = 0;
+    int event_counting_11 = 0;
+    int event_counting_12 = 0;
+
+    double l0_l2_avg_pos;
+
+    // note : in order to make the efficiency plot as function of position
+    vector<double> passed_middle_pos; passed_middle_pos.clear();
+    // note : middle layer no hits : 0
+    // note : middle layer has close hit : 1
+    // note : middle layer has a hit far from the prediction pos : 2.
+    vector<int> final_event_result; final_event_result.clear(); 
+
+
+    for (int i = 0; i < input_cluster_vec.size(); i++)
+    {
+        if (i % 1000 == 0){ cout<<"Doing the DUT test, eID : "<<input_cluster_vec[i].eID<<endl;}
+
+        // note : abbreviation
+        for (int i1 = 0; i1 < 13; i1++)
+        {
+            for (int i2 = 0; i2 < 3; i2++)
+            {
+                receiver_unit_clu_size[i1][i2] = input_cluster_vec[i].cluster_hit[ i1 ][i2];
+                receiver_unit_clu_pos[i1][i2] = input_cluster_vec[i].cluster_pos[ i1 ][i2];
+                receiver_unit_clu_adc[i1][i2] = input_cluster_vec[i].cluster_adc[ i1 ][i2];
+            }
+        }
+
+        // todo : the LoE
+        // todo :       -> right now, what I try is to make sure there is no cluster in the adjacent chips for all three layers (chip 8 and 10, for example)
+        // todo :       -> to avoid any suspicious events. 
+        // todo :       -> works well !!! 2022/11/23
+        // todo : the adc cut
+        // todo : cluster size 
+        // todo : cluster size combined
+        // todo : N cluster in layer 0 and layer 2
+        // todo : slope cut
+        // todo : the edge exclusion
+
+        // todo : residual cut
+        
+        event_counting_1 += 1;      
+        
+        // note : calculate the total_N_cluster in each layer
+        for (int i1 = 0; i1 < 13; i1++)
+        {
+            N_cluster_l0 += receiver_unit_clu_size[i1][0].size();
+            N_cluster_l1 += receiver_unit_clu_size[i1][1].size();
+            N_cluster_l2 += receiver_unit_clu_size[i1][2].size();
+        } 
+
+        // cout<<"N_cluster : "<<N_cluster_l0<<" "<<N_cluster_l1<<" "<<N_cluster_l2<<endl;
+
+        // note : only one cluster in each layer
+        if ( N_cluster_l0 != 1 || N_cluster_l1 != 1 || N_cluster_l2 != 1 ) 
+        {
+            N_cluster_l0 = 0;
+            N_cluster_l1 = 0;
+            N_cluster_l2 = 0;
+            continue;
+        }
+        event_counting_2 += 1;
+
+        // note : single cluster in l0 and l2 AND "l1"
+        if (receiver_unit_clu_size[study_chip-1][0].size() != hit_allowed_in_adjacent_layers || receiver_unit_clu_size[study_chip-1][1].size() != hit_allowed_in_adjacent_layers || receiver_unit_clu_size[study_chip-1][2].size() != hit_allowed_in_adjacent_layers) continue;
+        event_counting_3 += 1;
+
+        // note : standalone cluster adc cut
+        if ( receiver_unit_clu_adc[study_chip-1][0][0] <= cluster_adc_value_requirement_scattering || receiver_unit_clu_adc[study_chip-1][1][0] <= cluster_adc_value_requirement_scattering || receiver_unit_clu_adc[study_chip-1][2][0] <= cluster_adc_value_requirement_scattering ) continue;
+        event_counting_4 += 1;
+
+
+        l0_l1_slope = (receiver_unit_clu_pos[study_chip-1][1][0] - receiver_unit_clu_pos[study_chip-1][0][0]) / actual_xpos[1] + slope_correction_l0_l1;
+        l0_l1_slope_vec.push_back( l0_l1_slope );
+
+        l0_l1_pos = ( receiver_unit_clu_pos[study_chip-1][0][0] + receiver_unit_clu_pos[study_chip-1][1][0] ) / 2.;
+        l0_l1_pos_vec.push_back( l0_l1_pos );
+
+        
+        
+        // note : the slope cut
+        if ( fabs(l0_l1_slope) >= slope_cut_scattering ) continue;
+        event_counting_5 += 1;
+
+        // note : the position cut
+        if ( fabs(l0_l1_pos) >= pos_cut_scattering ) continue;
+        event_counting_6 += 1;
+
+        
+
+        // note : to check the N clusters of the middle layer
+        // if ( receiver_unit_clu_pos[study_chip-1][1].size() == 0 ) // note : no hits in the middle
+        // {
+        //     event_counting_10 += 1;
+
+        //     final_event_result.push_back(0); // note : in order to make the detection efficiency as function of pos.
+
+        //     track_101_count += 1;
+        //     cout<<"101 event, eID : "<<input_cluster_vec[i].eID<<" -> no cluster"<<endl;
+        // }
+        // else if ( receiver_unit_clu_pos[study_chip-1][1].size() > 0 ) // note : at least one hit in the middle
+        // {
+            
+        //     for ( int l1 = 0; l1 < receiver_unit_clu_pos[study_chip-1][1].size(); l1++ )
+        //     {
+        //         // if (receiver_unit_clu_adc[study_chip-1][1][l1] <= cluster_adc_value_requirement ) continue; // note : to add the ADC0 cut at L1
+
+        //         double hit3_Y_data[3] = {receiver_unit_clu_pos[study_chip-1][0][0], receiver_unit_clu_pos[study_chip-1][1][l1], receiver_unit_clu_pos[study_chip-1][2][0]};
+
+        //         grr = new TGraph(3,actual_xpos,hit3_Y_data);
+        //         linear_fit = new TF1("linear_fit","pol1",-1,actual_xpos[2]+2);
+        //         grr -> Fit("linear_fit","NQ");
+
+        //         if (l1 == 0) // note : the first one
+        //         {
+        //             chi2_register = ( linear_fit->GetChisquare()/double (linear_fit->GetNDF()) );
+                    
+        //             cluster_register_l1 = l1;
+
+        //             hit3_best_fit_picker_info[0] = ( hit3_Y_data[0] - ( linear_fit -> GetParameter(1) * actual_xpos[0] + linear_fit -> GetParameter(0) ) );
+        //             hit3_best_fit_picker_info[1] = ( hit3_Y_data[1] - ( linear_fit -> GetParameter(1) * actual_xpos[1] + linear_fit -> GetParameter(0) ) );
+        //             hit3_best_fit_picker_info[2] = ( hit3_Y_data[2] - ( linear_fit -> GetParameter(1) * actual_xpos[2] + linear_fit -> GetParameter(0) ) );
+                    
+        //             hit3_best_fit_picker_info[3] = hit3_Y_data[0];
+        //             hit3_best_fit_picker_info[4] = hit3_Y_data[1];
+        //             hit3_best_fit_picker_info[5] = hit3_Y_data[2];
+
+        //             // note : the middle-layer residual of the DUT method
+        //             hit3_best_fit_picker_info[6] = hit3_Y_data[1] - (hit3_Y_data[0]+hit3_Y_data[2])/2.;
+
+        //         }
+        //         else 
+        //         {
+        //             if ( linear_fit->GetChisquare()/double (linear_fit->GetNDF()) < chi2_register )
+        //             {
+        //                 chi2_register = ( linear_fit->GetChisquare()/double (linear_fit->GetNDF()) );
+                        
+        //                 cluster_register_l1 = l1;
+
+        //                 hit3_best_fit_picker_info[0] = ( hit3_Y_data[0] - ( linear_fit -> GetParameter(1) * actual_xpos[0] + linear_fit -> GetParameter(0) ) );
+        //                 hit3_best_fit_picker_info[1] = ( hit3_Y_data[1] - ( linear_fit -> GetParameter(1) * actual_xpos[1] + linear_fit -> GetParameter(0) ) );
+        //                 hit3_best_fit_picker_info[2] = ( hit3_Y_data[2] - ( linear_fit -> GetParameter(1) * actual_xpos[2] + linear_fit -> GetParameter(0) ) );
+                        
+        //                 hit3_best_fit_picker_info[3] = hit3_Y_data[0];
+        //                 hit3_best_fit_picker_info[4] = hit3_Y_data[1];
+        //                 hit3_best_fit_picker_info[5] = hit3_Y_data[2];
+
+        //                 // note : the middle-layer residual of the DUT method
+        //                 hit3_best_fit_picker_info[6] = hit3_Y_data[1] - (hit3_Y_data[0]+hit3_Y_data[2])/2.;
+                        
+
+        //             }
+        //         }
+
+        //         grr->Delete();
+        //         linear_fit->Delete();
+
+        //     }
+
+        //     event_residual = hit3_best_fit_picker_info[4] - ( l0_l2_avg_pos );
+
+        //     good_combination_l0_pos_hit3.push_back( receiver_unit_clu_pos[study_chip-1][0][0] );
+        //     good_combination_l1_pos_hit3.push_back( hit3_best_fit_picker_info[4] );
+        //     good_combination_l2_pos_hit3.push_back( receiver_unit_clu_pos[study_chip-1][2][0] );
+
+        //     if ( fabs(event_residual) < noise_hit_distance )
+        //     {
+        //         event_counting_11 += 1;
+
+        //         final_event_result.push_back(1); // note : in order to make the detection efficiency as function of pos.
+
+        //         track_111_count += 1;
+        //     }
+        //     else 
+        //     {
+        //         event_counting_12 += 1;
+
+        //         final_event_result.push_back(2); // note : in order to make the detection efficiency as function of pos.
+
+        //         track_101_count += 1;   
+        //         cout<<"101 event, eID : "<<input_cluster_vec[i].eID<<" -> middle has cluster"<<endl;
+        //     }
+
+        // }
+        // note : start clean
+        
+        middle_layer_residual.push_back( receiver_unit_clu_pos[study_chip-1][1][0] - (( receiver_unit_clu_pos[study_chip-1][0][0] + receiver_unit_clu_pos[study_chip-1][2][0] )/2.) );
+        scattering_vec.push_back( ( receiver_unit_clu_pos[study_chip-1][2][0] - receiver_unit_clu_pos[study_chip-1][1][0] )/actual_xpos[1] - ( receiver_unit_clu_pos[study_chip-1][1][0] - receiver_unit_clu_pos[study_chip-1][0][0] )/actual_xpos[1] );
+
+        N_cluster_l0 = 0;
+        N_cluster_l1 = 0;
+        N_cluster_l2 = 0;
+        chi2_register = 10000000;
+
+    } // note : end of for loop, event
+
+
+    DUT_str output_space;
+    // output_space.track_111_count = track_111_count;
+    // output_space.track_101_count = track_101_count;
+    output_space.middle_layer_residual = middle_layer_residual;
+    // output_space.good_combination_slope_hit3 = good_combination_slope_hit3; // note : empty, 2022/12/03
+    // output_space.good_combination_slope_hit2 = good_combination_slope_hit2; // note : 3hits or 2hits cases are included
+    // output_space.good_combination_l0_pos_hit3 = good_combination_l0_pos_hit3; 
+    // output_space.good_combination_l1_pos_hit3 = good_combination_l1_pos_hit3;
+    // output_space.good_combination_l2_pos_hit3 = good_combination_l2_pos_hit3;
+    
+    // note : in order to make the plot of the detection efficiency as a function of position. 
+    // output_space.passed_middle_pos = passed_middle_pos;
+    // output_space.final_event_result = final_event_result;
+    
+    // note : for the scattering study, new attempt 
+    output_space.l0_l1_pos_vec = l0_l1_pos_vec;
+    output_space.l0_l1_slope_vec = l0_l1_slope_vec;
+    output_space.scattering_vec = scattering_vec;
+
+    cout<<"event counting 1 \t : "<<event_counting_1<<" all "<<endl;
+
+    cout<<"event counting 2 \t : "<<event_counting_2<<" single cluster each layer "<<endl;    
+    cout<<"event counting 3 \t : "<<event_counting_3<<" selected chip 1 cluster, all layers  "<<endl;
+    cout<<"event counting 4 \t : "<<event_counting_4<<" cluster adc "<<endl;
+    cout<<"event counting 5 \t : "<<event_counting_5<<" l0_l1_slope cut "<<endl;
+    cout<<"event counting 6 \t : "<<event_counting_6<<" l0_l1_pos cut "<<endl;
     
     return output_space;
 
@@ -1986,7 +2285,7 @@ TH1F* plot_residual_narrow (vector<double> input_vec, TString folder_direction, 
 
 // note : the function to print the plot for publish
 // note : make the plot of the middle-layer residual distribution, narrow range, No fitting.
-TH1F* plot_residual_narrow_publish (vector<double> input_vec, TString folder_direction, int study_chip)
+TH1F* plot_residual_narrow_publish (vector<double> input_vec, TString folder_direction, int study_chip, int selection_level)
 {
     TCanvas * c1 = new TCanvas("c1","c1",850 ,800);
     c1 -> cd();
@@ -2078,7 +2377,7 @@ TH1F* plot_residual_narrow_publish (vector<double> input_vec, TString folder_dir
     legend1 -> Draw("same");
 
 
-    c1 -> Print( Form("%s/DUT_residual_narrow_U%i_pub.pdf",folder_direction.Data(),study_chip) );
+    c1 -> Print( Form("%s/DUT_residual_narrow_U%i_pub_SelectionLevel_%i.pdf",folder_direction.Data(),study_chip,selection_level) );
     c1 -> Clear();
 
     return l1_residual_hist;
@@ -2405,10 +2704,10 @@ TH1F* plot_angle (vector<double> input_vec_hit3, vector<double> input_vec_hit2, 
     // todo : void for the fitting
     if ( draw_fitting == true )
     {
-        gaus_fit_latex -> DrawLatex(0.12+0.08, 0.750, Form("Mean :  %.8f ", gaus_fit->GetParameter(1)));
-        gaus_fit_latex -> DrawLatex(0.12+0.08, 0.710, Form("Width : %.4f", gaus_fit->GetParameter(2)));
-        gaus_fit_latex -> DrawLatex(0.12+0.08, 0.670, Form("#chi^{2} : %.2f, NDF : %d", gaus_fit->GetChisquare(),gaus_fit->GetNDF()));
-        gaus_fit_latex -> DrawLatex(0.12+0.08, 0.630, Form("#chi^{2}/NDF : %.4f",gaus_fit->GetChisquare()/double(gaus_fit->GetNDF())));
+        gaus_fit_latex -> DrawLatex(0.12+0.05, 0.750, Form("Mean :  %.8f ", gaus_fit->GetParameter(1)));
+        gaus_fit_latex -> DrawLatex(0.12+0.05, 0.710, Form("Width : %.4f", gaus_fit->GetParameter(2)));
+        gaus_fit_latex -> DrawLatex(0.12+0.05, 0.670, Form("#chi^{2} : %.2f, NDF : %d", gaus_fit->GetChisquare(),gaus_fit->GetNDF()));
+        gaus_fit_latex -> DrawLatex(0.12+0.05, 0.630, Form("#chi^{2}/NDF : %.4f",gaus_fit->GetChisquare()/double(gaus_fit->GetNDF())));
         gaus_fit_latex -> Draw("same");  
     }
 
@@ -2425,11 +2724,69 @@ TH1F* plot_angle (vector<double> input_vec_hit3, vector<double> input_vec_hit2, 
 
     legend1 -> Draw("l same");
 
-    c1 -> Print( Form("%s/DUT_candidate_track_slope_U%i.pdf",folder_direction.Data(),study_chip) );
+    TString output_file_name = Form("DUT_candidate_track_slope_U%i",study_chip);
+    output_file_name += ( slope_correction == 0. ) ? "_before" : "_after";
+    output_file_name += ( draw_fitting == true ) ? "" : "_nofitting";
+
+    c1 -> Print( Form("%s/%s.pdf",folder_direction.Data(),output_file_name.Data()) );
     c1 -> Clear();
 
     return angle_hist;
 }
+
+
+// note : plot the correction of event slope [(l2-l0)/distance] and the middle pos [(l2+l0)/2]
+TH2F* plot_angle_pos_2D (vector<double> input_slope, vector<double> input_pos, TString folder_direction, int study_chip, int selection_level)
+{
+    TCanvas * c1 = new TCanvas("c1","c1",850,800);
+    c1 -> cd();
+
+    TPad * pad_c1 = new TPad(Form("pad_c1"), "", 0.0, 0.0, 1.0, 1.0);
+    Characterize_Pad(pad_c1, 0.15,  0.15,  0.1,  0.12, 0, 0);
+    pad_c1 -> Draw();
+    pad_c1 -> SetTicks(1,1);
+    pad_c1 -> cd();
+
+    cout<<"--------------------------------------------------------------------------------------------------------"<<endl;
+    cout<<"----- Now we are doing the plot_angle&pos plot "<<endl;
+    cout<<"input_slope size : "<<input_slope.size()<<endl;
+    cout<<"input_pos size   : "<<input_pos.size()<<endl;
+    cout<<"--------------------------------------------------------------------------------------------------------"<<endl;
+
+    TH2F * angle_pos_hist = new TH2F("","",50,-0.05,0.05,50,-10,10);
+
+    // angle_pos_hist -> SetLineWidth(3);
+    // angle_pos_hist -> SetLineColor(TColor::GetColor("#1A3947")); 
+
+    angle_pos_hist -> GetXaxis() -> SetNdivisions  (505);
+
+    angle_pos_hist -> GetXaxis() -> SetTitleSize   (0.05);
+	angle_pos_hist -> GetXaxis() -> SetTitleOffset (0.8);
+
+	angle_pos_hist -> GetYaxis() -> SetTitleSize   (0.05);
+	angle_pos_hist -> GetYaxis() -> SetTitleOffset (1.5);
+
+    for (int i = 0; i < input_slope.size(); i++)
+    {
+        angle_pos_hist -> Fill(input_slope[i],input_pos[i]);
+    }
+
+    // angle_pos_hist -> SetTitle(Form("DUT candidate track slope, U%i",study_chip));
+    angle_pos_hist -> SetStats(0);
+    angle_pos_hist -> GetXaxis() -> SetTitle("Track slope");
+    angle_pos_hist -> GetYaxis() -> SetTitle("Track mid pos [mm]");
+
+    angle_pos_hist -> Draw("colz0");
+
+    TString output_file_name = Form("DUT_candidate_track_slope_Pos_U%i_SelectionLevel_%i",study_chip,selection_level);
+    output_file_name += ( slope_correction == 0. ) ? "_before" : "_after";
+
+    c1 -> Print( Form("%s/%s.pdf",folder_direction.Data(),output_file_name.Data()) );
+    c1 -> Clear();
+
+    return angle_pos_hist;
+}
+
 
 // note : to understand the behavior of run89
 void hit3_plot_residual_slope_2D (vector<double> input_vec_1, vector<double> input_vec_2, TString folder_direction)

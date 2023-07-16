@@ -456,7 +456,7 @@ void filter_N_v4_MC (TString file_name)
 	// here we start to filter the tree_both
 	for (int i=0; i<nEvent_both; i++) // # of total events
 	{
-		if (i%10==0){cout<<"we are working on tree_both filter : "<<i<<endl;}
+		if (i%1000==0){cout<<"we are working on tree_both filter : "<<i<<endl;}
 
 		parent_eID = i;
 		

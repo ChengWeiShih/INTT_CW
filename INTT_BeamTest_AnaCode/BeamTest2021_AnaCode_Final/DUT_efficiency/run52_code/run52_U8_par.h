@@ -22,6 +22,7 @@ bool file_generated = true; // note : this is the protection key, to avoid re-ge
 //note : 2023_06_24 the file is still here, but trying to organize all the files and the plots in one place
 // TString folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/DUT_efficiency/run52_new_alignment"; 
 TString folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52";
+// TString folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/data_file/run52/scattering_l0l1_attempt";
 
 TString file_name = "not_used"; // note : not used
 TString cluster_file_name = "cluster_information_offset-0.0000_adcinfo_NoCamac";
@@ -31,6 +32,7 @@ TString cluster_file_name = "cluster_information_offset-0.0000_adcinfo_NoCamac";
 int study_chip = 8;
 double amount_of_alignment = -0.2975;
 double slope_correction = 0.001712; // note : to correct the slope distribution, easy to apply the cut
+// double slope_correction = 0.00225864; // note : the slope correction for the l0 and l1
 
 // note : for test
 // double amount_of_alignment = -0.;
@@ -46,6 +48,12 @@ double noise_hit_distance = 0.234; // note : currently, the width of three chann
 
 // todo : changed
 int boundary_cut = 5; 
+
+// note : the cuts for the scattering study
+double slope_cut_scattering = 0.01;
+double pos_cut_scattering   = 4.5; // note : mm
+double cluster_adc_value_requirement_scattering = 22.5;
+double slope_correction_l0_l1 = slope_correction;
 
 // todo : changed
 // note : the scan range for the systematic uncertainty

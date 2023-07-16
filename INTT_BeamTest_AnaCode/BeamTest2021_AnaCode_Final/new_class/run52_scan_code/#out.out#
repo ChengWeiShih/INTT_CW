@@ -1,0 +1,19 @@
+
+
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/new_class/run52_scan_code/run52_U8_comp_scan.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_102","cluster_information_offset-0.0000_adcinfo_DoubleTrigger")...IIn file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/new_class/run52_scan_code/run52_U8_comp_scan.C:46:101: error: no member named 'Data' in 'std::__cxx11::basic_string<char>'
+    TString plot_scattering_name = Form("DataRun52U8_MC%s_scattering_%s_",file_txt.Data(),MC_config.Data());
+                                                                                          ~~~~~~~~~ ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/new_class/run52_scan_code/run52_U8_comp_scan.C:50:97: error: no member named 'Data' in 'std::__cxx11::basic_string<char>'
+    TString plot_residual_name = Form("DataRun52U8_MC%s_residual_%s_",file_txt.Data(),MC_config.Data());
+                                                                                      ~~~~~~~~~ ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/new_class/run52_scan_code/run52_U8_comp_scan.C:57:103: error: no member named 'Data' in 'std::__cxx11::basic_string<char>'
+    TString plot_l1alignment_name = Form("DataRun52U8_MC%s_l1alignment_%s_",file_txt.Data(),MC_config.Data());
+                                                                                            ~~~~~~~~~ ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/new_class/run52_scan_code/run52_U8_comp_scan.C:62:99: error: no member named 'Data' in 'std::__cxx11::basic_string<char>'
+    TString plot_l0l2slope_name = Form("DataRun52U8_MC%s_l0l2slope_%s_",file_txt.Data(),MC_config.Data());
+                                                                                        ~~~~~~~~~ ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/new_class/run52_scan_code/run52_U8_comp_scan.C:67:99: error: no member named 'Data' in 'std::__cxx11::basic_string<char>'
+    TString plot_l0l1slope_name = Form("DataRun52U8_MC%s_l0l1slope_%s_",file_txt.Data(),MC_config.Data());
+                                                                                        ~~~~~~~~~ ^

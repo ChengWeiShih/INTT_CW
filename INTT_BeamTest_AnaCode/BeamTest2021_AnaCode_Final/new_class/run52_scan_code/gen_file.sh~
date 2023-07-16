@@ -1,0 +1,9 @@
+#!/bin/bash
+
+while IFS= read -r line;
+do
+    echo "$line";
+    #echo $(echo "$line" | sed 's/\.root$//')
+    #mkdir folder_$(echo "$line" | sed 's/\.root$//')
+    #mv $line folder_$(echo "$line" | sed 's/\.root$//')
+done < /data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_list.txt

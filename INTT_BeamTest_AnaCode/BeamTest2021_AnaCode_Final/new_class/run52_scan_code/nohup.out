@@ -1,0 +1,420 @@
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_100/e+_934MeV_100.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_101/e+_934MeV_101.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_102/e+_934MeV_102.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_103/e+_934MeV_103.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_104/e+_934MeV_104.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_105/e+_934MeV_105.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_106/e+_934MeV_106.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_107/e+_934MeV_107.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_108/e+_934MeV_108.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_109/e+_934MeV_109.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_10/e+_934MeV_10.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_110/e+_934MeV_110.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_111/e+_934MeV_111.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_112/e+_934MeV_112.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_113/e+_934MeV_113.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_114/e+_934MeV_114.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_115/e+_934MeV_115.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_116/e+_934MeV_116.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_117/e+_934MeV_117.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_118/e+_934MeV_118.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_119/e+_934MeV_119.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_11/e+_934MeV_11.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_120/e+_934MeV_120.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_121/e+_934MeV_121.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_122/e+_934MeV_122.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_123/e+_934MeV_123.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_124/e+_934MeV_124.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_125/e+_934MeV_125.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_126/e+_934MeV_126.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_127/e+_934MeV_127.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_128/e+_934MeV_128.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_129/e+_934MeV_129.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_12/e+_934MeV_12.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_130/e+_934MeV_130.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^
+
+Processing /home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C("/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_fix_beam_geo_scan/75K_fix_scan/folder_e+_934MeV_131/e+_934MeV_131.root")...
+In file included from input_line_8:1:
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:585:47: error: use of undeclared identifier 'file_name'
+        printf("# of event in file %s.root : %li \n",file_name.Data(),event_N);
+                                                     ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:615:41: error: use of undeclared identifier 'file_name'
+        TString output_folder_name = Form("%s",file_name.Data());
+                                               ^
+/home/cwshih/sPHENIX/INTT/INTT_GitHub/INTT_CW/INTT_BeamTest_AnaCode/BeamTest2021_AnaCode_Final/MC_file_processor/MC_cluster_file_generator.C:669:106: error: use of undeclared identifier 'folder_direction'
+    TFile * cluster_info_output_file = new TFile(Form("%s/cluster_information_offset%.4f_adcinfo%s.root",folder_direction.Data(),alignment_array[1],file_name_extension_trigger.Data()), "RECREATE");
+                                                                                                         ^

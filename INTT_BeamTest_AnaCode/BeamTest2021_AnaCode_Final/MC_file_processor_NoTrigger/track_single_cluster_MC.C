@@ -323,13 +323,13 @@ cluster_str data_all_edep_weight (vector<int> data_all[4][26],int selected_chip,
 //title ========================================================================================================================
 
 
-void track_single_cluster_MC (TString file_name) // by analyzing the tree_both
+void track_single_cluster_MC (/*TString file_name*/) // by analyzing the tree_both
 {
 	//the name of the file you want to study, remember to remove the ".root"
-	// TString file_name = "BeamData_20211210-2043_0_filter";
+	TString file_name = "run52_MC_run_20230629_4_filter_all_int_1000";
 	//the direction of the data 
 	//todo : for different runs, change here
-	TString folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_hinako";
+	TString folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_run52_MC_run_20230629_4";
 	//this line creates a folder to save all the informations and plot of this root file 
 
 	TFile *f1 = new TFile (Form("%s/%s.root", folder_direction.Data(), file_name.Data()), "read");
