@@ -1,19 +1,19 @@
 #include "DAC_Scan_ladder.h"
 
-TString mother_folder_directory = "/home/inttdev/data/IR_DAQ_server/INTT_study_run/DAC_Scan";
+TString mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt4";
 // todo : the number of number is given by the adc_setting_run !!!
 // todo : also the range of the hist.
 vector<vector<int>> adc_setting_run = {	
     // {8  , 12 , 16 , 20 , 24 , 28 , 32 , 36 },
-    {28 , 32 , 36 , 40 , 44 , 48 , 52 , 56 },
+    // {28 , 32 , 36 , 40 , 44 , 48 , 52 , 56 },
     {48 , 52 , 56 , 60 , 64 , 68 , 72 , 76 },
     {68 , 72 , 76 , 80 , 84 , 88 , 92 , 96 },
     {88 , 92 , 96 , 100, 104, 108, 112, 116},
     {108, 112, 116, 120, 124, 128, 132, 136},
     {128, 132, 136, 140, 144, 148, 152, 156},
-    {148, 152, 156, 160, 164, 168, 172, 176},
-    {168, 172, 176, 180, 184, 188, 192, 196},
-    {188, 192, 196, 200, 204, 208, 212, 216}
+    // {148, 152, 156, 160, 164, 168, 172, 176},
+    // {168, 172, 176, 180, 184, 188, 192, 196},
+    // {188, 192, 196, 200, 204, 208, 212, 216}
 };
 
 struct full_hit_info {
@@ -463,7 +463,8 @@ map<TString,full_ladder_info> serverFC_toinfo_map{
 vector<TString> read_file_list (TString set_folder_name, TString server_name)
 {
 
-    TString file_list_directory = mother_folder_directory + "/data_analysis/" + set_folder_name + "/" + server_name + "/" + "file_list.txt";
+    // TString file_list_directory = mother_folder_directory + "/data_analysis/" + set_folder_name + "/" + server_name + "/" + "file_list.txt";
+    TString file_list_directory = mother_folder_directory + "/file_list.txt";
     vector<TString> file_list_vec; file_list_vec.clear();
 
     unsigned long len_unsigned_long = -1;
@@ -505,7 +506,7 @@ void DAC_Scan_HL(TString set_folder_name, TString server_name, vector<int> FC_id
 
     // TString set_name = set_folder_name; set_name = set_name.ReplaceAll("folder_","");
 
-    TString plot_folder_dire = Form("%s/data_analysis/%s/%s/%i_%s", mother_folder_directory.Data(), set_folder_name.Data(), server_name.Data(), FC_id[0], serverFC_toinfo_map[Form("%s_%i",server_name.Data(),FC_id[0])].Ladder.Data());
+    TString plot_folder_dire = Form("%s/plots/results/%i_%s", mother_folder_directory.Data(), FC_id[0], serverFC_toinfo_map[Form("%s_%i",server_name.Data(),FC_id[0])].Ladder.Data());
     system( Form("mkdir %s",plot_folder_dire.Data()) );
 
     vector< LadderDAC * > ladder(FC_id.size(),NULL);
