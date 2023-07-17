@@ -6,11 +6,11 @@ TString mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/test_in
 vector<vector<int>> adc_setting_run = {	
     // {8  , 12 , 16 , 20 , 24 , 28 , 32 , 36 },
     // {28 , 32 , 36 , 40 , 44 , 48 , 52 , 56 },
-    {48 , 52 , 56 , 60 , 64 , 68 , 72 , 76 },
-    {68 , 72 , 76 , 80 , 84 , 88 , 92 , 96 },
-    {88 , 92 , 96 , 100, 104, 108, 112, 116},
-    {108, 112, 116, 120, 124, 128, 132, 136},
-    {128, 132, 136, 140, 144, 148, 152, 156},
+    {48 , 52 , 56 , 60 , 64 , 68 , 72 , 76 }, // note : 3
+    {68 , 72 , 76 , 80 , 84 , 88 , 92 , 96 }, // note : 4
+    {88 , 92 , 96 , 100, 104, 108, 112, 116}, // note : 5
+    {108, 112, 116, 120, 124, 128, 132, 136}, // note : 6
+    {128, 132, 136, 140, 144, 148, 152, 156}, // note : 7
     // {148, 152, 156, 160, 164, 168, 172, 176},
     // {168, 172, 176, 180, 184, 188, 192, 196},
     // {188, 192, 196, 200, 204, 208, 212, 216}
@@ -500,8 +500,14 @@ vector<TString> read_file_list (TString set_folder_name, TString server_name)
 // note : use "ls *.root > file_list.txt" to create the list of the file in the folder, full directory in the file_list.txt
 // note : set_folder_name = "folder_xxxx"
 // note : server_name = "inttx"
-void DAC_Scan_HL(TString set_folder_name, TString server_name, vector<int> FC_id)
+void DAC_Scan_event_based()
 {
+
+    TString set_folder_name = "testing"; 
+    TString server_name = "intt4";
+    vector<int> FC_id={5};
+    double temp_multiplicity_cut[5] = {1000,500,500,400,400};
+
     vector<TString> file_name_vec = read_file_list(set_folder_name, server_name);
 
     // TString set_name = set_folder_name; set_name = set_name.ReplaceAll("folder_","");
@@ -516,26 +522,27 @@ void DAC_Scan_HL(TString set_folder_name, TString server_name, vector<int> FC_id
         ladder[i] = new LadderDAC("chip", single_HF_info.Ladder, single_HF_info.ROC, single_HF_info.Port, FC_id[i], adc_setting_run);
     }
 
-    // pid // note : server packet ID, 3001 to 3008 for INTT, for the moment
-    int adc;
-    int ampl;
-    int chip_id;
-    int module;
-    int chan_id;
-    int bco;
-    long long bco_full;
-    // event
-    int roc;
-    int barrel;
-    int layer;
-    // int ladder;
-    int arm; // note : south 0, north 1
-    // full_fphx
-    // full_roc
+    int fNhits;
+    int module[10000];
+    int chip_id[10000];
+    int chan_id[10000];
+    int adc[10000];
 
-    vector<hit_info> single_event_hit_vec; // note : single_event_hit_vec[hit]
-    vector<vector<hit_info>> event_hit_vec; // note : event_hit_vec[event][hit]
-    vector<clu_info> clu_vec;
+    // vector<vector<hit_info>> event_hit_vec;                              // note : event_hit_vec[event][hit]
+  
+
+    vector<hit_info> single_event_hit_vec_FC5;  single_event_hit_vec_FC5.clear(); // note : single_event_hit_vec[hit]
+    vector<clu_info> clu_vec_FC5; clu_vec_FC5.clear();
+
+    vector<hit_info> single_event_hit_vec_FC1;  single_event_hit_vec_FC1.clear(); // note : single_event_hit_vec[hit]
+    vector<clu_info> clu_vec_FC1; clu_vec_FC1.clear();
+
+    vector<hit_info> single_event_hit_vec_FC2;  single_event_hit_vec_FC2.clear(); // note : single_event_hit_vec[hit]
+    vector<clu_info> clu_vec_FC2; clu_vec_FC2.clear();
+
+    int N_clu_column_FC5[13]; memset(N_clu_column_FC5, 0, sizeof(N_clu_column_FC5));
+    int N_clu_column_FC1[13]; memset(N_clu_column_FC1, 0, sizeof(N_clu_column_FC1));
+    int N_clu_column_FC2[13]; memset(N_clu_column_FC2, 0, sizeof(N_clu_column_FC2));
 
     for (int fid = 0; fid < file_name_vec.size(); fid++)
     {
@@ -544,62 +551,66 @@ void DAC_Scan_HL(TString set_folder_name, TString server_name, vector<int> FC_id
         TFile * file_in = new TFile(file_name_vec[fid],"read");
         TTree * tree = (TTree *)file_in->Get("tree");
 
-        long long N_hit = tree -> GetEntries();
+        long long N_event = tree -> GetEntries();
 
         cout<<set_folder_name<<", "<<server_name<<"_"<<FC_id[0]<<endl;
-        cout<<Form("N_hit in file %s : %lli",file_name_short.c_str(), N_hit)<<endl;
+        cout<<Form("N_event in file %s : %lli",file_name_short.c_str(), N_event)<<endl;
         cout<<" "<<endl;
+        
+        tree -> SetBranchAddress("fNhits",&fNhits);
+        tree -> GetEntry(0); // note : actually I really don't know why this line is necessary.
+        tree -> SetBranchAddress("fhitArray.module",&module[0]);
+        tree -> SetBranchAddress("fhitArray.chip_id",&chip_id[0]);
+        tree -> SetBranchAddress("fhitArray.chan_id",&chan_id[0]);
+        tree -> SetBranchAddress("fhitArray.adc",&adc[0]);
 
-        tree -> SetBranchAddress("adc"      ,&adc);
-        // tree -> SetBranchAddress("ampl"     ,&ampl);
-        tree -> SetBranchAddress("chip_id"  ,&chip_id);
-        tree -> SetBranchAddress("module"   ,&module);
-        tree -> SetBranchAddress("chan_id"  ,&chan_id);
-        tree -> SetBranchAddress("bco"      ,&bco);
-        tree -> SetBranchAddress("bco_full" ,&bco_full);
-        // tree -> SetBranchAddress("roc"      ,&roc);
-        // tree -> SetBranchAddress("barrel"   ,&barrel);
-        // tree -> SetBranchAddress("layer"    ,&layer);
-        // tree -> SetBranchAddress("ladder"   ,&ladder);
-        // tree -> SetBranchAddress("arm"      ,&arm);
 
-        int BCO_buffer;
-        long long BCO_full_buffer;
-
-        for (long long i = 0; i < N_hit; i++)
+        for (int i = 0; i < N_event; i++ )
         {
             tree -> GetEntry(i);
-            // if (module > -1 && module < 14) // note : module, Felix channel, 0 to 13
-            if (module == FC_id[0])
+            
+            if (fNhits < temp_multiplicity_cut[fid]) continue;
+
+            for (int i1 = 0 ; i1 < fNhits; i1++)
             {
-                BCO_buffer = bco;
-                BCO_full_buffer = bco_full;
-                break;
+                if (module[i1] == 5) single_event_hit_vec_FC5.push({chip_id[i1],chan_id[i1],adc[i1]});
+                else if (module[i1] == 1) single_event_hit_vec_FC1.push({chip_id[i1],chan_id[i1],adc[i1]});
+                else if (module[i1] == 2) single_event_hit_vec_FC2.push({chip_id[i1],chan_id[i1],adc[i1]});
             }
-        }
 
-        for (long long i = 0; i < N_hit; i++)
-        {
-            tree -> GetEntry(i);
+            clu_vec_FC5 = clustering(single_event_hit_vec_FC5);
+            clu_vec_FC1 = clustering(single_event_hit_vec_FC1);
+            clu_vec_FC2 = clustering(single_event_hit_vec_FC2);
 
-            if (chip_id > 0 && chip_id < 27 && chan_id > -1 && chan_id < 128 && module == FC_id[0]) // todo : single ladder mode
-		    {
-                if(bco == BCO_buffer && bco_full == BCO_full_buffer)
+            for (int i1 = 0; i1 < clu_vec_FC5.size(); i1++) { N_clu_column_FC5[ clu_vec_FC5[i1].column - 1 ] += 1; }
+            for (int i1 = 0; i1 < clu_vec_FC1.size(); i1++) { N_clu_column_FC1[ clu_vec_FC1[i1].column - 1 ] += 1; }
+            for (int i1 = 0; i1 < clu_vec_FC2.size(); i1++) { N_clu_column_FC2[ clu_vec_FC2[i1].column - 1 ] += 1; }
+
+            for (int i1 = 0; i1 < 13; i1++ )
+            {
+                if (N_clu_column_FC5[i1] == 0) continue;
+
+                if ((N_clu_column_FC1[i1] + N_clu_column_FC1[i1]) == 0 ) continue;
+
+                for (int i2 = 0 ; i2 < clu_vec_FC5.size(); i2++)
                 {
-                    single_event_hit_vec.push_back( {chip_id, chan_id, adc} );
+                    if (clu_vec_FC5[i2].column != i1 + 1) continue;
+                    
+                    if (clu_vec_FC5[i2].size() != 1) continue;
+
+                    ladder[0] -> Fill( // todo : single ladder mode
+                        fid, 
+                        (clu_vec_FC5[i2].avg_chan > 127) ? clu_vec_FC5[i2].column + 13 : clu_vec_FC5[i2].column, 
+                        (clu_vec_FC5[i2].avg_chan > 127) ? 127 - int(clu_vec_FC5[i2].avg_chan)%128 : int(clu_vec_FC5[i2].avg_chan), 
+                        clu_vec_FC5[i2].sum_adc
+                    );
+
                 }
-                else if (bco != BCO_buffer || bco_full != BCO_full_buffer)
-                {
-                    BCO_buffer = bco;
-                    BCO_full_buffer = bco_full;
+                
 
-                    clu_vec = clustering(single_event_hit_vec);
-                    for (int i1 = 0; i1 < clu_vec.size(); i1++)
-                    {
-                        if (clu_vec[i1].size == 1)
-                        {
-                            // todo : the chan_id 0 and chan_id 127 are all excluded
-                            if ( clu_vec[i1].avg_chan == 0 || clu_vec[i1].avg_chan == 127 || clu_vec[i1].avg_chan == 128 || clu_vec[i1].avg_chan == 255 ) continue;
+
+            }
+
 
                             ladder[0] -> Fill( // todo : single ladder mode
                                 fid, 
@@ -607,48 +618,106 @@ void DAC_Scan_HL(TString set_folder_name, TString server_name, vector<int> FC_id
                                 (clu_vec[i1].avg_chan > 127) ? 127 - int(clu_vec[i1].avg_chan)%128 : int(clu_vec[i1].avg_chan), 
                                 clu_vec[i1].sum_adc
                             );
-                        }
-                    }
-                    // event_hit_vec.push_back(single_event_hit_vec);
-                    single_event_hit_vec.clear();
-                    single_event_hit_vec.push_back( {chip_id, chan_id, adc} );
-                }
-            }
-        } 
+            
 
-        clu_vec = clustering(single_event_hit_vec);
-        for (int i1 = 0; i1 < clu_vec.size(); i1++)
-        {
-            if (clu_vec[i1].size == 1)
-            {
-                // todo : the chan_id 0 and chan_id 127 are all excluded
-                if ( clu_vec[i1].avg_chan == 0 || clu_vec[i1].avg_chan == 127 || clu_vec[i1].avg_chan == 128 || clu_vec[i1].avg_chan == 255 ) continue;
+            single_event_hit_vec_FC5.clear();
+            single_event_hit_vec_FC1.clear();
+            single_event_hit_vec_FC2.clear();
+            clu_vec_FC5.clear();
+            clu_vec_FC1.clear();
+            clu_vec_FC2.clear();
 
-                ladder[0] -> Fill( // todo : single ladder mode
-                    fid, 
-                    (clu_vec[i1].avg_chan > 127) ? clu_vec[i1].column + 13 : clu_vec[i1].column, 
-                    (clu_vec[i1].avg_chan > 127) ? 127 - int(clu_vec[i1].avg_chan)%128 : int(clu_vec[i1].avg_chan), 
-                    clu_vec[i1].sum_adc
-                );
-            }
+            memset(N_clu_column_FC5, 0, sizeof(N_clu_column_FC5));
+            memset(N_clu_column_FC1, 0, sizeof(N_clu_column_FC1));
+            memset(N_clu_column_FC2, 0, sizeof(N_clu_column_FC2));
         }
-        // event_hit_vec.push_back(single_event_hit_vec);
-        single_event_hit_vec.clear();
 
-        // note : cleaning 
+        // int BCO_buffer;
+        // long long BCO_full_buffer;
+
+        // for (long long i = 0; i < N_event; i++)
+        // {
+        //     tree -> GetEntry(i);
+        //     // if (module > -1 && module < 14) // note : module, Felix channel, 0 to 13
+        //     if (module == FC_id[0])
+        //     {
+        //         BCO_buffer = bco;
+        //         BCO_full_buffer = bco_full;
+        //         break;
+        //     }
+        // }
+
+        // for (long long i = 0; i < N_event; i++)
+        // {
+        //     tree -> GetEntry(i);
+
+        //     if (chip_id > 0 && chip_id < 27 && chan_id > -1 && chan_id < 128 && module == FC_id[0]) // todo : single ladder mode
+		//     {
+        //         if(bco == BCO_buffer && bco_full == BCO_full_buffer)
+        //         {
+        //             single_event_hit_vec.push_back( {chip_id, chan_id, adc} );
+        //         }
+        //         else if (bco != BCO_buffer || bco_full != BCO_full_buffer)
+        //         {
+        //             BCO_buffer = bco;
+        //             BCO_full_buffer = bco_full;
+
+        //             clu_vec = clustering(single_event_hit_vec);
+        //             for (int i1 = 0; i1 < clu_vec.size(); i1++)
+        //             {
+        //                 if (clu_vec[i1].size == 1)
+        //                 {
+        //                     // todo : the chan_id 0 and chan_id 127 are all excluded
+        //                     if ( clu_vec[i1].avg_chan == 0 || clu_vec[i1].avg_chan == 127 || clu_vec[i1].avg_chan == 128 || clu_vec[i1].avg_chan == 255 ) continue;
+
+        //                     ladder[0] -> Fill( // todo : single ladder mode
+        //                         fid, 
+        //                         (clu_vec[i1].avg_chan > 127) ? clu_vec[i1].column + 13 : clu_vec[i1].column, 
+        //                         (clu_vec[i1].avg_chan > 127) ? 127 - int(clu_vec[i1].avg_chan)%128 : int(clu_vec[i1].avg_chan), 
+        //                         clu_vec[i1].sum_adc
+        //                     );
+        //                 }
+        //             }
+        //             // event_hit_vec.push_back(single_event_hit_vec);
+        //             single_event_hit_vec.clear();
+        //             single_event_hit_vec.push_back( {chip_id, chan_id, adc} );
+        //         }
+        //     }
+        // } 
+
+        // clu_vec = clustering(single_event_hit_vec);
+        // for (int i1 = 0; i1 < clu_vec.size(); i1++)
+        // {
+        //     if (clu_vec[i1].size == 1)
+        //     {
+        //         // todo : the chan_id 0 and chan_id 127 are all excluded
+        //         if ( clu_vec[i1].avg_chan == 0 || clu_vec[i1].avg_chan == 127 || clu_vec[i1].avg_chan == 128 || clu_vec[i1].avg_chan == 255 ) continue;
+
+        //         ladder[0] -> Fill( // todo : single ladder mode
+        //             fid, 
+        //             (clu_vec[i1].avg_chan > 127) ? clu_vec[i1].column + 13 : clu_vec[i1].column, 
+        //             (clu_vec[i1].avg_chan > 127) ? 127 - int(clu_vec[i1].avg_chan)%128 : int(clu_vec[i1].avg_chan), 
+        //             clu_vec[i1].sum_adc
+        //         );
+        //     }
+        // }
+        // // event_hit_vec.push_back(single_event_hit_vec);
+        // single_event_hit_vec.clear();
+
+        // // note : cleaning 
         file_in -> Close();
-        event_hit_vec.clear();
-        single_event_hit_vec.clear();
+        // event_hit_vec.clear();
+        // single_event_hit_vec.clear();
 
     } // note : loop file
 
-    ladder[0] -> Weight();
-    ladder[0] -> Fill_final();
-    ladder[0] -> Fit();
+    // ladder[0] -> Weight();
+    // ladder[0] -> Fill_final();
+    // ladder[0] -> Fit();
 
-    ladder[0] -> Output_bin_plots(plot_folder_dire, set_folder_name, true);
-    ladder[0] -> Output_comb_plots(plot_folder_dire, set_folder_name);
-    ladder[0] -> Output_final_plots(plot_folder_dire, set_folder_name);
-    ladder[0] -> Output_root(plot_folder_dire, set_folder_name);
+    // ladder[0] -> Output_bin_plots(plot_folder_dire, set_folder_name, true);
+    // ladder[0] -> Output_comb_plots(plot_folder_dire, set_folder_name);
+    // ladder[0] -> Output_final_plots(plot_folder_dire, set_folder_name);
+    // ladder[0] -> Output_root(plot_folder_dire, set_folder_name);
 
 }
