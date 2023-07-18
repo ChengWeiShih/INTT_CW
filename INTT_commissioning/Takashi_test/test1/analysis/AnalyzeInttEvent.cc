@@ -196,7 +196,7 @@ int RunAnalysis(const char *rootFile)
   tree->SetBranchAddress("event", &inttEvt);
 
   //read the Tree
-  for (Int_t ev = 0; ev < tree->GetEntries(); ev++) {
+  for (Int_t ev = 0; ev < 1000/*tree->GetEntries()*/; ev++) {
     tree->GetEntry(ev);
 
     cout<<"Event : "<<ev<<" "<<inttEvt->evtSeq<<endl;

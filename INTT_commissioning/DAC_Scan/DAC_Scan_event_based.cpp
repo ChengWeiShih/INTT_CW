@@ -726,7 +726,7 @@ void DAC_Scan_event_based()
     ladder[0] -> Fill_final();
     ladder[0] -> Fit();
 
-    ladder[0] -> Output_bin_plots(plot_folder_dire, set_folder_name, true);
+    ladder[0] -> Output_bin_plots(plot_folder_dire, set_folder_name, false);
     ladder[0] -> Output_comb_plots(plot_folder_dire, set_folder_name);
     ladder[0] -> Output_final_plots(plot_folder_dire, set_folder_name);
     ladder[0] -> Output_root(plot_folder_dire, set_folder_name);

@@ -1,7 +1,9 @@
-#include "AnalyzeInttEvent.h"
+// #include "AnalyzeInttEvent.h"
 
-R__LOAD_LIBRARY(libInttEvent.so)
-R__LOAD_LIBRARY(libAnalyzeInttEvent.so)
+#include "AnalyzeInttEvent.cc"
+
+// R__LOAD_LIBRARY(libInttEvent.so)
+// R__LOAD_LIBRARY(libAnalyzeInttEvent.so)
 
 void runAnalysis(const char * filename)
 {
