@@ -1,0 +1,46 @@
+   ------------------------------------------------------------------
+  | Welcome to ROOT 6.22/00                        https://root.cern |
+  | (c) 1995-2020, The ROOT Team; conception: R. Brun, F. Rademakers |
+  | Built for linuxx8664gcc on Jun 14 2020, 15:54:05                 |
+  | From tags/v6-22-00@v6-22-00                                      |
+  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q'       |
+   ------------------------------------------------------------------
+
+
+Processing runConvertInttData1.C("../test2/beam_intt0-00010433-0000.evt")...
+./beam_intt0-00010433-0000_event_base.root
+ctor InttEvent
+packet = 3001
+nevt : 0
+nevt : 10000
+nevt : 20000
+    22578
+NBad Hits    
+   lader=  0, ngood               122584, nbad                    0
+   lader=  1, ngood               469921, nbad                    3
+   lader=  2, ngood                96782, nbad                    0
+   lader=  3, ngood                96282, nbad                    3
+   lader=  4, ngood                96269, nbad                    2
+   lader=  5, ngood                99278, nbad                    3
+   lader=  6, ngood               234861, nbad                   10
+   lader=  7, ngood                98392, nbad                    0
+   lader=  8, ngood               100280, nbad                    2
+   lader=  9, ngood                99861, nbad                    1
+   lader= 10, ngood                97138, nbad                    1
+   lader= 11, ngood                97101, nbad                    3
+   lader= 12, ngood                98789, nbad                    2
+   lader= 13, ngood                96712, nbad                    0
+packet = 3002
+    0
+packet = 3003
+    0
+packet = 3004
+    0
+packet = 3005
+    0
+packet = 3006
+    0
+packet = 3007
+    0
+packet = 3008
+    0

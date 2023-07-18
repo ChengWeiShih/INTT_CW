@@ -1,0 +1,298 @@
+
+#include "InttEvent.h"
+
+#include <iostream>
+#include <fstream>
+
+#include <TFile.h>
+#include <TTree.h>
+#include <TH1.h>
+#include <TDirectory.h>
+
+using namespace std;
+
+
+InttEvent* inttEvt = nullptr;
+
+TFile* tree_file = nullptr;
+TTree* tree = nullptr;
+
+TFile* outtree_file = nullptr;
+
+TH1F* h_adc;
+TH1F* h_adc1;
+TH1F* h_adc2;
+
+class InttCluster {
+  public:
+    InttCluster(int Module, int Chip_id, float Ch, int Adc, int Nhits)
+        :module(Module), chip_id(Chip_id), ch(Ch), adc(Adc), nhits(Nhits){};
+    virtual ~InttCluster(){};
+
+    void show() { cout<<"  mod, chip, ch, adc, nhits= "<<module<<" "<<chip_id<<" "<<ch<<" "<<adc<<" "<<nhits<<endl;}
+
+  public:
+    int   module;
+    int   chip_id;
+    float ch;
+    int   adc;
+    int   nhits;
+};
+
+class InttClusterList {
+  public:
+    InttClusterList() {};
+    virtual ~InttClusterList(){};
+
+    void show() { /*cout<<"  mod, chip, ch, adc, nhits= "<<module<<" "<<chip_id<<" "<<ch<<" "<<adc<<" "<<nhits<<endl;*/}
+
+    void clear() {
+      for(auto itrClus=fvCluster.begin(); itrClus!=fvCluster.end(); ++itrClus)
+      {
+          InttCluster* clus = *itrClus;
+          delete clus;
+      }
+      fvCluster.clear();
+    }
+
+  public:
+    int   fNhits;
+    vector<InttCluster*> fvCluster;
+
+};
+
+int init_done=0;
+
+int InitAnalysis(const char* outRootfile)
+{
+  if (init_done) return 1;
+  init_done = 1;
+
+  TDirectory* gDir = gDirectory;
+
+  outtree_file = TFile::Open(outRootfile, "recreate");
+
+  h_adc  = new TH1F("h_adc", "adc", 100, 0, 300);
+  h_adc1 = new TH1F("h_adc1", "adc1", 100, 0, 300);
+  h_adc2 = new TH1F("h_adc2", "adc2", 100, 0, 300);
+
+  gDirectory = gDir;
+
+  return 0;
+}
+
+/////////////////////////
+void Show(vector<InttHit*>& vHit){
+  for( auto itr=vHit.begin(); itr!=vHit.end(); ++itr)
+  {
+    InttHit* hit = *itr;
+    cout<<"    "<<hit->module<<" "<<hit->chip_id<<" "<<hit->chan_id<<" "<<hit->adc<<" ";
+    cout<<hit->bco<<" "<<hit->bco_full<<"("<<(hit->bco_full&0x7F)<<")"<<endl;
+  }
+}
+
+vector<InttCluster*> Clustering(vector<InttHit*>& vHit){
+
+  vector<InttCluster*> vClusterList;
+  if(vHit.size()==0) {
+    return vClusterList;
+  }
+
+
+  vector< vector<InttHit*> > vlist;
+
+  vector<InttHit*> vgroup;
+  InttHit* hit_prev = nullptr;
+  for( auto itr=vHit.begin(); itr!=vHit.end(); ++itr)
+  {
+    InttHit* hit = *itr;
+    //debug cout<<"hitprev : ";
+    //debug if(hit_prev!=nullptr) cout<<hit_prev->module<<" "<<hit_prev->chip_id<<" "<<hit_prev->chan_id<<" ";
+    //debug cout<<"hit : "<<hit->module<<" "<<hit->chip_id<<" "<<hit->chan_id<<endl;
+
+    if( hit_prev==nullptr || 
+       (hit->chan_id - hit_prev->chan_id)==1 // neighbouring hit
+    ){
+      //vgroup.push_back(hit);
+    }
+    else {
+      vlist.push_back(vgroup);
+      vgroup.clear();
+    }
+    
+    vgroup.push_back(hit);
+
+    hit_prev=hit;
+  }
+  if(vgroup.size()>0) vlist.push_back(vgroup);
+
+  static const int dac[8]={23, 30, 60, 90, 120, 150, 180, 210};
+
+  //debug cout<<"Ngroup "<<vlist.size()<<endl;
+  for(unsigned int igroup=0; igroup<vlist.size(); igroup++)
+  {
+     vector<InttHit*>& vgroup1 = vlist[igroup];
+
+     if(vgroup1.size()>0){
+       cout<<"    ";
+       for(auto itr1=vgroup1.begin(); itr1!=vgroup1.end(); ++itr1){
+          InttHit* hit = *itr1;
+          cout<<hit->chan_id<<" ";
+       }
+       cout<<endl;
+       
+       float pos_sum=0.0;
+       int   adc_sum=0;
+       int   module=0, chip_id=0;
+       for(auto itr1=vgroup1.begin(); itr1!=vgroup1.end(); ++itr1){
+          InttHit* hit = *itr1;
+
+          pos_sum += (hit->chan_id*dac[hit->adc]);
+          adc_sum += dac[hit->adc];
+
+          module  = hit->module;
+          chip_id = hit->chip_id;
+       }
+       if(adc_sum>0) pos_sum/=adc_sum;
+
+       InttCluster* clus=new InttCluster(module, chip_id, pos_sum, adc_sum, vgroup1.size());
+       //clus->show();
+
+       vClusterList.push_back(clus);
+     }
+  }
+
+  return vClusterList;
+}
+
+/////////////////////////
+
+int Process_event (InttEvent* inttEvent)
+{
+
+  vector<InttHit*> vHit[14][26];
+
+  int N = inttEvent->getNHits();
+  if(N)std::cout << "Num hits: " << N << "  "<<std::endl;
+  for(int ihit = 0; ihit < N; ++ihit)
+  {
+    InttHit* hit = inttEvt->getHit(ihit);
+    
+    if(hit->module  > 14) {cout<<"module out of range : "<<hit->module<<endl;}
+    if(hit->chip_id > 26) {cout<<"chipid out of range : "<<hit->chip_id<<endl;}
+
+    vHit[hit->module][hit->chip_id].push_back(hit);
+  }
+
+  // clustering
+  vector<InttCluster*> vCluster;
+  for(int imodule = 0; imodule < 14; ++imodule)
+  {
+    for(int ichip = 0; ichip < 26; ++ichip)
+    {
+      if(vHit[imodule][ichip].size()>0){
+        //cout<<"module/chip = "<<imodule<<" "<<ichip<<endl;
+        Show(vHit[imodule][ichip]);
+      }
+    }
+    for(int ichip = 0; ichip < 26; ++ichip)
+    {
+      //cout<<"imo "<<imodule<<" "<<ichip<<endl;
+      vector<InttCluster*> vClus = Clustering(vHit[imodule][ichip]);
+      vCluster.insert(vCluster.end(), vClus.begin(), vClus.end());
+    }
+  }
+    
+  // analysis
+  cout<<"Nclus: "<<vCluster.size()<<endl;
+  for(auto itrClus=vCluster.begin(); itrClus!=vCluster.end(); ++itrClus)
+  {
+      InttCluster* clus = *itrClus;
+
+      h_adc->Fill(clus->adc);
+      if(clus->nhits==1) h_adc1->Fill(clus->adc);
+      if(clus->nhits==2) h_adc2->Fill(clus->adc);
+  }
+
+  // end processing
+  for(auto itrClus=vCluster.begin(); itrClus!=vCluster.end(); ++itrClus)
+  {
+      InttCluster* clus = *itrClus;
+      delete clus;
+  }
+  vCluster.clear();
+
+//--    hit->module  = p->iValue(i, "FEE");    //felix port, martin might change the name
+//--    hit->chip_id = p->iValue(i, "CHIP_ID");
+//--    hit->chan_id = p->iValue(i, "CHANNEL_ID");
+//--
+//--    hit->adc     = p->iValue(i, "ADC");
+//--    hit->ampl    = p->iValue(i, "AMPLITUDE");
+//--    hit->chip_id = hit->chip_id % 26;
+//--                ////fem
+//--                hit->bco      = p->iValue(i, "FPHX_BCO");
+//--                hit->bco_full = p->lValue(i, "BCO");
+//--
+//--                hit->evt++;
+//--
+//--                hit->roc = 2 * (id - 3001);
+//--                hit->arm = (id - 3001) / 4;
+//--
+//--                hit->ladder = felix_map[id - 3001][hit->module].ladder;
+//--
+//--                hit->full_fphx = p->iValue(i, "FULL_FPHX");
+//--                hit->full_roc  = p->iValue(i, "FULL_ROC");
+//--    
+//--            }
+//--    
+//--            delete p;
+//--          }
+//--    }
+//--    inttEvt->show();
+//--    inttEvt->sort();
+//--    inttEvt->show();
+//--    //if(nHitTotal>0)
+//--    tree->Fill();
+//--
+    return 0;
+}
+
+int RunAnalysis(const char *rootFile)
+{
+
+  cout<<"file : "<<rootFile<<endl;
+  TDirectory* gDir = gDirectory;
+
+  tree_file = TFile::Open(rootFile);
+
+  gDirectory = gDir;
+
+  inttEvt = nullptr;
+
+  tree = (TTree*)tree_file->Get("tree");
+  tree->SetBranchAddress("event", &inttEvt);
+
+  //read the Tree
+  for (Int_t ev = 0; ev < tree->GetEntries(); ev++) {
+    tree->GetEntry(ev);
+
+    cout<<"Event : "<<ev<<" "<<inttEvt->evtSeq<<endl;
+    inttEvt->sort();
+    //inttEvt->show();
+    
+    Process_event(inttEvt);
+  }
+  //delete hfile;
+  tree_file->Close();
+
+  h_adc->Print();
+
+  //  tree->Write();
+  outtree_file->cd();
+  outtree_file->Write();
+  outtree_file->Close();
+
+
+  return 0;
+}
+
