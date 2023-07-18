@@ -157,7 +157,7 @@ double Func_Sig_Exp_Gaus(double *x, double *par) // note : 4 + 3 + 3 parameters
 class LadderDAC 
 {
     public :
-        LadderDAC(TString ana_level, TString ladder_name, int ROC_index, TString ladder_port, int Felix_ch, vector<vector<int>> Scan_config);
+        LadderDAC(TString ana_level, TString ladder_name, int ROC_index, TString ladder_port, int Felix_ch, vector<vector<int>> Scan_config, int selected_run);
 
         void Fill(int run_id, int chip_id, int chan_id, int adc);
         void Weight();
@@ -186,6 +186,7 @@ class LadderDAC
         TString ladder_port;
         int Felix_ch;
         vector<vector<int>> Scan_config;
+        int selected_run;
         // note : adc 7, overflow
         // note : adc 5 and adc 6, overlap region
         // note : Scan_config[0] = {4 , 8, 12, 16, 20,,,,,}, the first file
@@ -215,13 +216,14 @@ class LadderDAC
 // note : assume the increments are all the same for all the runs
 
 // note : input, single hit cluster
-LadderDAC::LadderDAC(TString ana_level, TString ladder_name, int ROC_index, TString ladder_port, int Felix_ch, vector<vector<int>> Scan_config)
+LadderDAC::LadderDAC(TString ana_level, TString ladder_name, int ROC_index, TString ladder_port, int Felix_ch, vector<vector<int>> Scan_config, int selected_run)
 :ana_level(ana_level),
 ladder_name(ladder_name),
 ROC_index(ROC_index),
 ladder_port(ladder_port),
 Felix_ch(Felix_ch),
-Scan_config(Scan_config)
+Scan_config(Scan_config),
+selected_run(selected_run)
 {
     cout<<"Initialization start"<<endl;
     
@@ -347,7 +349,7 @@ void LadderDAC::Weight()
     double next_content;
     double scale_weight;
 
-    int selected_run = 4; // todo : the selected run to do the weighting is here
+    // int selected_run = 4; // todo : the selected run to do the weighting is here
 
     for (int i = 0; i < DAC_hist_comb.size(); i++) // note : handle all the hists, 27 for now
     {
