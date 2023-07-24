@@ -29,8 +29,11 @@ namespace InttConversion
     double channel_width = 0.078; // note : unit : mm
     // note : It's different from the sPHENIX-INTT official conversion, but it's 
     double ideal_z_pos[13] = {
-        9.55, 25.55, 41.55, 57.55, 73.55, 89.55, 105.55, 121.55, // note : type A
-        141.75, 161.75, 181.75, 201.75, 221.75 // note : type B
+        221.75, 201.75, 181.75, 161.75, 141.75, // note : type B, column 1 to column 5
+        121.55, 105.55, 89.55, 73.55, 57.55, 41.55, 25.55, 9.55 // note : type A, column 6 to column 13
+
+        // 9.55, 25.55, 41.55, 57.55, 73.55, 89.55, 105.55, 121.55, // note : type A
+        // 141.75, 161.75, 181.75, 201.75, 221.75 // note : type B
     };
     string ladder_index_string[16] = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15"};
 
