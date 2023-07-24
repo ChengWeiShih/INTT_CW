@@ -325,13 +325,34 @@ namespace InttConversion
     //     {"B1L015N", {13, "A1", 7, 1}}
     // };
 
-    pair<double,double> Get_dummy_ladder_XY(int chip_id, int chan_id)
+    pair<double,double> Get_dummy_ladder_XY(int chip_id, int chan_id, int ladder_SN)
     {
-        // note : chip_id 1 ~ 13, 14 ~ 26
+        // note : chip_id 1 ~ 13 -> 0 
+        // note : chip_id 14 ~ 26 -> 1
         int row_index = (chip_id > 0 && chip_id < 14) ? 0 : 1;
+        double dummy_X = 0; 
+        double dummy_Y;
+        
+        // note : south
+        if (ladder_SN == 1) {
+            dummy_Y = (row_index == 0) ? -0.039 - (127 - chan_id) * 0.078 : 0.039 + (127 - chan_id) * 0.078;
+        }
+        // note : north 
+        else if (ladder_SN == 0){
+            dummy_Y = (row_index == 1) ? -0.039 - (127 - chan_id) * 0.078 : 0.039 + (127 - chan_id) * 0.078;
+        }
+        else{
+            cout<<" wrong ladder_SN ID "<<endl;
+            exit(1);
+        }
 
-        double dummy_X = 0;
-        double dummy_Y = (row_index == 0) ? -0.039 - (127 - chan_id) * 0.078 : 0.039 + (127 - chan_id) * 0.078;
+        // note : original, only works for north
+        // // note : chip_id 1 ~ 13, 14 ~ 26
+        // int row_index = (chip_id > 0 && chip_id < 14) ? 0 : 1;
+
+        // double dummy_X = 0;
+        // double dummy_Y = (row_index == 0) ? -0.039 - (127 - chan_id) * 0.078 : 0.039 + (127 - chan_id) * 0.078;
+
 
         return {dummy_X,dummy_Y};
     }
@@ -361,7 +382,8 @@ namespace InttConversion
 
         // note : 0, 1, 2, 3 : south, id 0
         // note : 4, 5, 6, 7 : north, id 1
-        int ladder_side = ( stoi(server.substr(4,1)) < 4 ) ? 0 : 1;
+        int ladder_SN = ( stoi(server.substr(4,1)) < 4 ) ? 0 : 1;
+        // cout<<"test : ladder_SN : "<<ladder_SN<<endl;
 
         
         double ladder_location_angle = ladder_location_angle_ini_correction[layer_index] -  (angle_increment[layer_index] * ladder_index);
@@ -369,8 +391,8 @@ namespace InttConversion
         double ring_pos_x = layer_raduis[layer_index] * cos(ladder_location_angle / (180/TMath::Pi()));
         double ring_pos_y = layer_raduis[layer_index] * sin(ladder_location_angle / (180/TMath::Pi()));
 
-        double ladder_self_pos_X = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).first) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).first;
-        double ladder_self_pos_Y = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second;
+        double ladder_self_pos_X = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).first) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).first;
+        double ladder_self_pos_Y = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second;
 
 
         double final_pos_X = ring_pos_x + ladder_self_pos_X;
@@ -378,7 +400,7 @@ namespace InttConversion
         int    final_pos_layer = (layer_index == 0 || layer_index == 1) ? 0 : 1;
         double final_pos_phi = (final_pos_Y < 0) ? atan2(final_pos_Y,final_pos_X) * (180./TMath::Pi()) + 360 : atan2(final_pos_Y,final_pos_X) * (180./TMath::Pi());
 
-        double final_pos_Z = ideal_z_pos[(chip_id - 1) % 13] * pow(-1, 1 - ladder_side);
+        double final_pos_Z = ideal_z_pos[(chip_id - 1) % 13] * pow(-1, 1 - ladder_SN);
 
         return {final_pos_X,final_pos_Y,final_pos_Z,final_pos_layer,final_pos_phi};
     }

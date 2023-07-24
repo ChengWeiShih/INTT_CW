@@ -1,4 +1,4 @@
-#include "InttConversion.h"
+#include"InttConversion.h"
 
 void temp_bkg(TCanvas * c1)
 {
@@ -58,66 +58,26 @@ void temp_bkg(TCanvas * c1)
     origin_g -> Draw("psame");
 }
 
-void check_event_xy_takashi(float event_i)
+void confirm_conversion ()
 {
-    TFile * file_in = new TFile("/home/phnxrc/INTT/cwshih/DACscan_data/Takashi_file/AnaTutorial_run20869ZF_lo_BCyp5mm.root","read");
-    TNtuple * Ntuple = (TNtuple*)file_in->Get("ntp_clus");
+    string server_name = "intt3";
+    int FC_id = 0;
+    int chip_id = 1;
+    int chan_id = 30;
 
-    float nclus;
-    float nclus2;
-    float bco_full;
-    float evt;
-    float size;
-    float adc;
-    float x;
-    float y;
-    float z;
-    float lay;
-    float lad;
-    float sen;
-
-    Ntuple -> SetBranchAddress( "nclus", &nclus );
-    Ntuple -> SetBranchAddress( "nclus2", &nclus2 );
-    Ntuple -> SetBranchAddress( "bco_full", &bco_full );
-    Ntuple -> SetBranchAddress( "evt", &evt );
-    Ntuple -> SetBranchAddress( "size", &size );
-    Ntuple -> SetBranchAddress( "adc", &adc );
-    Ntuple -> SetBranchAddress( "x", &x );
-    Ntuple -> SetBranchAddress( "y", &y );
-    Ntuple -> SetBranchAddress( "z", &z );
-    Ntuple -> SetBranchAddress( "lay", &lay );
-    Ntuple -> SetBranchAddress( "lad", &lad );
-    Ntuple -> SetBranchAddress( "sen", &sen );
-
-    TCanvas * c1 = new TCanvas("","",1000,800);
-
-    vector<double> temp_x_nocolumn_vec; temp_x_nocolumn_vec.clear(); // note : 13 columns 
-    vector<double> temp_y_nocolumn_vec; temp_y_nocolumn_vec.clear(); // note : 13 columns 
-
-
-    for (int i = 0; i < 100000; i++)
-    {
-        Ntuple -> GetEntry(i);
-
-        if (evt == event_i /*&& size < 5 && 40 < adc && adc < 200*/ && z > 0)
-        {
-            temp_x_nocolumn_vec.push_back(x * 10);
-            temp_y_nocolumn_vec.push_back(y * 10);
-            if (x > 0 && y < 0)
-                cout<<"Takashi hits : "<<x*10<<", "<<y*10<<", "<<z*10<<" size : "<<size<<" adc : "<<adc<<endl;
-        }
-    }
-
+    TCanvas * c1 = new TCanvas("","",800,800);
+    c1 -> cd();
     temp_bkg(c1);
-    cout<<"N cluster : "<<temp_x_nocolumn_vec.size()<<endl;
-    TGraph * event_display = new TGraph(temp_x_nocolumn_vec.size(),&temp_x_nocolumn_vec[0],&temp_y_nocolumn_vec[0]);
+
+    cout<<"--------------------------"<<endl;
+
+    vector<double> x_pos = {InttConversion::Get_XY_all(server_name,FC_id,chip_id,chan_id).x};
+    vector<double> y_pos = {InttConversion::Get_XY_all(server_name,FC_id,chip_id,chan_id).y};
+
+    TGraph * event_display = new TGraph(x_pos.size(),&x_pos[0],&y_pos[0]);
     event_display -> SetMarkerStyle(20);
     event_display -> SetMarkerColor(2);
     event_display -> SetMarkerSize(0.7);
     event_display -> Draw("p same");
-
-
-
-
-
+    
 }
