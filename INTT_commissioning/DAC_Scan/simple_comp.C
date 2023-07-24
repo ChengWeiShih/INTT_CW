@@ -4,11 +4,16 @@ void simple_comp()
     TString color_code_2 [8]={"#CC768D","#19768D","#DDA573","#009193","#6E9193","#941100","#A08144","#517E66"};
 
     vector<string> file_name = {
-        "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt4/beam_intt4-00021527-0000_event_base.root",
-        "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt4/beam_intt4-00021040-0000_event_base.root",
-        "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt4/beam_intt4-00021035-0000_event_base.root",
-        "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt4/beam_intt4-00021025-0000_event_base.root",
-        "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt4/beam_intt4-00021019-0000_event_base.root"
+        // "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt4/beam_intt4-00021527-0000_event_base.root",
+        // "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt4/beam_intt4-00021040-0000_event_base.root",
+        // "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt4/beam_intt4-00021035-0000_event_base.root",
+        // "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt4/beam_intt4-00021025-0000_event_base.root",
+        // "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt4/beam_intt4-00021019-0000_event_base.root"
+
+        "/home/phnxrc/INTT/cwshih/DACscan_data/new_DAC_Scan_0722/intt4/beam_intt4-00023058-0000_event_base.root"
+        ,"/home/phnxrc/INTT/cwshih/DACscan_data/new_DAC_Scan_0722/intt4/beam_intt4-00023055-0000_event_base.root"
+        ,"/home/phnxrc/INTT/cwshih/DACscan_data/new_DAC_Scan_0722/intt4/beam_intt4-00023053-0000_event_base.root"
+        ,"/home/phnxrc/INTT/cwshih/DACscan_data/new_DAC_Scan_0722/intt4/beam_intt4-00023051-0000_event_base.root"
     };
     
     vector<TH1F *> hist_vec; hist_vec.clear();

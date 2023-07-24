@@ -411,13 +411,13 @@ void temp_bkg(TCanvas * c1)
 // note : use "ls *.root > file_list.txt" to create the list of the file in the folder, full directory in the file_list.txt
 // note : set_folder_name = "folder_xxxx"
 // note : server_name = "inttx"
-void Intt_sPH_Cluster_test()
+void check_event_xy()
 {
 
     TCanvas * c1 = new TCanvas("","",1000,800);
 
     TString set_folder_name = "testing"; 
-    TString server_name = "intt6";
+    TString server_name = "intt4";
     vector<int> FC_id={11};
     double temp_multiplicity_cut[5] = {600,500,500,400,400};
     pair<double,double> beam_origin = {0,5};
@@ -466,57 +466,6 @@ void Intt_sPH_Cluster_test()
     vector<clu_info> temp_sPH_outer_nocolumn_vec; temp_sPH_outer_nocolumn_vec.clear();
 
 
-    TH2F * angle_correlation = new TH2F("","angle_correlation",361,0,361,361,0,361);
-    angle_correlation -> GetXaxis() -> SetTitle("Inner Phi (degree)");
-    angle_correlation -> GetYaxis() -> SetTitle("Outer Phi (degree)");
-    TH2F * angle_correlation_inner = new TH2F("","angle_correlation_inner",361,0,361,100,-50,50);
-    angle_correlation_inner -> GetXaxis() -> SetTitle("Inner Phi (degree)");
-    angle_correlation_inner -> GetYaxis() -> SetTitle("#Inner_{#Phi} - #Outer_{#Phi}");
-    TH2F * angle_correlation_outer = new TH2F("","angle_correlation_outer",361,0,361,100,-50,50);
-    angle_correlation_outer -> GetXaxis() -> SetTitle("Outer Phi (degree)");
-    angle_correlation_outer -> GetYaxis() -> SetTitle("#Inner_{#Phi} - #Outer_{#Phi}");
-
-    TH2F * DCA_point = new TH2F("","DCA_point",100,-10,10,100,-10,10);
-    DCA_point -> GetXaxis() -> SetTitle("X pos (mm)");
-    DCA_point -> GetYaxis() -> SetTitle("Y pos (mm)");
-    TH2F * angle_DCAPointX = new TH2F("","angle_DCAPointX",360,-361,361,100,-100,100);
-    angle_DCAPointX -> GetXaxis() -> SetTitle("#Inner_{#Phi} - #Outer_{#Phi}");
-    angle_DCAPointX -> GetYaxis() -> SetTitle("X pos (mm)");
-    TH2F * angle_DCAPointY = new TH2F("","angle_DCAPointY",360,-361,361,100,-100,100);
-    angle_DCAPointY -> GetXaxis() -> SetTitle("#Inner_{#Phi} - #Outer_{#Phi}");
-    angle_DCAPointY -> GetYaxis() -> SetTitle("Y pos (mm)");
-
-    TH1F * total_cluster_size = new TH1F("","total_cluster_size",40,0,40);
-    total_cluster_size -> GetXaxis() -> SetTitle("Nhit in cluster");
-    total_cluster_size -> GetYaxis() -> SetTitle("Entry");
-    TH2F * module_cluster_size = new TH2F("","module_cluster_size",14,0,14,40,0,40);
-    module_cluster_size -> GetXaxis() -> SetTitle("Felix channel (module)");
-    module_cluster_size -> GetYaxis() -> SetTitle("Cluster size");
-
-    TH2F * DCAdistance_innerPhi = new TH2F("","DCAdistance_innerPhi",100,-1,100,361,0,361);
-    DCAdistance_innerPhi -> GetXaxis() -> SetTitle("DCA distance (mm)");
-    DCAdistance_innerPhi -> GetYaxis() -> SetTitle("Innter phi");
-    TH1F * DCAdistance = new TH1F("","DCAdistance",100,-1,300);
-    DCAdistance -> GetXaxis() -> SetTitle("DCA distance");
-    DCAdistance -> GetYaxis() -> SetTitle("entry");
-
-    TH2F * candidate_angle_correlation = new TH2F("","candidate_angle_correlation",360,0,180,360,0,180);
-    candidate_angle_correlation -> GetXaxis() -> SetTitle("Inner Phi (degree)");
-    candidate_angle_correlation -> GetYaxis() -> SetTitle("Outer Phi (degree)");
-
-    TH2F * candidate_column_ID = new TH2F("","candidate_column_ID",13,1,14,13,1,14);
-    candidate_column_ID -> GetXaxis() -> SetTitle("Inner cluster columnID");
-    candidate_column_ID -> GetYaxis() -> SetTitle("Outer cluster columnID");
-
-    TH1F * candidate_column_ID_diff = new TH1F("","candidate_column_ID_diff",30,1-15,31-15);
-    candidate_column_ID_diff -> GetYaxis() -> SetTitle("Entry");
-    candidate_column_ID_diff -> GetXaxis() -> SetTitle("Clu_{In} column - Clu_{Out} column");
-
-    TH2F * N_cluster_correlation = new TH2F("","N_cluster_correlation",100,0,200,100,0,200);
-    N_cluster_correlation -> GetYaxis() -> SetTitle("N cluster outer");
-    N_cluster_correlation -> GetXaxis() -> SetTitle("N cluster inner");
-
-
 
     // vector<TLine * > track_line; track_line.clear();
 
@@ -524,7 +473,7 @@ void Intt_sPH_Cluster_test()
     draw_text -> SetNDC();
     draw_text -> SetTextSize(0.02);
 
-    c1 -> Print(plot_folder_dire + "/" + Form("%s_eventdisplay_origin_%.2f_%.2f.pdf(",server_name.Data(),beam_origin.first,beam_origin.second));
+    // c1 -> Print(plot_folder_dire + "/" + Form("%s_eventdisplay_origin_%.2f_%.2f.pdf(",server_name.Data(),beam_origin.first,beam_origin.second));
 
     for (int fid = 0; fid < file_name_vec.size(); fid++)
     {
@@ -547,7 +496,8 @@ void Intt_sPH_Cluster_test()
         tree -> SetBranchAddress("fhitArray.adc",&adc[0]);
 
 
-        for (int i = 0; i < 50000; i++ ) // note : event
+        // for (int i = 0; i < 50000; i++ ) // note : event
+        if (int i = 24; true) // note : event
         {
             tree -> GetEntry(i);
             
@@ -583,8 +533,6 @@ void Intt_sPH_Cluster_test()
 
                 for (int i2 = 0; i2 < clu_vec[i1].size(); i2++)
                 {
-                    total_cluster_size -> Fill(clu_vec[i1][i2].size);
-                    module_cluster_size -> Fill(i1,clu_vec[i1][i2].size);
 
                     if ( clu_vec[i1][i2].layer == 0 ){
                         temp_sPH_inner_vec[ clu_vec[i1][i2].column - 1 ].push_back(clu_vec[i1][i2]);
@@ -608,225 +556,28 @@ void Intt_sPH_Cluster_test()
                     // }
                 }
             }
+
+
+            if( true ){
+                temp_bkg(c1);
+
+                TGraph * event_display = new TGraph(temp_x_nocolumn_vec.size(),&temp_x_nocolumn_vec[0],&temp_y_nocolumn_vec[0]);
+                event_display -> SetMarkerStyle(20);
+                event_display -> SetMarkerColor(2);
+                event_display -> SetMarkerSize(0.7);
+                event_display -> Draw("p same");
+                cout<<" "<<endl;
+
+                draw_text -> DrawLatex(0.12, 0.91, Form("Server : %s, event : %i, column : %i",server_name.Data(),i,-1 + 1));
+                draw_text -> DrawLatex(0.15, 0.87, Form("Total event hit : %i, innter Ncluster : %i, outer Ncluster : %i",fNhits,temp_sPH_inner_nocolumn_vec.size(),temp_sPH_outer_nocolumn_vec.size()));
+
+                draw_text -> Draw("same");
+
+                // c1 -> Print(plot_folder_dire + "/" + Form("%s_eventdisplay_origin_%.2f_%.2f.pdf",server_name.Data(),beam_origin.first,beam_origin.second));
+                // c1 -> Clear();
+                // event_display -> Clear();
+            }
             
-            // for (int column_i = 12; column_i < 13; column_i++)
-            // {
-            //     cout<<"~~~~~~~~~~~~~~~~~ event : "<<i<<" column : "<<column_i + 1<<" Inner Nclusters : "<<temp_sPH_inner_vec[column_i].size()<<" Outer Nclusters : "<<temp_sPH_outer_vec[column_i].size()<<endl;
-                
-            //     for (int inner_i = 0; inner_i < temp_sPH_inner_vec[column_i].size(); inner_i++)
-            //     {
-            //         for (int outer_i = 0; outer_i < temp_sPH_outer_vec[column_i].size(); outer_i++)
-            //         {
-            //             // track_line.push_back(
-            //             //     new TLine(
-            //             //         temp_sPH_outer_vec[column_i][outer_i].x,
-            //             //         temp_sPH_outer_vec[column_i][outer_i].y,
-
-            //             //         calculateDistanceAndClosestPoint(
-            //             //             temp_sPH_inner_vec[column_i][inner_i].x, temp_sPH_inner_vec[column_i][inner_i].y,
-            //             //             temp_sPH_outer_vec[column_i][outer_i].x, temp_sPH_outer_vec[column_i][outer_i].y,
-            //             //             beam_origin.first, beam_origin.second
-            //             //         )[1],
-            //             //         calculateDistanceAndClosestPoint(
-            //             //             temp_sPH_inner_vec[column_i][inner_i].x, temp_sPH_inner_vec[column_i][inner_i].y,
-            //             //             temp_sPH_outer_vec[column_i][outer_i].x, temp_sPH_outer_vec[column_i][outer_i].y,
-            //             //             beam_origin.first, beam_origin.second
-            //             //         )[2]
-
-            //             //     )
-            //             // );
-
-            //             vector<double> DCA_info_vec = calculateDistanceAndClosestPoint(
-            //                 temp_sPH_inner_vec[column_i][inner_i].x, temp_sPH_inner_vec[column_i][inner_i].y,
-            //                 temp_sPH_outer_vec[column_i][outer_i].x, temp_sPH_outer_vec[column_i][outer_i].y,
-            //                 beam_origin.first, beam_origin.second
-            //             );
-
-            //             if (/*DCA_info_vec[1]>-3 && DCA_info_vec[1] < 3 && DCA_info_vec[2] > 2 && DCA_info_vec[2] < 7*/ DCA_info_vec[0] < 5)
-            //             {
-            //                 cout<<"--------- X1 : "<<temp_sPH_inner_vec[column_i][inner_i].x <<" Y1 : "<< temp_sPH_inner_vec[column_i][inner_i].y<<" X2 : "<<temp_sPH_outer_vec[column_i][outer_i].x <<" Y2 : "<< temp_sPH_outer_vec[column_i][outer_i].y<<endl;
-            //                 cout<<"--------- ("<<temp_sPH_inner_vec[column_i][inner_i].x <<","<< temp_sPH_inner_vec[column_i][inner_i].y<<"),("<<temp_sPH_outer_vec[column_i][outer_i].x <<","<< temp_sPH_outer_vec[column_i][outer_i].y<<")"<<endl;
-            //                 cout<<"--------- distance : "<<DCA_info_vec[0]<<" DCAx : "<<DCA_info_vec[1]<<" DCAy : "<<DCA_info_vec[2]<<endl;
-                            
-            //                 temp_bkg(c1);
-
-            //                 TLine * track_line = new TLine(
-            //                     temp_sPH_outer_vec[column_i][outer_i].x,
-            //                     temp_sPH_outer_vec[column_i][outer_i].y,
-
-            //                     calculateDistanceAndClosestPoint(
-            //                         temp_sPH_inner_vec[column_i][inner_i].x, temp_sPH_inner_vec[column_i][inner_i].y,
-            //                         temp_sPH_outer_vec[column_i][outer_i].x, temp_sPH_outer_vec[column_i][outer_i].y,
-            //                         beam_origin.first, beam_origin.second
-            //                     )[1],
-            //                     calculateDistanceAndClosestPoint(
-            //                         temp_sPH_inner_vec[column_i][inner_i].x, temp_sPH_inner_vec[column_i][inner_i].y,
-            //                         temp_sPH_outer_vec[column_i][outer_i].x, temp_sPH_outer_vec[column_i][outer_i].y,
-            //                         beam_origin.first, beam_origin.second
-            //                     )[2]
-            //                 );
-
-            //                 track_line -> SetLineColor(1);
-            //                 track_line -> SetLineWidth(1);
-            //                 track_line -> Draw("l same");
-
-            //                 TGraph * event_display = new TGraph(temp_x_vec[column_i].size(),&temp_x_vec[column_i][0],&temp_y_vec[column_i][0]);
-            //                 event_display -> SetMarkerStyle(20);
-            //                 event_display -> SetMarkerColor(2);
-            //                 event_display -> SetMarkerSize(1);
-            //                 event_display -> Draw("p same");
-            //                 cout<<" "<<endl;
-
-            //                 draw_text -> DrawLatex(0.12, 0.91, Form("Server : %s, event : %i, column : %i",server_name.Data(),i,column_i + 1));
-            //                 draw_text -> DrawLatex(0.15, 0.87, Form("Total event hit : %i, innter Ncluster : %i, outer Ncluster : %i",fNhits,temp_sPH_inner_vec[column_i].size(),temp_sPH_outer_vec[column_i].size()));
-            //                 draw_text -> DrawLatex(0.15, 0.84, Form("Inner pos : (%.3f,%.3f) mm, size : %i, sum_adc_conv : %d, avg_chan : %.1f",temp_sPH_inner_vec[column_i][inner_i].x, temp_sPH_inner_vec[column_i][inner_i].y,temp_sPH_inner_vec[column_i][inner_i].size,temp_sPH_inner_vec[column_i][inner_i].sum_adc_conv,temp_sPH_inner_vec[column_i][inner_i].avg_chan));
-            //                 draw_text -> DrawLatex(0.15, 0.81, Form("Outer pos : (%.3f,%.3f) mm, size : %i, sum_adc_conv : %d, avg_chan : %.1f" ,temp_sPH_outer_vec[column_i][outer_i].x, temp_sPH_outer_vec[column_i][outer_i].y,temp_sPH_outer_vec[column_i][outer_i].size,temp_sPH_outer_vec[column_i][outer_i].sum_adc_conv,temp_sPH_outer_vec[column_i][outer_i].avg_chan));
-            //                 draw_text -> DrawLatex(0.15, 0.78, Form("DCA point pos : (%.3f,%.3f) mm, distance : %.3f",DCA_info_vec[1],DCA_info_vec[2],DCA_info_vec[0]));
-
-            //                 draw_text -> Draw("same");
-
-            //                 c1 -> Print(plot_folder_dire + "/" + Form("%s_eventdisplay_origin_%.2f_%.2f.pdf",server_name.Data(),beam_origin.first,beam_origin.second));
-            //                 c1 -> Clear();
-            //                 event_display -> Clear();
-
-            //             }
-                        
-
-            //             if (temp_sPH_inner_vec[column_i][inner_i].phi < 50)
-            //                 angle_correlation -> Fill(temp_sPH_inner_vec[column_i][inner_i].phi, temp_sPH_outer_vec[column_i][outer_i].phi);
-                        
-            //             DCA_point -> Fill( DCA_info_vec[1], DCA_info_vec[2] );
-            //             DCAdistance_innerPhi -> Fill( DCA_info_vec[0], temp_sPH_inner_vec[column_i][inner_i].phi );
-            //             DCAdistance -> Fill( DCA_info_vec[0] );
-
-            //             angle_DCAPointX -> Fill(
-            //                 temp_sPH_inner_vec[column_i][inner_i].phi - temp_sPH_outer_vec[column_i][outer_i].phi,
-            //                 DCA_info_vec[1]
-            //             );
-
-            //             angle_DCAPointY -> Fill(
-            //                 temp_sPH_inner_vec[column_i][inner_i].phi - temp_sPH_outer_vec[column_i][outer_i].phi,
-            //                 DCA_info_vec[2]
-            //             );
-
-            //             angle_correlation_inner -> Fill(temp_sPH_inner_vec[column_i][inner_i].phi, temp_sPH_inner_vec[column_i][inner_i].phi - temp_sPH_outer_vec[column_i][outer_i].phi);
-            //             angle_correlation_outer -> Fill(temp_sPH_outer_vec[column_i][outer_i].phi, temp_sPH_inner_vec[column_i][inner_i].phi - temp_sPH_outer_vec[column_i][outer_i].phi);
-                        
-                        
-            //         }
-            //     }
-            // }
-
-
-            // cout<<"~~~~~~~~~~~~~~~~~ event : "<<i<<" column : "<<column_i + 1<<" Inner Nclusters : "<<temp_sPH_inner_vec[column_i].size()<<" Outer Nclusters : "<<temp_sPH_outer_vec[column_i].size()<<endl;
-            
-            N_cluster_correlation -> Fill(temp_sPH_inner_nocolumn_vec.size(),temp_sPH_outer_nocolumn_vec.size());
-
-            // for (int inner_i = 0; inner_i < temp_sPH_inner_nocolumn_vec.size(); inner_i++)
-            // {
-            //     for (int outer_i = 0; outer_i < temp_sPH_outer_nocolumn_vec.size(); outer_i++)
-            //     {
-            //         // track_line.push_back(
-            //         //     new TLine(
-            //         //         temp_sPH_outer_vec[column_i][outer_i].x,
-            //         //         temp_sPH_outer_vec[column_i][outer_i].y,
-
-            //         //         calculateDistanceAndClosestPoint(
-            //         //             temp_sPH_inner_vec[column_i][inner_i].x, temp_sPH_inner_vec[column_i][inner_i].y,
-            //         //             temp_sPH_outer_vec[column_i][outer_i].x, temp_sPH_outer_vec[column_i][outer_i].y,
-            //         //             beam_origin.first, beam_origin.second
-            //         //         )[1],
-            //         //         calculateDistanceAndClosestPoint(
-            //         //             temp_sPH_inner_vec[column_i][inner_i].x, temp_sPH_inner_vec[column_i][inner_i].y,
-            //         //             temp_sPH_outer_vec[column_i][outer_i].x, temp_sPH_outer_vec[column_i][outer_i].y,
-            //         //             beam_origin.first, beam_origin.second
-            //         //         )[2]
-
-            //         //     )
-            //         // );
-
-            //         vector<double> DCA_info_vec = calculateDistanceAndClosestPoint(
-            //             temp_sPH_inner_nocolumn_vec[inner_i].x, temp_sPH_inner_nocolumn_vec[inner_i].y,
-            //             temp_sPH_outer_nocolumn_vec[outer_i].x, temp_sPH_outer_nocolumn_vec[outer_i].y,
-            //             beam_origin.first, beam_origin.second
-            //         );
-
-            //         if (/*DCA_info_vec[1]>-3 && DCA_info_vec[1] < 3 && DCA_info_vec[2] > 2 && DCA_info_vec[2] < 7*/ DCA_info_vec[0] < 5)
-            //         {   
-            //             // cout<<"--------- event : "<<i<<endl;
-            //             // cout<<"--------- X1 : "<<temp_sPH_inner_nocolumn_vec[inner_i].x <<" Y1 : "<< temp_sPH_inner_nocolumn_vec[inner_i].y<<" X2 : "<<temp_sPH_outer_nocolumn_vec[outer_i].x <<" Y2 : "<< temp_sPH_outer_nocolumn_vec[outer_i].y<<endl;
-            //             // cout<<"--------- ("<<temp_sPH_inner_nocolumn_vec[inner_i].x <<","<< temp_sPH_inner_nocolumn_vec[inner_i].y<<"),("<<temp_sPH_outer_nocolumn_vec[outer_i].x <<","<< temp_sPH_outer_nocolumn_vec[outer_i].y<<")"<<endl;
-            //             // cout<<"--------- distance : "<<DCA_info_vec[0]<<" DCAx : "<<DCA_info_vec[1]<<" DCAy : "<<DCA_info_vec[2]<<endl;
-                        
-            //             candidate_angle_correlation -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].phi,temp_sPH_outer_nocolumn_vec[outer_i].phi);
-            //             candidate_column_ID -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].column,temp_sPH_outer_nocolumn_vec[outer_i].column);
-            //             candidate_column_ID_diff -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].column - temp_sPH_outer_nocolumn_vec[outer_i].column);
-
-            //             if( DCA_info_vec[0] < 2.5 ){
-            //                 temp_bkg(c1);
-
-            //                 TLine * track_line = new TLine(
-            //                     temp_sPH_outer_nocolumn_vec[outer_i].x,
-            //                     temp_sPH_outer_nocolumn_vec[outer_i].y,
-
-            //                     DCA_info_vec[1], DCA_info_vec[2]
-            //                 );
-
-            //                 track_line -> SetLineColor(1);
-            //                 track_line -> SetLineWidth(1);
-            //                 track_line -> Draw("l same");
-
-            //                 TGraph * event_display = new TGraph(temp_x_nocolumn_vec.size(),&temp_x_nocolumn_vec[0],&temp_y_nocolumn_vec[0]);
-            //                 event_display -> SetMarkerStyle(20);
-            //                 event_display -> SetMarkerColor(2);
-            //                 event_display -> SetMarkerSize(0.7);
-            //                 event_display -> Draw("p same");
-            //                 cout<<" "<<endl;
-
-            //                 draw_text -> DrawLatex(0.12, 0.91, Form("Server : %s, event : %i, column : %i",server_name.Data(),i,-1 + 1));
-            //                 draw_text -> DrawLatex(0.15, 0.87, Form("Total event hit : %i, innter Ncluster : %i, outer Ncluster : %i",fNhits,temp_sPH_inner_nocolumn_vec.size(),temp_sPH_outer_nocolumn_vec.size()));
-            //                 draw_text -> DrawLatex(0.15, 0.84, Form("Inner pos : (%.3f,%.3f,#Phi %.1f) mm, size : %i, sum_adc_conv : %d, avg_chan : %.1f",temp_sPH_inner_nocolumn_vec[inner_i].x, temp_sPH_inner_nocolumn_vec[inner_i].y, temp_sPH_inner_nocolumn_vec[inner_i].phi, temp_sPH_inner_nocolumn_vec[inner_i].size,temp_sPH_inner_nocolumn_vec[inner_i].sum_adc_conv,temp_sPH_inner_nocolumn_vec[inner_i].avg_chan));
-            //                 draw_text -> DrawLatex(0.15, 0.81, Form("Outer pos : (%.3f,%.3f,#Phi %.1f) mm, size : %i, sum_adc_conv : %d, avg_chan : %.1f" ,temp_sPH_outer_nocolumn_vec[outer_i].x, temp_sPH_outer_nocolumn_vec[outer_i].y, temp_sPH_outer_nocolumn_vec[outer_i].phi, temp_sPH_outer_nocolumn_vec[outer_i].size,temp_sPH_outer_nocolumn_vec[outer_i].sum_adc_conv,temp_sPH_outer_nocolumn_vec[outer_i].avg_chan));
-            //                 draw_text -> DrawLatex(0.15, 0.78, Form("DCA point pos : (%.3f,%.3f) mm, distance : %.3f",DCA_info_vec[1],DCA_info_vec[2],DCA_info_vec[0]));
-
-            //                 draw_text -> Draw("same");
-
-            //                 c1 -> Print(plot_folder_dire + "/" + Form("%s_eventdisplay_origin_%.2f_%.2f.pdf",server_name.Data(),beam_origin.first,beam_origin.second));
-            //                 c1 -> Clear();
-            //                 event_display -> Clear();
-            //             }
-
-                        
-
-            //         }
-                                        
-            //         DCA_point -> Fill( DCA_info_vec[1], DCA_info_vec[2] );
-            //         DCAdistance_innerPhi -> Fill( DCA_info_vec[0], temp_sPH_inner_nocolumn_vec[inner_i].phi );
-            //         DCAdistance -> Fill( DCA_info_vec[0] );
-
-            //         angle_DCAPointX -> Fill(
-            //             temp_sPH_inner_nocolumn_vec[inner_i].phi - temp_sPH_outer_nocolumn_vec[outer_i].phi,
-            //             DCA_info_vec[1]
-            //         );
-
-            //         angle_DCAPointY -> Fill(
-            //             temp_sPH_inner_nocolumn_vec[inner_i].phi - temp_sPH_outer_nocolumn_vec[outer_i].phi,
-            //             DCA_info_vec[2]
-            //         );
-
-            //         angle_correlation_inner -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].phi, temp_sPH_inner_nocolumn_vec[inner_i].phi - temp_sPH_outer_nocolumn_vec[outer_i].phi);
-            //         angle_correlation_outer -> Fill(temp_sPH_outer_nocolumn_vec[outer_i].phi, temp_sPH_inner_nocolumn_vec[inner_i].phi - temp_sPH_outer_nocolumn_vec[outer_i].phi);
-                    
-            //         // if ( temp_sPH_inner_nocolumn_vec[inner_i].phi > 48 && temp_sPH_inner_nocolumn_vec[inner_i].phi < 50 ) continue;
-            //         // if ( temp_sPH_inner_nocolumn_vec[inner_i].phi > 58 && temp_sPH_inner_nocolumn_vec[inner_i].phi < 67 ) continue;
-            //         // if ( temp_sPH_inner_nocolumn_vec[inner_i].phi > 85 && temp_sPH_inner_nocolumn_vec[inner_i].phi < 90 ) continue;
-            //         if ( temp_sPH_outer_nocolumn_vec[outer_i].phi > 37 && temp_sPH_outer_nocolumn_vec[outer_i].phi < 48 ) continue;                      
-
-                    
-            //         angle_correlation -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].phi, temp_sPH_outer_nocolumn_vec[outer_i].phi);
-                    
-            //     }
-            // }
         
 
             temp_x_vec.clear(); temp_x_vec = vector<vector<double>>(13);
@@ -857,7 +608,7 @@ void Intt_sPH_Cluster_test()
 
     }
 
-    c1 -> Print(plot_folder_dire + "/" + Form("%s_eventdisplay_origin_%.2f_%.2f.pdf)",server_name.Data(),beam_origin.first,beam_origin.second));
+    // c1 -> Print(plot_folder_dire + "/" + Form("%s_eventdisplay_origin_%.2f_%.2f.pdf)",server_name.Data(),beam_origin.first,beam_origin.second));
 
 
     // c1 -> cd();
@@ -877,72 +628,5 @@ void Intt_sPH_Cluster_test()
     //     track_line[line_i] -> Draw("l same");
     // }
     // bbb -> Draw("p same");
-    
-    
-    gStyle->SetOptStat(111111);
-    
-    
-    if (true){
-        angle_correlation -> Draw("colz0");
-        // c1 -> SetLogz();
-        c1 -> Print(plot_folder_dire + "/" + "inner_outer_angle_correlation.pdf");
-        c1 -> Clear();
-
-        DCA_point -> Draw("colz0");
-        c1 -> Print(plot_folder_dire + "/" + "DCA_point.pdf");
-        c1 -> Clear();
-
-        angle_DCAPointX -> Draw("colz0");
-        c1 -> Print(plot_folder_dire + "/" + "angle_DCAPointX.pdf");
-        c1 -> Clear();
-
-
-        angle_DCAPointY -> Draw("colz0");
-        c1 -> Print(plot_folder_dire + "/" + "angle_DCAPointY.pdf");
-        c1 -> Clear();
-
-
-        angle_correlation_inner -> Draw("colz0");
-        c1 -> Print(plot_folder_dire + "/" + "angle_correlation_inner.pdf");
-        c1 -> Clear();
-
-
-        angle_correlation_outer -> Draw("colz0");
-        c1 -> Print(plot_folder_dire + "/" + "angle_correlation_outer.pdf");
-        c1 -> Clear();
-
-
-        total_cluster_size -> Draw("hist");
-        c1 -> Print(plot_folder_dire + "/" + "total_cluster_size.pdf");
-        c1 -> Clear();
-
-        module_cluster_size -> Draw("colz0");
-        c1 -> Print(plot_folder_dire + "/" + "module_cluster_size.pdf");
-        c1 -> Clear();
-
-        DCAdistance_innerPhi -> Draw("colz0");
-        c1 -> Print(plot_folder_dire + "/" + "DCAdistance_innerPhi.pdf");
-        c1 -> Clear();
-
-        DCAdistance -> Draw("colz0");
-        c1 -> Print(plot_folder_dire + "/" + "DCAdistance.pdf");
-        c1 -> Clear();
-
-        candidate_angle_correlation -> Draw("colz0");
-        c1 -> Print(plot_folder_dire + "/" + "candidate_angle_correlation.pdf");
-        c1 -> Clear();
-
-        candidate_column_ID -> Draw("colz0");
-        c1 -> Print(plot_folder_dire + "/" + "candidate_column_ID.pdf");
-        c1 -> Clear();
-
-        candidate_column_ID_diff -> Draw("hist");
-        c1 -> Print(plot_folder_dire + "/" + "candidate_column_ID_diff.pdf");
-        c1 -> Clear();
-
-        N_cluster_correlation -> Draw("colz0");
-        c1 -> Print(plot_folder_dire + "/" + "N_cluster_correlation.pdf");
-        c1 -> Clear();
-    }
 
 }
