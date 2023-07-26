@@ -99,7 +99,7 @@ void check_event_xy_takashi(float event_i)
     {
         Ntuple -> GetEntry(i);
 
-        if (evt == event_i /*&& size < 5 && 40 < adc && adc < 200*/ && z > 0)
+        if (evt == event_i /*&& size < 5 && 40 < adc && adc < 200*/ && z < 0)
         {
             temp_x_nocolumn_vec.push_back(x * 10);
             temp_y_nocolumn_vec.push_back(y * 10);

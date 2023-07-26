@@ -41,7 +41,7 @@ struct hit_pro_info {
     int layer;
 };
 
-namespace InttClutering{
+namespace InttClustering{
     
     vector<clu_info> clustering(string server_name, int FC_id, vector<hit_info> single_event)
     {
@@ -86,7 +86,7 @@ namespace InttClutering{
             }
             else 
             {
-                cout<<"chip_id : "<<chip_conv<<" chan_id : "<<chan_conv<<" fired more than once ! N_hit in this HL : "<<single_event.size()<<" nominal_chipid : "<<single_event[i].chip_id<<" chan_id : "<<single_event[i].chan_id<<endl;
+                // cout<<"chip_id : "<<chip_conv<<" chan_id : "<<chan_conv<<" fired more than once ! N_hit in this HL : "<<single_event.size()<<" nominal_chipid : "<<single_event[i].chip_id<<" chan_id : "<<single_event[i].chan_id<<endl;
                 // note : take the latest one.
                 hit_seat[chip_conv - 1][chan_conv] = {single_event[i].chip_id, single_event[i].chan_id, single_event[i].adc, single_event[i].adc_conv};    
             }
@@ -94,7 +94,7 @@ namespace InttClutering{
 
         for (int col = 0; col < 13; col++) // note : column
         {
-            cout<<" "<<endl;
+            // cout<<" "<<endl;
             for (int ch = 0; ch < 256; ch++) // note : channel
             {
                 if (hit_seat[col][ch] != nominal_vec)
@@ -117,7 +117,7 @@ namespace InttClutering{
                         hit_pos.z,            // note : nominal strip pos in sPHENIX coordinate
                         hit_pos.layer         // note : N layer, 0 or 1.
                     });
-                    cout<<"hit info :\t"<<hit_pos.x<<" "<<hit_pos.y<<" "<<hit_pos.z<<"\toriginal chip/chan "<<hit_seat[col][ch][0]<<" "<<hit_seat[col][ch][1]<<"\tconverted chip/chan "<<col+1<<" "<<ch<<"\tadc & adc_conv "<<hit_seat[col][ch][2]<<" "<<hit_seat[col][ch][3]<<endl;
+                    // cout<<"hit info :\t"<<hit_pos.x<<" "<<hit_pos.y<<" "<<hit_pos.z<<"\toriginal chip/chan "<<hit_seat[col][ch][0]<<" "<<hit_seat[col][ch][1]<<"\tconverted chip/chan "<<col+1<<" "<<ch<<"\tadc & adc_conv "<<hit_seat[col][ch][2]<<" "<<hit_seat[col][ch][3]<<endl;
                 }
             } // note : end 256 chan check
 

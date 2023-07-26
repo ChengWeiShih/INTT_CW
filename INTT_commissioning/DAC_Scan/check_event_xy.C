@@ -2,7 +2,7 @@
 //#include "InttConversion.h"
 #include "InttClustering.h"
 
-TString mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/test_intt6_zero_magnet";
+TString mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
 // todo : the number of number is given by the adc_setting_run !!!
 // todo : also the range of the hist.
 // todo : the adc follows the following convention
@@ -189,7 +189,7 @@ void check_event_xy()
     TCanvas * c1 = new TCanvas("","",1000,800);
 
     TString set_folder_name = "testing"; 
-    TString server_name = "intt4";
+    TString server_name = "intt0";
     vector<int> FC_id={11};
     double temp_multiplicity_cut[5] = {600,500,500,400,400};
     pair<double,double> beam_origin = {0,5};

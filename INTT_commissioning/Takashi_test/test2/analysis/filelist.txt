@@ -1,0 +1,8 @@
+../beam_intt0-00010433-0000_event_base.root
+../beam_intt1-00010433-0000_event_base.root
+../beam_intt2-00010433-0000_event_base.root
+../beam_intt3-00010433-0000_event_base.root
+../beam_intt4-00010433-0000_event_base.root
+../beam_intt5-00010433-0000_event_base.root
+../beam_intt6-00010433-0000_event_base.root
+../beam_intt7-00010433-0000_event_base.root

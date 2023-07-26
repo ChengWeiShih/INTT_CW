@@ -181,6 +181,16 @@ namespace InttConversion
         {"intt7_13", {13, "A1", 7, 1, "B1L015N"}}
     };  
 
+    map<int,string>pid_to_server{
+        {3001,"intt0"},
+        {3002,"intt1"},
+        {3003,"intt2"},
+        {3004,"intt3"},
+        {3005,"intt4"},
+        {3006,"intt5"},
+        {3007,"intt6"},
+        {3008,"intt7"}
+    };
     // map<TString,ladder_info> ladder_toinfo_map{    
     //     {"B1L101S", {0, "D2", 0, 0}}, // note : intt 0
     //     {"B0L101S", {1, "C1", 0, 0}},
@@ -333,11 +343,11 @@ namespace InttConversion
         double dummy_X = 0; 
         double dummy_Y;
         
-        // note : south
+        // note : north
         if (ladder_SN == 1) {
             dummy_Y = (row_index == 0) ? -0.039 - (127 - chan_id) * 0.078 : 0.039 + (127 - chan_id) * 0.078;
         }
-        // note : north 
+        // note : south
         else if (ladder_SN == 0){
             dummy_Y = (row_index == 1) ? -0.039 - (127 - chan_id) * 0.078 : 0.039 + (127 - chan_id) * 0.078;
         }
