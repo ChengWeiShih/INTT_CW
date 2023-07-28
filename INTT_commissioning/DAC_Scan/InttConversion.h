@@ -37,6 +37,208 @@ namespace InttConversion
     };
     string ladder_index_string[16] = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15"};
 
+    vector<vector<pair<double,double>>> survey_ring_pos{
+        {
+            {-21.46096,-75.90736},
+            {-55.11142,-56.18837},
+            {-74.28391,-22.54561},
+            {-74.27526,16.63011},
+            {-55.28476,50.09862},
+            {-21.29183,69.67282},
+            {21.88624,70.05464},
+            {55.62919,50.6206},
+            {74.91651,16.92973},
+            {75.05231,-21.87484},
+            {55.65433,-55.67402},
+            {22.03765,-75.04037}
+        },
+
+
+        {
+            {-1.95208,-84.45033},
+            {-42.53011,-73.45485},
+            {-72.16084,-43.72407},
+            {-82.95509,-3.14924},
+            {-72.23989,37.60837},
+            {-42.44876,67.26436},
+            {2.51679,78.71859},
+            {42.93029,67.67477},
+            {72.5979,37.94146},
+            {83.584,-2.404},
+            {72.79182,-43.00581},
+            {43.10364,-72.82611}
+        },
+
+
+        {
+            {-21.31346,-101.64604},
+            {-57.58322,-86.34445},
+            {-85.04187,-58.59704},
+            {-99.84728,-22.61833},
+            {-99.77396,16.49293},
+            {-84.90474,52.57002},
+            {-57.61532,80.21115},
+            {-21.37688,95.16837},
+            {22.02317,95.28014},
+            {58.19153,80.27542},
+            {85.65315,52.7357},
+            {100.52747,16.68818},
+            {100.46573,-21.98187},
+            {85.62499,-58.16364},
+            {58.02216,-85.95094},
+            {21.76647,-100.8559}
+        },
+
+        {
+            {-1.73438,-109.56383},
+            {-42.59149,-101.4651},
+            {-77.22727,-78.31667},
+            {-100.13177,-43.74884},
+            {-108.23473,-3.11344},
+            {-99.90249,37.60892},
+            {-77.06972,72.28864},
+            {-42.4645,95.04719},
+            {2.69826,103.51905},
+            {43.41251,95.69813},
+            {77.88536,72.49284},
+            {100.8459,38.06807},
+            {108.91711,-2.60334},
+            {100.82318,-43.04702},
+            {78.07134,-77.57372},
+            {43.22038,-100.8719}
+        }
+    };
+
+    vector<vector<double>> survey_ladder_rotate{
+        {
+            // -0.26384,
+            // -0.78815,
+            // -1.30314,
+            // 1.31438,
+            // 0.80029,
+            // 0.27082,
+            // -0.25736,
+            // -0.78393,
+            // -1.30531,
+            // 1.31406,
+            // 0.79025,
+            // 0.26877
+
+            254.88308,
+            224.84233,
+            195.33558,
+            165.30843,
+            135.85324,
+            105.51684,
+            75.25436,
+            45.08412,
+            15.21125,
+            -14.70991,
+            -44.72201,
+            -74.60061
+        },
+
+        {
+            // -0.00218,
+            // -0.51881,
+            // -1.0441,
+            // -1.5659,
+            // 1.0518,
+            // 0.52987,
+            // -0.01209,
+            // -0.52199,
+            // -1.04294,
+            // 1.56356, // note : remove the sign manually
+            // 1.05152,
+            // 0.52701
+
+            269.87510,
+            240.27438,
+            210.17748,
+            180.28054,
+            150.26370,
+            120.35931,
+            89.30729,
+            60.09218,
+            30.24394,
+            -0.41461,
+            -29.75234,
+            -59.80455
+        },
+
+        {
+            // -0.19496,
+            // -0.58817,
+            // -0.98211,
+            // -1.37107,
+            // 1.37973,
+            // 0.9788,
+            // 0.59268,
+            // 0.20298,
+            // -0.18748,
+            // -0.58648,
+            // -0.97829,
+            // -1.37224,
+            // 1.37942,
+            // 0.98354,
+            // 0.59753,
+            // 0.19973
+
+            258.82961,
+            236.30034,
+            213.72924,
+            191.44348,
+            169.05271,
+            146.08111,
+            123.95806,
+            101.62990,
+            79.25819,
+            56.39717,
+            33.94811,
+            11.37644,
+            -10.96506,
+            -33.64731,
+            -55.76405,
+            -78.55631
+        },
+
+        {
+            // 0.01453,
+            // -0.38568,
+            // -0.78268,
+            // -1.17174,
+            // -1.57008,
+            // 1.18513,
+            // 0.79233,
+            // 0.40179,
+            // 0.01651,
+            // -0.39829,
+            // -0.78889,
+            // -1.1741,
+            // 1.56883,
+            // 1.1828,
+            // 0.79526,
+            // 0.39805
+
+            270.83251,
+            247.90216,
+            225.15574,
+            202.86424,
+            180.04104,
+            157.90295,
+            135.39716,
+            113.02087,
+            90.94595,
+            67.17966,
+            44.79993,
+            22.72903,
+            -0.11266,
+            -22.23055,
+            -44.43496,
+            -67.19341
+        }
+    };
+
     map<TString,full_ladder_info> serverFC_toinfo_map{    
         {"intt0_0", {0, "D2", 0, 0, "B1L101S"}}, // note : intt 0
         {"intt0_1", {1, "C1", 0, 0, "B0L101S"}},
@@ -367,13 +569,16 @@ namespace InttConversion
         return {dummy_X,dummy_Y};
     }
 
-    pair<double,double> Get_self_rotation( pair<double,double> chan_pos, double angle )
+    pair<double,double> Get_self_rotation( pair<double,double> chan_pos, double angle)
     {
         return {chan_pos.second * cos(angle / (180/TMath::Pi())), chan_pos.second * sin(angle / (180/TMath::Pi()))};
     }
 
-    pos_str Get_XY_all(/*string ladder_name*/string server, int module, int chip_id, int chan_id)
+    pos_str Get_XY_all(/*string ladder_name*/string server, int module, int chip_id, int chan_id, string conversion_mode = "ideal", double peek = 5)
     {
+
+        vector<string> conversion_mode_DB = {"ideal","nominal","survey_1_XY","survey_1_XYAlpha","survey_1_XYAlpha_Peek"};
+
         // string ladder_pos_str = ladder_name;
         string ladder_pos_str = string(serverFC_toinfo_map[Form("%s_%i",server.c_str(),module)].Ladder);
         
@@ -401,12 +606,71 @@ namespace InttConversion
         double ring_pos_x = layer_raduis[layer_index] * cos(ladder_location_angle / (180/TMath::Pi()));
         double ring_pos_y = layer_raduis[layer_index] * sin(ladder_location_angle / (180/TMath::Pi()));
 
-        double ladder_self_pos_X = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).first) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).first;
-        double ladder_self_pos_Y = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second;
+        double ladder_self_pos_X;
+        double ladder_self_pos_Y;
+        double final_pos_X;
+        double final_pos_Y;
+
+        if (conversion_mode == conversion_mode_DB[0] || conversion_mode == conversion_mode_DB[1]) // note : ideal, nominal
+        {
+            ladder_self_pos_X = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).first) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).first;
+            ladder_self_pos_Y = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second;
+            final_pos_X = ring_pos_x + ladder_self_pos_X;
+            final_pos_Y = ring_pos_y + ladder_self_pos_Y;
+        }
+        else if ( conversion_mode == conversion_mode_DB[2] ) // note : survey_1_XY (based on survey data typeB south)
+        {
+            // note : ideal ladder rotation
+            ladder_self_pos_X = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).first) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).first;
+            ladder_self_pos_Y = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second;
+            
+            // note : survey data ladder center position
+            final_pos_X = survey_ring_pos[layer_index][ladder_index].first + ladder_self_pos_X;
+            final_pos_Y = survey_ring_pos[layer_index][ladder_index].second + ladder_self_pos_Y;
+        }
+        else if ( conversion_mode == conversion_mode_DB[3] ) // note : survey_1_XYAlpha (based on survey data typeB south)
+        {
+            // note : here is an attempt, try to import the survey data, but only the center position of ladders
+
+            // note : 
+            ladder_self_pos_X = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( survey_ladder_rotate[layer_index][ladder_index] + 90. )).first) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( survey_ladder_rotate[layer_index][ladder_index] + 90. )).first;
+            ladder_self_pos_Y = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( survey_ladder_rotate[layer_index][ladder_index] + 90. )).second) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( survey_ladder_rotate[layer_index][ladder_index] + 90. )).second;
+            
+            // note : survey data ladder center position
+            final_pos_X = survey_ring_pos[layer_index][ladder_index].first + ladder_self_pos_X;
+            final_pos_Y = survey_ring_pos[layer_index][ladder_index].second + ladder_self_pos_Y;    
+        }
+        else if ( conversion_mode == conversion_mode_DB[4] ) // note : survey_1_XYAlpha_Peek
+        {
+            // note : 
+            ladder_self_pos_X = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( survey_ladder_rotate[layer_index][ladder_index] + 90. )).first) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( survey_ladder_rotate[layer_index][ladder_index] + 90. )).first;
+            ladder_self_pos_Y = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( survey_ladder_rotate[layer_index][ladder_index] + 90. )).second) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( survey_ladder_rotate[layer_index][ladder_index] + 90. )).second;
+            
+            double peek_correction_x = peek * cos( ( survey_ladder_rotate[layer_index][ladder_index] + 90. + 90.) / (180./M_PI) );
+            double peek_correction_y = peek * sin( ( survey_ladder_rotate[layer_index][ladder_index] + 90. + 90.) / (180./M_PI) );
+            // cout<<" test : "<<sqrt(pow(peek_correction_x,2)+pow(peek_correction_y,2))<<endl;
+            // if (chip_id == 1)
+            // { 
+            //     if (chan_id == 0)
+            //     {
+            //         cout<<"test : "<<ladder_pos_str<<" "<<survey_ladder_rotate[layer_index][ladder_index] + 180.<<" "<<peek_correction_x<<" "<<peek_correction_y<<endl;
+            //     }
+            // }
+            
+
+            // note : survey data ladder center position
+            final_pos_X = survey_ring_pos[layer_index][ladder_index].first + ladder_self_pos_X + peek_correction_x;
+            final_pos_Y = survey_ring_pos[layer_index][ladder_index].second + ladder_self_pos_Y + peek_correction_y;    
+        }
+        else 
+        {
+            cout<<"InttConversion.h wrong mode input"<<endl;
+            exit(1);
+        }
+
+        
 
 
-        double final_pos_X = ring_pos_x + ladder_self_pos_X;
-        double final_pos_Y = ring_pos_y + ladder_self_pos_Y;
         int    final_pos_layer = (layer_index == 0 || layer_index == 1) ? 0 : 1;
         double final_pos_phi = (final_pos_Y < 0) ? atan2(final_pos_Y,final_pos_X) * (180./TMath::Pi()) + 360 : atan2(final_pos_Y,final_pos_X) * (180./TMath::Pi());
 

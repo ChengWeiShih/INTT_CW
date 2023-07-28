@@ -43,7 +43,7 @@ struct hit_pro_info {
 
 namespace InttClustering{
     
-    vector<clu_info> clustering(string server_name, int FC_id, vector<hit_info> single_event)
+    vector<clu_info> clustering(string server_name, int FC_id, vector<hit_info> single_event, string mode, double peek)
     {
 
         // note : [0] : nominal_chip_id, 
@@ -99,7 +99,7 @@ namespace InttClustering{
             {
                 if (hit_seat[col][ch] != nominal_vec)
                 {
-                    pos_str hit_pos = InttConversion::Get_XY_all(server_name, FC_id, hit_seat[col][ch][0], hit_seat[col][ch][1]);
+                    pos_str hit_pos = InttConversion::Get_XY_all(server_name, FC_id, hit_seat[col][ch][0], hit_seat[col][ch][1],mode,peek);
 
                     // cout<<"!!!!!!!!!!!!!!!!!! test in clustering func "<<hit_pos.x<<" "<<hit_pos.y<<endl;
                     // cout<<"("<<hit_pos.x<<","<<hit_pos.y<<"),";

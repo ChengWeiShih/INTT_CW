@@ -1,0 +1,7 @@
+
+Processing check_correlation.C({2.0,6.0})...
+mkdir: cannot create directory ‘/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used/folder_beam_inttall-00020869-0000_event_base_ana_cluster_100K_excludeR500’: File exists
+N_event in file beam_inttall-00020869-0000_event_base_ana_cluster_100K_excludeR500 : 100001
+Info in <TCanvas::Print>: pdf file /home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used/folder_beam_inttall-00020869-0000_event_base_ana_cluster_100K_excludeR500/DCA_point_X2.0Y6.0_.pdf has been created
+Info in <TCanvas::Print>: pdf file /home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used/folder_beam_inttall-00020869-0000_event_base_ana_cluster_100K_excludeR500/DCA_distance_inner_phi_X2.0Y6.0_.pdf has been created
+Info in <TCanvas::Print>: pdf file /home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used/folder_beam_inttall-00020869-0000_event_base_ana_cluster_100K_excludeR500/DCA_distance_outer_phi_X2.0Y6.0_.pdf has been created

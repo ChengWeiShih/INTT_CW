@@ -116,8 +116,8 @@ void check_event_xy_new()
     TCanvas * c1 = new TCanvas("","",1000,800);
 
     string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
-    // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_10K_excludeR500";
-    string file_name = "beam_intt0-00020869-0000_event_base_cluster";
+    // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_rotation_excludeR500";
+    string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_100K_excludeR500";
 
     TFile * file_in = new TFile(Form("%s/%s.root",mother_folder_directory.c_str(),file_name.c_str()),"read");
     TTree * tree = (TTree *)file_in->Get("tree_clu");

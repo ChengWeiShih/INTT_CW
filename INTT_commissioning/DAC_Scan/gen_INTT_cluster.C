@@ -56,6 +56,8 @@ void gen_INTT_cluster()
     vector<int> adc_config = {15, 30, 60, 90, 120, 150, 180, 210, 240};
     int N_total_ladder = 14;
     int N_server       = 8;
+    string conversion_mode = "survey_1_XYAlpha_Peek";
+    double peek = 5;
 
     vector<int> adc_convert(8,0);
     for (int i=0; i<8; i++) {adc_convert[i] = (adc_config[i]+adc_config[i+1])/2.;}
@@ -92,6 +94,14 @@ void gen_INTT_cluster()
     int chip_id[100000];
     int chan_id[100000];
     int adc[100000];
+    
+    tree -> SetBranchStatus("*",0);
+    tree -> SetBranchStatus("fNhits",1);
+    tree -> SetBranchStatus("fhitArray.pid",1);
+    tree -> SetBranchStatus("fhitArray.module",1);
+    tree -> SetBranchStatus("fhitArray.chip_id",1);
+    tree -> SetBranchStatus("fhitArray.chan_id",1);
+    tree -> SetBranchStatus("fhitArray.adc",1);
 
     tree -> SetBranchAddress("fNhits",&fNhits);
     tree -> GetEntry(0); // note : actually I really don't know why this line is necessary.
@@ -101,7 +111,10 @@ void gen_INTT_cluster()
     tree -> SetBranchAddress("fhitArray.chan_id",&chan_id[0]);
     tree -> SetBranchAddress("fhitArray.adc",&adc[0]);
 
-    TFile * out_file = new TFile(Form("%s/%s_cluster.root",mother_folder_directory.c_str(),file_name.c_str()),"RECREATE");
+    string out_file_name = Form("%s_cluster_%s",file_name.c_str(),conversion_mode.c_str());
+    if (conversion_mode == "survey_1_XYAlpha_Peek") out_file_name += Form("_%.2fmm",peek);
+
+    TFile * out_file = new TFile(Form("%s/%s.root",mother_folder_directory.c_str(),out_file_name.c_str()),"RECREATE");
 
     TTree * tree_out =  new TTree ("tree_clu", "clustering info.");
     tree_out -> Branch("nhits",&N_hits);
@@ -129,7 +142,7 @@ void gen_INTT_cluster()
 
         N_hits = fNhits;
 
-        if (fNhits > 1500 ) {
+        if (fNhits > 500 ) {
             clu_vec.clear();
             single_event_hit_vec.clear(); single_event_hit_vec = vector<vector<vector<hit_info>>>(N_server, single_event_hit_ladder_vec);
             
@@ -165,7 +178,7 @@ void gen_INTT_cluster()
         {
             for (int i2 = 0; i2 < N_total_ladder; i2++) // note : ladder, one event 
             {
-                clu_vec = InttClustering::clustering(Form("intt%i",i1), i2, single_event_hit_vec[i1][i2]);
+                clu_vec = InttClustering::clustering(Form("intt%i",i1), i2, single_event_hit_vec[i1][i2],conversion_mode,peek);
 
                 for (int clu_i = 0; clu_i < clu_vec.size(); clu_i++)
                 {
