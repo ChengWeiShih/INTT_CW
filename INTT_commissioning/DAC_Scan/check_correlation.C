@@ -153,18 +153,21 @@ void check_correlation(/*pair<double,double>beam_origin*/)
     TCanvas * c1 = new TCanvas("","",1000,800);
 
     string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
-    string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500";
-    // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_100K_excludeL100R1500";
+    // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500";
+    string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_100K_excludeR1500";
     system(Form("mkdir %s/folder_%s",mother_folder_directory.c_str(),file_name.c_str()));
-    pair<double,double> beam_origin = {-0,2};
+    pair<double,double> beam_origin = {-0,5};
     double temp_Y_align = 0.;
     double temp_X_align = -0.;
-    double phi_diff_cut = 5.72; // note : degree
-    int Nhit_cut = 520;
-    int N_clu_cut = 201; // note : unit number
-    double DCA_cut = 4; // note : mm
-    int zvtx_cal_require = 15;
-    int zvtx_draw_require = 20;
+
+    int Nhit_cut = 520;           // note : if (> Nhit_cut)          -> continue
+    int clu_size_cut = 4;         // note : if (> clu_size_cut)      -> continue
+    double clu_sum_adc_cut = 1;   // note : if (< clu_sum_adc_cut)   -> continue
+    int N_clu_cut = 201;          // note : if (> N_clu_cut)         -> continue  unit number
+    double phi_diff_cut = 5.72;   // note : if (< phi_diff_cut)      -> pass      unit degree
+    double DCA_cut = 4;           // note : if (< DCA_cut)           -> pass      unit mm
+    int zvtx_cal_require = 15;    // note : if (> zvtx_cal_require)  -> pass
+    int zvtx_draw_require = 20;   // note : if (> zvtx_draw_require) -> pass
     double Integrate_portion = 0.6826;
 
     TFile * file_in = new TFile(Form("%s/%s.root",mother_folder_directory.c_str(),file_name.c_str()),"read");
@@ -308,9 +311,9 @@ void check_correlation(/*pair<double,double>beam_origin*/)
         // note : and make the inner_clu_vec and outer_clu_vec
         for (int clu_i = 0; clu_i < length; clu_i++)
         {
-            if (size_vec -> at(clu_i) > 4) continue;
+            if (size_vec -> at(clu_i) > clu_size_cut) continue;
             // if (size_vec -> at(clu_i) < 2) continue;
-            if (sum_adc_conv_vec -> at(clu_i) < 31) continue;
+            if (sum_adc_conv_vec -> at(clu_i) < clu_sum_adc_cut) continue;
             // if (z_vec -> at(clu_i) < 0) continue;
             
             // note : inner
@@ -362,6 +365,8 @@ void check_correlation(/*pair<double,double>beam_origin*/)
         N_cluster_outer_pass -> Fill(temp_sPH_outer_nocolumn_vec.size());
         N_cluster_inner_pass -> Fill(temp_sPH_inner_nocolumn_vec.size());
         N_cluster_correlation -> Fill( temp_sPH_inner_nocolumn_vec.size(), temp_sPH_outer_nocolumn_vec.size() );
+
+        cout<<"test, total N cluster : "<<(temp_sPH_inner_nocolumn_vec.size() + temp_sPH_outer_nocolumn_vec.size())<<", "<<temp_sPH_inner_nocolumn_vec.size()<<", "<<temp_sPH_outer_nocolumn_vec.size()<<endl;
 
         if ((temp_sPH_inner_nocolumn_vec.size() + temp_sPH_outer_nocolumn_vec.size()) > N_clu_cut)
         {
