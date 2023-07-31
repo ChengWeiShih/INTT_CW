@@ -1,6 +1,7 @@
 // #include "DAC_Scan_ladder.h"
 //#include "InttConversion.h"
 #include "InttClustering.h"
+#include "sigmaEff.h"
 
 // todo : the number of number is given by the adc_setting_run !!!
 // todo : also the range of the hist.
@@ -34,6 +35,8 @@ vector<vector<int>> adc_setting_run = {
     // {168, 172, 176, 180, 184, 188, 192, 196},
     // {188, 192, 196, 200, 204, 208, 212, 216}
 };
+
+TString color_code_2[8] = {"#CC768D","#19768D","#DDA573","#009193","#6E9193","#941100","#A08144","#517E66"};
 
 struct full_hit_info {
     int FC;
@@ -150,12 +153,19 @@ void check_correlation(/*pair<double,double>beam_origin*/)
     TCanvas * c1 = new TCanvas("","",1000,800);
 
     string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
-    // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_5.00mm_excludeR500";
-    string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_100K_excludeR500";
+    string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500";
+    // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_100K_excludeL100R1500";
     system(Form("mkdir %s/folder_%s",mother_folder_directory.c_str(),file_name.c_str()));
-    pair<double,double> beam_origin = {-0,5};
+    pair<double,double> beam_origin = {-0,2};
     double temp_Y_align = 0.;
     double temp_X_align = -0.;
+    double phi_diff_cut = 5.72; // note : degree
+    int Nhit_cut = 520;
+    int N_clu_cut = 201; // note : unit number
+    double DCA_cut = 4; // note : mm
+    int zvtx_cal_require = 15;
+    int zvtx_draw_require = 20;
+    double Integrate_portion = 0.6826;
 
     TFile * file_in = new TFile(Form("%s/%s.root",mother_folder_directory.c_str(),file_name.c_str()),"read");
     TTree * tree = (TTree *)file_in->Get("tree_clu");
@@ -191,6 +201,10 @@ void check_correlation(/*pair<double,double>beam_origin*/)
     tree -> SetBranchAddress("z", &z_vec);
     tree -> SetBranchAddress("layer", &layer_vec);
     tree -> SetBranchAddress("phi", &phi_vec);
+
+    TLatex *draw_text = new TLatex();
+    draw_text -> SetNDC();
+    draw_text -> SetTextSize(0.02);
 
     vector<clu_info> temp_sPH_inner_nocolumn_vec; temp_sPH_inner_nocolumn_vec.clear();
     vector<clu_info> temp_sPH_outer_nocolumn_vec; temp_sPH_outer_nocolumn_vec.clear();
@@ -259,79 +273,105 @@ void check_correlation(/*pair<double,double>beam_origin*/)
     N_cluster_correlation -> GetXaxis() -> SetTitle("inner N_cluster");
     N_cluster_correlation -> GetYaxis() -> SetTitle("Outer N_cluster");
 
-    TH1F * temp_event_zvtx = new TH1F("","temp_event_zvtx",250,-500,500);
+    double zvtx_hist_l = -500;
+    double zvtx_hist_r = 500;
+    TH1F * temp_event_zvtx = new TH1F("","temp_event_zvtx",125,zvtx_hist_l,zvtx_hist_r);
     temp_event_zvtx -> GetXaxis() -> SetTitle("Z vertex position (mm)");
     temp_event_zvtx -> GetYaxis() -> SetTitle("entry");
+    vector<float> temp_event_zvtx_vec; temp_event_zvtx_vec.clear();
+    vector<float> temp_event_zvtx_info; temp_event_zvtx_info.clear();
+    TLine * effi_sig_range_line = new TLine();
+    effi_sig_range_line -> SetLineWidth(3);
+    effi_sig_range_line -> SetLineColor(TColor::GetColor("#A08144"));
+    effi_sig_range_line -> SetLineStyle(2);
 
-    TH1F * avg_event_zvtx = new TH1F("","avg_event_zvtx",250,-500,500);
+    TH1F * avg_event_zvtx = new TH1F("","avg_event_zvtx",250,zvtx_hist_l,zvtx_hist_r);
     avg_event_zvtx -> GetXaxis() -> SetTitle("Z vertex position (mm)");
     avg_event_zvtx -> GetYaxis() -> SetTitle("entry");
+    TF1 * zvtx_fitting = new TF1("","gaus",-500,500);
+    // zvtx_fitting -> SetLi
 
     c1 -> Print(Form("%s/folder_%s/temp_event_zvtx.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
 
     for (int event_i = 0; event_i < N_event; event_i++)
     {
+
         tree -> GetEntry(event_i);
         unsigned int length = column_vec -> size();
 
-        if (N_hits > 450) continue;
+        if (event_i == 13) cout<<"test, eID : "<<event_i<<" Nhits "<<N_hits<<endl;
 
-        for (int hit_i = 0; hit_i < length; hit_i++)
+        if (N_hits > Nhit_cut) continue;
+        
+
+        // note : apply some selection to remove the hot channels
+        // note : and make the inner_clu_vec and outer_clu_vec
+        for (int clu_i = 0; clu_i < length; clu_i++)
         {
-            if (size_vec -> at(hit_i) > 4) continue;
-            // if (size_vec -> at(hit_i) < 2) continue;
-            if (sum_adc_conv_vec -> at(hit_i) < 31) continue;
-            // if (z_vec -> at(hit_i) < 0) continue;
+            if (size_vec -> at(clu_i) > 4) continue;
+            // if (size_vec -> at(clu_i) < 2) continue;
+            if (sum_adc_conv_vec -> at(clu_i) < 31) continue;
+            // if (z_vec -> at(clu_i) < 0) continue;
             
             // note : inner
-            if (layer_vec -> at(hit_i) == 0 && x_vec -> at(hit_i) < -75 && x_vec -> at(hit_i) > -80 && y_vec -> at(hit_i) > 7.5 && y_vec -> at(hit_i) < 12.5 ) continue;
-            // if (layer_vec -> at(hit_i) == 0 && x_vec -> at(hit_i) > 35 && x_vec -> at(hit_i) < 40 && y_vec -> at(hit_i) > 65 && y_vec -> at(hit_i) < 70 ) continue;
-            if (layer_vec -> at(hit_i) == 0 && phi_vec -> at(hit_i) > 295 && phi_vec -> at(hit_i) < 302) continue;
-            if (layer_vec -> at(hit_i) == 0 && phi_vec -> at(hit_i) > 210 && phi_vec -> at(hit_i) < 213) continue;
-            if (layer_vec -> at(hit_i) == 0 && phi_vec -> at(hit_i) > 55 && phi_vec -> at(hit_i) < 65) continue;
-            if (layer_vec -> at(hit_i) == 0 && phi_vec -> at(hit_i) > 348 && phi_vec -> at(hit_i) < 353) continue;
+            if (layer_vec -> at(clu_i) == 0 && x_vec -> at(clu_i) < -75 && x_vec -> at(clu_i) > -80 && y_vec -> at(clu_i) > 7.5 && y_vec -> at(clu_i) < 12.5 ) continue;
+            // if (layer_vec -> at(clu_i) == 0 && x_vec -> at(clu_i) > 35 && x_vec -> at(clu_i) < 40 && y_vec -> at(clu_i) > 65 && y_vec -> at(clu_i) < 70 ) continue;
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 295 && phi_vec -> at(clu_i) < 302) continue;
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 210 && phi_vec -> at(clu_i) < 213) continue;
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 55 && phi_vec -> at(clu_i) < 65) continue;
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 348 && phi_vec -> at(clu_i) < 353) continue;
 
             // note : outer
-            if (layer_vec -> at(hit_i) == 1 && x_vec -> at(hit_i) < -70 && x_vec -> at(hit_i) > -75 && y_vec -> at(hit_i) > 70 && y_vec -> at(hit_i) < 80 ) continue;
-            // if (layer_vec -> at(hit_i) == 1 && x_vec -> at(hit_i) > 70 && x_vec -> at(hit_i) < 83 && y_vec -> at(hit_i) > 50 && y_vec -> at(hit_i) < 65 ) continue;
-            // if (layer_vec -> at(hit_i) == 1 && x_vec -> at(hit_i) > 70 && x_vec -> at(hit_i) < 83 && y_vec -> at(hit_i) > 63 && y_vec -> at(hit_i) < 75 ) continue;
-            if (layer_vec -> at(hit_i) == 1 && x_vec -> at(hit_i) < -70 && x_vec -> at(hit_i) > -75 && y_vec -> at(hit_i) < -70 && y_vec -> at(hit_i) > -75 ) continue;
-            if (layer_vec -> at(hit_i) == 1 && phi_vec -> at(hit_i) > 335 && phi_vec -> at(hit_i) < 340) continue;
-            if (layer_vec -> at(hit_i) == 1 && phi_vec -> at(hit_i) > 105 && phi_vec -> at(hit_i) < 115) continue;
-            if (layer_vec -> at(hit_i) == 1 && phi_vec -> at(hit_i) > 30 && phi_vec -> at(hit_i) < 47) continue;
+            if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) < -70 && x_vec -> at(clu_i) > -75 && y_vec -> at(clu_i) > 70 && y_vec -> at(clu_i) < 80 ) continue;
+            // if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) > 70 && x_vec -> at(clu_i) < 83 && y_vec -> at(clu_i) > 50 && y_vec -> at(clu_i) < 65 ) continue;
+            // if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) > 70 && x_vec -> at(clu_i) < 83 && y_vec -> at(clu_i) > 63 && y_vec -> at(clu_i) < 75 ) continue;
+            if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) < -70 && x_vec -> at(clu_i) > -75 && y_vec -> at(clu_i) < -70 && y_vec -> at(clu_i) > -75 ) continue;
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 335 && phi_vec -> at(clu_i) < 340) continue;
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 105 && phi_vec -> at(clu_i) < 115) continue;
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 30 && phi_vec -> at(clu_i) < 47) continue;
             
-            if (layer_vec -> at(hit_i) == 0) //note : inner
+            if (layer_vec -> at(clu_i) == 0) //note : inner
                 temp_sPH_inner_nocolumn_vec.push_back({
-                    column_vec -> at(hit_i), 
-                    avg_chan_vec -> at(hit_i), 
-                    sum_adc_vec -> at(hit_i), 
-                    sum_adc_conv_vec -> at(hit_i), 
-                    size_vec -> at(hit_i), 
-                    (phi_vec -> at(hit_i) > 90 && phi_vec -> at(hit_i) < 270 ) ? x_vec -> at(hit_i) + temp_X_align : x_vec -> at(hit_i), 
-                    (phi_vec -> at(hit_i) > 90 && phi_vec -> at(hit_i) < 270 ) ? y_vec -> at(hit_i) + temp_Y_align : y_vec -> at(hit_i), 
-                    z_vec -> at(hit_i), 
-                    layer_vec -> at(hit_i), 
-                    phi_vec -> at(hit_i)
+                    column_vec -> at(clu_i), 
+                    avg_chan_vec -> at(clu_i), 
+                    sum_adc_vec -> at(clu_i), 
+                    sum_adc_conv_vec -> at(clu_i), 
+                    size_vec -> at(clu_i), 
+                    (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i), 
+                    (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i), 
+                    z_vec -> at(clu_i), 
+                    layer_vec -> at(clu_i), 
+                    phi_vec -> at(clu_i)
                 });
             
-            if (layer_vec -> at(hit_i) == 1) //note : inner
+            if (layer_vec -> at(clu_i) == 1) //note : inner
                 temp_sPH_outer_nocolumn_vec.push_back({
-                    column_vec -> at(hit_i), 
-                    avg_chan_vec -> at(hit_i), 
-                    sum_adc_vec -> at(hit_i), 
-                    sum_adc_conv_vec -> at(hit_i), 
-                    size_vec -> at(hit_i), 
-                    (phi_vec -> at(hit_i) > 90 && phi_vec -> at(hit_i) < 270 ) ? x_vec -> at(hit_i) + temp_X_align : x_vec -> at(hit_i), 
-                    (phi_vec -> at(hit_i) > 90 && phi_vec -> at(hit_i) < 270 ) ? y_vec -> at(hit_i) + temp_Y_align : y_vec -> at(hit_i), 
-                    z_vec -> at(hit_i), 
-                    layer_vec -> at(hit_i), 
-                    phi_vec -> at(hit_i)
+                    column_vec -> at(clu_i), 
+                    avg_chan_vec -> at(clu_i), 
+                    sum_adc_vec -> at(clu_i), 
+                    sum_adc_conv_vec -> at(clu_i), 
+                    size_vec -> at(clu_i), 
+                    (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i), 
+                    (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i), 
+                    z_vec -> at(clu_i), 
+                    layer_vec -> at(clu_i), 
+                    phi_vec -> at(clu_i)
                 });            
         }
 
         N_cluster_outer_pass -> Fill(temp_sPH_outer_nocolumn_vec.size());
         N_cluster_inner_pass -> Fill(temp_sPH_inner_nocolumn_vec.size());
         N_cluster_correlation -> Fill( temp_sPH_inner_nocolumn_vec.size(), temp_sPH_outer_nocolumn_vec.size() );
+
+        if ((temp_sPH_inner_nocolumn_vec.size() + temp_sPH_outer_nocolumn_vec.size()) > N_clu_cut)
+        {
+            temp_event_zvtx_info = {-1000,-1000,-1000};
+            temp_event_zvtx_vec.clear();
+            temp_event_zvtx -> Reset("ICESM");
+            temp_sPH_inner_nocolumn_vec.clear();
+            temp_sPH_outer_nocolumn_vec.clear();
+            continue;
+        }
 
         for ( int inner_i = 0; inner_i < temp_sPH_inner_nocolumn_vec.size(); inner_i++ )
         {
@@ -353,12 +393,20 @@ void check_correlation(/*pair<double,double>beam_origin*/)
                 if (DCA_info_vec[0] != fabs(DCA_sign) && fabs( DCA_info_vec[0] - fabs(DCA_sign) ) > 0.1 )
                     cout<<"different DCA : "<<DCA_info_vec[0]<<" "<<DCA_sign<<" diff : "<<DCA_info_vec[0] - fabs(DCA_sign)<<endl;
 
-                // if ((temp_sPH_inner_nocolumn_vec[inner_i].z - fabs(temp_sPH_outer_nocolumn_vec[outer_i].z)) < 0.1 ) continue;
 
-                if (fabs(temp_sPH_inner_nocolumn_vec[inner_i].phi - temp_sPH_outer_nocolumn_vec[outer_i].phi) < 3)
+                if (fabs(temp_sPH_inner_nocolumn_vec[inner_i].phi - temp_sPH_outer_nocolumn_vec[outer_i].phi) < phi_diff_cut)
                 {
+                    if (DCA_info_vec[0] < DCA_cut){
 
-                    temp_event_zvtx -> Fill( get_z_vertex(temp_sPH_inner_nocolumn_vec[inner_i],temp_sPH_outer_nocolumn_vec[outer_i],DCA_info_vec[1],DCA_info_vec[2]) );
+                        double zvtx = get_z_vertex(temp_sPH_inner_nocolumn_vec[inner_i],temp_sPH_outer_nocolumn_vec[outer_i],DCA_info_vec[1],DCA_info_vec[2]);
+
+                        temp_event_zvtx -> Fill( zvtx );
+                        if(zvtx_hist_l <= zvtx && zvtx <= zvtx_hist_r){
+                            temp_event_zvtx_vec.push_back( zvtx );
+                        }
+                        
+                    }
+                    
 
                     DCA_point -> Fill( DCA_info_vec[1], DCA_info_vec[2] );
 
@@ -385,13 +433,35 @@ void check_correlation(/*pair<double,double>beam_origin*/)
             } // note : end of outer loop
         } // note : end of inner loop
 
-        if (temp_event_zvtx -> GetEntries() > 20)
-            avg_event_zvtx -> Fill( temp_event_zvtx -> GetMean() );
+        if (temp_event_zvtx -> GetEntries() > zvtx_cal_require)
+        {
+            // note : effi_sig method 
+            temp_event_zvtx_info = sigmaEff_avg(temp_event_zvtx_vec,Integrate_portion);
+            avg_event_zvtx -> Fill(temp_event_zvtx_info[0]);
+            
+            // note : gaus fitting method
+            // temp_event_zvtx -> Fit(zvtx_fitting,"NQ");
+            // avg_event_zvtx -> Fill( zvtx_fitting -> GetParameter(1) );
 
-        if (temp_event_zvtx -> GetEntries() > 20)
+            // note : TH1 mean
+            // avg_event_zvtx -> Fill( temp_event_zvtx -> GetMean() );
+        }
+            
+
+        if (temp_event_zvtx -> GetEntries() > zvtx_draw_require)
         {
             temp_event_zvtx -> Draw("hist");
-            c1 -> Print(Form("%s/folder_%s/temp_event_zvtx.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
+            // zvtx_fitting -> Draw("lsame");
+            
+            effi_sig_range_line -> DrawLine(temp_event_zvtx_info[1],0,temp_event_zvtx_info[1],temp_event_zvtx->GetMaximum()*1.05);
+            effi_sig_range_line -> DrawLine(temp_event_zvtx_info[2],0,temp_event_zvtx_info[2],temp_event_zvtx->GetMaximum()*1.05);
+            
+            draw_text -> DrawLatex(0.15, 0.87, Form("eID : %i, Total event hit : %i, innter Ncluster : %i, outer Ncluster : %i",event_i,N_hits,temp_sPH_inner_nocolumn_vec.size(),temp_sPH_outer_nocolumn_vec.size()));
+            // draw_text -> DrawLatex(0.15, 0.84, Form("Gaus fit mean : %.3f mm",zvtx_fitting -> GetParameter(1)));
+            draw_text -> DrawLatex(0.15, 0.84, Form("EffiSig min : %.2f mm, max : %.2f mm",temp_event_zvtx_info[1],temp_event_zvtx_info[2]));
+            draw_text -> DrawLatex(0.15, 0.81, Form("EffiSig avg : %.2f mm",temp_event_zvtx_info[0]));
+
+            c1 -> Print(Form("%s/folder_%s/temp_event_zvtx.pdf",mother_folder_directory.c_str(),file_name.c_str()));
         }
 
         for ( int inner_i = 0; inner_i < temp_sPH_inner_nocolumn_vec.size(); inner_i++ )
@@ -406,7 +476,8 @@ void check_correlation(/*pair<double,double>beam_origin*/)
             inner_outer_pos_xy -> Fill(temp_sPH_outer_nocolumn_vec[outer_i].x,temp_sPH_outer_nocolumn_vec[outer_i].y);
         }
 
-        
+        temp_event_zvtx_info = {-1000,-1000,-1000};
+        temp_event_zvtx_vec.clear();
         temp_event_zvtx -> Reset("ICESM");
         temp_sPH_inner_nocolumn_vec.clear();
         temp_sPH_outer_nocolumn_vec.clear();

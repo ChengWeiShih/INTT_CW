@@ -56,8 +56,8 @@ void gen_INTT_cluster()
     vector<int> adc_config = {15, 30, 60, 90, 120, 150, 180, 210, 240};
     int N_total_ladder = 14;
     int N_server       = 8;
-    string conversion_mode = "survey_1_XYAlpha_Peek";
-    double peek = 5;
+    string conversion_mode = "ideal";//"survey_1_XYAlpha_Peek";
+    double peek = 3.32405;
 
     vector<int> adc_convert(8,0);
     for (int i=0; i<8; i++) {adc_convert[i] = (adc_config[i]+adc_config[i+1])/2.;}
@@ -142,7 +142,8 @@ void gen_INTT_cluster()
 
         N_hits = fNhits;
 
-        if (fNhits > 500 ) {
+        // todo : the fNhits cut is here 
+        if (fNhits > 1000 ) {
             clu_vec.clear();
             single_event_hit_vec.clear(); single_event_hit_vec = vector<vector<vector<hit_info>>>(N_server, single_event_hit_ladder_vec);
             
