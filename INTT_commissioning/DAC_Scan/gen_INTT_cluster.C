@@ -48,19 +48,36 @@ struct ladder_info {
 };
 
 
-void gen_INTT_cluster()
+void gen_INTT_cluster(int geo_mode_id)
 {
 
-    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
-    string file_name = "beam_inttall-00020869-0000_event_base_ana";
-    vector<int> adc_config = {15, 30, 60, 90, 120, 150, 180, 210, 240};
+    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
+    string file_name = "beam_inttall-00024767-0000_event_base_ana";
+    int DAC_run_ID = 0;
+
+    // vector<int> adc_config = {15, 30, 60, 90, 120, 150, 180, 210, 240};
+    vector<vector<int>> adc_setting_run = {	
+        {15, 30, 60, 90, 120, 150, 180, 210, 240},
+        {8  , 12 , 16 , 20 , 24 , 28 , 32 , 36 },
+        {28 , 32 , 36 , 40 , 44 , 48 , 52 , 56 }, // note : 2
+        {48 , 52 , 56 , 60 , 64 , 68 , 72 , 76 }, // note : 3
+        {68 , 72 , 76 , 80 , 84 , 88 , 92 , 96 }, // note : 4
+        {88 , 92 , 96 , 100, 104, 108, 112, 116}, // note : 5
+        {108, 112, 116, 120, 124, 128, 132, 136}, // note : 6
+        {128, 132, 136, 140, 144, 148, 152, 156}, // note : 7
+        {148, 152, 156, 160, 164, 168, 172, 176},
+        {168, 172, 176, 180, 184, 188, 192, 196},
+        {188, 192, 196, 200, 204, 208, 212, 216}
+    };
+
     int N_total_ladder = 14;
     int N_server       = 8;
-    string conversion_mode = "ideal";//"survey_1_XYAlpha_Peek";
+    string conversion_mode = (geo_mode_id == 0) ? "ideal" : "survey_1_XYAlpha_Peek";
+    int Nhit_cut = 2000;
     double peek = 3.32405;
 
     vector<int> adc_convert(8,0);
-    for (int i=0; i<8; i++) {adc_convert[i] = (adc_config[i]+adc_config[i+1])/2.;}
+    for (int i=0; i<8; i++) {adc_convert[i] = (adc_setting_run[DAC_run_ID][i]+adc_setting_run[DAC_run_ID][i+1])/2.;} // todo : change the run setting here
 
     vector<vector<hit_info>> single_event_hit_ladder_vec(N_total_ladder); // note : [ladder]
     vector<vector<vector<hit_info>>> single_event_hit_vec(N_server, single_event_hit_ladder_vec); // note : [server][ladder] 
@@ -113,6 +130,7 @@ void gen_INTT_cluster()
 
     string out_file_name = Form("%s_cluster_%s",file_name.c_str(),conversion_mode.c_str());
     if (conversion_mode == "survey_1_XYAlpha_Peek") out_file_name += Form("_%.2fmm",peek);
+    out_file_name += Form("_excludeR%i",Nhit_cut);
 
     TFile * out_file = new TFile(Form("%s/%s.root",mother_folder_directory.c_str(),out_file_name.c_str()),"RECREATE");
 
@@ -133,17 +151,17 @@ void gen_INTT_cluster()
     tree_out -> Branch("phi", &phi_out_vec);
 
 
-    for (int i = 0; i < 100000; i++ ) // note : event
+    for (int i = 0; i < 1000; i++ ) // note : event
     {
         tree -> GetEntry(i);
-        if (i % 10 == 0)cout<<"clustering : "<<i<<endl;
-        // cout<<" "<<endl;
+        if (i % 10 == 0){cout<<"clustering : "<<i<<endl;}
+        // cout<<"=================================== =================================== ==================================="<<endl;
         // cout<<"event ID : "<<i<<endl;
 
         N_hits = fNhits;
 
         // todo : the fNhits cut is here 
-        if (fNhits > 1000 ) {
+        if (fNhits > Nhit_cut ) {
             clu_vec.clear();
             single_event_hit_vec.clear(); single_event_hit_vec = vector<vector<vector<hit_info>>>(N_server, single_event_hit_ladder_vec);
             
@@ -180,6 +198,7 @@ void gen_INTT_cluster()
             for (int i2 = 0; i2 < N_total_ladder; i2++) // note : ladder, one event 
             {
                 clu_vec = InttClustering::clustering(Form("intt%i",i1), i2, single_event_hit_vec[i1][i2],conversion_mode,peek);
+                // cout<<"-------> eID : "<<i<<" Nhit : "<<fNhits<<" serverID : "<<i1<<" ladderID : "<<i2<<" clu_vec size : "<<clu_vec.size()<<" inner_nclu : "<<N_cluster_inner<<" outer_nclu : "<<N_cluster_outer<<endl;
 
                 for (int clu_i = 0; clu_i < clu_vec.size(); clu_i++)
                 {
@@ -198,14 +217,18 @@ void gen_INTT_cluster()
                     else if (clu_vec[clu_i].layer == 1) {N_cluster_outer += 1;}
                 }
 
-                clu_vec.size();
+                
+
+                clu_vec.clear();
             } // note : end of ladder
         } // note : end of server
+
+        // cout<<"test : "<<i<<" Nhit : "<<fNhits<<" nclu_inner : "<<N_cluster_inner<<" nclu_outer : "<<N_cluster_outer<<endl; 
 
         tree_out -> Fill();
 
         N_cluster_inner = 0;
-        N_cluster_inner = 0;
+        N_cluster_outer = 0;
         column_out_vec.clear();
         avg_chan_out_vec.clear();
         sum_adc_out_vec.clear();
@@ -228,7 +251,7 @@ void gen_INTT_cluster()
     tree_out->SetDirectory(out_file);
     tree_out -> Write("", TObject::kOverwrite);
 
-    cout<<"conversion done "<<endl;
+    cout<<"conversion done, file : "<<out_file_name<<endl;
 	out_file -> Close();
 
 }
