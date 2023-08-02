@@ -48,12 +48,17 @@ struct ladder_info {
 };
 
 
-void gen_INTT_cluster(int geo_mode_id)
+void gen_INTT_cluster(string sub_folder_string, string file_name, int DAC_run_ID, int Nhit_cut, int geo_mode_id)
 {
 
-    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
-    string file_name = "beam_inttall-00024767-0000_event_base_ana";
-    int DAC_run_ID = 0;
+    // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
+    // string file_name = "beam_inttall-00020869-0000_event_base_ana";
+
+    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/" + sub_folder_string;
+    // int DAC_run_ID = 0;
+    // int Nhit_cut = 1500;
+    int run_Nevent = 100000;
+    double peek = 3.32405;
 
     // vector<int> adc_config = {15, 30, 60, 90, 120, 150, 180, 210, 240};
     vector<vector<int>> adc_setting_run = {	
@@ -73,8 +78,7 @@ void gen_INTT_cluster(int geo_mode_id)
     int N_total_ladder = 14;
     int N_server       = 8;
     string conversion_mode = (geo_mode_id == 0) ? "ideal" : "survey_1_XYAlpha_Peek";
-    int Nhit_cut = 2000;
-    double peek = 3.32405;
+    
 
     vector<int> adc_convert(8,0);
     for (int i=0; i<8; i++) {adc_convert[i] = (adc_setting_run[DAC_run_ID][i]+adc_setting_run[DAC_run_ID][i+1])/2.;} // todo : change the run setting here
@@ -131,6 +135,7 @@ void gen_INTT_cluster(int geo_mode_id)
     string out_file_name = Form("%s_cluster_%s",file_name.c_str(),conversion_mode.c_str());
     if (conversion_mode == "survey_1_XYAlpha_Peek") out_file_name += Form("_%.2fmm",peek);
     out_file_name += Form("_excludeR%i",Nhit_cut);
+    out_file_name += Form("_%1.fkEvent",run_Nevent/1000.);
 
     TFile * out_file = new TFile(Form("%s/%s.root",mother_folder_directory.c_str(),out_file_name.c_str()),"RECREATE");
 
@@ -151,7 +156,7 @@ void gen_INTT_cluster(int geo_mode_id)
     tree_out -> Branch("phi", &phi_out_vec);
 
 
-    for (int i = 0; i < 1000; i++ ) // note : event
+    for (int i = 0; i < run_Nevent; i++ ) // note : event
     {
         tree -> GetEntry(i);
         if (i % 10 == 0){cout<<"clustering : "<<i<<endl;}
@@ -197,27 +202,29 @@ void gen_INTT_cluster(int geo_mode_id)
         {
             for (int i2 = 0; i2 < N_total_ladder; i2++) // note : ladder, one event 
             {
-                clu_vec = InttClustering::clustering(Form("intt%i",i1), i2, single_event_hit_vec[i1][i2],conversion_mode,peek);
-                // cout<<"-------> eID : "<<i<<" Nhit : "<<fNhits<<" serverID : "<<i1<<" ladderID : "<<i2<<" clu_vec size : "<<clu_vec.size()<<" inner_nclu : "<<N_cluster_inner<<" outer_nclu : "<<N_cluster_outer<<endl;
-
-                for (int clu_i = 0; clu_i < clu_vec.size(); clu_i++)
-                {
-                    column_out_vec.push_back( clu_vec[clu_i].column );
-                    avg_chan_out_vec.push_back( clu_vec[clu_i].avg_chan );
-                    sum_adc_out_vec.push_back( clu_vec[clu_i].sum_adc );
-                    sum_adc_conv_out_vec.push_back( clu_vec[clu_i].sum_adc_conv );
-                    size_out_vec.push_back( clu_vec[clu_i].size );
-                    x_out_vec.push_back( clu_vec[clu_i].x );
-                    y_out_vec.push_back( clu_vec[clu_i].y );
-                    z_out_vec.push_back( clu_vec[clu_i].z );
-                    layer_out_vec.push_back( clu_vec[clu_i].layer );
-                    phi_out_vec.push_back( clu_vec[clu_i].phi );
-
-                    if (clu_vec[clu_i].layer == 0) {N_cluster_inner += 1;}
-                    else if (clu_vec[clu_i].layer == 1) {N_cluster_outer += 1;}
-                }
-
                 
+                if ( single_event_hit_vec[i1][i2].size() > 0 )
+                {
+                    clu_vec = InttClustering::clustering(Form("intt%i",i1), i2, single_event_hit_vec[i1][i2],conversion_mode,peek);
+                    // cout<<"-------> eID : "<<i<<" Nhit : "<<fNhits<<" serverID : "<<i1<<" ladderID : "<<i2<<" clu_vec size : "<<clu_vec.size()<<" inner_nclu : "<<N_cluster_inner<<" outer_nclu : "<<N_cluster_outer<<endl;
+
+                    for (int clu_i = 0; clu_i < clu_vec.size(); clu_i++)
+                    {
+                        column_out_vec.push_back( clu_vec[clu_i].column );
+                        avg_chan_out_vec.push_back( clu_vec[clu_i].avg_chan );
+                        sum_adc_out_vec.push_back( clu_vec[clu_i].sum_adc );
+                        sum_adc_conv_out_vec.push_back( clu_vec[clu_i].sum_adc_conv );
+                        size_out_vec.push_back( clu_vec[clu_i].size );
+                        x_out_vec.push_back( clu_vec[clu_i].x );
+                        y_out_vec.push_back( clu_vec[clu_i].y );
+                        z_out_vec.push_back( clu_vec[clu_i].z );
+                        layer_out_vec.push_back( clu_vec[clu_i].layer );
+                        phi_out_vec.push_back( clu_vec[clu_i].phi );
+
+                        if (clu_vec[clu_i].layer == 0) {N_cluster_inner += 1;}
+                        else if (clu_vec[clu_i].layer == 1) {N_cluster_outer += 1;}
+                    }
+                }                
 
                 clu_vec.clear();
             } // note : end of ladder

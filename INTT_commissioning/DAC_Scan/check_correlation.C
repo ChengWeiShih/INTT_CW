@@ -150,29 +150,30 @@ double calculateAngleBetweenVectors(double x1, double y1, double x2, double y2, 
 // note : server_name = "inttx"
 void check_correlation(/*pair<double,double>beam_origin*/)
 {
+    TCanvas * c2 = new TCanvas("","",1000,800);
     TCanvas * c1 = new TCanvas("","",1000,800);
 
-    // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
-    // // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500";
-    // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_100K_excludeR1500";
+    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
+    // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500";
+    string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR1500_100kEvent";
 
-    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/new_DAC_Scan_0722/AllServer/DAC2";
-    string file_name = "beam_inttall-00023058-0000_event_base_ana_cluster_ideal";
+    // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/new_DAC_Scan_0722/AllServer/DAC2";
+    // string file_name = "beam_inttall-00023058-0000_event_base_ana_cluster_ideal";
 
     system(Form("mkdir %s/folder_%s",mother_folder_directory.c_str(),file_name.c_str()));
-    pair<double,double> beam_origin = {-0,5};
+    pair<double,double> beam_origin = {-0,2};
     double temp_Y_align = 0.;
     double temp_X_align = -0.;
 
     double zvtx_hist_l = -500;
     double zvtx_hist_r = 500;
 
-    int Nhit_cut = 700;           // note : if (> Nhit_cut)          -> continue
+    int Nhit_cut = 520;           // note : if (> Nhit_cut)          -> continue
     int clu_size_cut = 4;         // note : if (> clu_size_cut)      -> continue
     double clu_sum_adc_cut = 31;  // note : if (< clu_sum_adc_cut)   -> continue
     int N_clu_cut = 201;          // note : if (> N_clu_cut)         -> continue  unit number
-    double phi_diff_cut = 10;   // note : if (< phi_diff_cut)      -> pass      unit degree
-    double DCA_cut = 10;           // note : if (< DCA_cut)           -> pass      unit mm
+    double phi_diff_cut = 5.72;   // note : if (< phi_diff_cut)      -> pass      unit degree
+    double DCA_cut = 4;           // note : if (< DCA_cut)           -> pass      unit mm
     int zvtx_cal_require = 15;    // note : if (> zvtx_cal_require)  -> pass
     int zvtx_draw_require = 20;   // note : if (> zvtx_draw_require) -> pass
     double Integrate_portion = 0.6826;
@@ -218,6 +219,7 @@ void check_correlation(/*pair<double,double>beam_origin*/)
 
     vector<clu_info> temp_sPH_inner_nocolumn_vec; temp_sPH_inner_nocolumn_vec.clear();
     vector<clu_info> temp_sPH_outer_nocolumn_vec; temp_sPH_outer_nocolumn_vec.clear();
+    vector<clu_info> temp_sPH_nocolumn_vec; temp_sPH_nocolumn_vec.clear();
 
     TH2F * angle_correlation = new TH2F("","angle_correlation",361,0,361,361,0,361);
     angle_correlation -> SetStats(0);
@@ -350,7 +352,19 @@ void check_correlation(/*pair<double,double>beam_origin*/)
             if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 105 && phi_vec -> at(clu_i) < 115) continue;
             if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 25 && phi_vec -> at(clu_i) < 47) continue; // todo : for the "new_DAC_Scan_0722/AllServer/DAC2"
 
-            
+            temp_sPH_nocolumn_vec.push_back({
+                column_vec -> at(clu_i), 
+                avg_chan_vec -> at(clu_i), 
+                sum_adc_vec -> at(clu_i), 
+                sum_adc_conv_vec -> at(clu_i), 
+                size_vec -> at(clu_i), 
+                (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i), 
+                (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i), 
+                z_vec -> at(clu_i), 
+                layer_vec -> at(clu_i), 
+                phi_vec -> at(clu_i)
+            });
+
             if (layer_vec -> at(clu_i) == 0) //note : inner
                 temp_sPH_inner_nocolumn_vec.push_back({
                     column_vec -> at(clu_i), 
@@ -389,6 +403,7 @@ void check_correlation(/*pair<double,double>beam_origin*/)
             temp_event_zvtx_info = {-1000,-1000,-1000};
             temp_event_zvtx_vec.clear();
             temp_event_zvtx -> Reset("ICESM");
+            temp_sPH_nocolumn_vec.clear();
             temp_sPH_inner_nocolumn_vec.clear();
             temp_sPH_outer_nocolumn_vec.clear();
             continue;
@@ -472,6 +487,7 @@ void check_correlation(/*pair<double,double>beam_origin*/)
 
         if (temp_event_zvtx_vec.size() > zvtx_draw_require)
         {
+            c1 -> cd();
             temp_event_zvtx -> Draw("hist");
             // zvtx_fitting -> Draw("lsame");
             
@@ -507,10 +523,10 @@ void check_correlation(/*pair<double,double>beam_origin*/)
     } // note : end of event 
 
     c1 -> Print(Form("%s/folder_%s/temp_event_zvtx.pdf)",mother_folder_directory.c_str(),file_name.c_str()));
+    c1 -> Clear();
+    
 
     c1 -> cd();
-
-
     vector<float> avg_event_zvtx_info = sigmaEff_avg(avg_event_zvtx_vec,Integrate_portion);
     avg_event_zvtx -> Draw("hist");
     effi_sig_range_line -> DrawLine(avg_event_zvtx_info[1],0,avg_event_zvtx_info[1],avg_event_zvtx -> GetMaximum()*1.05);
