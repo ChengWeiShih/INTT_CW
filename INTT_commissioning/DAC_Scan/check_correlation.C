@@ -232,7 +232,7 @@ void check_correlation(/*pair<double,double>beam_origin*/)
 
     TCanvas * c1 = new TCanvas("","",1000,800);
     c1 -> cd();
-
+    
     // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
     // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_ideal_excludeR1500_100kEvent";
     // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR1500_100kEvent";
