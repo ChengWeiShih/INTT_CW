@@ -35,7 +35,7 @@ void temp_bkg(TCanvas * c1,string mode, int color_step, double peek)
     TGraph * aaa = new TGraph(x_vec.size(),&x_vec[0],&y_vec[0]);
     aaa -> SetMarkerStyle(20);
     aaa -> SetMarkerSize(0.1);
-    aaa -> SetMarkerColor(5 + color_step);
+    aaa -> SetMarkerColor(4 + color_step);
 
     aaa -> GetXaxis() -> SetTitle("X axis (mm)");
     aaa -> GetYaxis() -> SetTitle("Y axis (mm)");

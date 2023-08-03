@@ -58,6 +58,28 @@ double get_radius(double x, double y)
     return sqrt(pow(x,2)+pow(y,2));
 }
 
+double get_radius_sign(double x, double y)
+{
+    double phi = ((y) < 0) ? atan2((y),(x)) * (180./TMath::Pi()) + 360 : atan2((y),(x)) * (180./TMath::Pi());
+    
+    return (phi > 180) ? sqrt(pow(x,2)+pow(y,2)) * -1 : sqrt(pow(x,2)+pow(y,2)); 
+}
+
+void Characterize_Pad (TPad *pad, float left = 0.15, float right = 0.1, float top = 0.1, float bottom = 0.12, bool set_logY = false, int setgrid_bool = 0)
+{
+	if (setgrid_bool == true) {pad -> SetGrid (1, 1);}
+	pad -> SetLeftMargin   (left);
+	pad -> SetRightMargin  (right);
+	pad -> SetTopMargin    (top);
+	pad -> SetBottomMargin (bottom);
+    pad -> SetTicks(1,1);
+    if (set_logY == true)
+    {
+        pad -> SetLogy (1);
+    }
+	
+}
+
 std::vector<double> calculateDistanceAndClosestPoint(double x1, double y1, double x2, double y2, double target_x, double target_y) {
     
     if (x1 != x2)
@@ -145,38 +167,104 @@ double calculateAngleBetweenVectors(double x1, double y1, double x2, double y2, 
     return DCA_distance;
 }
 
+void temp_bkg(TPad * c1, string conversion_mode, double peek, pair<double,double> beam_origin)
+{
+    c1 -> cd();
+
+    int N_ladder[4] = {12, 12, 16, 16};
+    string ladder_index_string[16] = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15"};
+
+    vector<double> x_vec; x_vec.clear();
+    vector<double> y_vec; y_vec.clear();
+
+    vector<double> x_vec_2; x_vec_2.clear();
+    vector<double> y_vec_2; y_vec_2.clear();
+
+    TGraph * bkg = new TGraph();
+    bkg -> SetTitle("INTT event display X-Y plane");
+    bkg -> SetMarkerStyle(20);
+    bkg -> SetMarkerSize(0.1);
+    bkg -> SetPoint(0,0,0);
+    bkg -> SetPoint(1,beam_origin.first,beam_origin.second);
+    bkg -> GetXaxis() -> SetLimits(-150,150);
+    bkg -> GetYaxis() -> SetRangeUser(-150,150);
+    bkg -> GetXaxis() -> SetTitle("X [mm]");
+    bkg -> GetYaxis() -> SetTitle("Y [mm]");
+    
+    bkg -> Draw("ap");
+
+    TLine * ladder_line = new TLine();
+    ladder_line -> SetLineWidth(1);
+
+    for (int server_i = 0; server_i < 4; server_i++)
+    {
+        for (int FC_i = 0; FC_i < 14; FC_i++)
+        {
+            ladder_line -> DrawLine(
+                InttConversion::Get_XY_all(Form("intt%i",server_i),FC_i,14,0,conversion_mode,peek).x, InttConversion::Get_XY_all(Form("intt%i",server_i),FC_i,14,0,conversion_mode,peek).y,
+                InttConversion::Get_XY_all(Form("intt%i",server_i),FC_i,1,0,conversion_mode,peek).x, InttConversion::Get_XY_all(Form("intt%i",server_i),FC_i,1,0,conversion_mode,peek).y
+            );
+        }
+    }
+    
+    ladder_line -> Draw("l same");
+
+}
+
 // note : use "ls *.root > file_list.txt" to create the list of the file in the folder, full directory in the file_list.txt
 // note : set_folder_name = "folder_xxxx"
 // note : server_name = "inttx"
 void check_correlation(/*pair<double,double>beam_origin*/)
 {
-    TCanvas * c2 = new TCanvas("","",1000,800);
+    TCanvas * c2 = new TCanvas("","",2500,800);    
+    c2 -> cd();
+    TPad *pad_xy = new TPad(Form("pad_xy"), "", 0.0, 0.0, 0.33, 1.0);
+    Characterize_Pad(pad_xy, 0.15, 0.1, 0.1, 0.1 , 0, 0);
+    pad_xy -> Draw();
+
+    TPad *pad_rz = new TPad(Form("pad_rz"), "", 0.33, 0.0, 0.66, 1.0);
+    Characterize_Pad(pad_rz, 0.15, 0.1, 0.1, 0.1 , 0, 0);
+    pad_rz -> Draw();
+
+    TPad *pad_z = new TPad(Form("pad_z"), "", 0.66, 0.0, 1.0, 1.0);
+    Characterize_Pad(pad_z, 0.15, 0.1, 0.1, 0.1 , 0, 0);
+    pad_z -> Draw();
+
     TCanvas * c1 = new TCanvas("","",1000,800);
+    c1 -> cd();
 
-    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
-    // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500";
-    string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR1500_100kEvent";
+    // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
+    // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_ideal_excludeR1500_100kEvent";
+    // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR1500_100kEvent";
 
-    // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/new_DAC_Scan_0722/AllServer/DAC2";
-    // string file_name = "beam_inttall-00023058-0000_event_base_ana_cluster_ideal";
+    // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
+    // string file_name = "beam_inttall-00024767-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
+
+    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/new_DAC_Scan_0722/AllServer/DAC2";
+    string file_name = "beam_inttall-00023058-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
 
     system(Form("mkdir %s/folder_%s",mother_folder_directory.c_str(),file_name.c_str()));
-    pair<double,double> beam_origin = {-0,2};
+    pair<double,double> beam_origin = {-0,5};
     double temp_Y_align = 0.;
     double temp_X_align = -0.;
 
     double zvtx_hist_l = -500;
     double zvtx_hist_r = 500;
 
-    int Nhit_cut = 520;           // note : if (> Nhit_cut)          -> continue
+    int Nhit_cut = 800;           // note : if (> Nhit_cut)          -> continue
     int clu_size_cut = 4;         // note : if (> clu_size_cut)      -> continue
     double clu_sum_adc_cut = 31;  // note : if (< clu_sum_adc_cut)   -> continue
-    int N_clu_cut = 201;          // note : if (> N_clu_cut)         -> continue  unit number
+    int N_clu_cut = 300;          // note : if (> N_clu_cut)         -> continue  unit number
     double phi_diff_cut = 5.72;   // note : if (< phi_diff_cut)      -> pass      unit degree
     double DCA_cut = 4;           // note : if (< DCA_cut)           -> pass      unit mm
     int zvtx_cal_require = 15;    // note : if (> zvtx_cal_require)  -> pass
-    int zvtx_draw_require = 20;   // note : if (> zvtx_draw_require) -> pass
+    int zvtx_draw_requireL = 20;       
+    int zvtx_draw_requireR = 100;   // note : if ( zvtx_draw_requireL < event && event < zvtx_draw_requireR) -> pass
     double Integrate_portion = 0.6826;
+    
+    int geo_mode_id = 0;
+    string conversion_mode = (geo_mode_id == 0) ? "ideal" : "survey_1_XYAlpha_Peek";
+    double peek = 3.32405;
 
     TFile * file_in = new TFile(Form("%s/%s.root",mother_folder_directory.c_str(),file_name.c_str()),"read");
     TTree * tree = (TTree *)file_in->Get("tree_clu");
@@ -219,7 +307,8 @@ void check_correlation(/*pair<double,double>beam_origin*/)
 
     vector<clu_info> temp_sPH_inner_nocolumn_vec; temp_sPH_inner_nocolumn_vec.clear();
     vector<clu_info> temp_sPH_outer_nocolumn_vec; temp_sPH_outer_nocolumn_vec.clear();
-    vector<clu_info> temp_sPH_nocolumn_vec; temp_sPH_nocolumn_vec.clear();
+    vector<vector<double>> temp_sPH_nocolumn_vec(2);
+    vector<vector<double>> temp_sPH_nocolumn_rz_vec(2);
 
     TH2F * angle_correlation = new TH2F("","angle_correlation",361,0,361,361,0,361);
     angle_correlation -> SetStats(0);
@@ -290,14 +379,14 @@ void check_correlation(/*pair<double,double>beam_origin*/)
     N_cluster_inner_pass -> GetXaxis() -> SetTitle("N_cluster");
     N_cluster_inner_pass -> GetYaxis() -> SetTitle("Eentry");
 
-    TH2F * N_cluster_correlation = new TH2F("","N_cluster_correlation",100,0,100,100,0,100);
+    TH2F * N_cluster_correlation = new TH2F("","N_cluster_correlation",100,0,500,100,0,500);
     N_cluster_correlation -> SetStats(0);
     N_cluster_correlation -> GetXaxis() -> SetTitle("inner N_cluster");
     N_cluster_correlation -> GetYaxis() -> SetTitle("Outer N_cluster");
 
-    TH1F * temp_event_zvtx = new TH1F("","temp_event_zvtx",125,zvtx_hist_l,zvtx_hist_r);
+    TH1F * temp_event_zvtx = new TH1F("","Z vertex dist",125,zvtx_hist_l,zvtx_hist_r);
     temp_event_zvtx -> GetXaxis() -> SetTitle("Z vertex position (mm)");
-    temp_event_zvtx -> GetYaxis() -> SetTitle("entry");
+    temp_event_zvtx -> GetYaxis() -> SetTitle("Entry");
     vector<float> temp_event_zvtx_vec; temp_event_zvtx_vec.clear();
     vector<float> temp_event_zvtx_info; temp_event_zvtx_info.clear();
     TLine * effi_sig_range_line = new TLine();
@@ -307,13 +396,27 @@ void check_correlation(/*pair<double,double>beam_origin*/)
     TF1 * zvtx_fitting = new TF1("","gaus",-500,500);
     // zvtx_fitting -> SetLi
 
+    
+    vector<vector<double>> good_track_xy_vec; good_track_xy_vec.clear();
+    vector<vector<double>> good_track_rz_vec; good_track_rz_vec.clear();
+    TLine * track_line = new TLine();
+    track_line -> SetLineWidth(1);
+    track_line -> SetLineColor(38);
+
+    TLine * coord_line = new TLine();
+    coord_line -> SetLineWidth(1);
+    coord_line -> SetLineColor(16);
+    coord_line -> SetLineStyle(2);
+
+
     vector<float> avg_event_zvtx_vec; avg_event_zvtx_vec.clear();
     TH1F * avg_event_zvtx = new TH1F("","avg_event_zvtx",125,zvtx_hist_l,zvtx_hist_r);
     avg_event_zvtx -> GetXaxis() -> SetTitle("Z vertex position (mm)");
     avg_event_zvtx -> GetYaxis() -> SetTitle("entry");
     
 
-    c1 -> Print(Form("%s/folder_%s/temp_event_zvtx.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
+    
+    c2 -> Print(Form("%s/folder_%s/temp_event_display.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
 
     for (int event_i = 0; event_i < N_event; event_i++)
     {
@@ -324,6 +427,11 @@ void check_correlation(/*pair<double,double>beam_origin*/)
         if (event_i == 13) cout<<"test, eID : "<<event_i<<" Nhits "<<N_hits<<endl;
 
         if (N_hits > Nhit_cut) continue;
+        if (N_cluster_inner == 0 || N_cluster_outer == 0) continue;
+        if (N_cluster_inner == -1 || N_cluster_outer == -1) continue;
+        if ((N_cluster_inner + N_cluster_outer) < zvtx_cal_require) continue;
+        if (N_cluster_inner < 5) continue;
+        if (N_cluster_outer < 5) continue;
         
 
         // note : apply some selection to remove the hot channels
@@ -342,6 +450,7 @@ void check_correlation(/*pair<double,double>beam_origin*/)
             if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 210 && phi_vec -> at(clu_i) < 213) continue;
             if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 55 && phi_vec -> at(clu_i) < 65) continue;
             if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 348 && phi_vec -> at(clu_i) < 353) continue;
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 265 && phi_vec -> at(clu_i) < 270) continue;
 
             // note : outer
             if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) < -70 && x_vec -> at(clu_i) > -75 && y_vec -> at(clu_i) > 70 && y_vec -> at(clu_i) < 80 ) continue;
@@ -352,18 +461,17 @@ void check_correlation(/*pair<double,double>beam_origin*/)
             if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 105 && phi_vec -> at(clu_i) < 115) continue;
             if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 25 && phi_vec -> at(clu_i) < 47) continue; // todo : for the "new_DAC_Scan_0722/AllServer/DAC2"
 
-            temp_sPH_nocolumn_vec.push_back({
-                column_vec -> at(clu_i), 
-                avg_chan_vec -> at(clu_i), 
-                sum_adc_vec -> at(clu_i), 
-                sum_adc_conv_vec -> at(clu_i), 
-                size_vec -> at(clu_i), 
+
+            temp_sPH_nocolumn_vec[0].push_back( (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i) );
+            temp_sPH_nocolumn_vec[1].push_back( (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i) );
+            
+            double clu_radius = get_radius(
                 (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i), 
-                (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i), 
-                z_vec -> at(clu_i), 
-                layer_vec -> at(clu_i), 
-                phi_vec -> at(clu_i)
-            });
+                (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i)
+            );
+            temp_sPH_nocolumn_rz_vec[0].push_back(z_vec -> at(clu_i));
+            temp_sPH_nocolumn_rz_vec[1].push_back( ( phi_vec -> at(clu_i) > 180 ) ? clu_radius * -1 : clu_radius );
+            
 
             if (layer_vec -> at(clu_i) == 0) //note : inner
                 temp_sPH_inner_nocolumn_vec.push_back({
@@ -403,7 +511,10 @@ void check_correlation(/*pair<double,double>beam_origin*/)
             temp_event_zvtx_info = {-1000,-1000,-1000};
             temp_event_zvtx_vec.clear();
             temp_event_zvtx -> Reset("ICESM");
-            temp_sPH_nocolumn_vec.clear();
+            good_track_xy_vec.clear();
+            good_track_rz_vec.clear();
+            temp_sPH_nocolumn_rz_vec.clear(); temp_sPH_nocolumn_rz_vec = vector<vector<double>>(2);
+            temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(2);
             temp_sPH_inner_nocolumn_vec.clear();
             temp_sPH_outer_nocolumn_vec.clear();
             continue;
@@ -440,7 +551,13 @@ void check_correlation(/*pair<double,double>beam_origin*/)
                         if(zvtx_hist_l <= zvtx && zvtx <= zvtx_hist_r){
                             temp_event_zvtx_vec.push_back( zvtx );
                         }
-                        
+
+                        good_track_xy_vec.push_back({temp_sPH_outer_nocolumn_vec[outer_i].x,temp_sPH_outer_nocolumn_vec[outer_i].y,DCA_info_vec[1],DCA_info_vec[2]});
+                        good_track_rz_vec.push_back({
+                                temp_sPH_outer_nocolumn_vec[outer_i].z, (temp_sPH_outer_nocolumn_vec[outer_i].phi > 180) ? get_radius(temp_sPH_outer_nocolumn_vec[outer_i].x,temp_sPH_outer_nocolumn_vec[outer_i].y) * -1 : get_radius(temp_sPH_outer_nocolumn_vec[outer_i].x,temp_sPH_outer_nocolumn_vec[outer_i].y),
+                                zvtx, (temp_sPH_outer_nocolumn_vec[outer_i].phi > 180) ? get_radius(DCA_info_vec[1],DCA_info_vec[2]) * -1 : get_radius(DCA_info_vec[1],DCA_info_vec[2])
+                            }
+                        );
                     }
                     
 
@@ -485,22 +602,64 @@ void check_correlation(/*pair<double,double>beam_origin*/)
         }
             
 
-        if (temp_event_zvtx_vec.size() > zvtx_draw_require)
-        {
-            c1 -> cd();
+        if ( zvtx_draw_requireL < temp_event_zvtx_vec.size() && temp_event_zvtx_vec.size() < zvtx_draw_requireR)
+        {   
+            TGraph * temp_event_xy = new TGraph(temp_sPH_nocolumn_vec[0].size(),&temp_sPH_nocolumn_vec[0][0],&temp_sPH_nocolumn_vec[1][0]);
+            temp_event_xy -> SetTitle("INTT event display X-Y plane");
+            temp_event_xy -> GetXaxis() -> SetLimits(-150,150);
+            temp_event_xy -> GetYaxis() -> SetRangeUser(-150,150);
+            temp_event_xy -> GetXaxis() -> SetTitle("X [mm]");
+            temp_event_xy -> GetYaxis() -> SetTitle("Y [mm]");
+            temp_event_xy -> SetMarkerStyle(20);
+            temp_event_xy -> SetMarkerColor(2);
+            temp_event_xy -> SetMarkerSize(1);
+            TGraph * temp_event_rz = new TGraph(temp_sPH_nocolumn_rz_vec[0].size(),&temp_sPH_nocolumn_rz_vec[0][0],&temp_sPH_nocolumn_rz_vec[1][0]);
+            temp_event_rz -> SetTitle("INTT event display r-Z plane");
+            temp_event_rz -> GetXaxis() -> SetLimits(-500,500);
+            temp_event_rz -> GetYaxis() -> SetRangeUser(-150,150);
+            temp_event_rz -> GetXaxis() -> SetTitle("Z [mm]");
+            temp_event_rz -> GetYaxis() -> SetTitle("Radius [mm]");
+            temp_event_rz -> SetMarkerStyle(20);
+            temp_event_rz -> SetMarkerColor(2);
+            temp_event_rz -> SetMarkerSize(1);
+
+            pad_xy -> cd();
+            temp_bkg(pad_xy, conversion_mode, peek, beam_origin);
+            temp_event_xy -> Draw("p same");
+            for (int track_i = 0; track_i < good_track_xy_vec.size(); track_i++){
+                track_line -> DrawLine(good_track_xy_vec[track_i][0],good_track_xy_vec[track_i][1],good_track_xy_vec[track_i][2],good_track_xy_vec[track_i][3]);
+            }
+            track_line -> Draw("l same");
+            draw_text -> DrawLatex(0.2, 0.85, Form("eID : %i, Total event hit : %i, innter Ncluster : %i, outer Ncluster : %i",event_i,N_hits,temp_sPH_inner_nocolumn_vec.size(),temp_sPH_outer_nocolumn_vec.size()));
+        
+            pad_rz -> cd();
+            temp_event_rz -> Draw("ap");    
+            effi_sig_range_line -> DrawLine(temp_event_zvtx_info[0],-150,temp_event_zvtx_info[0],150);
+            coord_line -> DrawLine(0,-150,0,150);
+            coord_line -> DrawLine(-500,0,500,0);
+            for (int track_i = 0; track_i < good_track_rz_vec.size(); track_i++){
+                track_line -> DrawLine(good_track_rz_vec[track_i][0],good_track_rz_vec[track_i][1],good_track_rz_vec[track_i][2],good_track_rz_vec[track_i][3]);
+            }
+            draw_text -> DrawLatex(0.2, 0.85, Form("Negative radius : Clu_{outer} > 180^{0}"));
+            draw_text -> DrawLatex(0.2, 0.81, Form("EffiSig avg : %.2f mm",temp_event_zvtx_info[0]));
+
+            pad_z -> cd();
             temp_event_zvtx -> Draw("hist");
             // zvtx_fitting -> Draw("lsame");
             
             effi_sig_range_line -> DrawLine(temp_event_zvtx_info[1],0,temp_event_zvtx_info[1],temp_event_zvtx -> GetMaximum()*1.05);
             effi_sig_range_line -> DrawLine(temp_event_zvtx_info[2],0,temp_event_zvtx_info[2],temp_event_zvtx -> GetMaximum()*1.05);
             
-            draw_text -> DrawLatex(0.15, 0.87, Form("eID : %i, Total event hit : %i, innter Ncluster : %i, outer Ncluster : %i",event_i,N_hits,temp_sPH_inner_nocolumn_vec.size(),temp_sPH_outer_nocolumn_vec.size()));
-            // draw_text -> DrawLatex(0.15, 0.84, Form("Gaus fit mean : %.3f mm",zvtx_fitting -> GetParameter(1)));
-            draw_text -> DrawLatex(0.15, 0.84, Form("EffiSig min : %.2f mm, max : %.2f mm",temp_event_zvtx_info[1],temp_event_zvtx_info[2]));
-            draw_text -> DrawLatex(0.15, 0.81, Form("EffiSig avg : %.2f mm",temp_event_zvtx_info[0]));
+            draw_text -> DrawLatex(0.2, 0.85, Form("eID : %i, Total event hit : %i, innter Ncluster : %i, outer Ncluster : %i",event_i,N_hits,temp_sPH_inner_nocolumn_vec.size(),temp_sPH_outer_nocolumn_vec.size()));
+            // draw_text -> DrawLatex(0.2, 0.84, Form("Gaus fit mean : %.3f mm",zvtx_fitting -> GetParameter(1)));
+            draw_text -> DrawLatex(0.2, 0.82, Form("EffiSig min : %.2f mm, max : %.2f mm",temp_event_zvtx_info[1],temp_event_zvtx_info[2]));
+            draw_text -> DrawLatex(0.2, 0.79, Form("EffiSig avg : %.2f mm",temp_event_zvtx_info[0]));
 
-            c1 -> Print(Form("%s/folder_%s/temp_event_zvtx.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-            c1 -> Clear();
+            c2 -> Print(Form("%s/folder_%s/temp_event_display.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+            pad_xy -> Clear();
+            pad_rz -> Clear();
+            pad_z  -> Clear();
+
         }
 
         for ( int inner_i = 0; inner_i < temp_sPH_inner_nocolumn_vec.size(); inner_i++ )
@@ -518,11 +677,16 @@ void check_correlation(/*pair<double,double>beam_origin*/)
         temp_event_zvtx_info = {-1000,-1000,-1000};
         temp_event_zvtx_vec.clear();
         temp_event_zvtx -> Reset("ICESM");
+        good_track_xy_vec.clear();
+        good_track_rz_vec.clear();
+        temp_sPH_nocolumn_rz_vec.clear(); temp_sPH_nocolumn_rz_vec = vector<vector<double>>(2);
+        temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(2);
         temp_sPH_inner_nocolumn_vec.clear();
         temp_sPH_outer_nocolumn_vec.clear();
     } // note : end of event 
 
-    c1 -> Print(Form("%s/folder_%s/temp_event_zvtx.pdf)",mother_folder_directory.c_str(),file_name.c_str()));
+    c2 -> Print(Form("%s/folder_%s/temp_event_display.pdf)",mother_folder_directory.c_str(),file_name.c_str()));
+    c2 -> Clear();
     c1 -> Clear();
     
 
