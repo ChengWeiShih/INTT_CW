@@ -237,11 +237,11 @@ void check_correlation(/*pair<double,double>beam_origin*/)
     // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_ideal_excludeR1500_100kEvent";
     // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR1500_100kEvent";
 
-    // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
-    // string file_name = "beam_inttall-00024767-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
+    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
+    string file_name = "beam_inttall-00024767-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
 
-    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/new_DAC_Scan_0722/AllServer/DAC2";
-    string file_name = "beam_inttall-00023058-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
+    // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/new_DAC_Scan_0722/AllServer/DAC2";
+    // string file_name = "beam_inttall-00023058-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
 
     system(Form("mkdir %s/folder_%s",mother_folder_directory.c_str(),file_name.c_str()));
     pair<double,double> beam_origin = {-0,5};
@@ -261,6 +261,7 @@ void check_correlation(/*pair<double,double>beam_origin*/)
     int zvtx_draw_requireL = 20;       
     int zvtx_draw_requireR = 100;   // note : if ( zvtx_draw_requireL < event && event < zvtx_draw_requireR) -> pass
     double Integrate_portion = 0.6826;
+    bool draw_event_display = true;
     
     int geo_mode_id = 0;
     string conversion_mode = (geo_mode_id == 0) ? "ideal" : "survey_1_XYAlpha_Peek";
@@ -416,7 +417,7 @@ void check_correlation(/*pair<double,double>beam_origin*/)
     
 
     
-    c2 -> Print(Form("%s/folder_%s/temp_event_display.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
+    if (draw_event_display) c2 -> Print(Form("%s/folder_%s/temp_event_display.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
 
     for (int event_i = 0; event_i < N_event; event_i++)
     {
@@ -473,7 +474,7 @@ void check_correlation(/*pair<double,double>beam_origin*/)
             temp_sPH_nocolumn_rz_vec[1].push_back( ( phi_vec -> at(clu_i) > 180 ) ? clu_radius * -1 : clu_radius );
             
 
-            if (layer_vec -> at(clu_i) == 0) //note : inner
+            if (layer_vec -> at(clu_i) == 0) // note : inner
                 temp_sPH_inner_nocolumn_vec.push_back({
                     column_vec -> at(clu_i), 
                     avg_chan_vec -> at(clu_i), 
@@ -487,7 +488,7 @@ void check_correlation(/*pair<double,double>beam_origin*/)
                     phi_vec -> at(clu_i)
                 });
             
-            if (layer_vec -> at(clu_i) == 1) //note : inner
+            if (layer_vec -> at(clu_i) == 1) // note : outer
                 temp_sPH_outer_nocolumn_vec.push_back({
                     column_vec -> at(clu_i), 
                     avg_chan_vec -> at(clu_i), 
@@ -655,7 +656,7 @@ void check_correlation(/*pair<double,double>beam_origin*/)
             draw_text -> DrawLatex(0.2, 0.82, Form("EffiSig min : %.2f mm, max : %.2f mm",temp_event_zvtx_info[1],temp_event_zvtx_info[2]));
             draw_text -> DrawLatex(0.2, 0.79, Form("EffiSig avg : %.2f mm",temp_event_zvtx_info[0]));
 
-            c2 -> Print(Form("%s/folder_%s/temp_event_display.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+            if(draw_event_display){c2 -> Print(Form("%s/folder_%s/temp_event_display.pdf",mother_folder_directory.c_str(),file_name.c_str()));}
             pad_xy -> Clear();
             pad_rz -> Clear();
             pad_z  -> Clear();
@@ -685,7 +686,7 @@ void check_correlation(/*pair<double,double>beam_origin*/)
         temp_sPH_outer_nocolumn_vec.clear();
     } // note : end of event 
 
-    c2 -> Print(Form("%s/folder_%s/temp_event_display.pdf)",mother_folder_directory.c_str(),file_name.c_str()));
+    if (draw_event_display) {c2 -> Print(Form("%s/folder_%s/temp_event_display.pdf)",mother_folder_directory.c_str(),file_name.c_str()));}
     c2 -> Clear();
     c1 -> Clear();
     
