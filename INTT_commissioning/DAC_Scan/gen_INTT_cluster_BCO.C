@@ -48,7 +48,7 @@ struct ladder_info {
 };
 
 
-void gen_INTT_cluster(string sub_folder_string, string file_name, int DAC_run_ID, int Nhit_cut, int geo_mode_id, int run_Nevent)
+void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_run_ID, int Nhit_cut, int geo_mode_id, int run_Nevent)
 {
 
     // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
@@ -115,6 +115,9 @@ void gen_INTT_cluster(string sub_folder_string, string file_name, int DAC_run_ID
     int chip_id[100000];
     int chan_id[100000];
     int adc[100000];
+    int bco[100000];
+    Long64_t bco_full[100000];
+
     
     tree -> SetBranchStatus("*",0);
     tree -> SetBranchStatus("fNhits",1);
@@ -123,6 +126,8 @@ void gen_INTT_cluster(string sub_folder_string, string file_name, int DAC_run_ID
     tree -> SetBranchStatus("fhitArray.chip_id",1);
     tree -> SetBranchStatus("fhitArray.chan_id",1);
     tree -> SetBranchStatus("fhitArray.adc",1);
+    tree -> SetBranchStatus("fhitArray.bco",1);
+    tree -> SetBranchStatus("fhitArray.bco_full",1);
 
     tree -> SetBranchAddress("fNhits",&fNhits);
     tree -> GetEntry(0); // note : actually I really don't know why this line is necessary.
@@ -131,6 +136,8 @@ void gen_INTT_cluster(string sub_folder_string, string file_name, int DAC_run_ID
     tree -> SetBranchAddress("fhitArray.chip_id",&chip_id[0]);
     tree -> SetBranchAddress("fhitArray.chan_id",&chan_id[0]);
     tree -> SetBranchAddress("fhitArray.adc",&adc[0]);
+    tree -> SetBranchAddress("fhitArray.bco",&bco[0]);
+    tree -> SetBranchAddress("fhitArray.bco_full",&bco_full[0]);
 
     string out_file_name = Form("%s_cluster_%s",file_name.c_str(),conversion_mode.c_str());
     if (conversion_mode == "survey_1_XYAlpha_Peek") out_file_name += Form("_%.2fmm",peek);
@@ -195,7 +202,41 @@ void gen_INTT_cluster(string sub_folder_string, string file_name, int DAC_run_ID
         {
             // note : pid 3001 to 3008
             if (pid[i1] > 3000 && pid[i1] < 3009 && module[i1] > -1 && module[i1] < 14 && chip_id[i1] > 0 && chip_id[i1] < 27 && chan_id[i1] > -1 && chan_id[i1] < 128 && adc[i1] > -1 && adc[i1] < 8) 
+            {
+                // if ( (pid[i1] - 3001) == 0 && module[i1] == 6 ) continue;
+                // if ( (pid[i1] - 3001) == 0 && module[i1] == 1 ) continue;
+                // if ( (pid[i1] - 3001) == 0 && module[i1] == 12 ) continue;
+                
+                // if ( (pid[i1] - 3001) == 1 && module[i1] == 7 ) continue;
+                // if ( (pid[i1] - 3001) == 1 && module[i1] == 2 ) continue;
+
+                // if ( (pid[i1] - 3001) == 2 && module[i1] == 1 ) continue;
+
+                // if ( (pid[i1] - 3001) == 4 && module[i1] == 13 ) continue;
+
+                // if ( (pid[i1] - 3001) == 5 && module[i1] == 10 ) continue;
+
+                // if ( (pid[i1] - 3001) == 6 && module[i1] == 1 ) continue;
+                // if ( (pid[i1] - 3001) == 6 && module[i1] == 12 ) continue;
+
+                // if ( (pid[i1] - 3001) == 7 && module[i1] == 0 ) continue;
+                
+                if ( pid[i1] == 3002 && module[i1] == 2 && chip_id[i1] == 15 && chan_id[i1] == 0 ) continue;
+                
+                if ( pid[i1] == 3003 && module[i1] == 1 && chip_id[i1] == 8 && chan_id[i1] == 0 ) continue;
+                
+                if ( pid[i1] == 3007 && module[i1] == 1 && chan_id[i1] == 0 ) continue;
+
+                if ( pid[i1] == 3007 && module[i1] == 12 && chip_id[i1] == 19 && chan_id[i1] == 0 ) continue;
+
+                
+                // int bco_diff = ( (bco_full[i1]&0x7F - bco[i1]) < 0 ) ? (bco_full[i1]&0x7F - bco[i1]) + 128 : (bco_full[i1]&0x7F - bco[i1]);
+                // cout<<"test : "<<bco_diff<<endl;
+                // if (bco_diff < 58 || bco_diff > 63) continue;
+
                 single_event_hit_vec[ (pid[i1] - 1) % 3000 ][ module[i1] ].push_back({chip_id[i1], chan_id[i1], adc[i1], adc_convert[adc[i1]]});
+            }
+                
         } // note : end of the hit in one event
 
         for (int i1 = 0; i1 < N_server; i1++) // note : server, one event 

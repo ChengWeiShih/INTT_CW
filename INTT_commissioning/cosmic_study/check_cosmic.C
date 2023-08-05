@@ -214,7 +214,7 @@ void temp_bkg(TPad * c1, string conversion_mode, double peek, pair<double,double
 // note : use "ls *.root > file_list.txt" to create the list of the file in the folder, full directory in the file_list.txt
 // note : set_folder_name = "folder_xxxx"
 // note : server_name = "inttx"
-void check_correlation_HighN(/*pair<double,double>beam_origin*/)
+void check_cosmic(/*pair<double,double>beam_origin*/)
 {
     TCanvas * c2 = new TCanvas("","",2500,800);    
     c2 -> cd();
@@ -233,9 +233,9 @@ void check_correlation_HighN(/*pair<double,double>beam_origin*/)
     TCanvas * c1 = new TCanvas("","",1000,800);
     c1 -> cd();
     
-    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
+    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/cosmic/25184";
     // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_ideal_excludeR1500_100kEvent";
-    string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR1500_100kEvent";
+    string file_name = "cosmics_inttall-00025184-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR200_100kEvent";
 
     // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
     // string file_name = "beam_inttall-00024767-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
@@ -243,7 +243,7 @@ void check_correlation_HighN(/*pair<double,double>beam_origin*/)
     // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/new_DAC_Scan_0722/AllServer/DAC2";
     // string file_name = "beam_inttall-00023058-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
 
-    system(Form("mkdir %s/folder_%s_HighN",mother_folder_directory.c_str(),file_name.c_str()));
+    system(Form("mkdir %s/folder_%s_cosmic",mother_folder_directory.c_str(),file_name.c_str()));
     pair<double,double> beam_origin = {-0,2};
     double temp_Y_align = 0.;
     double temp_X_align = -0.;
@@ -251,10 +251,10 @@ void check_correlation_HighN(/*pair<double,double>beam_origin*/)
     double zvtx_hist_l = -500;
     double zvtx_hist_r = 500;
 
-    int Nhit_cut = 520;           // note : if (> Nhit_cut)          -> continue
+    int Nhit_cut = 300;           // note : if (> Nhit_cut)          -> continue
     int clu_size_cut = 4;         // note : if (> clu_size_cut)      -> continue
-    double clu_sum_adc_cut = 31;  // note : if (< clu_sum_adc_cut)   -> continue
-    int N_clu_cut = 201;          // note : if (> N_clu_cut)         -> continue  unit number
+    double clu_sum_adc_cut = 14;  // note : if (< clu_sum_adc_cut)   -> continue
+    int N_clu_cut = 100;          // note : if (> N_clu_cut)         -> continue  unit number
     double phi_diff_cut = 5.72;   // note : if (< phi_diff_cut)      -> pass      unit degree
     double DCA_cut = 4;           // note : if (< DCA_cut)           -> pass      unit mm
     int zvtx_cal_require = 15;    // note : if (> zvtx_cal_require)  -> pass
@@ -315,6 +315,16 @@ void check_correlation_HighN(/*pair<double,double>beam_origin*/)
     angle_correlation -> SetStats(0);
     angle_correlation -> GetXaxis() -> SetTitle("Inner Phi (degree)");
     angle_correlation -> GetYaxis() -> SetTitle("Outer Phi (degree)");
+
+    TH1F * angle_inner = new TH1F("","angle_inner",361,0,361);
+    angle_inner -> SetStats(0);
+    angle_inner -> GetXaxis() -> SetTitle("Inner Phi (degree)");
+    angle_inner -> GetYaxis() -> SetTitle("Entry");
+
+    TH1F * angle_outer = new TH1F("","angle_outer",361,0,361);
+    angle_outer -> SetStats(0);
+    angle_outer -> GetXaxis() -> SetTitle("Outer Phi (degree)");
+    angle_outer -> GetYaxis() -> SetTitle("Entry");
 
     TH2F * inner_pos_xy = new TH2F("","inner_pos_xy",360,-100,100,360,-100,100);
     inner_pos_xy -> SetStats(0);
@@ -420,7 +430,7 @@ void check_correlation_HighN(/*pair<double,double>beam_origin*/)
     int mini_outer_i;
 
     
-    c2 -> Print(Form("%s/folder_%s_HighN/temp_event_display.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
+    c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
 
     for (int event_i = 0; event_i < N_event; event_i++)
     {
@@ -430,9 +440,9 @@ void check_correlation_HighN(/*pair<double,double>beam_origin*/)
         if (N_hits > Nhit_cut) continue;
         if (N_cluster_inner == 0 || N_cluster_outer == 0) continue;
         if (N_cluster_inner == -1 || N_cluster_outer == -1) continue;
-        if ((N_cluster_inner + N_cluster_outer) < zvtx_cal_require) continue;
-        if (N_cluster_inner < 5) continue;
-        if (N_cluster_outer < 5) continue;
+        // if ((N_cluster_inner + N_cluster_outer) < zvtx_cal_require) continue;
+        if (N_cluster_inner > 20) continue;
+        if (N_cluster_outer > 20) continue;
         
 
         // note : apply some selection to remove the hot channels
@@ -445,22 +455,27 @@ void check_correlation_HighN(/*pair<double,double>beam_origin*/)
             // if (z_vec -> at(clu_i) < 0) continue;
             
             // note : inner
-            if (layer_vec -> at(clu_i) == 0 && x_vec -> at(clu_i) < -75 && x_vec -> at(clu_i) > -80 && y_vec -> at(clu_i) > 7.5 && y_vec -> at(clu_i) < 12.5 ) continue;
-            // if (layer_vec -> at(clu_i) == 0 && x_vec -> at(clu_i) > 35 && x_vec -> at(clu_i) < 40 && y_vec -> at(clu_i) > 65 && y_vec -> at(clu_i) < 70 ) continue;
-            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 295 && phi_vec -> at(clu_i) < 302) continue;
-            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 210 && phi_vec -> at(clu_i) < 213) continue;
-            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 55 && phi_vec -> at(clu_i) < 65) continue;
-            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 348 && phi_vec -> at(clu_i) < 353) continue;
-            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 265 && phi_vec -> at(clu_i) < 270) continue; // todo : for the 2023_08_01/24767
+            // if (layer_vec -> at(clu_i) == 0 && x_vec -> at(clu_i) < -75 && x_vec -> at(clu_i) > -80 && y_vec -> at(clu_i) > 7.5 && y_vec -> at(clu_i) < 12.5 ) continue;
+            // // if (layer_vec -> at(clu_i) == 0 && x_vec -> at(clu_i) > 35 && x_vec -> at(clu_i) < 40 && y_vec -> at(clu_i) > 65 && y_vec -> at(clu_i) < 70 ) continue;
+            // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 295 && phi_vec -> at(clu_i) < 302) continue;
+            // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 210 && phi_vec -> at(clu_i) < 213) continue;
+            // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 55 && phi_vec -> at(clu_i) < 65) continue;
+            // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 348 && phi_vec -> at(clu_i) < 353) continue;
+            // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 265 && phi_vec -> at(clu_i) < 270) continue; // todo : for the 2023_08_01/24767
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 258 && phi_vec -> at(clu_i) < 262) continue; 
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 268 && phi_vec -> at(clu_i) < 272) continue; 
 
-            // note : outer
-            if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) < -70 && x_vec -> at(clu_i) > -75 && y_vec -> at(clu_i) > 70 && y_vec -> at(clu_i) < 80 ) continue;
-            // if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) > 70 && x_vec -> at(clu_i) < 83 && y_vec -> at(clu_i) > 50 && y_vec -> at(clu_i) < 65 ) continue;
-            // if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) > 70 && x_vec -> at(clu_i) < 83 && y_vec -> at(clu_i) > 63 && y_vec -> at(clu_i) < 75 ) continue;
-            if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) < -70 && x_vec -> at(clu_i) > -75 && y_vec -> at(clu_i) < -70 && y_vec -> at(clu_i) > -75 ) continue;
-            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 335 && phi_vec -> at(clu_i) < 340) continue;
-            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 105 && phi_vec -> at(clu_i) < 115) continue;
-            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 25 && phi_vec -> at(clu_i) < 47) continue; // todo : for the "new_DAC_Scan_0722/AllServer/DAC2"
+
+            // // note : outer
+            // if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) < -70 && x_vec -> at(clu_i) > -75 && y_vec -> at(clu_i) > 70 && y_vec -> at(clu_i) < 80 ) continue;
+            // // if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) > 70 && x_vec -> at(clu_i) < 83 && y_vec -> at(clu_i) > 50 && y_vec -> at(clu_i) < 65 ) continue;
+            // // if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) > 70 && x_vec -> at(clu_i) < 83 && y_vec -> at(clu_i) > 63 && y_vec -> at(clu_i) < 75 ) continue;
+            // if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) < -70 && x_vec -> at(clu_i) > -75 && y_vec -> at(clu_i) < -70 && y_vec -> at(clu_i) > -75 ) continue;
+            // if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 335 && phi_vec -> at(clu_i) < 340) continue;
+            // if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 105 && phi_vec -> at(clu_i) < 115) continue;
+            // if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 25 && phi_vec -> at(clu_i) < 47) continue; // todo : for the "new_DAC_Scan_0722/AllServer/DAC2"
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 23 && phi_vec -> at(clu_i) < 27) continue; 
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 121 && phi_vec -> at(clu_i) < 125) continue; 
 
 
             temp_sPH_nocolumn_vec[0].push_back( (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i) );
@@ -522,123 +537,8 @@ void check_correlation_HighN(/*pair<double,double>beam_origin*/)
             continue;
         }
 
-        for ( int inner_i = 0; inner_i < temp_sPH_inner_nocolumn_vec.size(); inner_i++ )
+        if ( temp_sPH_inner_nocolumn_vec.size() > 1 && temp_sPH_outer_nocolumn_vec.size() > 1  )
         {
-            int counting = 0;
-            bool good_tag = false;
-
-            for ( int outer_i = 0; outer_i < temp_sPH_outer_nocolumn_vec.size(); outer_i++ )
-            {
-                if (fabs(temp_sPH_inner_nocolumn_vec[inner_i].phi - temp_sPH_outer_nocolumn_vec[outer_i].phi) < phi_diff_cut)
-                {
-                    vector<double> DCA_info_vec = calculateDistanceAndClosestPoint(
-                        temp_sPH_inner_nocolumn_vec[inner_i].x, temp_sPH_inner_nocolumn_vec[inner_i].y,
-                        temp_sPH_outer_nocolumn_vec[outer_i].x, temp_sPH_outer_nocolumn_vec[outer_i].y,
-                        beam_origin.first, beam_origin.second
-                    );
-                    
-                    double zvtx = get_z_vertex(temp_sPH_inner_nocolumn_vec[inner_i],temp_sPH_outer_nocolumn_vec[outer_i],DCA_info_vec[1],DCA_info_vec[2]);
-                    
-                    //todo : fabs(zvtx) > 240 --> assume that the collisions happened in the INTT
-                    if (fabs(zvtx) > 240) continue; 
-
-                    good_tag = true; // note : Phi_inner - Phi_outer small, zvtx in INTT
-                    
-                    if (counting == 0) {
-                        mini_DCAXY = DCA_info_vec[0];
-                        mini_outer_i = outer_i;
-                    }
-                    else 
-                    {
-                        if (DCA_info_vec[0] < mini_DCAXY)
-                        {
-                            mini_DCAXY = DCA_info_vec[0];
-                            mini_outer_i = outer_i;
-                        }
-                    }
-                    counting = 1;
-                }
-            }// note : end of outer_i loop
-
-            if (good_tag == true && mini_DCAXY < DCA_cut)
-            {
-                vector<double> DCA_info_vec = calculateDistanceAndClosestPoint(
-                    temp_sPH_inner_nocolumn_vec[inner_i].x, temp_sPH_inner_nocolumn_vec[inner_i].y,
-                    temp_sPH_outer_nocolumn_vec[mini_outer_i].x, temp_sPH_outer_nocolumn_vec[mini_outer_i].y,
-                    beam_origin.first, beam_origin.second
-                );
-
-                double DCA_sign = calculateAngleBetweenVectors(
-                    temp_sPH_outer_nocolumn_vec[mini_outer_i].x, temp_sPH_outer_nocolumn_vec[mini_outer_i].y,
-                    temp_sPH_inner_nocolumn_vec[inner_i].x, temp_sPH_inner_nocolumn_vec[inner_i].y,
-                    beam_origin.first, beam_origin.second
-                );
-
-                double zvtx = get_z_vertex(temp_sPH_inner_nocolumn_vec[inner_i],temp_sPH_outer_nocolumn_vec[mini_outer_i],DCA_info_vec[1],DCA_info_vec[2]);
-                temp_event_zvtx -> Fill( zvtx );
-                if(zvtx_hist_l <= zvtx && zvtx <= zvtx_hist_r){
-                    temp_event_zvtx_vec.push_back( zvtx );
-                }
-
-                if ( event_i == 23515 )
-                {
-                    if ( temp_sPH_outer_nocolumn_vec[mini_outer_i].phi > 60.6 && temp_sPH_outer_nocolumn_vec[mini_outer_i].phi < 98.9 )
-                    {
-                        good_track_xy_vec.push_back({temp_sPH_outer_nocolumn_vec[mini_outer_i].x,temp_sPH_outer_nocolumn_vec[mini_outer_i].y,DCA_info_vec[1],DCA_info_vec[2]});
-                        good_track_rz_vec.push_back({
-                                temp_sPH_outer_nocolumn_vec[mini_outer_i].z, (temp_sPH_outer_nocolumn_vec[mini_outer_i].phi > 180) ? get_radius(temp_sPH_outer_nocolumn_vec[mini_outer_i].x,temp_sPH_outer_nocolumn_vec[mini_outer_i].y) * -1 : get_radius(temp_sPH_outer_nocolumn_vec[mini_outer_i].x,temp_sPH_outer_nocolumn_vec[mini_outer_i].y),
-                                zvtx, (temp_sPH_outer_nocolumn_vec[mini_outer_i].phi > 180) ? get_radius(DCA_info_vec[1],DCA_info_vec[2]) * -1 : get_radius(DCA_info_vec[1],DCA_info_vec[2])
-                            }
-                        );
-                    }
-                }
-                else 
-                {
-                    good_track_xy_vec.push_back({temp_sPH_outer_nocolumn_vec[mini_outer_i].x,temp_sPH_outer_nocolumn_vec[mini_outer_i].y,DCA_info_vec[1],DCA_info_vec[2]});
-                    good_track_rz_vec.push_back({
-                            temp_sPH_outer_nocolumn_vec[mini_outer_i].z, (temp_sPH_outer_nocolumn_vec[mini_outer_i].phi > 180) ? get_radius(temp_sPH_outer_nocolumn_vec[mini_outer_i].x,temp_sPH_outer_nocolumn_vec[mini_outer_i].y) * -1 : get_radius(temp_sPH_outer_nocolumn_vec[mini_outer_i].x,temp_sPH_outer_nocolumn_vec[mini_outer_i].y),
-                            zvtx, (temp_sPH_outer_nocolumn_vec[mini_outer_i].phi > 180) ? get_radius(DCA_info_vec[1],DCA_info_vec[2]) * -1 : get_radius(DCA_info_vec[1],DCA_info_vec[2])
-                        }
-                    );
-                }
-
-                
-
-                DCA_point -> Fill( DCA_info_vec[1], DCA_info_vec[2] );
-                angle_correlation -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].phi,temp_sPH_outer_nocolumn_vec[mini_outer_i].phi);
-                z_pos_diff -> Fill( temp_sPH_inner_nocolumn_vec[inner_i].z - temp_sPH_outer_nocolumn_vec[mini_outer_i].z );
-                z_pos_diff_angle_diff -> Fill( temp_sPH_inner_nocolumn_vec[inner_i].z - temp_sPH_outer_nocolumn_vec[mini_outer_i].z, temp_sPH_inner_nocolumn_vec[inner_i].phi - temp_sPH_outer_nocolumn_vec[mini_outer_i].phi );
-                Nhits_good -> Fill(N_hits);
-                z_pos_inner -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].z);
-                z_pos_outer -> Fill(temp_sPH_outer_nocolumn_vec[mini_outer_i].z);
-                z_pos_inner_outer -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].z, temp_sPH_outer_nocolumn_vec[mini_outer_i].z);
-                DCA_distance_inner_phi -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].phi, DCA_sign );
-                DCA_distance_outer_phi -> Fill(temp_sPH_outer_nocolumn_vec[mini_outer_i].phi, DCA_sign );    
-
-                // note : remove that good outer_clu 
-                temp_sPH_outer_nocolumn_vec.erase(temp_sPH_outer_nocolumn_vec.begin() + mini_outer_i);
-
-            } // note : if < DCA_cut
-        } // note : end of inner loop
-
-
-        if (temp_event_zvtx_vec.size() > zvtx_cal_require)
-        {
-            // note : effi_sig method 
-            temp_event_zvtx_info = sigmaEff_avg(temp_event_zvtx_vec,Integrate_portion);
-            avg_event_zvtx -> Fill(temp_event_zvtx_info[0]);
-            avg_event_zvtx_vec.push_back(temp_event_zvtx_info[0]);
-            
-            // note : gaus fitting method
-            // temp_event_zvtx -> Fit(zvtx_fitting,"NQ");
-            // avg_event_zvtx -> Fill( zvtx_fitting -> GetParameter(1) );
-
-            // note : TH1 mean
-            // avg_event_zvtx -> Fill( temp_event_zvtx -> GetMean() );
-        }
-            
-        if ( zvtx_draw_requireL < temp_event_zvtx_vec.size() && temp_event_zvtx_vec.size() < zvtx_draw_requireR)
-        {   
             TGraph * temp_event_xy = new TGraph(temp_sPH_nocolumn_vec[0].size(),&temp_sPH_nocolumn_vec[0][0],&temp_sPH_nocolumn_vec[1][0]);
             temp_event_xy -> SetTitle("INTT event display X-Y plane");
             temp_event_xy -> GetXaxis() -> SetLimits(-150,150);
@@ -661,52 +561,29 @@ void check_correlation_HighN(/*pair<double,double>beam_origin*/)
             pad_xy -> cd();
             temp_bkg(pad_xy, conversion_mode, peek, beam_origin);
             temp_event_xy -> Draw("p same");
-            for (int track_i = 0; track_i < good_track_xy_vec.size(); track_i++){
-                track_line -> DrawLine(good_track_xy_vec[track_i][0],good_track_xy_vec[track_i][1],good_track_xy_vec[track_i][2],good_track_xy_vec[track_i][3]);
-            }
-            track_line -> Draw("l same");
             draw_text -> DrawLatex(0.2, 0.85, Form("eID : %i, Total event hit : %i, innter Ncluster : %i, outer Ncluster : %i",event_i,N_hits,temp_sPH_inner_nocolumn_vec.size(),original_outer_vec_size));
         
             pad_rz -> cd();
-            temp_event_rz -> Draw("ap");    
-            effi_sig_range_line -> DrawLine(temp_event_zvtx_info[0],-150,temp_event_zvtx_info[0],150);
-            coord_line -> DrawLine(0,-150,0,150);
-            coord_line -> DrawLine(-500,0,500,0);
-            for (int track_i = 0; track_i < good_track_rz_vec.size(); track_i++){
-                track_line -> DrawLine(good_track_rz_vec[track_i][0],good_track_rz_vec[track_i][1],good_track_rz_vec[track_i][2],good_track_rz_vec[track_i][3]);
-            }
-            draw_text -> DrawLatex(0.2, 0.85, Form("Negative radius : Clu_{outer} > 180^{0}"));
-            draw_text -> DrawLatex(0.2, 0.81, Form("EffiSig avg : %.2f mm",temp_event_zvtx_info[0]));
+            temp_event_rz -> Draw("ap");   
 
-            pad_z -> cd();
-            temp_event_zvtx -> Draw("hist");
-            // zvtx_fitting -> Draw("lsame");
-            
-            effi_sig_range_line -> DrawLine(temp_event_zvtx_info[1],0,temp_event_zvtx_info[1],temp_event_zvtx -> GetMaximum()*1.05);
-            effi_sig_range_line -> DrawLine(temp_event_zvtx_info[2],0,temp_event_zvtx_info[2],temp_event_zvtx -> GetMaximum()*1.05);
-            
-            draw_text -> DrawLatex(0.2, 0.85, Form("eID : %i, Total event hit : %i, innter Ncluster : %i, outer Ncluster : %i",event_i,N_hits,temp_sPH_inner_nocolumn_vec.size(),original_outer_vec_size));
-            // draw_text -> DrawLatex(0.2, 0.84, Form("Gaus fit mean : %.3f mm",zvtx_fitting -> GetParameter(1)));
-            draw_text -> DrawLatex(0.2, 0.82, Form("EffiSig min : %.2f mm, max : %.2f mm",temp_event_zvtx_info[1],temp_event_zvtx_info[2]));
-            draw_text -> DrawLatex(0.2, 0.79, Form("EffiSig avg : %.2f mm",temp_event_zvtx_info[0]));
-
-            c2 -> Print(Form("%s/folder_%s_HighN/temp_event_display.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+            c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display.pdf",mother_folder_directory.c_str(),file_name.c_str()));
             pad_xy -> Clear();
             pad_rz -> Clear();
-            pad_z  -> Clear();
-
+            pad_z  -> Clear(); 
         }
 
         for ( int inner_i = 0; inner_i < temp_sPH_inner_nocolumn_vec.size(); inner_i++ )
         {
             inner_pos_xy -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].x,temp_sPH_inner_nocolumn_vec[inner_i].y);
             inner_outer_pos_xy -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].x,temp_sPH_inner_nocolumn_vec[inner_i].y);
+            angle_inner -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].phi);
         }
 
         for ( int outer_i = 0; outer_i < temp_sPH_outer_nocolumn_vec.size(); outer_i++ )
         {
             outer_pos_xy -> Fill(temp_sPH_outer_nocolumn_vec[outer_i].x,temp_sPH_outer_nocolumn_vec[outer_i].y);
             inner_outer_pos_xy -> Fill(temp_sPH_outer_nocolumn_vec[outer_i].x,temp_sPH_outer_nocolumn_vec[outer_i].y);
+            angle_outer -> Fill(temp_sPH_outer_nocolumn_vec[outer_i].phi);
         }
 
         temp_event_zvtx_info = {-1000,-1000,-1000};
@@ -720,83 +597,91 @@ void check_correlation_HighN(/*pair<double,double>beam_origin*/)
         temp_sPH_outer_nocolumn_vec.clear();
     } // note : end of event 
 
-    c2 -> Print(Form("%s/folder_%s_HighN/temp_event_display.pdf)",mother_folder_directory.c_str(),file_name.c_str()));
+    c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display.pdf)",mother_folder_directory.c_str(),file_name.c_str()));
     c2 -> Clear();
     c1 -> Clear();
     
 
-    c1 -> cd();
-    vector<float> avg_event_zvtx_info = sigmaEff_avg(avg_event_zvtx_vec,Integrate_portion);
-    avg_event_zvtx -> Draw("hist");
-    effi_sig_range_line -> DrawLine(avg_event_zvtx_info[1],0,avg_event_zvtx_info[1],avg_event_zvtx -> GetMaximum()*1.05);
-    effi_sig_range_line -> DrawLine(avg_event_zvtx_info[2],0,avg_event_zvtx_info[2],avg_event_zvtx -> GetMaximum()*1.05);    
-    draw_text -> DrawLatex(0.15, 0.84, Form("EffiSig min : %.2f mm, max : %.2f mm",avg_event_zvtx_info[1],avg_event_zvtx_info[2]));
-    draw_text -> DrawLatex(0.15, 0.81, Form("EffiSig avg : %.2f mm",avg_event_zvtx_info[0]));
-    c1 -> Print(Form("%s/folder_%s_HighN/avg_event_zvtx.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> cd();
+    // // vector<float> avg_event_zvtx_info = sigmaEff_avg(avg_event_zvtx_vec,Integrate_portion);
+    // avg_event_zvtx -> Draw("hist");
+    // effi_sig_range_line -> DrawLine(avg_event_zvtx_info[1],0,avg_event_zvtx_info[1],avg_event_zvtx -> GetMaximum()*1.05);
+    // effi_sig_range_line -> DrawLine(avg_event_zvtx_info[2],0,avg_event_zvtx_info[2],avg_event_zvtx -> GetMaximum()*1.05);    
+    // draw_text -> DrawLatex(0.15, 0.84, Form("EffiSig min : %.2f mm, max : %.2f mm",avg_event_zvtx_info[1],avg_event_zvtx_info[2]));
+    // draw_text -> DrawLatex(0.15, 0.81, Form("EffiSig avg : %.2f mm",avg_event_zvtx_info[0]));
+    // c1 -> Print(Form("%s/folder_%s_cosmic/avg_event_zvtx.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // N_cluster_inner_pass -> Draw("hist"); 
+    // c1 -> Print(Form("%s/folder_%s_cosmic/N_cluster_inner_pass.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // N_cluster_outer_pass -> Draw("hist");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/N_cluster_outer_pass.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // N_cluster_correlation -> Draw("colz0");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/N_cluster_correlation.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // DCA_point -> Draw("colz0");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/DCA_point_X%.1fY%.1f_.pdf",mother_folder_directory.c_str(),file_name.c_str(),beam_origin.first,beam_origin.second));
+    // c1 -> Clear();
+
+    // DCA_distance_inner_phi -> Draw("colz0");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/DCA_distance_inner_phi_X%.1fY%.1f_.pdf",mother_folder_directory.c_str(),file_name.c_str(),beam_origin.first,beam_origin.second));
+    // c1 -> Clear();
+
+    // DCA_distance_outer_phi -> Draw("colz0");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/DCA_distance_outer_phi_X%.1fY%.1f_.pdf",mother_folder_directory.c_str(),file_name.c_str(),beam_origin.first,beam_origin.second));
+    // c1 -> Clear();
+
+    // z_pos_inner_outer -> Draw("colz0");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/z_pos_inner_outer.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // z_pos_inner -> Draw("hist");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/z_pos_inner.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // z_pos_outer -> Draw("hist");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/z_pos_outer.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // Nhits_good -> Draw("hist");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/Nhits_good.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // angle_correlation -> Draw("colz0");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/angle_correlation.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // z_pos_diff -> Draw("hist");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/z_pos_diff.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // z_pos_diff_angle_diff -> Draw("colz0");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/z_pos_diff_angle_diff.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // inner_pos_xy -> Draw("colz0");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/inner_pos_xy.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    // outer_pos_xy -> Draw("colz0");
+    // c1 -> Print(Form("%s/folder_%s_cosmic/outer_pos_xy.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    // c1 -> Clear();
+
+    angle_inner -> Draw("hist");
+    c1 -> Print(Form("%s/folder_%s_cosmic/angle_inner.pdf",mother_folder_directory.c_str(),file_name.c_str()));
     c1 -> Clear();
 
-    N_cluster_inner_pass -> Draw("hist"); 
-    c1 -> Print(Form("%s/folder_%s_HighN/N_cluster_inner_pass.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-    c1 -> Clear();
-
-    N_cluster_outer_pass -> Draw("hist");
-    c1 -> Print(Form("%s/folder_%s_HighN/N_cluster_outer_pass.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-    c1 -> Clear();
-
-    N_cluster_correlation -> Draw("colz0");
-    c1 -> Print(Form("%s/folder_%s_HighN/N_cluster_correlation.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-    c1 -> Clear();
-
-    DCA_point -> Draw("colz0");
-    c1 -> Print(Form("%s/folder_%s_HighN/DCA_point_X%.1fY%.1f_.pdf",mother_folder_directory.c_str(),file_name.c_str(),beam_origin.first,beam_origin.second));
-    c1 -> Clear();
-
-    DCA_distance_inner_phi -> Draw("colz0");
-    c1 -> Print(Form("%s/folder_%s_HighN/DCA_distance_inner_phi_X%.1fY%.1f_.pdf",mother_folder_directory.c_str(),file_name.c_str(),beam_origin.first,beam_origin.second));
-    c1 -> Clear();
-
-    DCA_distance_outer_phi -> Draw("colz0");
-    c1 -> Print(Form("%s/folder_%s_HighN/DCA_distance_outer_phi_X%.1fY%.1f_.pdf",mother_folder_directory.c_str(),file_name.c_str(),beam_origin.first,beam_origin.second));
-    c1 -> Clear();
-
-    z_pos_inner_outer -> Draw("colz0");
-    c1 -> Print(Form("%s/folder_%s_HighN/z_pos_inner_outer.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-    c1 -> Clear();
-
-    z_pos_inner -> Draw("hist");
-    c1 -> Print(Form("%s/folder_%s_HighN/z_pos_inner.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-    c1 -> Clear();
-
-    z_pos_outer -> Draw("hist");
-    c1 -> Print(Form("%s/folder_%s_HighN/z_pos_outer.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-    c1 -> Clear();
-
-    Nhits_good -> Draw("hist");
-    c1 -> Print(Form("%s/folder_%s_HighN/Nhits_good.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-    c1 -> Clear();
-
-    angle_correlation -> Draw("colz0");
-    c1 -> Print(Form("%s/folder_%s_HighN/angle_correlation.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-    c1 -> Clear();
-
-    z_pos_diff -> Draw("hist");
-    c1 -> Print(Form("%s/folder_%s_HighN/z_pos_diff.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-    c1 -> Clear();
-
-    z_pos_diff_angle_diff -> Draw("colz0");
-    c1 -> Print(Form("%s/folder_%s_HighN/z_pos_diff_angle_diff.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-    c1 -> Clear();
-
-    inner_pos_xy -> Draw("colz0");
-    c1 -> Print(Form("%s/folder_%s_HighN/inner_pos_xy.pdf",mother_folder_directory.c_str(),file_name.c_str()));
-    c1 -> Clear();
-
-    outer_pos_xy -> Draw("colz0");
-    c1 -> Print(Form("%s/folder_%s_HighN/outer_pos_xy.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    angle_outer -> Draw("hist");
+    c1 -> Print(Form("%s/folder_%s_cosmic/angle_outer.pdf",mother_folder_directory.c_str(),file_name.c_str()));
     c1 -> Clear();
 
     inner_outer_pos_xy -> Draw("colz0");
-    c1 -> Print(Form("%s/folder_%s_HighN/inner_outer_pos_xy.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    c1 -> Print(Form("%s/folder_%s_cosmic/inner_outer_pos_xy.pdf",mother_folder_directory.c_str(),file_name.c_str()));
     c1 -> Clear();
 
     
