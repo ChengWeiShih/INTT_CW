@@ -62,7 +62,7 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
 
     // vector<int> adc_config = {15, 30, 60, 90, 120, 150, 180, 210, 240};
     vector<vector<int>> adc_setting_run = {	
-        {15, 30, 60, 90, 120, 150, 180, 210, 240},
+        {25, 30, 60, 90, 120, 150, 180, 210, 240},
         {8  , 12 , 16 , 20 , 24 , 28 , 32 , 36 },
         {28 , 32 , 36 , 40 , 44 , 48 , 52 , 56 }, // note : 2
         {48 , 52 , 56 , 60 , 64 , 68 , 72 , 76 }, // note : 3
@@ -91,6 +91,7 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
     int N_hits;
     int N_cluster_inner = 0;
     int N_cluster_outer = 0;
+    Long64_t bco_full_out;
     vector<int> column_out_vec; column_out_vec.clear();
     vector<double> avg_chan_out_vec; avg_chan_out_vec.clear();
     vector<int> sum_adc_out_vec; sum_adc_out_vec.clear();
@@ -150,6 +151,7 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
     tree_out -> Branch("nhits",&N_hits);
     tree_out -> Branch("nclu_inner",&N_cluster_inner);
     tree_out -> Branch("nclu_outer",&N_cluster_outer);
+    tree_out -> Branch("bco_full",&bco_full_out);
 
     tree_out -> Branch("column", &column_out_vec);
     tree_out -> Branch("avg_chan", &avg_chan_out_vec);
@@ -171,6 +173,7 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
         // cout<<"event ID : "<<i<<endl;
 
         N_hits = fNhits;
+        bco_full_out = bco_full[0];
 
         // todo : the fNhits cut is here 
         if (fNhits > Nhit_cut ) {

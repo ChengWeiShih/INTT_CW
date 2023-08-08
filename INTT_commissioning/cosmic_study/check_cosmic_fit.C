@@ -1,7 +1,7 @@
 // #include "DAC_Scan_ladder.h"
 //#include "InttConversion.h"
 #include "../DAC_Scan/InttClustering.h"
-#include "../DAC_Scan/sigmaEff.h"
+// #include "../sigmaEff.h"
 
 // todo : the number of number is given by the adc_setting_run !!!
 // todo : also the range of the hist.
@@ -211,10 +211,114 @@ void temp_bkg(TPad * c1, string conversion_mode, double peek, pair<double,double
 
 }
 
+void generateSubsets(const std::vector<int>& nums, int m, int start, std::vector<int>& currentSubset, std::vector<std::vector<int>>& allSubsets) {
+    if (m == 0) {
+        allSubsets.push_back(currentSubset);
+        return;
+    }
+
+    for (int i = start; i <= nums.size() - m; ++i) {
+        currentSubset.push_back(nums[i]);
+        generateSubsets(nums, m - 1, i + 1, currentSubset, allSubsets);
+        currentSubset.pop_back();
+    }
+}
+
+std::vector<std::vector<int>> generateAllSubsets(const std::vector<int>& nums, int m) {
+    std::vector<std::vector<int>> allSubsets;
+    std::vector<int> currentSubset;
+
+    generateSubsets(nums, m, 0, currentSubset, allSubsets);
+
+    return allSubsets;
+}
+
+double grX_stddev (TGraph * input_grr)
+{
+    vector<double> input_vector; input_vector.clear();
+    for (int i = 0; i < input_grr -> GetN(); i++)
+    {  
+        input_vector.push_back( input_grr -> GetPointX(i) );
+    }
+
+	double sum=0;
+	double average;
+	double sum_subt = 0;
+	for (int i=0; i<input_vector.size(); i++)
+		{
+			sum+=input_vector[i];
+
+		}
+	average=sum/input_vector.size();
+	//cout<<"average is : "<<average<<endl;
+
+	for (int i=0; i<input_vector.size(); i++)
+		{
+			//cout<<input_vector[i]-average<<endl;
+			sum_subt+=pow((input_vector[i]-average),2);
+
+		}
+	//cout<<"sum_subt : "<<sum_subt<<endl;
+	double stddev;
+	stddev=sqrt(sum_subt/(input_vector.size()-1));	
+	return stddev;
+}	
+
+double grX_avg (TGraph * input_grr)
+{
+    vector<double> input_vector; input_vector.clear();
+    for (int i = 0; i < input_grr -> GetN(); i++)
+    {  
+        input_vector.push_back( input_grr -> GetPointX(i) );
+    }
+
+	double sum=0;
+	double average;
+	double sum_subt = 0;
+	for (int i=0; i<input_vector.size(); i++)
+		{
+			sum+=input_vector[i];
+
+		}
+	average=sum/input_vector.size();
+	//cout<<"average is : "<<average<<endl;
+
+    return average;
+}
+
+// note : the function check the distance of each two-point set, and find the smallest distance among all the sets
+double grXY_deviation_small (TGraph * input_grr)
+{
+    vector<int> ele_index(input_grr -> GetN()); std::iota(ele_index.begin(), ele_index.end(), 0);
+    vector<vector<int>> set_vec = generateAllSubsets(ele_index,2);
+
+    double deviation;
+    double distance;
+
+    for (int i = 0; i < set_vec.size(); i++)
+    {
+        distance = sqrt(
+            pow( input_grr -> GetPointX(set_vec[i][0]) - input_grr -> GetPointX(set_vec[i][1]), 2 ) + 
+            pow( input_grr -> GetPointY(set_vec[i][0]) - input_grr -> GetPointY(set_vec[i][1]), 2 )
+        );
+
+        if (i == 0)
+        {
+            deviation = distance;
+        }
+        else if (deviation > distance)
+        {
+            deviation = distance;
+        }
+    }
+
+    return deviation;
+}
+
 // note : use "ls *.root > file_list.txt" to create the list of the file in the folder, full directory in the file_list.txt
 // note : set_folder_name = "folder_xxxx"
 // note : server_name = "inttx"
-void check_cosmic(/*pair<double,double>beam_origin*/)
+void check_cosmic_fit(/*pair<double,double>beam_origin*/)
 {
     TCanvas * c2 = new TCanvas("","",2500,800);    
     c2 -> cd();
@@ -254,13 +358,14 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
     int Nhit_cut = 300;           // note : if (> Nhit_cut)          -> continue
     int clu_size_cut = 4;         // note : if (> clu_size_cut)      -> continue
     double clu_sum_adc_cut = 14;  // note : if (< clu_sum_adc_cut)   -> continue
-    int N_clu_cut = 100;          // note : if (> N_clu_cut)         -> continue  unit number
+    int N_clu_cut = 20;          // note : if (> N_clu_cut)         -> continue  unit number
     double phi_diff_cut = 5.72;   // note : if (< phi_diff_cut)      -> pass      unit degree
     double DCA_cut = 4;           // note : if (< DCA_cut)           -> pass      unit mm
     int zvtx_cal_require = 15;    // note : if (> zvtx_cal_require)  -> pass
     int zvtx_draw_requireL = 15;       
     int zvtx_draw_requireR = 100;   // note : if ( zvtx_draw_requireL < event && event < zvtx_draw_requireR) -> pass
     double Integrate_portion = 0.6826;
+    bool print_event_display = true;
     
     //todo : change the mode for drawing
     int geo_mode_id = 1;
@@ -276,7 +381,6 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
     int N_hits;
     int N_cluster_inner;
     int N_cluster_outer;
-    Long64_t bco_full;
     vector<int>* column_vec = new vector<int>();
     vector<double>* avg_chan_vec = new vector<double>();
     vector<int>* sum_adc_vec = new vector<int>();
@@ -291,7 +395,6 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
     tree -> SetBranchAddress("nhits",&N_hits);
     tree -> SetBranchAddress("nclu_inner",&N_cluster_inner);
     tree -> SetBranchAddress("nclu_outer",&N_cluster_outer);
-    tree -> SetBranchAddress("bco_full",&bco_full);
 
     tree -> SetBranchAddress("column", &column_vec);
     tree -> SetBranchAddress("avg_chan", &avg_chan_vec);
@@ -310,6 +413,7 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
 
     vector<clu_info> temp_sPH_inner_nocolumn_vec; temp_sPH_inner_nocolumn_vec.clear();
     vector<clu_info> temp_sPH_outer_nocolumn_vec; temp_sPH_outer_nocolumn_vec.clear();
+    vector<clu_info> temp_sPH_all_nocolumn_vec; temp_sPH_all_nocolumn_vec.clear();
     vector<vector<double>> temp_sPH_nocolumn_vec(2);
     vector<vector<double>> temp_sPH_nocolumn_rz_vec(2);
 
@@ -409,6 +513,17 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
     TF1 * zvtx_fitting = new TF1("","gaus",-500,500);
     // zvtx_fitting -> SetLi
 
+    TH1F * cosmic_phi_hist = new TH1F ("","cosmic_phi_hist",36,0,180);
+    cosmic_phi_hist -> SetStats(0);
+    cosmic_phi_hist -> GetXaxis() -> SetTitle("cosmic angle [phi]");
+    cosmic_phi_hist -> GetYaxis() -> SetTitle("Entry"); 
+
+    TH1F * cosmic_z_hist = new TH1F ("","cosmic_z_hist",20,-250,250);
+    cosmic_z_hist -> SetStats(0);
+    cosmic_z_hist -> GetXaxis() -> SetTitle("cosmic z [mm]");
+    cosmic_z_hist -> GetYaxis() -> SetTitle("Entry"); 
+
+
     
     vector<vector<double>> good_track_xy_vec; good_track_xy_vec.clear();
     vector<vector<double>> good_track_rz_vec; good_track_rz_vec.clear();
@@ -431,42 +546,35 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
     int mini_inner_i;
     int mini_outer_i;
 
-    vector<double> out_clu_x; out_clu_x.clear();
-    vector<double> out_clu_y; out_clu_y.clear();
-    vector<double> out_clu_z; out_clu_z.clear();
-    vector<double> out_clu_r_sign; out_clu_r_sign.clear();
-    Long64_t bco_full_out;
-    int N_clu;
-    int eID_out;
-
-    TFile * out_file = new TFile(Form("%s/folder_%s_cosmic/INTT_eventdisplay_cluster.root",mother_folder_directory.c_str(),file_name.c_str()),"RECREATE");
-    TTree * tree_out =  new TTree ("tree_clu", "clustering info. for event display");
-    tree_out -> Branch("eID",&eID_out);
-    tree_out -> Branch("bco_full",&bco_full_out);
-    tree_out -> Branch("nclu",&N_clu);
-    tree_out -> Branch("clu_x",&out_clu_x);
-    tree_out -> Branch("clu_y",&out_clu_y);
-    tree_out -> Branch("clu_z",&out_clu_z);
-    tree_out -> Branch("clu_r",&out_clu_r_sign);
-
-
+    TF1 * fit_xy = new TF1("fit_xy","pol1",-150,150);
+    fit_xy -> SetLineColor(TColor::GetColor("#13b4fe"));
+    fit_xy -> SetLineStyle(2);
+    TF1 * fit_rz = new TF1("fit_rz","pol1",-500,500);
+    fit_rz -> SetLineColor(TColor::GetColor("#13b4fe"));
+    fit_rz -> SetLineStyle(2);
+    TLine * fake_track = new TLine();
+    fake_track -> SetLineColor(TColor::GetColor("#13b4fe"));
+    fake_track -> SetLineStyle(2);
     
-    c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
+    double event_final_chi2;
+    vector<int> event_final_set; event_final_set.clear();
+    double event_comb_chi2;
+    vector<int> event_comb_set; event_comb_set.clear();
+    int used_clu;
+    
+    if (print_event_display) {c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display_fit.pdf(",mother_folder_directory.c_str(),file_name.c_str()));}
 
     for (int event_i = 0; event_i < N_event; event_i++)
     {
         tree -> GetEntry(event_i);
         unsigned int length = column_vec -> size();
 
-        bco_full_out = bco_full;
-        eID_out = event_i;
-
         if (N_hits > Nhit_cut) continue;
         if (N_cluster_inner == 0 || N_cluster_outer == 0) continue;
         if (N_cluster_inner == -1 || N_cluster_outer == -1) continue;
         // if ((N_cluster_inner + N_cluster_outer) < zvtx_cal_require) continue;
-        if (N_cluster_inner > 20) continue;
-        if (N_cluster_outer > 20) continue;
+        if (N_cluster_inner > 10) continue;
+        if (N_cluster_outer > 10) continue;
         
 
         // note : apply some selection to remove the hot channels
@@ -511,7 +619,19 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
             );
             temp_sPH_nocolumn_rz_vec[0].push_back(z_vec -> at(clu_i));
             temp_sPH_nocolumn_rz_vec[1].push_back( ( phi_vec -> at(clu_i) > 180 ) ? clu_radius * -1 : clu_radius );
-            
+
+            temp_sPH_all_nocolumn_vec.push_back({
+                column_vec -> at(clu_i), 
+                avg_chan_vec -> at(clu_i), 
+                sum_adc_vec -> at(clu_i), 
+                sum_adc_conv_vec -> at(clu_i), 
+                size_vec -> at(clu_i), 
+                (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i), 
+                (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i), 
+                z_vec -> at(clu_i), 
+                layer_vec -> at(clu_i), 
+                phi_vec -> at(clu_i)
+            });            
 
             if (layer_vec -> at(clu_i) == 0) //note : inner
                 temp_sPH_inner_nocolumn_vec.push_back({
@@ -558,16 +678,10 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
             temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(2);
             temp_sPH_inner_nocolumn_vec.clear();
             temp_sPH_outer_nocolumn_vec.clear();
-
-            out_clu_x.clear();
-            out_clu_y.clear();
-            out_clu_z.clear();
-            out_clu_r_sign.clear();
-
             continue;
         }
 
-        if ( temp_sPH_inner_nocolumn_vec.size() > 1 && temp_sPH_outer_nocolumn_vec.size() > 1  )
+        if ( temp_sPH_inner_nocolumn_vec.size() > 1 && temp_sPH_outer_nocolumn_vec.size() > 1 && 3 < temp_sPH_nocolumn_vec[0].size() && temp_sPH_nocolumn_vec[0].size() < 9  ) // note : at least 3 points, 4 to 8 (allow some noise hits)
         {
             TGraph * temp_event_xy = new TGraph(temp_sPH_nocolumn_vec[0].size(),&temp_sPH_nocolumn_vec[0][0],&temp_sPH_nocolumn_vec[1][0]);
             temp_event_xy -> SetTitle("INTT event display X-Y plane");
@@ -588,26 +702,176 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
             temp_event_rz -> SetMarkerColor(2);
             temp_event_rz -> SetMarkerSize(1);
 
-            out_clu_x = temp_sPH_nocolumn_vec[0]; // note : for the output root tree.
-            out_clu_y = temp_sPH_nocolumn_vec[1];
-            out_clu_z = temp_sPH_nocolumn_rz_vec[0];
-            out_clu_r_sign = temp_sPH_nocolumn_rz_vec[1];
-            N_clu = temp_sPH_nocolumn_vec[0].size();
+            double valid_valid_count = 0;
 
-            pad_xy -> cd();
-            temp_bkg(pad_xy, conversion_mode, peek, beam_origin);
-            temp_event_xy -> Draw("p same");
-            draw_text -> DrawLatex(0.2, 0.85, Form("eID : %i, Total event hit : %i, innter Ncluster : %i, outer Ncluster : %i",event_i,N_hits,temp_sPH_inner_nocolumn_vec.size(),original_outer_vec_size));
-        
-            pad_rz -> cd();
-            temp_event_rz -> Draw("ap");   
+            int select_max = (temp_sPH_nocolumn_vec[0].size() > 8) ? 9 : temp_sPH_nocolumn_vec[0].size() + 1;
+            vector<int> ele_index(temp_sPH_nocolumn_vec[0].size()); std::iota(ele_index.begin(), ele_index.end(), 0);
+            for (int clu_i = 4; clu_i < select_max; clu_i++ ) // note use "clu_i" element to do the fitting at least 4 elements, along with maximum 8
+            {                
+                vector<vector<int>> subsets_index = generateAllSubsets(ele_index, clu_i);
+                // cout<<"------------------------------------- ------------------------------------- -------------------------------------"<<endl;
+                // cout<<"event : "<<event_i<<" N element in the event : "<<ele_index.size()<<" select : "<<clu_i<<" total combination "<<subsets.size()<<endl;
+                
+                double valid_count = 0;
 
-            c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+                for (int set_i = 0; set_i < subsets_index.size(); set_i++) // note : N combination
+                {
+                    TGraph * xy_gr = new TGraph();
+                    TGraph * rz_gr = new TGraph();
+                    for (int ele_i = 0; ele_i < subsets_index[set_i].size(); ele_i++) // note : n clu in that combination
+                    {
+                        xy_gr -> SetPoint(ele_i, temp_sPH_nocolumn_vec[0][ subsets_index[set_i][ele_i] ],    temp_sPH_nocolumn_vec[1][ subsets_index[set_i][ele_i] ]);
+                        rz_gr -> SetPoint(ele_i, temp_sPH_nocolumn_rz_vec[0][ subsets_index[set_i][ele_i] ], temp_sPH_nocolumn_rz_vec[1][ subsets_index[set_i][ele_i] ]);
+                    }
+                    if (event_i == 1665) {cout<<"test : "<<grXY_deviation_small(xy_gr)<<endl;}
+                    if ( grXY_deviation_small(xy_gr) < 1 ) continue;
+
+                    double chi2_xy = ( fabs( grX_stddev(xy_gr) ) < 0.00001 ) ? 0 : 1;
+                    if (chi2_xy == 1){ // note : not vertical, can fit
+                        xy_gr -> Fit(fit_xy,"NQ");
+                        chi2_xy = fit_xy -> GetChisquare() / double(fit_xy -> GetNDF());
+                    }
+
+                    double chi2_rz = ( fabs( grX_stddev(rz_gr) ) < 0.00001 ) ? 0 : 1;
+                    if (chi2_rz == 1){ // note : not vertical, can fit
+                        rz_gr -> Fit(fit_rz,"NQ");
+                        chi2_rz = fit_rz -> GetChisquare() / double(fit_rz -> GetNDF());
+                    }
+                    
+                    if (event_i == 4090)
+                        cout<<"test test : "<<clu_i<<" "<<set_i<<" "<<chi2_xy<<" "<<chi2_rz<<endl;
+
+                    if (valid_count == 0){
+                        event_comb_chi2 = sqrt(pow(chi2_xy,2) + pow(chi2_rz,2));
+                        event_comb_set  = subsets_index[set_i];
+                        valid_count = 1;
+                    }
+                    else if ( event_comb_chi2 > sqrt(pow(chi2_xy,2) + pow(chi2_rz,2)) )
+                    {
+                        event_comb_chi2 = sqrt(pow(chi2_xy,2) + pow(chi2_rz,2));
+                        event_comb_set  = subsets_index[set_i];
+                    }
+
+                }
+                if(event_i == 4090)
+                {
+                    cout<<"total clu : "<<temp_sPH_nocolumn_vec[0].size()<<endl;
+                    cout<<"used clu : "<<clu_i<<" best chi2 : "<<event_comb_chi2<<endl;
+                }
+
+                if (valid_count == 1) valid_valid_count += 1;
+
+                if (valid_valid_count == 1 && valid_count == 1){
+                    used_clu = clu_i;
+                    event_final_chi2 = event_comb_chi2;
+                    event_final_set = event_comb_set;
+                }
+                else if (valid_count == 1 && event_final_chi2 > event_comb_chi2) {
+                    used_clu = clu_i;
+                    event_final_chi2 = event_comb_chi2;
+                    event_final_set = event_comb_set;
+                }
+            }
+            
+            if (valid_valid_count != 0)
+            {
+                TGraph * xy_gr = new TGraph();
+                TGraph * rz_gr = new TGraph();
+                for (int ele_i = 0; ele_i < event_final_set.size(); ele_i++) // note : n clu in that combination
+                {
+                    xy_gr -> SetPoint(ele_i, temp_sPH_nocolumn_vec[0][ event_final_set[ele_i] ],    temp_sPH_nocolumn_vec[1][ event_final_set[ele_i] ]);
+                    rz_gr -> SetPoint(ele_i, temp_sPH_nocolumn_rz_vec[0][ event_final_set[ele_i] ], temp_sPH_nocolumn_rz_vec[1][ event_final_set[ele_i] ]);
+                }
+                double chi2_xy = ( fabs( grX_stddev(xy_gr) ) < 0.00001 ) ? 0 : 1;
+                if (chi2_xy == 1){ // note : not vertical, can fit
+                    xy_gr -> Fit(fit_xy,"NQ");
+                    chi2_xy = (fit_xy -> GetChisquare() / double(fit_xy -> GetNDF()));
+                }
+                double chi2_rz = ( fabs( grX_stddev(rz_gr) ) < 0.00001 ) ? 0 : 1;
+                if (chi2_rz == 1){ // note : not vertical, can fit
+                    rz_gr -> Fit(fit_rz,"NQ");
+                    chi2_rz = (fit_rz -> GetChisquare() / double(fit_rz -> GetNDF()));
+                }
+
+
+                pad_xy -> cd();
+                temp_bkg(pad_xy, conversion_mode, peek, beam_origin);
+                if (chi2_xy != 0){ // note : not vertical, can fit  
+                    double cosmic_phi = ( atan(fit_xy -> GetParameter(1)) * (180/M_PI) < 0 ) ? atan(fit_xy -> GetParameter(1)) * (180/M_PI) + 180 : atan(fit_xy -> GetParameter(1)) * (180/M_PI);
+                    draw_text -> DrawLatex(0.2, 0.82, Form("Used cluster : %i, chi2/NDF : %.3f",used_clu, (fit_xy -> GetChisquare() / double(fit_xy -> GetNDF())) ));
+                    draw_text -> DrawLatex(0.2, 0.79, Form("cosmic phi : %.2f degree", cosmic_phi ));
+                    
+                    if ( chi2_xy < 10 && chi2_rz < 2500 ){
+                        cosmic_phi_hist -> Fill( cosmic_phi );
+                        fit_xy -> Draw("lsame");
+                    }
+                    else{
+                        TF1 * false_fit_xy = (TF1*)fit_xy -> Clone("");
+                        false_fit_xy -> SetLineColor(42);
+                        false_fit_xy -> SetLineStyle(2);
+                        false_fit_xy -> Draw("lsame");
+                    }
+                }
+                else {            
+                    draw_text -> DrawLatex(0.2, 0.82, Form("Used cluster : %i, Vertical !",used_clu ));
+                    draw_text -> DrawLatex(0.2, 0.79, Form("cosmic phi : 90 degree" ));
+
+                    if ( chi2_xy < 10 && chi2_rz < 2500 ){
+                        cosmic_phi_hist -> Fill( 90 );
+                        fake_track -> DrawLine(xy_gr -> GetPointX(0), -150, xy_gr -> GetPointX(0), 150);
+                    }
+                    else {
+                        TLine * false_track = new TLine(xy_gr -> GetPointX(0), -150, xy_gr -> GetPointX(0), 150);
+                        false_track -> SetLineColor(42);
+                        false_track -> SetLineStyle(2);
+                        false_track -> Draw("lsame");
+                    }
+                }
+                temp_event_xy -> Draw("p same");
+                draw_text -> DrawLatex(0.2, 0.85, Form("eID : %i, Total event hit : %i, innter Ncluster : %i, outer Ncluster : %i",event_i,N_hits,temp_sPH_inner_nocolumn_vec.size(),original_outer_vec_size));
+                
+
+                pad_rz -> cd();
+                temp_event_rz -> Draw("ap");   
+                if (chi2_rz != 0){ // note : not vertical, can fit
+                    if ( chi2_xy < 10 && chi2_rz < 2500 ){
+                        fit_rz -> Draw("lsame");
+                    }
+                    else {
+                        TF1 * false_fit_rz = (TF1*) fit_rz -> Clone("");
+                        false_fit_rz -> SetLineColor(42);
+                        false_fit_rz -> SetLineStyle(2);
+                        false_fit_rz -> Draw("lsame");
+                    }
+                    draw_text -> DrawLatex(0.2, 0.82, Form("Used cluster : %i, chi2/NDF : %.3f",used_clu, (fit_rz -> GetChisquare() / double(fit_rz -> GetNDF())) ));
+                }
+                else{
+                    if ( chi2_xy < 10 && chi2_rz < 2500 ){
+                        fake_track -> DrawLine(rz_gr -> GetPointX(0), -150, rz_gr -> GetPointX(0), 150);
+                    }
+                    else {
+                        TLine * false_track = new TLine(rz_gr -> GetPointX(0), -150, rz_gr -> GetPointX(0), 150);
+                        false_track -> SetLineColor(42);
+                        false_track -> SetLineStyle(2);
+                        false_track -> Draw("lsame");
+                    }
+                    draw_text -> DrawLatex(0.2, 0.82, Form("Used cluster : %i, Vertical !",used_clu ));
+                }
+                double avg_z = grX_avg(rz_gr);
+                draw_text -> DrawLatex(0.2, 0.79, Form("Average z : %.2f mm",avg_z ));
+                temp_event_rz -> Draw("p same");   
+                
+                if ( chi2_xy < 10 && chi2_rz < 2500 ){
+                    cosmic_z_hist -> Fill(avg_z);
+                }
+
+
+                if (print_event_display) {c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display_fit.pdf",mother_folder_directory.c_str(),file_name.c_str()));}
+            }
+            
             pad_xy -> Clear();
             pad_rz -> Clear();
             pad_z  -> Clear(); 
-
-            tree_out -> Fill();
         }
 
         for ( int inner_i = 0; inner_i < temp_sPH_inner_nocolumn_vec.size(); inner_i++ )
@@ -633,14 +897,9 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
         temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(2);
         temp_sPH_inner_nocolumn_vec.clear();
         temp_sPH_outer_nocolumn_vec.clear();
-
-        out_clu_x.clear();
-        out_clu_y.clear();
-        out_clu_z.clear();
-        out_clu_r_sign.clear();
     } // note : end of event 
 
-    c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display.pdf)",mother_folder_directory.c_str(),file_name.c_str()));
+    if (print_event_display) {c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display_fit.pdf)",mother_folder_directory.c_str(),file_name.c_str()));}
     c2 -> Clear();
     c1 -> Clear();
     
@@ -727,11 +986,13 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
     c1 -> Print(Form("%s/folder_%s_cosmic/inner_outer_pos_xy.pdf",mother_folder_directory.c_str(),file_name.c_str()));
     c1 -> Clear();
 
-    tree_out->SetDirectory(out_file);
-    tree_out -> Write("", TObject::kOverwrite);
-    cout<<"output file generated"<<endl;
+    cosmic_phi_hist -> Draw("hist");
+    c1 -> Print(Form("%s/folder_%s_cosmic/cosmic_phi_hist.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    c1 -> Clear();
 
-    out_file -> Close();
+    cosmic_z_hist -> Draw("hist");
+    c1 -> Print(Form("%s/folder_%s_cosmic/cosmic_z_hist.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    c1 -> Clear();
 
     
 }
