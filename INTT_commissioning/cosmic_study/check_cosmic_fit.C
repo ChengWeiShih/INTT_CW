@@ -337,9 +337,9 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     TCanvas * c1 = new TCanvas("","",1000,800);
     c1 -> cd();
     
-    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/cosmic/25184";
+    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/cosmic/25566";
     // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_ideal_excludeR1500_100kEvent";
-    string file_name = "cosmics_inttall-00025184-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR200_100kEvent";
+    string file_name = "cosmics_inttall-00025566-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR1000_100kEvent";
 
     // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
     // string file_name = "beam_inttall-00024767-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
@@ -355,10 +355,10 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     double zvtx_hist_l = -500;
     double zvtx_hist_r = 500;
 
-    int Nhit_cut = 300;           // note : if (> Nhit_cut)          -> continue
+    int Nhit_cut = 1000;           // note : if (> Nhit_cut)          -> continue
     int clu_size_cut = 4;         // note : if (> clu_size_cut)      -> continue
-    double clu_sum_adc_cut = 14;  // note : if (< clu_sum_adc_cut)   -> continue
-    int N_clu_cut = 20;          // note : if (> N_clu_cut)         -> continue  unit number
+    double clu_sum_adc_cut = 26;  // note : if (< clu_sum_adc_cut)   -> continue
+    int N_clu_cut = 50;          // note : if (> N_clu_cut)         -> continue  unit number
     double phi_diff_cut = 5.72;   // note : if (< phi_diff_cut)      -> pass      unit degree
     double DCA_cut = 4;           // note : if (< DCA_cut)           -> pass      unit mm
     int zvtx_cal_require = 15;    // note : if (> zvtx_cal_require)  -> pass
@@ -573,8 +573,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
         if (N_cluster_inner == 0 || N_cluster_outer == 0) continue;
         if (N_cluster_inner == -1 || N_cluster_outer == -1) continue;
         // if ((N_cluster_inner + N_cluster_outer) < zvtx_cal_require) continue;
-        if (N_cluster_inner > 10) continue;
-        if (N_cluster_outer > 10) continue;
+        // if (N_cluster_inner > 10) continue;
+        // if (N_cluster_outer > 10) continue;
         
 
         // note : apply some selection to remove the hot channels
@@ -594,9 +594,15 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
             // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 55 && phi_vec -> at(clu_i) < 65) continue;
             // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 348 && phi_vec -> at(clu_i) < 353) continue;
             // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 265 && phi_vec -> at(clu_i) < 270) continue; // todo : for the 2023_08_01/24767
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 237.5 && phi_vec -> at(clu_i) < 242.5) continue;
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 297.5 && phi_vec -> at(clu_i) < 302.5) continue;
             if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 258 && phi_vec -> at(clu_i) < 262) continue; 
             if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 268 && phi_vec -> at(clu_i) < 272) continue; 
+            
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 210 && phi_vec -> at(clu_i) < 214) continue; 
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 260 && phi_vec -> at(clu_i) < 270) continue; 
 
+            if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 349 ) continue; 
 
             // // note : outer
             // if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) < -70 && x_vec -> at(clu_i) > -75 && y_vec -> at(clu_i) > 70 && y_vec -> at(clu_i) < 80 ) continue;
@@ -606,9 +612,15 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
             // if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 335 && phi_vec -> at(clu_i) < 340) continue;
             // if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 105 && phi_vec -> at(clu_i) < 115) continue;
             // if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 25 && phi_vec -> at(clu_i) < 47) continue; // todo : for the "new_DAC_Scan_0722/AllServer/DAC2"
-            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 23 && phi_vec -> at(clu_i) < 27) continue; 
-            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 121 && phi_vec -> at(clu_i) < 125) continue; 
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 37.5 && phi_vec -> at(clu_i) < 43) continue;
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 105 && phi_vec -> at(clu_i) < 120) continue;  
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 135 && phi_vec -> at(clu_i) < 145) continue;
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 167.5 && phi_vec -> at(clu_i) < 172.5) continue; 
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 220 && phi_vec -> at(clu_i) < 230) continue; 
 
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 23 && phi_vec -> at(clu_i) < 28) continue; 
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 121 && phi_vec -> at(clu_i) < 125) continue; 
+            if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 275.5 && phi_vec -> at(clu_i) < 277) continue;
 
             temp_sPH_nocolumn_vec[0].push_back( (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i) );
             temp_sPH_nocolumn_vec[1].push_back( (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i) );
@@ -681,7 +693,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
             continue;
         }
 
-        if ( temp_sPH_inner_nocolumn_vec.size() > 1 && temp_sPH_outer_nocolumn_vec.size() > 1 && 3 < temp_sPH_nocolumn_vec[0].size() && temp_sPH_nocolumn_vec[0].size() < 9  ) // note : at least 3 points, 4 to 8 (allow some noise hits)
+        if ( temp_sPH_inner_nocolumn_vec.size() > 1 && temp_sPH_outer_nocolumn_vec.size() > 1 && 3 < temp_sPH_nocolumn_vec[0].size() && temp_sPH_nocolumn_vec[0].size() < 40  ) // note : at least 3 points, 4 to 8 (allow some noise hits)
         {
             TGraph * temp_event_xy = new TGraph(temp_sPH_nocolumn_vec[0].size(),&temp_sPH_nocolumn_vec[0][0],&temp_sPH_nocolumn_vec[1][0]);
             temp_event_xy -> SetTitle("INTT event display X-Y plane");
@@ -704,7 +716,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
 
             double valid_valid_count = 0;
 
-            int select_max = (temp_sPH_nocolumn_vec[0].size() > 8) ? 9 : temp_sPH_nocolumn_vec[0].size() + 1;
+            int select_max = (temp_sPH_nocolumn_vec[0].size() > 7) ? 8 : temp_sPH_nocolumn_vec[0].size() + 1;
             vector<int> ele_index(temp_sPH_nocolumn_vec[0].size()); std::iota(ele_index.begin(), ele_index.end(), 0);
             for (int clu_i = 4; clu_i < select_max; clu_i++ ) // note use "clu_i" element to do the fitting at least 4 elements, along with maximum 8
             {                

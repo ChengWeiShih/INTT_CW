@@ -62,7 +62,7 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
 
     // vector<int> adc_config = {15, 30, 60, 90, 120, 150, 180, 210, 240};
     vector<vector<int>> adc_setting_run = {	
-        {25, 30, 60, 90, 120, 150, 180, 210, 240},
+        {15, 30, 60, 90, 120, 150, 180, 210, 240}, // todo : modify the threshold
         {8  , 12 , 16 , 20 , 24 , 28 , 32 , 36 },
         {28 , 32 , 36 , 40 , 44 , 48 , 52 , 56 }, // note : 2
         {48 , 52 , 56 , 60 , 64 , 68 , 72 , 76 }, // note : 3
@@ -175,8 +175,10 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
         N_hits = fNhits;
         bco_full_out = bco_full[0];
 
+        bool check_bco_tag = (bco_full_out == 881787581811) ? true : false;
+
         // todo : the fNhits cut is here 
-        if (fNhits > Nhit_cut ) {
+        if ( fNhits > Nhit_cut ) {
             clu_vec.clear();
             single_event_hit_vec.clear(); single_event_hit_vec = vector<vector<vector<hit_info>>>(N_server, single_event_hit_ladder_vec);
             
@@ -224,6 +226,7 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
 
                 // if ( (pid[i1] - 3001) == 7 && module[i1] == 0 ) continue;
                 
+                // todo : mask some channels here
                 if ( pid[i1] == 3002 && module[i1] == 2 && chip_id[i1] == 15 && chan_id[i1] == 0 ) continue;
                 
                 if ( pid[i1] == 3003 && module[i1] == 1 && chip_id[i1] == 8 && chan_id[i1] == 0 ) continue;
@@ -232,10 +235,49 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
 
                 if ( pid[i1] == 3007 && module[i1] == 12 && chip_id[i1] == 19 && chan_id[i1] == 0 ) continue;
 
-                
+
+                // note : for the straming readout test
+                if ( pid[i1] == 3001 && module[i1] == 1 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6 && chip_id[i1] > 13 ) continue;
+
+                if ( pid[i1] == 3002 && module[i1] == 2 && chip_id[i1] == 15 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 14 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 17 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 19 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 20 ) continue;
+
+                if ( pid[i1] == 3003 && module[i1] == 1 && chip_id[i1] == 8 ) continue;
+
+                // if ( pid[i1] == 3003 && module[i1] == 5 && chip_id[i1] == 13 ) continue;
+                // if ( pid[i1] == 3003 && module[i1] == 12 && chip_id[i1] == 4 ) continue;
+                // if ( pid[i1] == 3003 && module[i1] == 10 && chip_id[i1] == 25 ) continue;
+
+                if ( pid[i1] == 3004 && module[i1] == 8 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 13 && chip_id[i1] == 19 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 1 && chip_id[i1] == 1 ) continue;
+
+                // if ( pid[i1] == 3005 && module[i1] == 10 && chip_id[i1] == 3 ) continue;
+                if ( pid[i1] == 3005 && module[i1] == 10 && chip_id[i1] == 10 ) continue;
+
+                if ( pid[i1] == 3006 && module[i1] == 3 && chip_id[i1] == 3 ) continue;
+
+                // if ( pid[i1] == 3006 && module[i1] == 2 && chip_id[i1] < 14 ) continue;
+                // if ( pid[i1] == 3006 && module[i1] == 1 && chip_id[i1] > 15 ) continue;
+                // if ( pid[i1] == 3006 && module[i1] == 5 && chip_id[i1] > 18 ) continue;
+
+                if ( pid[i1] == 3007 && module[i1] == 1 && chip_id[i1] == 12 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 1 && chip_id[i1] == 11 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 12 && chip_id[i1] == 19 ) continue;
+
+                if (check_bco_tag) 
+                {
+                    cout<<"test event : "<<chip_id[i1]<<" "<<chan_id[i1]<<" "<<adc[i1]<<" "<<adc_convert[adc[i1]]<<endl;
+                }
+
+                // todo : change the BCO cut
                 // int bco_diff = ( (bco_full[i1]&0x7F - bco[i1]) < 0 ) ? (bco_full[i1]&0x7F - bco[i1]) + 128 : (bco_full[i1]&0x7F - bco[i1]);
                 // cout<<"test : "<<bco_diff<<endl;
-                // if (bco_diff < 58 || bco_diff > 63) continue;
+                // if (bco_diff < 24 || bco_diff > 30) continue;
 
                 single_event_hit_vec[ (pid[i1] - 1) % 3000 ][ module[i1] ].push_back({chip_id[i1], chan_id[i1], adc[i1], adc_convert[adc[i1]]});
             }
@@ -254,6 +296,12 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
 
                     for (int clu_i = 0; clu_i < clu_vec.size(); clu_i++)
                     {
+                        
+                        if (check_bco_tag)
+                        {
+                            cout<<"after cluster : "<<clu_vec[clu_i].column<<" "<<clu_vec[clu_i].sum_adc_conv<<" "<<clu_vec[clu_i].size<<" "<<clu_vec[clu_i].x<<" "<<clu_vec[clu_i].y<<" "<<clu_vec[clu_i].z<<" "<<clu_vec[clu_i].layer<<" "<<clu_vec[clu_i].phi<<endl;
+                        }
+
                         column_out_vec.push_back( clu_vec[clu_i].column );
                         avg_chan_out_vec.push_back( clu_vec[clu_i].avg_chan );
                         sum_adc_out_vec.push_back( clu_vec[clu_i].sum_adc );
