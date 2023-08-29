@@ -226,48 +226,168 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
 
                 // if ( (pid[i1] - 3001) == 7 && module[i1] == 0 ) continue;
                 
-                // todo : mask some channels here
-                if ( pid[i1] == 3002 && module[i1] == 2 && chip_id[i1] == 15 && chan_id[i1] == 0 ) continue;
+                // // todo : mask some channels here
+                // if ( pid[i1] == 3002 && module[i1] == 2 && chip_id[i1] == 15 && chan_id[i1] == 0 ) continue;
                 
-                if ( pid[i1] == 3003 && module[i1] == 1 && chip_id[i1] == 8 && chan_id[i1] == 0 ) continue;
+                // if ( pid[i1] == 3003 && module[i1] == 1 && chip_id[i1] == 8 && chan_id[i1] == 0 ) continue;
                 
-                if ( pid[i1] == 3007 && module[i1] == 1 && chan_id[i1] == 0 ) continue;
+                // if ( pid[i1] == 3007 && module[i1] == 1 && chan_id[i1] == 0 ) continue;
 
-                if ( pid[i1] == 3007 && module[i1] == 12 && chip_id[i1] == 19 && chan_id[i1] == 0 ) continue;
+                // if ( pid[i1] == 3007 && module[i1] == 12 && chip_id[i1] == 19 && chan_id[i1] == 0 ) continue;
 
 
-                // note : for the straming readout test
+                // // note : for the straming readout test
                 if ( pid[i1] == 3001 && module[i1] == 1 ) continue;
-                if ( pid[i1] == 3001 && module[i1] == 6 && chip_id[i1] > 13 ) continue;
+                // if ( pid[i1] == 3001 && module[i1] == 6 && chip_id[i1] > 13 ) continue;
 
-                if ( pid[i1] == 3002 && module[i1] == 2 && chip_id[i1] == 15 ) continue;
-                if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 14 ) continue;
-                if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 17 ) continue;
-                if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 19 ) continue;
-                if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 20 ) continue;
+                // if ( pid[i1] == 3002 && module[i1] == 2 && chip_id[i1] == 15 ) continue;
+                // if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 14 ) continue;
+                // if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 17 ) continue;
+                // if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 19 ) continue;
+                // if ( pid[i1] == 3002 && module[i1] == 1 && chip_id[i1] == 20 ) continue;
 
-                if ( pid[i1] == 3003 && module[i1] == 1 && chip_id[i1] == 8 ) continue;
+                // if ( pid[i1] == 3003 && module[i1] == 1 && chip_id[i1] == 8 ) continue;
 
-                // if ( pid[i1] == 3003 && module[i1] == 5 && chip_id[i1] == 13 ) continue;
-                // if ( pid[i1] == 3003 && module[i1] == 12 && chip_id[i1] == 4 ) continue;
-                // if ( pid[i1] == 3003 && module[i1] == 10 && chip_id[i1] == 25 ) continue;
+                // // if ( pid[i1] == 3003 && module[i1] == 5 && chip_id[i1] == 13 ) continue;
+                // // if ( pid[i1] == 3003 && module[i1] == 12 && chip_id[i1] == 4 ) continue;
+                // // if ( pid[i1] == 3003 && module[i1] == 10 && chip_id[i1] == 25 ) continue;
 
                 if ( pid[i1] == 3004 && module[i1] == 8 ) continue;
-                if ( pid[i1] == 3004 && module[i1] == 13 && chip_id[i1] == 19 ) continue;
-                if ( pid[i1] == 3004 && module[i1] == 1 && chip_id[i1] == 1 ) continue;
+                // if ( pid[i1] == 3004 && module[i1] == 13 && chip_id[i1] == 19 ) continue;
+                // if ( pid[i1] == 3004 && module[i1] == 1 && chip_id[i1] == 1 ) continue;
 
-                // if ( pid[i1] == 3005 && module[i1] == 10 && chip_id[i1] == 3 ) continue;
-                if ( pid[i1] == 3005 && module[i1] == 10 && chip_id[i1] == 10 ) continue;
+                // // if ( pid[i1] == 3005 && module[i1] == 10 && chip_id[i1] == 3 ) continue;
+                // if ( pid[i1] == 3005 && module[i1] == 10 && chip_id[i1] == 10 ) continue;
 
-                if ( pid[i1] == 3006 && module[i1] == 3 && chip_id[i1] == 3 ) continue;
+                // if ( pid[i1] == 3006 && module[i1] == 3 && chip_id[i1] == 3 ) continue;
 
-                // if ( pid[i1] == 3006 && module[i1] == 2 && chip_id[i1] < 14 ) continue;
-                // if ( pid[i1] == 3006 && module[i1] == 1 && chip_id[i1] > 15 ) continue;
-                // if ( pid[i1] == 3006 && module[i1] == 5 && chip_id[i1] > 18 ) continue;
+                // // if ( pid[i1] == 3006 && module[i1] == 2 && chip_id[i1] < 14 ) continue;
+                // // if ( pid[i1] == 3006 && module[i1] == 1 && chip_id[i1] > 15 ) continue;
+                // // if ( pid[i1] == 3006 && module[i1] == 5 && chip_id[i1] > 18 ) continue;
 
-                if ( pid[i1] == 3007 && module[i1] == 1 && chip_id[i1] == 12 ) continue;
-                if ( pid[i1] == 3007 && module[i1] == 1 && chip_id[i1] == 11 ) continue;
-                if ( pid[i1] == 3007 && module[i1] == 12 && chip_id[i1] == 19 ) continue;
+                // if ( pid[i1] == 3007 && module[i1] == 1 && chip_id[i1] == 12 ) continue;
+                // if ( pid[i1] == 3007 && module[i1] == 1 && chip_id[i1] == 11 ) continue;
+                // if ( pid[i1] == 3007 && module[i1] == 12 && chip_id[i1] == 19 ) continue;
+
+
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 13 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 13 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 14 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 14 && chan_id[i1] == 112 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 14 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 15 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 15 && chan_id[i1] == 110 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 15 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 16 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 16 && chan_id[i1] == 104 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 17 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 17 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 18 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 19 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 20 && chan_id[i1] == 116 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 20 && chan_id[i1] == 122 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 20 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 21 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 22 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 22 && chan_id[i1] == 127 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 23 && chan_id[i1] == 102 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 24 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 25 && chan_id[i1] == 124 ) continue;
+                if ( pid[i1] == 3001 && module[i1] == 6  && chip_id[i1] == 25 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 2  && chip_id[i1] == 14 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 7  && chip_id[i1] == 15 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 7  && chip_id[i1] == 16 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 7  && chip_id[i1] == 16 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 7  && chip_id[i1] == 16 && chan_id[i1] == 127 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 7  && chip_id[i1] == 17 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 7  && chip_id[i1] == 17 && chan_id[i1] == 116 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 7  && chip_id[i1] == 17 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 7  && chip_id[i1] == 18 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 7  && chip_id[i1] == 19 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 7  && chip_id[i1] == 22 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 7  && chip_id[i1] == 23 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 10  && chip_id[i1] == 17 && chan_id[i1] == 86 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 11  && chip_id[i1] == 9 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 11  && chip_id[i1] == 10 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3002 && module[i1] == 11  && chip_id[i1] == 12 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3003 && module[i1] == 1  && chip_id[i1] == 7 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3003 && module[i1] == 12  && chip_id[i1] == 3 && chan_id[i1] == 20 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 1  && chip_id[i1] == 0 && chan_id[i1] == 36 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 2 && chan_id[i1] == 124 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 2 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 3 && chan_id[i1] == 106 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 3 && chan_id[i1] == 120 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 3 && chan_id[i1] == 124 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 3 && chan_id[i1] == 127 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 4 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 4 && chan_id[i1] == 90 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 4 && chan_id[i1] == 98 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 4 && chan_id[i1] == 114 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 4 && chan_id[i1] == 118 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 4 && chan_id[i1] == 120 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 4 && chan_id[i1] == 124 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 4 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 5 && chan_id[i1] == 118 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 5 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 6 && chan_id[i1] == 112 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 6 && chan_id[i1] == 114 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 6 && chan_id[i1] == 116 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 6 && chan_id[i1] == 118 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 6 && chan_id[i1] == 120 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 6 && chan_id[i1] == 127 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 7 && chan_id[i1] == 112 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 7 && chan_id[i1] == 124 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 7 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 8 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 8 && chan_id[i1] == 110 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 8 && chan_id[i1] == 112 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 8 && chan_id[i1] == 122 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 8 && chan_id[i1] == 124 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 8 && chan_id[i1] == 127 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 9 && chan_id[i1] == 118 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 9 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 10 && chan_id[i1] == 122 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 10 && chan_id[i1] == 124 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 10 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 11 && chan_id[i1] == 114 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 11 && chan_id[i1] == 118 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 11 && chan_id[i1] == 120 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 11 && chan_id[i1] == 124 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 12 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 12 && chan_id[i1] == 106 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 12 && chan_id[i1] == 112 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 12 && chan_id[i1] == 118 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 12 && chan_id[i1] == 122 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 12 && chan_id[i1] == 124 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 14 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 16 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 17 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 18 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 19 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 21 && chan_id[i1] == 122 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 21 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 21 && chan_id[i1] == 127 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 22 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 23 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 8  && chip_id[i1] == 25 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3004 && module[i1] == 13  && chip_id[i1] == 18 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3005 && module[i1] == 8  && chip_id[i1] == 15 && chan_id[i1] == 98 ) continue;
+                if ( pid[i1] == 3006 && module[i1] == 4  && chip_id[i1] == 13 && chan_id[i1] == 40 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 1  && chip_id[i1] == 10 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 1  && chip_id[i1] == 11 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 2  && chip_id[i1] == 3 && chan_id[i1] == 122 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 2  && chip_id[i1] == 3 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 2  && chip_id[i1] == 4 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 2  && chip_id[i1] == 14 && chan_id[i1] == 127 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 2  && chip_id[i1] == 15 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 2  && chip_id[i1] == 16 && chan_id[i1] == 106 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 2  && chip_id[i1] == 16 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 2  && chip_id[i1] == 17 && chan_id[i1] == 127 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 2  && chip_id[i1] == 19 && chan_id[i1] == 126 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 10  && chip_id[i1] == 9 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 10  && chip_id[i1] == 10 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 10  && chip_id[i1] == 12 && chan_id[i1] == 0 ) continue;
+                if ( pid[i1] == 3007 && module[i1] == 12  && chip_id[i1] == 18 && chan_id[i1] == 0 ) continue;
 
                 if (check_bco_tag) 
                 {

@@ -233,9 +233,9 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
     TCanvas * c1 = new TCanvas("","",1000,800);
     c1 -> cd();
     
-    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/cosmic/25814";
+    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/cosmic/25926";
     // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_ideal_excludeR1500_100kEvent";
-    string file_name = "cosmics_inttall-00025814-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR200_100kEvent";
+    string file_name = "cosmics_inttall-00025926-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500_100kEvent_10HotCut";
 
     // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
     // string file_name = "beam_inttall-00024767-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
@@ -251,10 +251,11 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
     double zvtx_hist_l = -500;
     double zvtx_hist_r = 500;
 
-    int Nhit_cut = 40;           // note : if (> Nhit_cut)          -> continue
+    int Nhit_cut = 500;           // note : if (> Nhit_cut)          -> continue
     int clu_size_cut = 4;         // note : if (> clu_size_cut)      -> continue
     double clu_sum_adc_cut = 23;  // note : if (< clu_sum_adc_cut)   -> continue
     int N_clu_cut = 10;          // note : if (> N_clu_cut)         -> continue  unit number
+    
     double phi_diff_cut = 5.72;   // note : if (< phi_diff_cut)      -> pass      unit degree
     double DCA_cut = 4;           // note : if (< DCA_cut)           -> pass      unit mm
     int zvtx_cal_require = 15;    // note : if (> zvtx_cal_require)  -> pass
@@ -439,7 +440,7 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
     int N_clu;
     int eID_out;
 
-    TFile * out_file = new TFile(Form("%s/folder_%s_cosmic/INTT_eventdisplay_cluster_forHR.root",mother_folder_directory.c_str(),file_name.c_str()),"RECREATE");
+    TFile * out_file = new TFile(Form("%s/folder_%s_cosmic/INTT_eventdisplay_cluster.root",mother_folder_directory.c_str(),file_name.c_str()),"RECREATE");
     TTree * tree_out =  new TTree ("tree_clu", "clustering info. for event display");
     tree_out -> Branch("eID",&eID_out);
     tree_out -> Branch("bco_full",&bco_full_out);
@@ -451,7 +452,7 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
 
 
     
-    c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display_forHR.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
+    c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
 
     for (int event_i = 0; event_i < N_event; event_i++)
     {
@@ -474,8 +475,8 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
         if (N_cluster_inner == 0 || N_cluster_outer == 0) continue;
         if (N_cluster_inner == -1 || N_cluster_outer == -1) continue;
         // // if ((N_cluster_inner + N_cluster_outer) < zvtx_cal_require) continue;
-        if (N_cluster_inner > 5) continue;
-        if (N_cluster_outer > 5) continue;
+        // if (N_cluster_inner != 2) continue;
+        // if (N_cluster_outer != 2) continue;
 
         
 
@@ -506,7 +507,7 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
             // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 210 && phi_vec -> at(clu_i) < 214) continue; 
             // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 260 && phi_vec -> at(clu_i) < 270) continue; 
 
-            // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) > 349 ) continue; 
+            // if (layer_vec -> at(clu_i) == 0 && phi_vec -> at(clu_i) >= 349 && phi_vec -> at(clu_i) < 350 ) continue; 
 
             // // note : outer
             // if (layer_vec -> at(clu_i) == 1 && x_vec -> at(clu_i) < -70 && x_vec -> at(clu_i) > -75 && y_vec -> at(clu_i) > 70 && y_vec -> at(clu_i) < 80 ) continue;
@@ -525,6 +526,7 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
             // if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 23 && phi_vec -> at(clu_i) < 28) continue; 
             // if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 121 && phi_vec -> at(clu_i) < 125) continue; 
             // if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) > 275.5 && phi_vec -> at(clu_i) < 277) continue;
+            // if (layer_vec -> at(clu_i) == 1 && phi_vec -> at(clu_i) >= 25 && phi_vec -> at(clu_i) < 26) continue;
 
             temp_sPH_nocolumn_vec[0].push_back( (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i) );
             temp_sPH_nocolumn_vec[1].push_back( (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i) );
@@ -596,7 +598,7 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
             continue;
         }
 
-        if ( temp_sPH_inner_nocolumn_vec.size() > 1 && temp_sPH_outer_nocolumn_vec.size() > 1  )
+        if ( temp_sPH_inner_nocolumn_vec.size() == 2 && temp_sPH_outer_nocolumn_vec.size() == 2  )
         {
             TGraph * temp_event_xy = new TGraph(temp_sPH_nocolumn_vec[0].size(),&temp_sPH_nocolumn_vec[0][0],&temp_sPH_nocolumn_vec[1][0]);
             temp_event_xy -> SetTitle("INTT event display X-Y plane");
@@ -632,7 +634,7 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
             pad_rz -> cd();
             temp_event_rz -> Draw("ap");   
 
-            c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display_forHR.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+            c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display.pdf",mother_folder_directory.c_str(),file_name.c_str()));
             pad_xy -> Clear();
             pad_rz -> Clear();
             pad_z  -> Clear(); 
@@ -670,7 +672,7 @@ void check_cosmic(/*pair<double,double>beam_origin*/)
         out_clu_r_sign.clear();
     } // note : end of event 
 
-    c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display_forHR.pdf)",mother_folder_directory.c_str(),file_name.c_str()));
+    c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display.pdf)",mother_folder_directory.c_str(),file_name.c_str()));
     c2 -> Clear();
     c1 -> Clear();
     
