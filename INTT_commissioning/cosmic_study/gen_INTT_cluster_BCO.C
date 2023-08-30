@@ -61,7 +61,7 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
     // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/zero_magnet_Takashi_used";
     // string file_name = "beam_inttall-00020869-0000_event_base_ana";
 
-    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/" + sub_folder_string;
+    string mother_folder_directory = "/sphenix/user/ChengWei/INTT/INTT_commissioning/" + sub_folder_string;
     // int DAC_run_ID = 0;
     // int Nhit_cut = 1500;
     // int run_Nevent = 36000;

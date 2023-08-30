@@ -37,7 +37,7 @@ to_ch_str convertToIndices(int input) {
 void hot_chan_finder()
 {   
     
-    string folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/cosmic/25952";
+    string folder_directory = "/sphenix/user/ChengWei/INTT/INTT_commissioning/cosmic/25952";
     string file_name = "cosmics_inttall-00025952-0000_event_base_ana";
     string output_directory = folder_directory + "/PreCheck_" + file_name;
     double standard_ch_ratio_typeA = 1. / (8*14*16*128); // note : typeA, 16 sensor cells
@@ -125,7 +125,7 @@ void hot_chan_finder()
     nHotCh_hist -> GetYaxis() -> SetTitle("Entry");
 
 
-    for (int i = 0; i < N_event; i++)
+    for (int i = 0; i < 250000/*N_event*/; i++)
     {
         tree -> GetEntry(i);
         if (i % 100 == 0) cout<<"running : "<<i<<endl;

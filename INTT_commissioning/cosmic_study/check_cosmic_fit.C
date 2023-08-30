@@ -398,9 +398,9 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     TCanvas * c1 = new TCanvas("","",1000,800);
     c1 -> cd();
     
-    string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/cosmic/25952";
+    string mother_folder_directory = "/sphenix/user/ChengWei/INTT/INTT_commissioning/cosmic/25952";
     // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_ideal_excludeR1500_100kEvent";
-    string file_name = "cosmics_inttall-00025952-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500_100kEvent_10HotCut";
+    string file_name = "cosmics_inttall-00025952-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500_1000kEvent_10HotCut";
 
     // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
     // string file_name = "beam_inttall-00024767-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
