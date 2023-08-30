@@ -6,3 +6,5 @@ CW test3
 CW test4
 
 CW test5
+
+WC test1
