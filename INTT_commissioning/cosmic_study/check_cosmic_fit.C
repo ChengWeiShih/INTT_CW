@@ -4,7 +4,7 @@
 // #include "../sigmaEff.h"
 
 // todo : the number of number is given by the adc_setting_run !!!
-// todo : also the range of the hist.
+// todo : also the range of the hist.  test
 // todo : the adc follows the following convention
 // todo : 1. the increment has to be 4
 // todo : remember to check the "adc_conv"
