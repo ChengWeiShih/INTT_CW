@@ -3,6 +3,7 @@
 // note : include the parameter information
 // #include "par_init.h"
 #include "double_gaus.h"
+#include "sPhenixStyle.C"
 
 // note : the structure of cluster info.
 struct cluster_str {
@@ -2875,11 +2876,11 @@ void effi_pos_plot (vector<double> input_vec_pos, vector<int> input_vec_2, TStri
 
     cout<<"============== we are making the detection efficiency plot ============== "<<endl;
     sleep(2);
-    TCanvas * c6 = new TCanvas("c6","c6",850,800);
+    TCanvas * c6 = new TCanvas("c6","c6",900,800);
     c6 -> cd();
 
     TPad *pad_obj = new TPad(Form("pad_obj"), "", 0.0, 0.0, 1.0, 1.0);
-    Characterize_Pad(pad_obj, 0.15,  0.1,  0.1,  0.12, 0, 0);
+    Characterize_Pad(pad_obj, 0.18,  0.1,  0.1,  0.12, 0, 0);
     pad_obj -> SetTicks(1,1);
     pad_obj -> Draw();
 
@@ -2890,11 +2891,25 @@ void effi_pos_plot (vector<double> input_vec_pos, vector<int> input_vec_2, TStri
     double right_pos_edge = 10;
     int N_bins_pos_hist = 20;
 
+    vector<double> grX; grX.clear();
+    vector<double> grY; grY.clear();
+    vector<double> grXeh; grXeh.clear(); // note : half of the X error
+    vector<double> grYeU; grYeU.clear(); // note : Y error up
+    vector<double> grYeL; grYeL.clear(); // note : Y error down
+
     TH1F * good_event_hist = new TH1F ("","",N_bins_pos_hist,left_pos_edge,right_pos_edge);
     TH1F * total_event_hist = new TH1F ("","",N_bins_pos_hist,left_pos_edge,right_pos_edge);
 
-    double plot_high = 1.02;
-    double plot_low  = 0.85;
+    for (int i = 0; i < good_event_hist -> GetNbinsX(); i++){
+        
+        if (i < 3 || i > 15 ) continue;
+
+        grX.push_back(good_event_hist -> GetBinCenter(i + 1));
+        grXeh.push_back( (good_event_hist -> GetBinWidth(i + 1))/2. );
+    }
+
+    double plot_high = 102;
+    double plot_low  = 95;
 
     Characterize_Hist1F(good_event_hist,0);
     Characterize_Hist1F(total_event_hist,0);
@@ -2914,84 +2929,120 @@ void effi_pos_plot (vector<double> input_vec_pos, vector<int> input_vec_2, TStri
             good_event_hist -> Fill(input_vec_pos[i]);
         }
     }
-    
+
+    SetsPhenixStyle();
+
     TEfficiency * detection_effi_pos = new TEfficiency (*good_event_hist,*total_event_hist);
-    detection_effi_pos -> SetMarkerColor(TColor::GetColor("#1A3947"));
+    for (int i = 0; i < good_event_hist -> GetNbinsX(); i++){
+
+        if (i < 3 || i > 15 ) continue;
+
+        grY.push_back(100. * detection_effi_pos -> GetEfficiency(i + 1));
+        grYeU.push_back(100. * detection_effi_pos -> GetEfficiencyErrorUp(i + 1));
+        grYeL.push_back(100. * detection_effi_pos -> GetEfficiencyErrorLow(i + 1));
+    }
+
+    for (int i = 0; i < grX.size(); i++){
+        cout<<"effi. bin : "<<i+1<<" "<<grX[i]<<" "<<grXeh[i]<<" Y : "<<grY[i]<<" YeU "<<grYeU[i]<<" YeL "<<grYeL[i]<<endl;
+    }
+
+    TGraphAsymmErrors * effi_pos_gr = new  TGraphAsymmErrors(grX.size(), &grX[0], &grY[0], &grXeh[0], &grXeh[0], &grYeL[0], &grYeU[0]);
+    effi_pos_gr -> SetMarkerStyle(20);
+    effi_pos_gr -> SetMarkerSize(0.8);
+    effi_pos_gr -> SetMarkerColor(TColor::GetColor("#1A3947"));
+    effi_pos_gr -> SetLineColor(TColor::GetColor("#1A3947"));
+    effi_pos_gr -> SetLineWidth(2);
+    effi_pos_gr -> GetYaxis() -> SetTitle("Detection efficiency [%]");
+    effi_pos_gr -> GetXaxis() -> SetTitle("Track position [mm]");
+    effi_pos_gr -> GetYaxis() -> SetRangeUser(plot_low,plot_high);
+    effi_pos_gr -> GetXaxis() -> SetLimits(-10,10);
+    effi_pos_gr -> GetXaxis() -> SetNdivisions  (505);
+
+    // detection_effi_pos -> SetMarkerColor(TColor::GetColor("#1A3947"));
     // detection_effi_pos -> SetMarkerSize(1);
     // detection_effi_pos -> SetMarkerStyle(4);
-    detection_effi_pos -> SetLineColor(TColor::GetColor("#1A3947"));
-    detection_effi_pos -> SetLineWidth(2);
+    // detection_effi_pos -> SetLineColor(TColor::GetColor("#1A3947"));
+    // detection_effi_pos -> SetLineWidth(2);
+
     // detection_effi_pos -> SetTitle("Detection efficiency vs Position");
     
     
 	// detection_effi_pos -> GetPaintedGraph() -> GetYaxis() -> SetRangeUser   (0.4, 3);
+    // detection_effi_pos -> GetXaxis() -> SetTitleOffset(1.1);
 
 	// detection_effi_pos -> GetPaintedGraph() -> GetYaxis() -> SetNdivisions  (505);
 
 
-    TLine * line_99 = new TLine(-12,0.99,12,0.99);
+    TLine * line_99 = new TLine(-10,99,10,99);
     line_99 -> SetLineColor(TColor::GetColor("#941100"));
-    line_99 -> SetLineWidth(3);
-    line_99 -> SetLineStyle(2);
+    line_99 -> SetLineWidth(5);
+    line_99 -> SetLineStyle(7);
 
     pad_obj -> cd();
-    detection_effi_pos -> Draw("ap");
+    effi_pos_gr -> Draw("ap");
 
     line_99 -> Draw("lsame");
 
-    gPad->Update(); 
-    auto graph = detection_effi_pos->GetPaintedGraph(); 
-    graph->SetMinimum(plot_low);
-    graph->SetMaximum(plot_high); 
-    gPad->Update(); 
+    TLatex *ltx = new TLatex();
+    ltx->SetNDC();
+    ltx->SetTextSize(0.045);
+    ltx->DrawLatex(gPad->GetLeftMargin(), 1 - gPad->GetTopMargin() + 0.01, "#it{#bf{sPHENIX INTT}} Beam Test 2021");
+    ltx->DrawLatex(0.4, 0.155, "*Beam spot region shown only");
+    ltx->DrawLatex(0.53, 0.835, "Run 52, Dec 10, 2021");
 
-    TLine * edge_exclusion_line_pos = new TLine(edge_exclusion_upper, plot_low, edge_exclusion_upper, plot_high);
-    edge_exclusion_line_pos -> SetLineWidth(3);
-    edge_exclusion_line_pos -> SetLineColor(TColor::GetColor("#A08144"));
-    edge_exclusion_line_pos -> SetLineStyle(2);
+    // gPad->Update(); 
+    // auto graph = detection_effi_pos->GetPaintedGraph(); 
+    // graph->SetMinimum(plot_low);
+    // graph->SetMaximum(plot_high); 
+    // gPad->Update(); 
 
-    TLine * edge_exclusion_line_neg = new TLine(edge_exclusion_bottom, plot_low, edge_exclusion_bottom, plot_high);
-    edge_exclusion_line_neg -> SetLineWidth(3);
-    edge_exclusion_line_neg -> SetLineColor(TColor::GetColor("#A08144"));
-    edge_exclusion_line_neg -> SetLineStyle(2);
+    // TLine * edge_exclusion_line_pos = new TLine(edge_exclusion_upper, plot_low, edge_exclusion_upper, plot_high);
+    // edge_exclusion_line_pos -> SetLineWidth(3);
+    // edge_exclusion_line_pos -> SetLineColor(TColor::GetColor("#A08144"));
+    // edge_exclusion_line_pos -> SetLineStyle(2);
+
+    // TLine * edge_exclusion_line_neg = new TLine(edge_exclusion_bottom, plot_low, edge_exclusion_bottom, plot_high);
+    // edge_exclusion_line_neg -> SetLineWidth(3);
+    // edge_exclusion_line_neg -> SetLineColor(TColor::GetColor("#A08144"));
+    // edge_exclusion_line_neg -> SetLineStyle(2);
 
     double beam_spot_line_height = 1.007;
     double beam_spot_edge_width = 0.002;
 
     // note : for the beam spot region
-    TLine * beam_spot_hor = new TLine(beam_spot_range[0], beam_spot_line_height, beam_spot_range[1], beam_spot_line_height);
-    beam_spot_hor -> SetLineWidth(3);
-    beam_spot_hor -> SetLineColor(TColor::GetColor("#009193"));
-    beam_spot_hor -> SetLineStyle(2);
-    // note : for the beam spot region
-    TLine * beam_spot_ver_l = new TLine(beam_spot_range[0], beam_spot_line_height - beam_spot_edge_width, beam_spot_range[0], beam_spot_line_height + beam_spot_edge_width);
-    beam_spot_ver_l -> SetLineWidth(3);
-    beam_spot_ver_l -> SetLineColor(TColor::GetColor("#009193"));
-    beam_spot_ver_l -> SetLineStyle(2);
-    // note : for the beam spot region
-    TLine * beam_spot_ver_r = new TLine(beam_spot_range[1], beam_spot_line_height - beam_spot_edge_width, beam_spot_range[1], beam_spot_line_height + beam_spot_edge_width);
-    beam_spot_ver_r -> SetLineWidth(3);
-    beam_spot_ver_r -> SetLineColor(TColor::GetColor("#009193 "));
-    beam_spot_ver_r -> SetLineStyle(2);
+    // TLine * beam_spot_hor = new TLine(beam_spot_range[0], beam_spot_line_height, beam_spot_range[1], beam_spot_line_height);
+    // beam_spot_hor -> SetLineWidth(3);
+    // beam_spot_hor -> SetLineColor(TColor::GetColor("#009193"));
+    // beam_spot_hor -> SetLineStyle(2);
+    // // note : for the beam spot region
+    // TLine * beam_spot_ver_l = new TLine(beam_spot_range[0], beam_spot_line_height - beam_spot_edge_width, beam_spot_range[0], beam_spot_line_height + beam_spot_edge_width);
+    // beam_spot_ver_l -> SetLineWidth(3);
+    // beam_spot_ver_l -> SetLineColor(TColor::GetColor("#009193"));
+    // beam_spot_ver_l -> SetLineStyle(2);
+    // // note : for the beam spot region
+    // TLine * beam_spot_ver_r = new TLine(beam_spot_range[1], beam_spot_line_height - beam_spot_edge_width, beam_spot_range[1], beam_spot_line_height + beam_spot_edge_width);
+    // beam_spot_ver_r -> SetLineWidth(3);
+    // beam_spot_ver_r -> SetLineColor(TColor::GetColor("#009193 "));
+    // beam_spot_ver_r -> SetLineStyle(2);
 
 
-    TLegend *legend1 = new TLegend (0.38-effi_pos_legend_offset, 0.35, 0.6-effi_pos_legend_offset, 0.5);
-	legend1 -> SetTextSize (0.032);
+    TLegend *legend1 = new TLegend (0.33-effi_pos_legend_offset, 0.35, 0.6-effi_pos_legend_offset, 0.5);
+	legend1 -> SetTextSize (0.045);
 	// legend1 -> SetNColumns (4);
     legend1 -> SetBorderSize(0);
-    legend1 -> AddEntry (edge_exclusion_line_pos, Form("Edge exclusion cut"),  "l");
-    legend1 -> AddEntry (line_99, Form("Effi. 99%% line"),  "l");
-    legend1 -> AddEntry (beam_spot_hor, Form("Beam-spot region"),  "l");
+    // legend1 -> AddEntry (edge_exclusion_line_pos, Form("Edge exclusion cut"),  "l");
+    legend1 -> AddEntry (line_99, Form("99%% efficiency line"),  "l");
+    // legend1 -> AddEntry (beam_spot_hor, Form("Beam-spot region"),  "l");
 
 
-    edge_exclusion_line_pos -> Draw("lsame");
-    edge_exclusion_line_neg -> Draw("lsame");
-    beam_spot_hor -> Draw("lsame");
-    beam_spot_ver_l -> Draw("lsame");
-    beam_spot_ver_r -> Draw("lsame");
+    // edge_exclusion_line_pos -> Draw("lsame");
+    // edge_exclusion_line_neg -> Draw("lsame");
+    // beam_spot_hor -> Draw("lsame");
+    // beam_spot_ver_l -> Draw("lsame");
+    // beam_spot_ver_r -> Draw("lsame");
     legend1 -> Draw("same");
 
-    c6 -> Print( Form("%s/Effi_Pos_U%i_pub.pdf",folder_direction.Data(),study_chip) );
+    c6 -> Print( Form("%s/Effi_Pos_U%i_pub_gr.pdf",folder_direction.Data(),study_chip) );
     c6 -> Clear();
 
 }

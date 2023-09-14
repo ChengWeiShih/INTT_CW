@@ -21,8 +21,8 @@ void run52_U8_MC_comp_trial()
 
     TString MC_class_name = "MC_run52_U11";
     int MC_Initialize_mode = 0;
-    TString MC_folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_run52_MC_run_20230716_1/new_class_attempt";
-    TString MC_cluster_file_name = "cluster_information_offset-0.0000_adcinfo_DoubleTrigger";
+    TString MC_folder_direction = "/data4/chengwei/Geant4/INTT_simulation/G4/for_CW/BeamTest2021_data_MC_file_plot_final/MC_file/MC_run52/folder_run52_MC_run_20230716_2/new_class_attempt";
+    TString MC_cluster_file_name = "cluster_information_offset-0.0000_adcinfo_SingleTrigger";
     int MC_study_chip = 11;
     double MC_cluster_adc_value_requirement = 0; // note : it's a cut
     // double MC_l1_alignment_correction
