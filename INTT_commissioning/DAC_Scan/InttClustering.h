@@ -117,7 +117,10 @@ namespace InttClustering{
                         hit_pos.z,            // note : nominal strip pos in sPHENIX coordinate
                         hit_pos.layer         // note : N layer, 0 or 1.
                     });
-                    // cout<<"hit info :\t"<<hit_pos.x<<" "<<hit_pos.y<<" "<<hit_pos.z<<"\toriginal chip/chan "<<hit_seat[col][ch][0]<<" "<<hit_seat[col][ch][1]<<"\tconverted chip/chan "<<col+1<<" "<<ch<<"\tadc & adc_conv "<<hit_seat[col][ch][2]<<" "<<hit_seat[col][ch][3]<<endl;
+                    // if (hit_seat[col][ch][3] > 1000){
+                    //     cout<<"before clustering, hit info :\t"<<hit_pos.x<<" "<<hit_pos.y<<" "<<hit_pos.z<<"\toriginal chip/chan "<<hit_seat[col][ch][0]<<" "<<hit_seat[col][ch][1]<<"\tconverted chip/chan "<<col+1<<" "<<ch<<"\tadc & adc_conv "<<hit_seat[col][ch][2]<<" "<<hit_seat[col][ch][3]<<endl;
+                    // }
+                    
                 }
             } // note : end 256 chan check
 
@@ -153,6 +156,9 @@ namespace InttClustering{
                         hit_pro_vec[0].layer, // note : layer
                         ((pos_y_truck / pos_y_truck_denominator) < 0) ? atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()) + 360 : atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi())
                     });
+                    // if (sum_adc_conv > 1000){
+                    //     cout<<"~~~~ bug check 1, column : "<<col + 1<<" avg_chan : "<<chan_truck / chan_truck_denominator<<" sum_adc : "<<sum_adc <<" sum_adc_conv : "<<sum_adc_conv <<" size : "<<num_hit <<" avg_posX : "<<pos_x_truck / pos_x_truck_denominator <<" avg_posY : "<<pos_y_truck / pos_y_truck_denominator <<" Z : "<<hit_pro_vec[0].z<<" layer : "<<hit_pro_vec[0].layer<<endl;
+                    // }
                     // cout<<"~~~~~~ test clustering func, "<<pos_x_truck / pos_x_truck_denominator<<" "<<pos_y_truck / pos_y_truck_denominator<<endl;
                     // cout<<"("<<pos_x_truck/pos_x_truck_denominator<<","<<pos_y_truck/pos_y_truck_denominator<<"),";
                 }
@@ -192,6 +198,10 @@ namespace InttClustering{
                                 hit_pro_vec[0].layer, // note : layer
                                 ((pos_y_truck / pos_y_truck_denominator) < 0) ? atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()) + 360 : atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi())
                             });
+                            // if (sum_adc_conv > 1000){
+                            //     cout<<"~~~~ bug check 2, column : "<<col + 1<<" avg_chan : "<<chan_truck / chan_truck_denominator<<" sum_adc : "<<sum_adc <<" sum_adc_conv : "<<sum_adc_conv <<" size : "<<num_hit <<" avg_posX : "<<pos_x_truck / pos_x_truck_denominator <<" avg_posY : "<<pos_y_truck / pos_y_truck_denominator <<" Z : "<<hit_pro_vec[0].z<<" layer : "<<hit_pro_vec[0].layer<<endl;
+                            // }
+
                             // cout<<"~~~~~~ test clustering func, "<<pos_x_truck / pos_x_truck_denominator<<" "<<pos_y_truck / pos_y_truck_denominator<<endl;
                             // cout<<"("<<pos_x_truck/pos_x_truck_denominator<<","<<pos_y_truck/pos_y_truck_denominator<<"),";
                         }
@@ -212,6 +222,9 @@ namespace InttClustering{
                             hit_pro_vec[0].layer, // note : layer
                             ((pos_y_truck / pos_y_truck_denominator) < 0) ? atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()) + 360 : atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi())
                         });
+                        // if (sum_adc_conv > 1000){
+                        //     cout<<"~~~~ bug check 3, column : "<<col + 1<<" avg_chan : "<<chan_truck / chan_truck_denominator<<" sum_adc : "<<sum_adc <<" sum_adc_conv : "<<sum_adc_conv <<" size : "<<num_hit <<" avg_posX : "<<pos_x_truck / pos_x_truck_denominator <<" avg_posY : "<<pos_y_truck / pos_y_truck_denominator <<" Z : "<<hit_pro_vec[0].z<<" layer : "<<hit_pro_vec[0].layer<<endl;
+                        // }
                         // cout<<"~~~~~~ test clustering func, "<<pos_x_truck / pos_x_truck_denominator<<" "<<pos_y_truck / pos_y_truck_denominator<<endl;
                         // cout<<"("<<pos_x_truck/pos_x_truck_denominator<<","<<pos_y_truck/pos_y_truck_denominator<<"),";
 

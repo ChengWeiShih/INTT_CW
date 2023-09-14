@@ -400,7 +400,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     
     string mother_folder_directory = "/sphenix/user/ChengWei/INTT/INTT_commissioning/cosmic/25952";
     // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_ideal_excludeR1500_100kEvent";
-    string file_name = "cosmics_inttall-00025952-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500_1000kEvent_10HotCut";
+    string file_name = "cosmics_inttall-00025952-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500_1000kEvent_0HotCut";
+    gErrorIgnoreLevel = kWarning;
 
     // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
     // string file_name = "beam_inttall-00024767-0000_event_base_ana_cluster_ideal_excludeR2000_100kEvent";
@@ -429,7 +430,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     int zvtx_draw_requireL = 15;       
     int zvtx_draw_requireR = 100;   // note : if ( zvtx_draw_requireL < event && event < zvtx_draw_requireR) -> pass
     double Integrate_portion = 0.6826;
-    bool print_event_display = true;
+    bool print_event_display = true; // todo : print the plots here
     
     //todo : change the mode for drawing
     int geo_mode_id = 1;
@@ -480,9 +481,11 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     vector<clu_info> temp_sPH_inner_nocolumn_vec; temp_sPH_inner_nocolumn_vec.clear();
     vector<clu_info> temp_sPH_outer_nocolumn_vec; temp_sPH_outer_nocolumn_vec.clear();
     vector<clu_info> temp_sPH_all_nocolumn_vec; temp_sPH_all_nocolumn_vec.clear();
-    vector<vector<double>> temp_sPH_nocolumn_vec(2);
+    vector<vector<double>> temp_sPH_nocolumn_vec(4); // note : cluster x, y, Nclu, sum_adc_conv
     vector<vector<double>> temp_sPH_nocolumn_rz_vec(2);
     vector<vector<double>> temp_sPH_nocolumn_rz_error_vec(2);
+
+    gStyle->SetOptStat(10);
 
     TH2F * angle_correlation = new TH2F("","angle_correlation",361,0,361,361,0,361);
     angle_correlation -> SetStats(0);
@@ -503,6 +506,43 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     inner_pos_xy -> SetStats(0);
     inner_pos_xy -> GetXaxis() -> SetTitle("X axis");
     inner_pos_xy -> GetYaxis() -> SetTitle("Y axis");
+
+    
+
+    // TH1F * angle_inner_post_track = new TH1F("","angle_inner_post_track",361,0,361);
+    // angle_inner_post_track -> SetStats(0);
+    // angle_inner_post_track -> GetXaxis() -> SetTitle("Inner Phi (degree)");
+    // angle_inner_post_track -> GetYaxis() -> SetTitle("Entry");
+
+    TH1F * angle_inner_outer_post_track = new TH1F("","angle_inner_outer_post_track",361,0,361);
+    // angle_inner_outer_post_track -> SetStats(0);
+    angle_inner_outer_post_track -> GetXaxis() -> SetTitle("Outer Phi (degree)");
+    angle_inner_outer_post_track -> GetYaxis() -> SetTitle("Entry");
+
+    TH2F * inner_outer_pos_xy_post_track_pZ = new TH2F("","inner_outer_pos_xy_post_track_pZ",300,-150,150,300,-150,150);
+    // inner_outer_pos_xy_post_track_pZ -> SetStats(0);
+    inner_outer_pos_xy_post_track_pZ -> GetXaxis() -> SetTitle("X axis");
+    inner_outer_pos_xy_post_track_pZ -> GetYaxis() -> SetTitle("Y axis");
+
+    TH2F * inner_outer_pos_xy_post_track_nZ = new TH2F("","inner_outer_pos_xy_post_track_nZ",300,-150,150,300,-150,150);
+    // inner_outer_pos_xy_post_track_nZ -> SetStats(0);
+    inner_outer_pos_xy_post_track_nZ -> GetXaxis() -> SetTitle("X axis");
+    inner_outer_pos_xy_post_track_nZ -> GetYaxis() -> SetTitle("Y axis");
+
+    TH2F * inner_outer_pos_rz_post_track = new TH2F("","inner_outer_pos_rz_post_track",300,-250,250,300,-130,130);
+    // inner_outer_pos_rz_post_track -> SetStats(0);
+    inner_outer_pos_rz_post_track -> GetXaxis() -> SetTitle("Z axis");
+    inner_outer_pos_rz_post_track -> GetYaxis() -> SetTitle("Radius");
+
+    vector<TH2F *> Rchi2_xy_phi;
+    for (int i = 0; i < 10; i++){
+        Rchi2_xy_phi.push_back(new TH2F("",Form("Rchi2_xy_phi, z range : %i",i),181,0,181,200,0,10));
+        // Rchi2_xy_phi[i] -> SetStats(0);
+        Rchi2_xy_phi[i] -> GetXaxis() -> SetTitle("Fitting Phi [degree]");
+        Rchi2_xy_phi[i] -> GetYaxis() -> SetTitle("#chi^{2} / NDF");
+    }
+
+
 
     TH2F * outer_pos_xy = new TH2F("","outer_pos_xy",360,-150,150,360,-150,150);
     outer_pos_xy -> SetStats(0);
@@ -563,6 +603,14 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     N_cluster_inner_pass -> GetXaxis() -> SetTitle("N_cluster");
     N_cluster_inner_pass -> GetYaxis() -> SetTitle("Eentry");
 
+    TH1F * Rchi2_xy_hist = new TH1F("","Rchi2_xy_hist",100,0,10);
+    Rchi2_xy_hist -> GetXaxis() -> SetTitle("N_cluster");
+    Rchi2_xy_hist -> GetYaxis() -> SetTitle("Eentry");
+
+    TH1F * Rchi2_rZ_hist = new TH1F("","Rchi2_rZ_hist",100,0,10);
+    Rchi2_rZ_hist -> GetXaxis() -> SetTitle("N_cluster");
+    Rchi2_rZ_hist -> GetYaxis() -> SetTitle("Eentry");
+
     TH2F * N_cluster_correlation = new TH2F("","N_cluster_correlation",100,0,500,100,0,500);
     N_cluster_correlation -> SetStats(0);
     N_cluster_correlation -> GetXaxis() -> SetTitle("inner N_cluster");
@@ -580,7 +628,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     TF1 * zvtx_fitting = new TF1("","gaus",-500,500);
     // zvtx_fitting -> SetLi
 
-    TH1F * cosmic_phi_hist = new TH1F ("","cosmic_phi_hist",36,0,180);
+    TH1F * cosmic_phi_hist = new TH1F ("","cosmic_phi_hist",180,0,180);
     cosmic_phi_hist -> SetStats(0);
     cosmic_phi_hist -> GetXaxis() -> SetTitle("cosmic angle [phi]");
     cosmic_phi_hist -> GetYaxis() -> SetTitle("Entry"); 
@@ -617,6 +665,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     vector<double> out_clu_y; out_clu_y.clear();
     vector<double> out_clu_z; out_clu_z.clear();
     vector<double> out_clu_r_sign; out_clu_r_sign.clear();
+    vector<double> out_clu_size; out_clu_size.clear();
+    vector<double> out_clu_sum_adc_conv; out_clu_sum_adc_conv.clear();
     Long64_t bco_full_out;
     int N_clu;
     int eID_out;
@@ -630,6 +680,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     tree_out -> Branch("clu_y",&out_clu_y);
     tree_out -> Branch("clu_z",&out_clu_z);
     tree_out -> Branch("clu_r",&out_clu_r_sign);
+    tree_out -> Branch("clu_size",&out_clu_size);
+    tree_out -> Branch("clu_conv_adc",&out_clu_sum_adc_conv);
 
 
     TF1 * fit_xy = new TF1("fit_xy","pol1",-150,150);
@@ -655,9 +707,13 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
         tree -> GetEntry(event_i);
         unsigned int length = column_vec -> size();
 
+        if (event_i % 1000 == 0)
+            cout<<"--------- running event : "<<event_i<<endl;
+
         bco_full_out = bco_full;
         eID_out = event_i;
 
+        // note : here is kinda pre-cut, the N_cluster_inner and N_cluster_outer are without consideration of the size and adc cut
         if (N_hits > Nhit_cut) continue;
         if (N_cluster_inner == 0 || N_cluster_outer == 0) continue;
         if (N_cluster_inner == -1 || N_cluster_outer == -1) continue;
@@ -718,7 +774,9 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
 
             temp_sPH_nocolumn_vec[0].push_back( (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i) );
             temp_sPH_nocolumn_vec[1].push_back( (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i) );
-            
+            temp_sPH_nocolumn_vec[2].push_back( size_vec -> at(clu_i) );
+            temp_sPH_nocolumn_vec[3].push_back( sum_adc_conv_vec -> at(clu_i));
+
             double clu_radius = get_radius(
                 (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i), 
                 (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i)
@@ -755,7 +813,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                     phi_vec -> at(clu_i)
                 });
             
-            if (layer_vec -> at(clu_i) == 1) //note : inner
+            if (layer_vec -> at(clu_i) == 1) //note : outer
                 temp_sPH_outer_nocolumn_vec.push_back({
                     column_vec -> at(clu_i), 
                     avg_chan_vec -> at(clu_i), 
@@ -784,14 +842,14 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
             good_track_rz_vec.clear();
             temp_sPH_nocolumn_rz_vec.clear(); temp_sPH_nocolumn_rz_vec = vector<vector<double>>(2);
             temp_sPH_nocolumn_rz_error_vec.clear(); temp_sPH_nocolumn_rz_error_vec = vector<vector<double>>(2);
-            temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(2);
+            temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(4);
             temp_sPH_inner_nocolumn_vec.clear();
             temp_sPH_outer_nocolumn_vec.clear();
             continue;
         }
 
-        // if ( temp_sPH_inner_nocolumn_vec.size() > 1 && temp_sPH_outer_nocolumn_vec.size() > 1 && 3 < temp_sPH_nocolumn_vec[0].size() && temp_sPH_nocolumn_vec[0].size() < 40  ) // note : at least 3 points, 4 to 8 (allow some noise hits)
-        if ( temp_sPH_inner_nocolumn_vec.size() == 2 && temp_sPH_outer_nocolumn_vec.size() == 2)
+        if ( temp_sPH_inner_nocolumn_vec.size() > 1 && temp_sPH_outer_nocolumn_vec.size() > 1 && 3 < temp_sPH_nocolumn_vec[0].size() && temp_sPH_nocolumn_vec[0].size() < 8  ) // note : at least 3 points, 4 to 7 (allow some noise hits)
+        // if ( temp_sPH_inner_nocolumn_vec.size() == 2 && temp_sPH_outer_nocolumn_vec.size() == 2)
         {
             TGraph * temp_event_xy = new TGraph(temp_sPH_nocolumn_vec[0].size(),&temp_sPH_nocolumn_vec[0][0],&temp_sPH_nocolumn_vec[1][0]);
             temp_event_xy -> SetTitle("INTT event display X-Y plane");
@@ -822,9 +880,10 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                 // cout<<"------------------------------------- ------------------------------------- -------------------------------------"<<endl;
                 // cout<<"event : "<<event_i<<" N element in the event : "<<ele_index.size()<<" select : "<<clu_i<<" total combination "<<subsets.size()<<endl;
                 
+                // note : the reason for this valid_count is because we "continue" the combinations which have the clusters so close to each other.
                 double valid_count = 0;
 
-                for (int set_i = 0; set_i < subsets_index.size(); set_i++) // note : N combination
+                for (int set_i = 0; set_i < subsets_index.size(); set_i++) // note : N combination, can be {0,1,2,3,5}, {0,1,3,4,6}...
                 {
                     TGraph * xy_gr = new TGraph();
                     // TGraph * rz_gr = new TGraph();
@@ -838,30 +897,32 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                         subsets_rz_point[2].push_back( temp_sPH_nocolumn_rz_error_vec[0][ subsets_index[set_i][ele_i] ] );
                         subsets_rz_point[3].push_back( temp_sPH_nocolumn_rz_error_vec[1][ subsets_index[set_i][ele_i] ] );
                         // rz_gr -> SetPoint(ele_i, temp_sPH_nocolumn_rz_vec[0][ subsets_index[set_i][ele_i] ], temp_sPH_nocolumn_rz_vec[1][ subsets_index[set_i][ele_i] ]);
+                        // cout<<"used point, xy : "<<temp_sPH_nocolumn_vec[0][ subsets_index[set_i][ele_i] ]<<", "<<temp_sPH_nocolumn_vec[1][ subsets_index[set_i][ele_i] ]<<" rz : "<<temp_sPH_nocolumn_rz_vec[0][ subsets_index[set_i][ele_i] ] <<" "<< temp_sPH_nocolumn_rz_vec[1][ subsets_index[set_i][ele_i] ] <<" "<< temp_sPH_nocolumn_rz_error_vec[0][ subsets_index[set_i][ele_i] ] <<" "<< temp_sPH_nocolumn_rz_error_vec[1][ subsets_index[set_i][ele_i] ]<<endl;
                     }
 
                     // Title : it's a test, because that the rz plane can not be fit well, so, rotate the axis, just for fitting
                     TGraphErrors * rz_gr = new TGraphErrors(subsets_rz_point[0].size(),&subsets_rz_point[1][0],&subsets_rz_point[0][0],&subsets_rz_point[3][0],&subsets_rz_point[2][0]);
 
-
                     if (bco_full == 128389189792) {cout<<"test : "<<subsets_rz_point[0].size()<<endl;}
-                    if ( grXY_deviation_small(xy_gr) < 1 ) continue;
 
-                    double chi2_xy = ( fabs( grX_stddev(xy_gr) ) < 0.00001 ) ? 0 : 1;
+                    // note : if the clusters are too close to each other, continue this combination
+                    // note : unit : mm (1 mm for example)
+                    if ( grXY_deviation_small(xy_gr) < 1 ) continue; 
+                    // cout<<event_i<<" xy fitting"<<endl;
+                    double chi2_xy = ( fabs( grX_stddev(xy_gr) ) < 0.00001 ) ? 0 : 1; // note : check whether it's vertical line or not
                     if (chi2_xy == 1){ // note : not vertical, can fit
-                        xy_gr -> Fit(fit_xy,"NQ");
+                        xy_gr -> Fit(fit_xy,"QN");
                         chi2_xy = fit_xy -> GetChisquare() / double(fit_xy -> GetNDF());
                     }
-
+                    // cout<<event_i<<" rz fitting"<<endl;
                     double chi2_rz = ( fabs( grEY_stddev(rz_gr) ) < 0.00001 ) ? 0 : 1;
-                    
-                    if (bco_full == 128389189792) {cout<<"test rz deviation : "<<grEY_stddev(rz_gr)<<endl;}
-
                     if (chi2_rz == 1){ // note : not vertical, can fit
-                        // fit_rz -> SetParameters(5.3,224);
-                        rz_gr -> Fit(fit_rz,"NQ");
+                        fit_rz -> SetParameters(0,0);
+                        rz_gr -> Fit(fit_rz,"QN");
                         chi2_rz = fit_rz -> GetChisquare() / double(fit_rz -> GetNDF());
                     }
+
+                    if (bco_full == 128389189792) {cout<<"test rz deviation : "<<grEY_stddev(rz_gr)<<endl;}
                     
                     if (event_i == 4090)
                         cout<<"test test : "<<clu_i<<" "<<set_i<<" "<<chi2_xy<<" "<<chi2_rz<<endl;
@@ -898,6 +959,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                 }
             }
             
+            // cout<<"~~~~~ "<<event_i<<"finish the loop test"<<endl;
+
             if (valid_valid_count != 0)
             {
                 TGraph * xy_gr = new TGraph();
@@ -914,6 +977,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                     // rz_gr -> SetPoint(ele_i, temp_sPH_nocolumn_rz_vec[0][ event_final_set[ele_i] ], temp_sPH_nocolumn_rz_vec[1][ event_final_set[ele_i] ]);
                 }
                 
+                // note : again, the X and Y are swapped for better fitting
                 TGraphErrors * rz_gr = new TGraphErrors(subsets_rz_point[0].size(), &subsets_rz_point[1][0], &subsets_rz_point[0][0], &subsets_rz_point[3][0], &subsets_rz_point[2][0]);
                 if (bco_full == 128389189792) {cout<<"test after : "<<rz_gr -> GetN()<<endl;}
 
@@ -1025,8 +1089,23 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                 draw_text -> DrawLatex(0.2, 0.79, Form("Average z : %.2f mm",avg_z ));
                 temp_event_rz -> Draw("p same");   
 
+                Rchi2_rZ_hist -> Fill(chi2_rz);
+                Rchi2_xy_hist -> Fill(chi2_xy);
+                double fit_phi = (chi2_xy == 0) ? 90 : ( atan2( fabs(fit_xy -> GetParameter(1)), (fit_xy -> GetParameter(1) < 0) ? -1 : 1 ) * (180./TMath::Pi()) );
+                Rchi2_xy_phi[ int((avg_z+230)/46) ] -> Fill( fit_phi, chi2_xy );
+
                 if ( chi2_xy < XY_chi_cut && chi2_rz < rZ_chi_cut ){
-                    
+                    for (int ele_i = 0; ele_i < xy_gr->GetN(); ele_i++) { // note : n clu in that combination
+                        if (rz_gr -> GetPointY(ele_i) > 0){
+                            inner_outer_pos_xy_post_track_pZ -> Fill( xy_gr -> GetPointX(ele_i), xy_gr -> GetPointY(ele_i) );    
+                        }
+                        else {
+                            inner_outer_pos_xy_post_track_nZ -> Fill( xy_gr -> GetPointX(ele_i), xy_gr -> GetPointY(ele_i) );
+                        }                        
+                        angle_inner_outer_post_track -> Fill( (xy_gr -> GetPointY(ele_i) < 0) ? atan2(xy_gr -> GetPointY(ele_i),xy_gr -> GetPointX(ele_i)) * (180./TMath::Pi()) + 360 : atan2(xy_gr -> GetPointY(ele_i),xy_gr -> GetPointX(ele_i)) * (180./TMath::Pi()) );
+                        inner_outer_pos_rz_post_track -> Fill( rz_gr -> GetPointY(ele_i), rz_gr -> GetPointX(ele_i) );
+                    }
+
                     cosmic_z_hist -> Fill(avg_z);
 
                     if (print_event_display) {
@@ -1037,6 +1116,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                     out_clu_y = temp_sPH_nocolumn_vec[1];
                     out_clu_z = temp_sPH_nocolumn_rz_vec[0];
                     out_clu_r_sign = temp_sPH_nocolumn_rz_vec[1];
+                    out_clu_size = temp_sPH_nocolumn_vec[2];
+                    out_clu_sum_adc_conv = temp_sPH_nocolumn_vec[3];
                     N_clu = temp_sPH_nocolumn_vec[0].size();
                     tree_out -> Fill();
                 }
@@ -1047,6 +1128,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
             pad_xy -> Clear();
             pad_rz -> Clear();
             pad_z  -> Clear(); 
+            delete temp_event_xy;
+            delete temp_event_rz;
         }
 
         for ( int inner_i = 0; inner_i < temp_sPH_inner_nocolumn_vec.size(); inner_i++ )
@@ -1070,7 +1153,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
         good_track_rz_vec.clear();
         temp_sPH_nocolumn_rz_vec.clear(); temp_sPH_nocolumn_rz_vec = vector<vector<double>>(2);
         temp_sPH_nocolumn_rz_error_vec.clear(); temp_sPH_nocolumn_rz_error_vec = vector<vector<double>>(2);
-        temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(2);
+        temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(4);
         temp_sPH_inner_nocolumn_vec.clear();
         temp_sPH_outer_nocolumn_vec.clear();
     } // note : end of event 
@@ -1150,6 +1233,32 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     // c1 -> Print(Form("%s/folder_%s_cosmic/outer_pos_xy.pdf",mother_folder_directory.c_str(),file_name.c_str()));
     // c1 -> Clear();
 
+    
+    
+    inner_outer_pos_xy_post_track_pZ -> Draw("colz0");
+    c1 -> Print(Form("%s/folder_%s_cosmic/inner_outer_pos_xy_post_track_pZ.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    c1 -> Clear();
+
+    inner_outer_pos_xy_post_track_nZ -> Draw("colz0");
+    c1 -> Print(Form("%s/folder_%s_cosmic/inner_outer_pos_xy_post_track_nZ.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    c1 -> Clear();
+
+    angle_inner_outer_post_track -> Draw("hist");
+    c1 -> Print(Form("%s/folder_%s_cosmic/angle_inner_outer_post_track.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    c1 -> Clear();
+    
+    inner_outer_pos_rz_post_track -> Draw("colz0");
+    c1 -> Print(Form("%s/folder_%s_cosmic/inner_outer_pos_rz_post_track.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    c1 -> Clear();
+
+    Rchi2_rZ_hist -> Draw("hist");
+    c1 -> Print(Form("%s/folder_%s_cosmic/Rchi2_rZ_hist.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    c1 -> Clear();
+
+    Rchi2_xy_hist -> Draw("hist");
+    c1 -> Print(Form("%s/folder_%s_cosmic/Rchi2_xy_hist.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+    c1 -> Clear();
+    
     angle_inner -> Draw("hist");
     c1 -> Print(Form("%s/folder_%s_cosmic/angle_inner.pdf",mother_folder_directory.c_str(),file_name.c_str()));
     c1 -> Clear();
@@ -1169,6 +1278,15 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     cosmic_z_hist -> Draw("hist");
     c1 -> Print(Form("%s/folder_%s_cosmic/cosmic_z_hist.pdf",mother_folder_directory.c_str(),file_name.c_str()));
     c1 -> Clear();
+
+    c1 -> Print(Form("%s/folder_%s_cosmic/Rchi2_xy_phi.pdf(",mother_folder_directory.c_str(),file_name.c_str()));
+    for (int i = 0; i < Rchi2_xy_phi.size(); i++)
+    {
+        Rchi2_xy_phi[i] -> Draw("colz0");
+        c1 -> Print(Form("%s/folder_%s_cosmic/Rchi2_xy_phi.pdf",mother_folder_directory.c_str(),file_name.c_str()));
+        c1 -> Clear();
+    }
+    c1 -> Print(Form("%s/folder_%s_cosmic/Rchi2_xy_phi.pdf)",mother_folder_directory.c_str(),file_name.c_str()));
 
     
     tree_out->SetDirectory(out_file);

@@ -77,7 +77,7 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
         {88 , 92 , 96 , 100, 104, 108, 112, 116}, // note : 5
         {108, 112, 116, 120, 124, 128, 132, 136}, // note : 6
         {128, 132, 136, 140, 144, 148, 152, 156}, // note : 7
-        {148, 152, 156, 160, 164, 168, 172, 176},
+        {148, 152, 156, 160, 164, 168, 172, 176}, // note : 8
         {168, 172, 176, 180, 184, 188, 192, 196},
         {188, 192, 196, 200, 204, 208, 212, 216}
     };
@@ -112,19 +112,28 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
 
     int pid_hot, module_hot, chip_id_hot, chan_id_hot;
     vector<to_ch_info> hot_ch_vec; hot_ch_vec.clear();
-    TFile * file_hot = TFile::Open(Form("%s/PreCheck_%s/hot_ch_map_criterion_%i.root",mother_folder_directory.c_str(),file_name.c_str(),hot_ch_cut));
-    TTree * tree_hot = (TTree *)file_hot->Get("tree");
-    long long N_event_hot = tree_hot -> GetEntries();
-    cout<<"N hot channel in the file : "<<Form("PreCheck_%s/hot_ch_map_criterion_%i.root",file_name.c_str(),hot_ch_cut)<<" : "<<N_event_hot<<endl;
-    tree_hot -> SetBranchAddress("pid",    &pid_hot);
-    tree_hot -> SetBranchAddress("module", &module_hot);
-    tree_hot -> SetBranchAddress("chip_id",&chip_id_hot);
-    tree_hot -> SetBranchAddress("chan_id",&chan_id_hot);
-    for (int i = 0; i < N_event_hot; i++) {
-        tree_hot -> GetEntry(i);
-        hot_ch_vec.push_back({pid_hot,module_hot,chip_id_hot,chan_id_hot});
+    
+    TFile * file_hot;
+    TTree * tree_hot;
+    if (hot_ch_cut != 0){
+        file_hot = TFile::Open(Form("%s/PreCheck_%s/hot_ch_map_criterion_%i.root",mother_folder_directory.c_str(),file_name.c_str(),hot_ch_cut));
+        tree_hot = (TTree *)file_hot->Get("tree");
+        long long N_event_hot = tree_hot -> GetEntries();
+        cout<<"N hot channel in the file : "<<Form("PreCheck_%s/hot_ch_map_criterion_%i.root",file_name.c_str(),hot_ch_cut)<<" : "<<N_event_hot<<endl;
+        tree_hot -> SetBranchAddress("pid",    &pid_hot);
+        tree_hot -> SetBranchAddress("module", &module_hot);
+        tree_hot -> SetBranchAddress("chip_id",&chip_id_hot);
+        tree_hot -> SetBranchAddress("chan_id",&chan_id_hot);
+        for (int i = 0; i < N_event_hot; i++) {
+            tree_hot -> GetEntry(i);
+            hot_ch_vec.push_back({pid_hot,module_hot,chip_id_hot,chan_id_hot});
+        }
+        file_hot -> Close();
     }
-    file_hot -> Close();
+    else {
+        cout<<"no hot channel file is used"<<endl;
+    }
+    
 
     TFile * file_in = TFile::Open(Form("%s/%s.root",mother_folder_directory.c_str(),file_name.c_str()));
     TTree * tree = (TTree *)file_in->Get("tree");
@@ -240,16 +249,18 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
 
                 if (pid[i1] == 3001 && module[i1] == 1) continue; // todo : this half-ladder is masked.
 
-                for (int i2 = 0; i2 < hot_ch_vec.size(); i2++)
-                {
-                    // cout<<"test : "<<hot_ch_vec[i2].pid<<" "<<hot_ch_vec[i2].module<<" "<<hot_ch_vec[i2].chip<<" "<<hot_ch_vec[i2].chan<<endl;
+                if (hot_ch_cut != 0){
+                    for (int i2 = 0; i2 < hot_ch_vec.size(); i2++)
+                    {
+                        // cout<<"test : "<<hot_ch_vec[i2].pid<<" "<<hot_ch_vec[i2].module<<" "<<hot_ch_vec[i2].chip<<" "<<hot_ch_vec[i2].chan<<endl;
 
-                    if ( pid[i1] == hot_ch_vec[i2].pid && module[i1] == hot_ch_vec[i2].module && chip_id[i1] == hot_ch_vec[i2].chip && chan_id[i1] == hot_ch_vec[i2].chan ){
-                        hot_ch_tag = 1;
-                        break;
-                    }
+                        if ( pid[i1] == hot_ch_vec[i2].pid && module[i1] == hot_ch_vec[i2].module && chip_id[i1] == hot_ch_vec[i2].chip && chan_id[i1] == hot_ch_vec[i2].chan ){
+                            hot_ch_tag = 1;
+                            break;
+                        }
+                    }    
                 }
-
+                
                 if (hot_ch_tag == 1) continue;
 
                 // todo : change the BCO cut

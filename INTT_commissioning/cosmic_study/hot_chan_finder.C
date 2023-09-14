@@ -42,14 +42,17 @@ void hot_chan_finder()
     string output_directory = folder_directory + "/PreCheck_" + file_name;
     double standard_ch_ratio_typeA = 1. / (8*14*16*128); // note : typeA, 16 sensor cells
     double standard_ch_ratio_typeB = 1. / (8*14*10*128); // note : typeB, 10 sensor cells
-    int criterion = 10;
+    int criterion = 5;
+    bool All_event_used = false;
+    long long defined_event = 200000; // note : only the in the case that the All_event_used is false
 
     system(Form("mkdir %s",output_directory.c_str()));
 
     TFile * file_in = TFile::Open(Form("%s/%s.root",folder_directory.c_str(),file_name.c_str()));
     TTree * tree = (TTree *)file_in->Get("tree");
-    long long N_event = tree -> GetEntries();
+    long long N_event = (All_event_used == true) ? tree -> GetEntries() : defined_event; 
     cout<<Form("N_event in file %s : %lli",file_name.c_str(), N_event)<<endl;
+    
 
     int fNhits;
     int pid[100000]; // todo : if the fNhits greater than 100000, it may not work
@@ -125,10 +128,10 @@ void hot_chan_finder()
     nHotCh_hist -> GetYaxis() -> SetTitle("Entry");
 
 
-    for (int i = 0; i < 250000/*N_event*/; i++)
+    for (int i = 0; i < N_event; i++)
     {
         tree -> GetEntry(i);
-        if (i % 100 == 0) cout<<"running : "<<i<<endl;
+        if (i % 1000 == 0) cout<<"running : "<<i<<endl;
 
         for (int i1 = 0; i1 < fNhits; i1++)
         {
@@ -411,7 +414,7 @@ void hot_chan_finder()
     c2 -> Clear();
 
     N_bad_ch_ladder -> Draw("colz0");
-    c2 -> Print(Form("%s/N_bad_ch_ladder.pdf",output_directory.c_str()));
+    c2 -> Print(Form("%s/N_bad_ch_ladder_Cut_%i.pdf",output_directory.c_str(), criterion));
     c2 -> Clear();
 
     tree_out->SetDirectory(out_file);
