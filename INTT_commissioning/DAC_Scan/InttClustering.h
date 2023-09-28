@@ -16,6 +16,7 @@ struct clu_info {
     double z;
     int layer;
     double phi;
+    vector<double> bco_diff_vec; // note : for the multi-hit cluster, more than one hit was included. so more than one bco_diff
 };
 
 struct hit_info {
@@ -23,6 +24,7 @@ struct hit_info {
     int chan_id;
     int adc;
     int adc_conv;
+    int bco_diff; // note : small_bco - bco_full
 };
 
 struct hit_pro_info {
@@ -39,6 +41,7 @@ struct hit_pro_info {
     double y;
     double z;
     int layer;
+    int bco_diff;
 };
 
 namespace InttClustering{
@@ -50,7 +53,8 @@ namespace InttClustering{
         // note : [1] : nominal_chan_id,
         // note : [2] : adc,
         // note : [3] : adc_conv
-        vector<int> nominal_vec = {-1,-1,-1,-1};
+        // note : [4] : bco_diff
+        vector<int> nominal_vec = {-1,-1,-1,-1,-1};
         vector<int> hit_seat[13][256]; 
         for (int i = 0; i < 13; i++){
             for (int i1 = 0; i1 < 256; i1++){
@@ -72,6 +76,7 @@ namespace InttClustering{
         int distance_meter = 0;
         int sum_adc = 0;
         int sum_adc_conv = 0;
+        vector<double> bco_diff_vec; bco_diff_vec.clear();
 
         
         for (int i = 0; i < single_event.size(); i++) // note : number of hits in this event, for this half-ladder
@@ -82,20 +87,20 @@ namespace InttClustering{
 
             if (hit_seat[chip_conv - 1][chan_conv] == nominal_vec)
             {
-                hit_seat[chip_conv - 1][chan_conv] = {single_event[i].chip_id, single_event[i].chan_id, single_event[i].adc, single_event[i].adc_conv};
+                hit_seat[chip_conv - 1][chan_conv] = {single_event[i].chip_id, single_event[i].chan_id, single_event[i].adc, single_event[i].adc_conv, single_event[i].bco_diff};
             }
-            else 
+            else // note : clone hit, but do nothing for now
             {
                 // cout<<"chip_id : "<<chip_conv<<" chan_id : "<<chan_conv<<" fired more than once ! N_hit in this HL : "<<single_event.size()<<" nominal_chipid : "<<single_event[i].chip_id<<" chan_id : "<<single_event[i].chan_id<<endl;
                 // note : take the latest one.
-                hit_seat[chip_conv - 1][chan_conv] = {single_event[i].chip_id, single_event[i].chan_id, single_event[i].adc, single_event[i].adc_conv};    
+                hit_seat[chip_conv - 1][chan_conv] = {single_event[i].chip_id, single_event[i].chan_id, single_event[i].adc, single_event[i].adc_conv, single_event[i].bco_diff};    
             }
         }
 
         for (int col = 0; col < 13; col++) // note : column
         {
             // cout<<" "<<endl;
-            for (int ch = 0; ch < 256; ch++) // note : channel
+            for (int ch = 0; ch < 256; ch++) // note : channel, remove those empty seat
             {
                 if (hit_seat[col][ch] != nominal_vec)
                 {
@@ -115,7 +120,9 @@ namespace InttClustering{
                         hit_pos.x,            // note : nominal strip pos in sPHENIX coordinate 
                         hit_pos.y,            // note : nominal strip pos in sPHENIX coordinate 
                         hit_pos.z,            // note : nominal strip pos in sPHENIX coordinate
-                        hit_pos.layer         // note : N layer, 0 or 1.
+                        hit_pos.layer,        // note : N layer, 0 or 1.
+                        
+                        hit_seat[col][ch][4]  // note : bco_diff
                     });
                     // if (hit_seat[col][ch][3] > 1000){
                     //     cout<<"before clustering, hit info :\t"<<hit_pos.x<<" "<<hit_pos.y<<" "<<hit_pos.z<<"\toriginal chip/chan "<<hit_seat[col][ch][0]<<" "<<hit_seat[col][ch][1]<<"\tconverted chip/chan "<<col+1<<" "<<ch<<"\tadc & adc_conv "<<hit_seat[col][ch][2]<<" "<<hit_seat[col][ch][3]<<endl;
@@ -141,6 +148,8 @@ namespace InttClustering{
                 sum_adc                 += hit_pro_vec[hit_i].adc;
                 sum_adc_conv            += hit_pro_vec[hit_i].adc_conv;
 
+                bco_diff_vec.push_back(hit_pro_vec[hit_i].bco_diff);
+
                 if (hit_pro_vec.size() - hit_i == 1) // note : for the case that only one hit in this column, and the "last single hit" in the column 
                 {
                     output_vec.push_back({
@@ -154,7 +163,8 @@ namespace InttClustering{
                         pos_y_truck / pos_y_truck_denominator,
                         hit_pro_vec[0].z,     // note : sPH-INTT nominal position
                         hit_pro_vec[0].layer, // note : layer
-                        ((pos_y_truck / pos_y_truck_denominator) < 0) ? atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()) + 360 : atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi())
+                        ((pos_y_truck / pos_y_truck_denominator) < 0) ? atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()) + 360 : atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()),
+                        bco_diff_vec
                     });
                     // if (sum_adc_conv > 1000){
                     //     cout<<"~~~~ bug check 1, column : "<<col + 1<<" avg_chan : "<<chan_truck / chan_truck_denominator<<" sum_adc : "<<sum_adc <<" sum_adc_conv : "<<sum_adc_conv <<" size : "<<num_hit <<" avg_posX : "<<pos_x_truck / pos_x_truck_denominator <<" avg_posY : "<<pos_y_truck / pos_y_truck_denominator <<" Z : "<<hit_pro_vec[0].z<<" layer : "<<hit_pro_vec[0].layer<<endl;
@@ -181,6 +191,8 @@ namespace InttClustering{
                         sum_adc                 += hit_pro_vec[hit_i + hit_i1 + 1].adc;
                         sum_adc_conv            += hit_pro_vec[hit_i + hit_i1 + 1].adc_conv;
 
+                        bco_diff_vec.push_back(hit_pro_vec[hit_i].bco_diff);
+
                         distance_meter += 1;
 
                         if ((hit_pro_vec.size() - (hit_i + 1) - hit_i1) == 1) // note : the last non single-hit cluster
@@ -196,7 +208,8 @@ namespace InttClustering{
                                 pos_y_truck / pos_y_truck_denominator,
                                 hit_pro_vec[0].z,
                                 hit_pro_vec[0].layer, // note : layer
-                                ((pos_y_truck / pos_y_truck_denominator) < 0) ? atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()) + 360 : atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi())
+                                ((pos_y_truck / pos_y_truck_denominator) < 0) ? atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()) + 360 : atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()),
+                                bco_diff_vec
                             });
                             // if (sum_adc_conv > 1000){
                             //     cout<<"~~~~ bug check 2, column : "<<col + 1<<" avg_chan : "<<chan_truck / chan_truck_denominator<<" sum_adc : "<<sum_adc <<" sum_adc_conv : "<<sum_adc_conv <<" size : "<<num_hit <<" avg_posX : "<<pos_x_truck / pos_x_truck_denominator <<" avg_posY : "<<pos_y_truck / pos_y_truck_denominator <<" Z : "<<hit_pro_vec[0].z<<" layer : "<<hit_pro_vec[0].layer<<endl;
@@ -220,7 +233,8 @@ namespace InttClustering{
                             pos_y_truck / pos_y_truck_denominator,
                             hit_pro_vec[0].z,
                             hit_pro_vec[0].layer, // note : layer
-                            ((pos_y_truck / pos_y_truck_denominator) < 0) ? atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()) + 360 : atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi())
+                            ((pos_y_truck / pos_y_truck_denominator) < 0) ? atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()) + 360 : atan2((pos_y_truck / pos_y_truck_denominator),(pos_x_truck / pos_x_truck_denominator)) * (180./TMath::Pi()),
+                            bco_diff_vec
                         });
                         // if (sum_adc_conv > 1000){
                         //     cout<<"~~~~ bug check 3, column : "<<col + 1<<" avg_chan : "<<chan_truck / chan_truck_denominator<<" sum_adc : "<<sum_adc <<" sum_adc_conv : "<<sum_adc_conv <<" size : "<<num_hit <<" avg_posX : "<<pos_x_truck / pos_x_truck_denominator <<" avg_posY : "<<pos_y_truck / pos_y_truck_denominator <<" Z : "<<hit_pro_vec[0].z<<" layer : "<<hit_pro_vec[0].layer<<endl;
@@ -246,7 +260,9 @@ namespace InttClustering{
                 
                 num_hit = 0;                 
                 sum_adc = 0;                 
-                sum_adc_conv = 0;            
+                sum_adc_conv = 0;    
+
+                bco_diff_vec.clear();        
 
             } // note : end n_hit in single column
 

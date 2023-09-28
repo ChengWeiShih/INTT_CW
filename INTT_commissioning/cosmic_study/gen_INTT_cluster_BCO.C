@@ -109,6 +109,9 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
     vector<double> z_out_vec; z_out_vec.clear();
     vector<int> layer_out_vec; layer_out_vec.clear();
     vector<double> phi_out_vec; phi_out_vec.clear();
+    vector<vector<double>> bco_diff_out_vec; bco_diff_out_vec.clear(); // note : it should be integer, but somehow it doesn't work well with ROOT
+    vector<int>server_out_vec; server_out_vec.clear();
+    vector<int>module_out_vec; module_out_vec.clear();
 
     int pid_hot, module_hot, chip_id_hot, chan_id_hot;
     vector<to_ch_info> hot_ch_vec; hot_ch_vec.clear();
@@ -194,6 +197,9 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
     tree_out -> Branch("z", &z_out_vec);
     tree_out -> Branch("layer", &layer_out_vec);
     tree_out -> Branch("phi", &phi_out_vec);
+    tree_out -> Branch("bco_diff_vec",&bco_diff_out_vec);
+    tree_out -> Branch("server",&server_out_vec);
+    tree_out -> Branch("module",&module_out_vec);
 
 
     for (int i = 0; i < run_Nevent; i++ ) // note : event
@@ -231,6 +237,10 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
             layer_out_vec.clear();
             phi_out_vec.clear();
 
+            server_out_vec.clear();
+            module_out_vec.clear();
+            bco_diff_out_vec.clear();
+
             continue;
         }
 
@@ -264,11 +274,15 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
                 if (hot_ch_tag == 1) continue;
 
                 // todo : change the BCO cut
-                // int bco_diff = ( (bco_full[i1]&0x7F - bco[i1]) < 0 ) ? (bco_full[i1]&0x7F - bco[i1]) + 128 : (bco_full[i1]&0x7F - bco[i1]);
-                // cout<<"test : "<<bco_diff<<endl;
+                int bco_diff = ( ((bco_full[i1]&0x7F) - bco[i1]) < 0 ) ? ((bco_full[i1]&0x7F) - bco[i1]) + 128 : ((bco_full[i1]&0x7F) - bco[i1]);
+                
+                // cout<<i<<" hit bco_diff : "<<bco_diff<<endl;
+                // cout<<i<<" pid : "<<pid[i1]<<" module : "<<module[i1]<<" chip : "<<chip_id[i1]<<" chan "<<chan_id[i1]<<" adc "<<adc[i1]<<" adc_conv "<<adc_convert[adc[i1]]<<" hit bco_diff : "<<bco_diff<<" bco_full : "<<bco_full[i1]<<" bco : "<<bco[i1]<<endl;
+                
+                
                 // if (bco_diff < 24 || bco_diff > 30) continue;
 
-                single_event_hit_vec[ (pid[i1] - 1) % 3000 ][ module[i1] ].push_back({chip_id[i1], chan_id[i1], adc[i1], adc_convert[adc[i1]]});
+                single_event_hit_vec[ pid[i1] - 3001 ][ module[i1] ].push_back({chip_id[i1], chan_id[i1], adc[i1], adc_convert[adc[i1]], bco_diff});
             }
                 
         } // note : end of the hit in one event
@@ -304,6 +318,10 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
 
                         if (clu_vec[clu_i].layer == 0) {N_cluster_inner += 1;}
                         else if (clu_vec[clu_i].layer == 1) {N_cluster_outer += 1;}
+
+                        server_out_vec.push_back( i1 + 3001 ); // note : pid
+                        module_out_vec.push_back( i2 ); // note : module ID
+                        bco_diff_out_vec.push_back( clu_vec[clu_i].bco_diff_vec );
                     }
                 }                
 
@@ -327,6 +345,9 @@ void gen_INTT_cluster_BCO(string sub_folder_string, string file_name, int DAC_ru
         z_out_vec.clear();
         layer_out_vec.clear();
         phi_out_vec.clear();
+        server_out_vec.clear();
+        module_out_vec.clear();
+        bco_diff_out_vec.clear();
 
         clu_vec.clear();
         single_event_hit_vec.clear(); single_event_hit_vec = vector<vector<vector<hit_info>>>(N_server, single_event_hit_ladder_vec);

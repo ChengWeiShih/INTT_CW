@@ -37,14 +37,14 @@ to_ch_str convertToIndices(int input) {
 void hot_chan_finder()
 {   
     
-    string folder_directory = "/sphenix/user/ChengWei/INTT/INTT_commissioning/cosmic/25952";
-    string file_name = "cosmics_inttall-00025952-0000_event_base_ana";
+    string folder_directory = "/sphenix/user/ChengWei/INTT/INTT_commissioning/cosmic/26960";
+    string file_name = "cosmics_inttall-00026960-0000_event_base_ana";
     string output_directory = folder_directory + "/PreCheck_" + file_name;
     double standard_ch_ratio_typeA = 1. / (8*14*16*128); // note : typeA, 16 sensor cells
     double standard_ch_ratio_typeB = 1. / (8*14*10*128); // note : typeB, 10 sensor cells
-    int criterion = 5;
+    int criterion = 10;
     bool All_event_used = false;
-    long long defined_event = 200000; // note : only the in the case that the All_event_used is false
+    long long defined_event = 100000; // note : only the in the case that the All_event_used is false
 
     system(Form("mkdir %s",output_directory.c_str()));
 

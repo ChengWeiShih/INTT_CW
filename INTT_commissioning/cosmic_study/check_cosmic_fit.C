@@ -398,9 +398,9 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     TCanvas * c1 = new TCanvas("","",1000,800);
     c1 -> cd();
     
-    string mother_folder_directory = "/sphenix/user/ChengWei/INTT/INTT_commissioning/cosmic/25952";
+    string mother_folder_directory = "/sphenix/user/ChengWei/INTT/INTT_commissioning/cosmic/26960";
     // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_ideal_excludeR1500_100kEvent";
-    string file_name = "cosmics_inttall-00025952-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR500_1000kEvent_0HotCut";
+    string file_name = "cosmics_inttall-00026960-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR2000_200kEvent_10HotCut";
     gErrorIgnoreLevel = kWarning;
 
     // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
@@ -417,19 +417,19 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     double zvtx_hist_l = -500;
     double zvtx_hist_r = 500;
 
-    int Nhit_cut = 500;           // note : if (> Nhit_cut)          -> continue
+    int Nhit_cut = 2000;           // note : if (> Nhit_cut)          -> continue
     int clu_size_cut = 4;         // note : if (> clu_size_cut)      -> continue
     double clu_sum_adc_cut = 23;  // note : if (< clu_sum_adc_cut)   -> continue
-    int N_clu_cut = 10;          // note : if (> N_clu_cut)         -> continue  unit number
+    int N_clu_cut = 15;          // note : if (> N_clu_cut)         -> continue  unit number
     double XY_chi_cut = 5;
     double rZ_chi_cut = 5;
     
-    double phi_diff_cut = 5.72;   // note : if (< phi_diff_cut)      -> pass      unit degree
-    double DCA_cut = 4;           // note : if (< DCA_cut)           -> pass      unit mm
-    int zvtx_cal_require = 15;    // note : if (> zvtx_cal_require)  -> pass
-    int zvtx_draw_requireL = 15;       
-    int zvtx_draw_requireR = 100;   // note : if ( zvtx_draw_requireL < event && event < zvtx_draw_requireR) -> pass
-    double Integrate_portion = 0.6826;
+    // double phi_diff_cut = 5.72;   // note : if (< phi_diff_cut)      -> pass      unit degree
+    // double DCA_cut = 4;           // note : if (< DCA_cut)           -> pass      unit mm
+    // int zvtx_cal_require = 15;    // note : if (> zvtx_cal_require)  -> pass
+    // int zvtx_draw_requireL = 15;       
+    // int zvtx_draw_requireR = 100;   // note : if ( zvtx_draw_requireL < event && event < zvtx_draw_requireR) -> pass
+    // double Integrate_portion = 0.6826;
     bool print_event_display = true; // todo : print the plots here
     
     //todo : change the mode for drawing
@@ -457,6 +457,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     vector<double>* z_vec = new vector<double>();
     vector<int>* layer_vec = new vector<int>();
     vector<double>* phi_vec = new vector<double>();
+    vector<vector<double>> * bco_diff_vec = 0;
 
     tree -> SetBranchAddress("nhits",&N_hits);
     tree -> SetBranchAddress("nclu_inner",&N_cluster_inner);
@@ -473,6 +474,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     tree -> SetBranchAddress("z", &z_vec);
     tree -> SetBranchAddress("layer", &layer_vec);
     tree -> SetBranchAddress("phi", &phi_vec);
+    tree -> SetBranchAddress("bco_diff_vec",&bco_diff_vec);
 
     TLatex *draw_text = new TLatex();
     draw_text -> SetNDC();
@@ -482,6 +484,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     vector<clu_info> temp_sPH_outer_nocolumn_vec; temp_sPH_outer_nocolumn_vec.clear();
     vector<clu_info> temp_sPH_all_nocolumn_vec; temp_sPH_all_nocolumn_vec.clear();
     vector<vector<double>> temp_sPH_nocolumn_vec(4); // note : cluster x, y, Nclu, sum_adc_conv
+    vector<vector<double>> temp_sPH_nocolumn_clu_bco_diff; temp_sPH_nocolumn_clu_bco_diff.clear();
     vector<vector<double>> temp_sPH_nocolumn_rz_vec(2);
     vector<vector<double>> temp_sPH_nocolumn_rz_error_vec(2);
 
@@ -667,6 +670,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     vector<double> out_clu_r_sign; out_clu_r_sign.clear();
     vector<double> out_clu_size; out_clu_size.clear();
     vector<double> out_clu_sum_adc_conv; out_clu_sum_adc_conv.clear();
+    vector<vector<double>> out_bco_diff_vec; out_bco_diff_vec.clear();
     Long64_t bco_full_out;
     int N_clu;
     int eID_out;
@@ -682,6 +686,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     tree_out -> Branch("clu_r",&out_clu_r_sign);
     tree_out -> Branch("clu_size",&out_clu_size);
     tree_out -> Branch("clu_conv_adc",&out_clu_sum_adc_conv);
+    tree_out -> Branch("bco_diff_vec",&out_bco_diff_vec);
 
 
     TF1 * fit_xy = new TF1("fit_xy","pol1",-150,150);
@@ -700,6 +705,14 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     vector<int> event_comb_set; event_comb_set.clear();
     int used_clu;
     
+    vector<double> final_good_clu_x; final_good_clu_x.clear(); 
+    vector<double> final_good_clu_y; final_good_clu_y.clear(); 
+    vector<double> final_good_clu_r_sign; final_good_clu_r_sign.clear(); 
+    vector<double> final_good_clu_z; final_good_clu_z.clear(); 
+    vector<double> final_good_clu_size; final_good_clu_size.clear();
+    vector<double> final_good_clu_sum_adc_conv; final_good_clu_sum_adc_conv.clear();
+    vector<vector<double>> final_good_clu_bco_diff_vec; final_good_clu_bco_diff_vec.clear();
+
     if (print_event_display) {c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display_fit.pdf(",mother_folder_directory.c_str(),file_name.c_str()));}
 
     for (int event_i = 0; event_i < N_event; event_i++)
@@ -777,6 +790,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
             temp_sPH_nocolumn_vec[2].push_back( size_vec -> at(clu_i) );
             temp_sPH_nocolumn_vec[3].push_back( sum_adc_conv_vec -> at(clu_i));
 
+            temp_sPH_nocolumn_clu_bco_diff.push_back( bco_diff_vec -> at(clu_i) );
+
             double clu_radius = get_radius(
                 (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i), 
                 (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? y_vec -> at(clu_i) + temp_Y_align : y_vec -> at(clu_i)
@@ -843,6 +858,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
             temp_sPH_nocolumn_rz_vec.clear(); temp_sPH_nocolumn_rz_vec = vector<vector<double>>(2);
             temp_sPH_nocolumn_rz_error_vec.clear(); temp_sPH_nocolumn_rz_error_vec = vector<vector<double>>(2);
             temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(4);
+            temp_sPH_nocolumn_clu_bco_diff.clear();
             temp_sPH_inner_nocolumn_vec.clear();
             temp_sPH_outer_nocolumn_vec.clear();
             continue;
@@ -974,6 +990,14 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                     subsets_rz_point[1].push_back( temp_sPH_nocolumn_rz_vec[1][ event_final_set[ele_i] ] );
                     subsets_rz_point[2].push_back( temp_sPH_nocolumn_rz_error_vec[0][ event_final_set[ele_i] ] );
                     subsets_rz_point[3].push_back( temp_sPH_nocolumn_rz_error_vec[1][ event_final_set[ele_i] ] );
+
+                    final_good_clu_x.push_back( temp_sPH_nocolumn_vec[0][ event_final_set[ele_i] ] );
+                    final_good_clu_y.push_back( temp_sPH_nocolumn_vec[1][ event_final_set[ele_i] ] );
+                    final_good_clu_r_sign.push_back( temp_sPH_nocolumn_rz_vec[1][ event_final_set[ele_i] ] );
+                    final_good_clu_z.push_back( temp_sPH_nocolumn_rz_vec[0][ event_final_set[ele_i] ] );
+                    final_good_clu_size.push_back( temp_sPH_nocolumn_vec[2][ event_final_set[ele_i] ] );
+                    final_good_clu_sum_adc_conv.push_back( temp_sPH_nocolumn_vec[3][ event_final_set[ele_i] ] );
+                    final_good_clu_bco_diff_vec.push_back( temp_sPH_nocolumn_clu_bco_diff[ event_final_set[ele_i] ] );
                     // rz_gr -> SetPoint(ele_i, temp_sPH_nocolumn_rz_vec[0][ event_final_set[ele_i] ], temp_sPH_nocolumn_rz_vec[1][ event_final_set[ele_i] ]);
                 }
                 
@@ -1112,17 +1136,24 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                         c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display_fit.pdf",mother_folder_directory.c_str(),file_name.c_str()));
                     }
 
-                    out_clu_x = temp_sPH_nocolumn_vec[0]; // note : for the output root tree.
-                    out_clu_y = temp_sPH_nocolumn_vec[1];
-                    out_clu_z = temp_sPH_nocolumn_rz_vec[0];
-                    out_clu_r_sign = temp_sPH_nocolumn_rz_vec[1];
-                    out_clu_size = temp_sPH_nocolumn_vec[2];
-                    out_clu_sum_adc_conv = temp_sPH_nocolumn_vec[3];
-                    N_clu = temp_sPH_nocolumn_vec[0].size();
+                    out_clu_x = final_good_clu_x; // note : for the output root tree.
+                    out_clu_y = final_good_clu_y;
+                    out_clu_z = final_good_clu_z;
+                    out_clu_r_sign = final_good_clu_r_sign;
+                    out_clu_size = final_good_clu_size;
+                    out_clu_sum_adc_conv = final_good_clu_sum_adc_conv;
+                    N_clu = final_good_clu_bco_diff_vec.size();
+                    out_bco_diff_vec = final_good_clu_bco_diff_vec;
                     tree_out -> Fill();
                 }
 
-                
+                final_good_clu_x.clear();
+                final_good_clu_y.clear();
+                final_good_clu_r_sign.clear();
+                final_good_clu_z.clear();
+                final_good_clu_size.clear();
+                final_good_clu_sum_adc_conv.clear();
+                final_good_clu_bco_diff_vec.clear();
             }
             
             pad_xy -> Clear();
@@ -1154,6 +1185,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
         temp_sPH_nocolumn_rz_vec.clear(); temp_sPH_nocolumn_rz_vec = vector<vector<double>>(2);
         temp_sPH_nocolumn_rz_error_vec.clear(); temp_sPH_nocolumn_rz_error_vec = vector<vector<double>>(2);
         temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(4);
+        temp_sPH_nocolumn_clu_bco_diff.clear();
         temp_sPH_inner_nocolumn_vec.clear();
         temp_sPH_outer_nocolumn_vec.clear();
     } // note : end of event 
