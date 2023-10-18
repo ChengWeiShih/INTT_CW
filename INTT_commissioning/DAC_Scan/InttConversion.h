@@ -1,6 +1,15 @@
 #ifndef __INTTCONVERSION_H_
 #define __INTTCONVERSION_H_
 
+// #include <Eigen/Dense>
+// #include <Eigen/Geometry>
+// #include <Eigen/LU>
+// #include <Eigen/SVD>
+// #include <Math/Transform3D.h>
+
+// #include <intt/InttMapping.h>
+// R__LOAD_LIBRARY(libintt.so)
+
 struct full_ladder_info {
     int FC;
     TString Port;
@@ -17,6 +26,11 @@ struct pos_str{
     double phi;
 };
 
+struct pos_3D{
+    float x;
+    float y;
+    float z;
+};
 
 namespace InttConversion
 {
@@ -537,6 +551,13 @@ namespace InttConversion
     //     {"B1L015N", {13, "A1", 7, 1}}
     // };
 
+    // todo : at some point, it may have to be  changed
+    // TFile * file_in = new TFile(Form("/sphenix/user/ChengWei/INTT/test_build/survey_data_all_3.32.root"),"read"); 
+    // TTree * tree = (TTree *)file_in->Get("intt_transforms");
+    // ROOT::Math::Transform3D * transform_branch = new ROOT::Math::Transform3D(); 
+    // tree -> SetBranchAddress("transform",&transform_branch);
+    // Intt::RawData_s trial_channel; // note : chip seems to be from 0 to 25
+
     pair<double,double> Get_dummy_ladder_XY(int chip_id, int chan_id, int ladder_SN)
     {
         // note : chip_id 1 ~ 13 -> 0 
@@ -577,7 +598,7 @@ namespace InttConversion
     pos_str Get_XY_all(/*string ladder_name*/string server, int module, int chip_id, int chan_id, string conversion_mode = "ideal", double peek = 5)
     {
 
-        vector<string> conversion_mode_DB = {"ideal","nominal","survey_1_XY","survey_1_XYAlpha","survey_1_XYAlpha_Peek"};
+        vector<string> conversion_mode_DB = {"ideal","nominal","survey_1_XY","survey_1_XYAlpha","survey_1_XYAlpha_Peek","full_survey_3.32"};
 
         // string ladder_pos_str = ladder_name;
         string ladder_pos_str = string(serverFC_toinfo_map[Form("%s_%i",server.c_str(),module)].Ladder);
@@ -610,6 +631,7 @@ namespace InttConversion
         double ladder_self_pos_Y;
         double final_pos_X;
         double final_pos_Y;
+        double final_pos_Z;
 
         if (conversion_mode == conversion_mode_DB[0] || conversion_mode == conversion_mode_DB[1]) // note : ideal, nominal
         {
@@ -617,6 +639,7 @@ namespace InttConversion
             ladder_self_pos_Y = ( fabs(Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second) < 0.0000001) ? 0 : Get_self_rotation(Get_dummy_ladder_XY(chip_id,chan_id,ladder_SN),( ladder_self_angle_ini_correction[layer_index] - (angle_increment[layer_index] * ladder_index) )).second;
             final_pos_X = ring_pos_x + ladder_self_pos_X;
             final_pos_Y = ring_pos_y + ladder_self_pos_Y;
+            final_pos_Z = ideal_z_pos[(chip_id - 1) % 13] * pow(-1, 1 - ladder_SN);
         }
         else if ( conversion_mode == conversion_mode_DB[2] ) // note : survey_1_XY (based on survey data typeB south)
         {
@@ -627,6 +650,7 @@ namespace InttConversion
             // note : survey data ladder center position
             final_pos_X = survey_ring_pos[layer_index][ladder_index].first + ladder_self_pos_X;
             final_pos_Y = survey_ring_pos[layer_index][ladder_index].second + ladder_self_pos_Y;
+            final_pos_Z = ideal_z_pos[(chip_id - 1) % 13] * pow(-1, 1 - ladder_SN);
         }
         else if ( conversion_mode == conversion_mode_DB[3] ) // note : survey_1_XYAlpha (based on survey data typeB south)
         {
@@ -639,6 +663,7 @@ namespace InttConversion
             // note : survey data ladder center position
             final_pos_X = survey_ring_pos[layer_index][ladder_index].first + ladder_self_pos_X;
             final_pos_Y = survey_ring_pos[layer_index][ladder_index].second + ladder_self_pos_Y;    
+            final_pos_Z = ideal_z_pos[(chip_id - 1) % 13] * pow(-1, 1 - ladder_SN);
         }
         else if ( conversion_mode == conversion_mode_DB[4] ) // note : survey_1_XYAlpha_Peek
         {
@@ -661,20 +686,30 @@ namespace InttConversion
             // note : survey data ladder center position
             final_pos_X = survey_ring_pos[layer_index][ladder_index].first + ladder_self_pos_X + peek_correction_x;
             final_pos_Y = survey_ring_pos[layer_index][ladder_index].second + ladder_self_pos_Y + peek_correction_y;    
+            final_pos_Z = ideal_z_pos[(chip_id - 1) % 13] * pow(-1, 1 - ladder_SN);
         }
+        // else if (conversion_mode == conversion_mode_DB[5]) // note : full survey data with the 3.32 mm correction inward. 2023_10_11
+        // {
+        //     trial_channel.felix_server = server[4] - '0'; // note : from 0 to 7
+        //     trial_channel.felix_channel = module;
+        //     trial_channel.chip = chip_id - 1; // note : from 0 to 25
+        //     trial_channel.channel = chan_id;   // note : chan should be from 0 to 127
+
+        //     Eigen::Affine3d sensor_trans = Intt::GetTransform(tree, ToOffline(trial_channel));
+        //     Eigen::Vector4d local_trans = Intt::GetLocalPos(ToOffline(trial_channel));
+
+        //     final_pos_X = (sensor_trans * local_trans)[0];
+        //     final_pos_Y = (sensor_trans * local_trans)[1];
+        //     final_pos_Z = (sensor_trans * local_trans)[2];
+        // }
         else 
         {
             cout<<"InttConversion.h wrong mode input"<<endl;
             exit(1);
-        }
-
-        
-
+        }    
 
         int    final_pos_layer = (layer_index == 0 || layer_index == 1) ? 0 : 1;
         double final_pos_phi = (final_pos_Y < 0) ? atan2(final_pos_Y,final_pos_X) * (180./TMath::Pi()) + 360 : atan2(final_pos_Y,final_pos_X) * (180./TMath::Pi());
-
-        double final_pos_Z = ideal_z_pos[(chip_id - 1) % 13] * pow(-1, 1 - ladder_SN);
 
         return {final_pos_X,final_pos_Y,final_pos_Z,final_pos_layer,final_pos_phi};
     }

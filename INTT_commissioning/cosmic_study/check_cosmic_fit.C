@@ -1,5 +1,5 @@
 // #include "DAC_Scan_ladder.h"
-//#include "InttConversion.h"
+#include "../DAC_Scan/InttConversion_new.h"
 #include "../DAC_Scan/InttClustering.h"
 // #include "../sigmaEff.h"
 
@@ -167,7 +167,7 @@ double calculateAngleBetweenVectors(double x1, double y1, double x2, double y2, 
     return DCA_distance;
 }
 
-void temp_bkg(TPad * c1, string conversion_mode, double peek, pair<double,double> beam_origin)
+void temp_bkg(TPad * c1, string conversion_mode, double peek, pair<double,double> beam_origin, InttConversion * ch_pos_DB)
 {
     c1 -> cd();
 
@@ -201,8 +201,8 @@ void temp_bkg(TPad * c1, string conversion_mode, double peek, pair<double,double
         for (int FC_i = 0; FC_i < 14; FC_i++)
         {
             ladder_line -> DrawLine(
-                InttConversion::Get_XY_all(Form("intt%i",server_i),FC_i,14,0,conversion_mode,peek).x, InttConversion::Get_XY_all(Form("intt%i",server_i),FC_i,14,0,conversion_mode,peek).y,
-                InttConversion::Get_XY_all(Form("intt%i",server_i),FC_i,1,0,conversion_mode,peek).x, InttConversion::Get_XY_all(Form("intt%i",server_i),FC_i,1,0,conversion_mode,peek).y
+                ch_pos_DB -> Get_XY_all(Form("intt%i",server_i),FC_i,14,0).x, ch_pos_DB -> Get_XY_all(Form("intt%i",server_i),FC_i,14,0).y,
+                ch_pos_DB -> Get_XY_all(Form("intt%i",server_i),FC_i,1,0).x, ch_pos_DB -> Get_XY_all(Form("intt%i",server_i),FC_i,1,0).y
             );
         }
     }
@@ -400,7 +400,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     
     string mother_folder_directory = "/sphenix/user/ChengWei/INTT/INTT_commissioning/cosmic/26960";
     // string file_name = "beam_inttall-00020869-0000_event_base_ana_cluster_ideal_excludeR1500_100kEvent";
-    string file_name = "cosmics_inttall-00026960-0000_event_base_ana_cluster_survey_1_XYAlpha_Peek_3.32mm_excludeR2000_200kEvent_10HotCut";
+    string file_name = "cosmics_inttall-00026960-0000_event_base_ana_cluster_full_survey_3.32_excludeR2000_200kEvent_10HotCut";
     gErrorIgnoreLevel = kWarning;
 
     // string mother_folder_directory = "/home/phnxrc/INTT/cwshih/DACscan_data/2023_08_01/24767";
@@ -432,10 +432,14 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     // double Integrate_portion = 0.6826;
     bool print_event_display = true; // todo : print the plots here
     
-    //todo : change the mode for drawing
-    int geo_mode_id = 1;
-    string conversion_mode = (geo_mode_id == 0) ? "ideal" : "survey_1_XYAlpha_Peek";
+    // todo : change the geo draw mode if needed
+    int geo_mode_id_draw = 1;
+    vector<string> conversion_mode_BD = {"ideal", "survey_1_XYAlpha_Peek", "full_survey_3.32"};
+    string conversion_mode = (geo_mode_id_draw == 0) ? "ideal" : "survey_1_XYAlpha_Peek";
     double peek = 3.32405;
+
+    // note : the initiator of the INTT geometry class
+    InttConversion * ch_pos_DB = new InttConversion(conversion_mode_BD[geo_mode_id_draw], peek);
 
     TFile * file_in = new TFile(Form("%s/%s.root",mother_folder_directory.c_str(),file_name.c_str()),"read");
     TTree * tree = (TTree *)file_in->Get("tree_clu");
@@ -458,6 +462,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     vector<int>* layer_vec = new vector<int>();
     vector<double>* phi_vec = new vector<double>();
     vector<vector<double>> * bco_diff_vec = 0;
+    vector<int>* server_vec = new vector<int>();
+    vector<int>* module_vec = new vector<int>();
 
     tree -> SetBranchAddress("nhits",&N_hits);
     tree -> SetBranchAddress("nclu_inner",&N_cluster_inner);
@@ -475,6 +481,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     tree -> SetBranchAddress("layer", &layer_vec);
     tree -> SetBranchAddress("phi", &phi_vec);
     tree -> SetBranchAddress("bco_diff_vec",&bco_diff_vec);
+    tree -> SetBranchAddress("server",&server_vec);
+    tree -> SetBranchAddress("module",&module_vec);
 
     TLatex *draw_text = new TLatex();
     draw_text -> SetNDC();
@@ -485,6 +493,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     vector<clu_info> temp_sPH_all_nocolumn_vec; temp_sPH_all_nocolumn_vec.clear();
     vector<vector<double>> temp_sPH_nocolumn_vec(4); // note : cluster x, y, Nclu, sum_adc_conv
     vector<vector<double>> temp_sPH_nocolumn_clu_bco_diff; temp_sPH_nocolumn_clu_bco_diff.clear();
+    vector<int> temp_sPH_nocolumn_clu_server; temp_sPH_nocolumn_clu_server.clear();
+    vector<int> temp_sPH_nocolumn_clu_module; temp_sPH_nocolumn_clu_module.clear();
     vector<vector<double>> temp_sPH_nocolumn_rz_vec(2);
     vector<vector<double>> temp_sPH_nocolumn_rz_error_vec(2);
 
@@ -547,10 +557,10 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
 
 
 
-    TH2F * outer_pos_xy = new TH2F("","outer_pos_xy",360,-150,150,360,-150,150);
-    outer_pos_xy -> SetStats(0);
-    outer_pos_xy -> GetXaxis() -> SetTitle("X axis");
-    outer_pos_xy -> GetYaxis() -> SetTitle("Y axis");
+    // TH2F * outer_pos_xy = new TH2F("","outer_pos_xy",360,-150,150,360,-150,150);
+    // outer_pos_xy -> SetStats(0);
+    // outer_pos_xy -> GetXaxis() -> SetTitle("X axis");
+    // outer_pos_xy -> GetYaxis() -> SetTitle("Y axis");
 
     TH2F * inner_outer_pos_xy = new TH2F("","inner_outer_pos_xy",360,-150,150,360,-150,150);
     inner_outer_pos_xy -> SetStats(0);
@@ -561,50 +571,50 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     z_pos_diff -> GetXaxis() -> SetTitle("inner zpos - outer zpos");
     z_pos_diff -> GetYaxis() -> SetTitle("Eentry");
 
-    TH2F * z_pos_diff_angle_diff = new TH2F("","z_pos_diff_angle_diff",100,-25,25,200,-11,11);
-    z_pos_diff_angle_diff -> SetStats(0);
-    z_pos_diff_angle_diff -> GetXaxis() -> SetTitle("inner zpos - outer zpos");
-    z_pos_diff_angle_diff -> GetYaxis() -> SetTitle("Inner phi - outer phi");
+    // TH2F * z_pos_diff_angle_diff = new TH2F("","z_pos_diff_angle_diff",100,-25,25,200,-11,11);
+    // z_pos_diff_angle_diff -> SetStats(0);
+    // z_pos_diff_angle_diff -> GetXaxis() -> SetTitle("inner zpos - outer zpos");
+    // z_pos_diff_angle_diff -> GetYaxis() -> SetTitle("Inner phi - outer phi");
 
-    TH1F * Nhits_good = new TH1F("","Nhits_good",360,0,1000);
-    Nhits_good -> GetXaxis() -> SetTitle("N hits in one event");
-    Nhits_good -> GetYaxis() -> SetTitle("Eentry");
+    // TH1F * Nhits_good = new TH1F("","Nhits_good",360,0,1000);
+    // Nhits_good -> GetXaxis() -> SetTitle("N hits in one event");
+    // Nhits_good -> GetYaxis() -> SetTitle("Eentry");
 
-    TH1F * z_pos_inner = new TH1F("","z_pos_inner",200,-150,150);
-    z_pos_inner -> GetXaxis() -> SetTitle("inner zpos");
-    z_pos_inner -> GetYaxis() -> SetTitle("Eentry");
+    // TH1F * z_pos_inner = new TH1F("","z_pos_inner",200,-150,150);
+    // z_pos_inner -> GetXaxis() -> SetTitle("inner zpos");
+    // z_pos_inner -> GetYaxis() -> SetTitle("Eentry");
 
-    TH1F * z_pos_outer = new TH1F("","z_pos_outer",200,-150,150);
-    z_pos_outer -> GetXaxis() -> SetTitle("outer zpos");
-    z_pos_outer -> GetYaxis() -> SetTitle("Eentry");
+    // TH1F * z_pos_outer = new TH1F("","z_pos_outer",200,-150,150);
+    // z_pos_outer -> GetXaxis() -> SetTitle("outer zpos");
+    // z_pos_outer -> GetYaxis() -> SetTitle("Eentry");
 
-    TH2F * z_pos_inner_outer = new TH2F("","z_pos_inner_outer",100,-150,150, 100,-150,150);
-    z_pos_inner_outer -> SetStats(0);
-    z_pos_inner_outer -> GetXaxis() -> SetTitle("inner zpos");
-    z_pos_inner_outer -> GetYaxis() -> SetTitle("outer pos");
+    // TH2F * z_pos_inner_outer = new TH2F("","z_pos_inner_outer",100,-150,150, 100,-150,150);
+    // z_pos_inner_outer -> SetStats(0);
+    // z_pos_inner_outer -> GetXaxis() -> SetTitle("inner zpos");
+    // z_pos_inner_outer -> GetYaxis() -> SetTitle("outer pos");
 
-    TH2F * DCA_point = new TH2F("","DCA_point",100,-10,10,100,-10,10);
-    DCA_point -> SetStats(0);
-    DCA_point -> GetXaxis() -> SetTitle("X pos (mm)");
-    DCA_point -> GetYaxis() -> SetTitle("Y pos (mm)");
+    // TH2F * DCA_point = new TH2F("","DCA_point",100,-10,10,100,-10,10);
+    // DCA_point -> SetStats(0);
+    // DCA_point -> GetXaxis() -> SetTitle("X pos (mm)");
+    // DCA_point -> GetYaxis() -> SetTitle("Y pos (mm)");
 
-    TH2F * DCA_distance_inner_phi = new TH2F("","DCA_distance_inner_phi",100,0,360,100,-10,10);
-    DCA_distance_inner_phi -> SetStats(0);
-    DCA_distance_inner_phi -> GetXaxis() -> SetTitle("inner phi");
-    DCA_distance_inner_phi -> GetYaxis() -> SetTitle("DCA (mm)");
+    // TH2F * DCA_distance_inner_phi = new TH2F("","DCA_distance_inner_phi",100,0,360,100,-10,10);
+    // DCA_distance_inner_phi -> SetStats(0);
+    // DCA_distance_inner_phi -> GetXaxis() -> SetTitle("inner phi");
+    // DCA_distance_inner_phi -> GetYaxis() -> SetTitle("DCA (mm)");
 
-    TH2F * DCA_distance_outer_phi = new TH2F("","DCA_distance_outer_phi",100,0,360,100,-10,10);
-    DCA_distance_outer_phi -> SetStats(0);
-    DCA_distance_outer_phi -> GetXaxis() -> SetTitle("outer phi");
-    DCA_distance_outer_phi -> GetYaxis() -> SetTitle("DCA (mm)");
+    // TH2F * DCA_distance_outer_phi = new TH2F("","DCA_distance_outer_phi",100,0,360,100,-10,10);
+    // DCA_distance_outer_phi -> SetStats(0);
+    // DCA_distance_outer_phi -> GetXaxis() -> SetTitle("outer phi");
+    // DCA_distance_outer_phi -> GetYaxis() -> SetTitle("DCA (mm)");
 
-    TH1F * N_cluster_outer_pass = new TH1F("","N_cluster_outer_pass",100,0,100);
-    N_cluster_outer_pass -> GetXaxis() -> SetTitle("N_cluster");
-    N_cluster_outer_pass -> GetYaxis() -> SetTitle("Eentry");
+    // TH1F * N_cluster_outer_pass = new TH1F("","N_cluster_outer_pass",100,0,100);
+    // N_cluster_outer_pass -> GetXaxis() -> SetTitle("N_cluster");
+    // N_cluster_outer_pass -> GetYaxis() -> SetTitle("Eentry");
 
-    TH1F * N_cluster_inner_pass = new TH1F("","N_cluster_inner_pass",100,0,100);
-    N_cluster_inner_pass -> GetXaxis() -> SetTitle("N_cluster");
-    N_cluster_inner_pass -> GetYaxis() -> SetTitle("Eentry");
+    // TH1F * N_cluster_inner_pass = new TH1F("","N_cluster_inner_pass",100,0,100);
+    // N_cluster_inner_pass -> GetXaxis() -> SetTitle("N_cluster");
+    // N_cluster_inner_pass -> GetYaxis() -> SetTitle("Eentry");
 
     TH1F * Rchi2_xy_hist = new TH1F("","Rchi2_xy_hist",100,0,10);
     Rchi2_xy_hist -> GetXaxis() -> SetTitle("N_cluster");
@@ -671,6 +681,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     vector<double> out_clu_size; out_clu_size.clear();
     vector<double> out_clu_sum_adc_conv; out_clu_sum_adc_conv.clear();
     vector<vector<double>> out_bco_diff_vec; out_bco_diff_vec.clear();
+    vector<int> out_server; out_server.clear();
+    vector<int> out_module; out_module.clear();
     Long64_t bco_full_out;
     int N_clu;
     int eID_out;
@@ -687,6 +699,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     tree_out -> Branch("clu_size",&out_clu_size);
     tree_out -> Branch("clu_conv_adc",&out_clu_sum_adc_conv);
     tree_out -> Branch("bco_diff_vec",&out_bco_diff_vec);
+    tree_out -> Branch("server",&out_server);
+    tree_out -> Branch("module",&out_module);
 
 
     TF1 * fit_xy = new TF1("fit_xy","pol1",-150,150);
@@ -712,6 +726,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
     vector<double> final_good_clu_size; final_good_clu_size.clear();
     vector<double> final_good_clu_sum_adc_conv; final_good_clu_sum_adc_conv.clear();
     vector<vector<double>> final_good_clu_bco_diff_vec; final_good_clu_bco_diff_vec.clear();
+    vector<int>    final_good_clu_server; final_good_clu_server.clear();
+    vector<int>    final_good_clu_module; final_good_clu_module.clear();
 
     if (print_event_display) {c2 -> Print(Form("%s/folder_%s_cosmic/temp_event_display_fit.pdf(",mother_folder_directory.c_str(),file_name.c_str()));}
 
@@ -791,6 +807,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
             temp_sPH_nocolumn_vec[3].push_back( sum_adc_conv_vec -> at(clu_i));
 
             temp_sPH_nocolumn_clu_bco_diff.push_back( bco_diff_vec -> at(clu_i) );
+            temp_sPH_nocolumn_clu_server.push_back( server_vec -> at(clu_i) );
+            temp_sPH_nocolumn_clu_module.push_back( module_vec -> at(clu_i) );
 
             double clu_radius = get_radius(
                 (phi_vec -> at(clu_i) > 90 && phi_vec -> at(clu_i) < 270 ) ? x_vec -> at(clu_i) + temp_X_align : x_vec -> at(clu_i), 
@@ -844,9 +862,9 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
         }
 
         int original_outer_vec_size = temp_sPH_outer_nocolumn_vec.size(); 
-        N_cluster_outer_pass -> Fill(temp_sPH_outer_nocolumn_vec.size());
-        N_cluster_inner_pass -> Fill(temp_sPH_inner_nocolumn_vec.size());
-        N_cluster_correlation -> Fill( temp_sPH_inner_nocolumn_vec.size(), temp_sPH_outer_nocolumn_vec.size() );
+        // N_cluster_outer_pass -> Fill(temp_sPH_outer_nocolumn_vec.size());
+        // N_cluster_inner_pass -> Fill(temp_sPH_inner_nocolumn_vec.size());
+        // N_cluster_correlation -> Fill( temp_sPH_inner_nocolumn_vec.size(), temp_sPH_outer_nocolumn_vec.size() );
 
         if ((temp_sPH_inner_nocolumn_vec.size() + temp_sPH_outer_nocolumn_vec.size()) > N_clu_cut)
         {
@@ -859,6 +877,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
             temp_sPH_nocolumn_rz_error_vec.clear(); temp_sPH_nocolumn_rz_error_vec = vector<vector<double>>(2);
             temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(4);
             temp_sPH_nocolumn_clu_bco_diff.clear();
+            temp_sPH_nocolumn_clu_server.clear();
+            temp_sPH_nocolumn_clu_module.clear();
             temp_sPH_inner_nocolumn_vec.clear();
             temp_sPH_outer_nocolumn_vec.clear();
             continue;
@@ -998,6 +1018,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                     final_good_clu_size.push_back( temp_sPH_nocolumn_vec[2][ event_final_set[ele_i] ] );
                     final_good_clu_sum_adc_conv.push_back( temp_sPH_nocolumn_vec[3][ event_final_set[ele_i] ] );
                     final_good_clu_bco_diff_vec.push_back( temp_sPH_nocolumn_clu_bco_diff[ event_final_set[ele_i] ] );
+                    final_good_clu_server.push_back( temp_sPH_nocolumn_clu_server[ event_final_set[ele_i] ] );
+                    final_good_clu_module.push_back( temp_sPH_nocolumn_clu_module[ event_final_set[ele_i] ] );
                     // rz_gr -> SetPoint(ele_i, temp_sPH_nocolumn_rz_vec[0][ event_final_set[ele_i] ], temp_sPH_nocolumn_rz_vec[1][ event_final_set[ele_i] ]);
                 }
                 
@@ -1031,7 +1053,7 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                 if (bco_full == 128389189792) {cout<<"test after, fianl chi2_rz : "<<chi2_rz<<endl;}
 
                 pad_xy -> cd();
-                temp_bkg(pad_xy, conversion_mode, peek, beam_origin);
+                temp_bkg(pad_xy, conversion_mode, peek, beam_origin, ch_pos_DB);
                 if (chi2_xy != 0){ // note : not vertical, can fit  
                     double cosmic_phi = ( atan(fit_xy -> GetParameter(1)) * (180/M_PI) < 0 ) ? atan(fit_xy -> GetParameter(1)) * (180/M_PI) + 180 : atan(fit_xy -> GetParameter(1)) * (180/M_PI);
                     draw_text -> DrawLatex(0.2, 0.82, Form("Used cluster : %i, chi2/NDF : %.3f",used_clu, (fit_xy -> GetChisquare() / double(fit_xy -> GetNDF())) ));
@@ -1144,6 +1166,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                     out_clu_sum_adc_conv = final_good_clu_sum_adc_conv;
                     N_clu = final_good_clu_bco_diff_vec.size();
                     out_bco_diff_vec = final_good_clu_bco_diff_vec;
+                    out_server = final_good_clu_server;
+                    out_module = final_good_clu_module;
                     tree_out -> Fill();
                 }
 
@@ -1154,6 +1178,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
                 final_good_clu_size.clear();
                 final_good_clu_sum_adc_conv.clear();
                 final_good_clu_bco_diff_vec.clear();
+                final_good_clu_server.clear();
+                final_good_clu_module.clear();
             }
             
             pad_xy -> Clear();
@@ -1165,14 +1191,14 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
 
         for ( int inner_i = 0; inner_i < temp_sPH_inner_nocolumn_vec.size(); inner_i++ )
         {
-            inner_pos_xy -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].x,temp_sPH_inner_nocolumn_vec[inner_i].y);
+            // inner_pos_xy -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].x,temp_sPH_inner_nocolumn_vec[inner_i].y);
             inner_outer_pos_xy -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].x,temp_sPH_inner_nocolumn_vec[inner_i].y);
             angle_inner -> Fill(temp_sPH_inner_nocolumn_vec[inner_i].phi);
         }
 
         for ( int outer_i = 0; outer_i < temp_sPH_outer_nocolumn_vec.size(); outer_i++ )
         {
-            outer_pos_xy -> Fill(temp_sPH_outer_nocolumn_vec[outer_i].x,temp_sPH_outer_nocolumn_vec[outer_i].y);
+            // outer_pos_xy -> Fill(temp_sPH_outer_nocolumn_vec[outer_i].x,temp_sPH_outer_nocolumn_vec[outer_i].y);
             inner_outer_pos_xy -> Fill(temp_sPH_outer_nocolumn_vec[outer_i].x,temp_sPH_outer_nocolumn_vec[outer_i].y);
             angle_outer -> Fill(temp_sPH_outer_nocolumn_vec[outer_i].phi);
         }
@@ -1186,6 +1212,8 @@ void check_cosmic_fit(/*pair<double,double>beam_origin*/)
         temp_sPH_nocolumn_rz_error_vec.clear(); temp_sPH_nocolumn_rz_error_vec = vector<vector<double>>(2);
         temp_sPH_nocolumn_vec.clear(); temp_sPH_nocolumn_vec = vector<vector<double>>(4);
         temp_sPH_nocolumn_clu_bco_diff.clear();
+        temp_sPH_nocolumn_clu_server.clear();
+        temp_sPH_nocolumn_clu_module.clear();
         temp_sPH_inner_nocolumn_vec.clear();
         temp_sPH_outer_nocolumn_vec.clear();
     } // note : end of event 

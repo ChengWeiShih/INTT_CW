@@ -1,7 +1,7 @@
 #ifndef __INTTCLUSTERING_H_
 #define __INTTCLUSTERING_H_
 
-#include "InttConversion.h"
+// #include "InttConversion.h"
 
 struct clu_info {
     int column;
@@ -46,7 +46,7 @@ struct hit_pro_info {
 
 namespace InttClustering{
     
-    vector<clu_info> clustering(string server_name, int FC_id, vector<hit_info> single_event, string mode, double peek)
+    vector<clu_info> clustering(string server_name, int FC_id, vector<hit_info> single_event, InttConversion * ch_pos_DB)
     {
 
         // note : [0] : nominal_chip_id, 
@@ -78,6 +78,7 @@ namespace InttClustering{
         int sum_adc_conv = 0;
         vector<double> bco_diff_vec; bco_diff_vec.clear();
 
+        // cout<<"test 3"<<endl;
         
         for (int i = 0; i < single_event.size(); i++) // note : number of hits in this event, for this half-ladder
         {
@@ -95,16 +96,32 @@ namespace InttClustering{
                 // note : take the latest one.
                 hit_seat[chip_conv - 1][chan_conv] = {single_event[i].chip_id, single_event[i].chan_id, single_event[i].adc, single_event[i].adc_conv, single_event[i].bco_diff};    
             }
+
+            // cout<<"test 3-5 "<<single_event[i].chip_id<<" "<<single_event[i].chan_id<<endl;    
         }
+        // cout<<"test 4"<<endl;
+        
+        // for (int col = 0; col < 13; col++) // note : column
+        // {
+        //     // cout<<" "<<endl;
+        //     for (int ch = 0; ch < 256; ch++) // note : channel, remove those empty seat
+        //     {
+        //         cout<<"---------------- "<<col<<" "<<ch<<" "<<hit_seat[col][ch][0]<<" "<<hit_seat[col][ch][1]<<" "<<hit_seat[col][ch][2]<<" "<<hit_seat[col][ch][3]<<" "<<hit_seat[col][ch][4]<<" size : "<<hit_seat[col][ch].size()<<endl;
+        //     }
+        // }
 
         for (int col = 0; col < 13; col++) // note : column
         {
             // cout<<" "<<endl;
             for (int ch = 0; ch < 256; ch++) // note : channel, remove those empty seat
             {
-                if (hit_seat[col][ch] != nominal_vec)
+                if (hit_seat[col][ch][0] != -1 && hit_seat[col][ch][1] != -1 && hit_seat[col][ch][2] != -1 && hit_seat[col][ch][3] != -1 && hit_seat[col][ch][4] != -1 && hit_seat[col][ch].size() == 5)
                 {
-                    pos_str hit_pos = InttConversion::Get_XY_all(server_name, FC_id, hit_seat[col][ch][0], hit_seat[col][ch][1],mode,peek);
+                    // cout<<"test 4-5 "<<col<<" "<<ch<<endl;
+                    // cout<<"test 4-5 "<<server_name<<" "<<FC_id<<" "<<hit_seat[col][ch][0]<<" "<<hit_seat[col][ch][1]<<endl;
+                    pos_str hit_pos = ch_pos_DB -> Get_XY_all(server_name, FC_id, hit_seat[col][ch][0], hit_seat[col][ch][1]);
+                    // cout<<"test 5"<<endl;
+                    // cout<<" "<<endl;
 
                     // cout<<"!!!!!!!!!!!!!!!!!! test in clustering func "<<hit_pos.x<<" "<<hit_pos.y<<endl;
                     // cout<<"("<<hit_pos.x<<","<<hit_pos.y<<"),";
@@ -271,6 +288,12 @@ namespace InttClustering{
         } // note : end column
 
         return output_vec;
+    }
+
+    pos_str test_func(InttConversion * ch_pos_DB){
+        // cout<<"In InttClustering.h, test_func : "<< ch_pos_DB -> GetGeoMode()<<endl;
+
+        return ch_pos_DB -> Get_XY_all("intt0", 0, 1, 127);
     }
 
 };
