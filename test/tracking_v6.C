@@ -9,6 +9,17 @@
 // 3. only one track in one event. Multi-tracks is not allowed yet. I am working on it now
 // 4. the file should run with the filter macro before running the analysis
 //
+//
+// the new features of version 7 comparing with version 6 :
+// 1. the sequence of the adc plot is same as the hitmap 
+// 2. 3 hit alignment algorithm is added 
+// 3. for 3 hit case, the way to pick up the second bad hit is by checking the abs. slope, not the abs difference now
+// 4. the residual histogram is available for 3 hit layer case now
+// 5. the alignment histogram is available for 3 hit layer case now
+// 6. for the 4 hit second outlier pick up, is no by checking the abs. slope, not the abs. difference now.
+// 7. the alignment root file output is available for hit3 case now
+// 9. for hit4 alignment the correction order is based on the 3 points fitting r-chi2 ?
+//
 // the new features of version 6 comparing with version 5 : 
 // 1. the setbranchaddress is used
 // 2. the consideration of 4 points case is up to 0000
@@ -305,11 +316,17 @@ vector <double> align_func (vector <double> hit_position, double correction_rate
 	TF1 *hit3_fit_3 = new TF1("hit3_fit_3","pol1",-1,10);//sky blue
 	hit3_fit_3->SetLineColor(7);
 
-	//to calculate the difference between the rest 3 points
-	self_outlier_check[0]  = fabs(hit_position[0]-(hit_position[1]+hit_position[2]+hit_position[3])/3.);
-	self_outlier_check[1]  = fabs(hit_position[1]-(hit_position[0]+hit_position[2]+hit_position[3])/3.);
-	self_outlier_check[2]  = fabs(hit_position[2]-(hit_position[1]+hit_position[0]+hit_position[3])/3.);
-	self_outlier_check[3]  = fabs(hit_position[3]-(hit_position[1]+hit_position[2]+hit_position[0])/3.);
+	// to calculate the difference between the rest 3 points
+	// so far there are 3 methods to find out the sequence of layer requires correction 
+	// 1. to check the self position difference
+	// 2. to check the residual against the 4 points fitting line 
+	// 3. to check the r-chi2 of 3 points fitting line 
+	// the method 3 seems to be better
+
+	// self_outlier_check[0]  = fabs(hit_position[0]-(hit_position[1]+hit_position[2]+hit_position[3])/3.);
+	// self_outlier_check[1]  = fabs(hit_position[1]-(hit_position[0]+hit_position[2]+hit_position[3])/3.);
+	// self_outlier_check[2]  = fabs(hit_position[2]-(hit_position[1]+hit_position[0]+hit_position[3])/3.);
+	// self_outlier_check[3]  = fabs(hit_position[3]-(hit_position[1]+hit_position[2]+hit_position[0])/3.);
 
 	//hit4 case
 	TGraph * hit4_grr_align = new TGraph (4,x_axis,&hit_position[0]);
@@ -322,8 +339,7 @@ vector <double> align_func (vector <double> hit_position, double correction_rate
 		// abs_layer_residual[i] = fabs( hit_position[i] - (hit4_fit_align->GetParameter(1)* double(x_axis[i]) + hit4_fit_align->GetParameter(0)) );
 	}
 	//to find out the order from big "self_outlier_check" to small "self_outlier_check" by using sort
-	TMath::Sort(4, self_outlier_check, residual_order); 
-	// for (int i=0; i<4; i++) cout<<"residual order : "<<residual_order[i] <<" "<< self_outlier_check[residual_order[i]]<<endl;
+	
 	
 	//hit3 case
 	for (int i2=0; i2<4; i2++) { for (int i3=0; i3<3; i3++) { hit_3_y_axis[i2].push_back( hit_position[ int(x_axis_3[i2][i3]) ] ); } }
@@ -336,10 +352,15 @@ vector <double> align_func (vector <double> hit_position, double correction_rate
 	hit3_grr_2->Fit("hit3_fit_2","NQ");
 	hit3_grr_3->Fit("hit3_fit_3","NQ");
 
-	hit_fit_rchi.push_back( hit3_fit_0->GetChisquare()/double(hit3_fit_0->GetNDF()) );
-	hit_fit_rchi.push_back( hit3_fit_1->GetChisquare()/double(hit3_fit_1->GetNDF()) );
-	hit_fit_rchi.push_back( hit3_fit_2->GetChisquare()/double(hit3_fit_2->GetNDF()) );
-	hit_fit_rchi.push_back( hit3_fit_3->GetChisquare()/double(hit3_fit_3->GetNDF()) );
+	hit_fit_rchi.push_back( hit3_fit_0->GetChisquare()/double(hit3_fit_0->GetNDF()) ); //exclude l0
+	hit_fit_rchi.push_back( hit3_fit_1->GetChisquare()/double(hit3_fit_1->GetNDF()) ); //exclude l1
+	hit_fit_rchi.push_back( hit3_fit_2->GetChisquare()/double(hit3_fit_2->GetNDF()) ); //exclude l2
+	hit_fit_rchi.push_back( hit3_fit_3->GetChisquare()/double(hit3_fit_3->GetNDF()) ); //exclude l3 
+
+	// "false" means the ID of the order start from small to large
+	TMath::Sort(4, &hit_fit_rchi[0], residual_order,false); 
+	// for (int i=0; i<4; i++) cout<<"residual order : "<<residual_order[i] <<" "<< self_outlier_check[residual_order[i]]<<endl;
+
 	hit_fit_rchi.push_back( hit4_fit_align->GetChisquare()  /double(hit4_fit_align->GetNDF())   );
 
 
@@ -371,10 +392,10 @@ vector <double> align_func (vector <double> hit_position, double correction_rate
 		hit4_fit_latex -> DrawLatex(0.12, 0.690-Legend_Y_offset,Form("l0-residual : %.5f",layer_residual[0]));
 		hit4_fit_latex -> DrawLatex(0.12, 0.660-Legend_Y_offset,Form("l1-residual : %.5f",layer_residual[1]));
 
-		hit4_fit_latex->DrawLatex(0.12, 0.750, Form("#chi^{2}/NDF : %.4f", hit_fit_rchi[0]));
-		hit4_fit_latex->DrawLatex(0.12, 0.720, Form("#chi^{2}/NDF : %.4f", hit_fit_rchi[1]));
-		hit4_fit_latex->DrawLatex(0.12, 0.690, Form("#chi^{2}/NDF : %.4f", hit_fit_rchi[2]));
-		hit4_fit_latex->DrawLatex(0.12, 0.660, Form("#chi^{2}/NDF : %.4f", hit_fit_rchi[3]));
+		hit4_fit_latex->DrawLatex(0.12, 0.750, Form("#chi^{2}/NDF : %.4f, exclude l0, G", hit_fit_rchi[0]));
+		hit4_fit_latex->DrawLatex(0.12, 0.720, Form("#chi^{2}/NDF : %.4f, exclude l1, B", hit_fit_rchi[1]));
+		hit4_fit_latex->DrawLatex(0.12, 0.690, Form("#chi^{2}/NDF : %.4f, exclude l2, P", hit_fit_rchi[2]));
+		hit4_fit_latex->DrawLatex(0.12, 0.660, Form("#chi^{2}/NDF : %.4f, exclude l3, SB",hit_fit_rchi[3]));
 
 		c2->Print(Form ("%s/folder_%s/alignment_plot/alignment_%i.pdf(",folder_name.Data(),file_name.Data(),eID));
 		c2->Clear();
@@ -546,6 +567,78 @@ vector <double> align_func (vector <double> hit_position, double correction_rate
 
 }
 
+// it works for the 3 layers testbeam setup. 
+// NOT 4 layers but one layer missing hit
+vector <double> align_func_hit3 (vector <double> hit_position)
+{
+	double x_axis[3] = {0,1,2};
+	double self_difference[3] = { hit_position[3], hit_position[4], hit_position[5] };//to save the self_difference
+
+	int sort_self_difference_index[3];
+	TMath::Sort(3, self_difference, sort_self_difference_index);
+	int the_smallest_diff_index = sort_self_difference_index[2]; //the index with the smallest difference. it should be 0 or 1 or 2
+	int aligned_layer;
+
+	vector<double> hit2_xaixs;
+	vector<double> hit2_yaixs;
+
+	double final_correction[3];
+	
+	if      (the_smallest_diff_index == 0) aligned_layer = 2;
+	else if (the_smallest_diff_index == 1) aligned_layer = 1;
+	else if (the_smallest_diff_index == 2) aligned_layer = 0;
+	
+	// if index is 0 -> 2 is the outlier
+ 	// if index is 1 -> 1 is the outlier
+ 	// if index is 2 -> 0 is the outlier
+
+ 	// hit3_best_fit_picker_layer[6] = fabs(hit3_fit_Y[0]-hit3_fit_Y[1]);
+	// hit3_best_fit_picker_layer[7] = fabs(hit3_fit_Y[0]-hit3_fit_Y[2]);
+	// hit3_best_fit_picker_layer[8] = fabs(hit3_fit_Y[1]-hit3_fit_Y[2]);
+	
+	TF1 * hit2_fit = new TF1 ("hit2_fit","pol1",0,4);
+
+	for (int i=0; i<3; i++)
+	{
+		if (i == aligned_layer) {}
+		else
+		{
+			hit2_xaixs.push_back(x_axis [i]);
+			hit2_yaixs.push_back(hit_position [i]);
+		}
+	}
+
+	TGraph * hit2_grr = new TGraph (2,&hit2_xaixs[0],&hit2_yaixs[0]);
+	hit2_grr->Fit("hit2_fit","NQ");
+
+	for (int i=0; i<3; i++)
+	{
+		if (i == aligned_layer) 
+		{
+			final_correction[i] = hit_position[i] - (hit2_fit->GetParameter(1)* x_axis[i] + hit2_fit->GetParameter(0));
+		}
+		else 
+		{
+			final_correction[i] = 0;	
+		}
+	}
+
+	vector<double> array_output; array_output.clear();
+
+	array_output.push_back(final_correction[0]); //the amount of correction of l0
+	array_output.push_back(final_correction[1]); //the amount of correction of l1
+	array_output.push_back(final_correction[2]); //the amount of correction of l2
+
+	array_output.push_back(hit2_fit->GetParameter(1)); //2 points slope
+	array_output.push_back(hit2_fit->GetParameter(0)); //2 points offset
+
+	return array_output;
+
+	hit2_xaixs.clear();
+	hit2_yaixs.clear();
+
+}
+
 //1 <-> 14
 //2 <-> 15
 //3 <-> 16
@@ -577,7 +670,7 @@ vector <double> align_func (vector <double> hit_position, double correction_rate
 
 
 
-void tracking_v6 () // by analyzing the tree_both
+void tracking_v7 () // by analyzing the tree_both
 {
 	//the name of the file you want to study, remember to remove the ".root"
 	TString file_name = "electron_100W_1_convert_l2_70_filter";
@@ -622,6 +715,8 @@ void tracking_v6 () // by analyzing the tree_both
 	int adc_setting[9] = {15,30,60,90,120,150,180,210,240}; // adc setting 
 	double adc_convert[8];
 	for (int i=0; i<8; i++) {adc_convert[i] = (adc_setting[i]+adc_setting[i+1])/2.;}
+
+	double actual_xpos [4] = {0,1,2,3};
 	
 	int camac_tdc_cutL = 550; //the camac_tdc cut,  left-hand side cut, 510 in principle
 	int camac_tdc_cutR = 1200;//the camac_tdc cut, right-hand side cut
@@ -985,7 +1080,7 @@ void tracking_v6 () // by analyzing the tree_both
 		if (i!=0)c5->Divide(13, 2);
 		for (int i1=0; i1< 26; i1++)
 		{
-			c5->cd(i1+1);
+			c5->cd( 26 - i1 );
 			adc_distribution[i][i1]->Draw("hist");
 		}
 		c5->Print( Form("%s/folder_%s/chip_adc_distribution.pdf",folder_direction.Data(),file_name.Data()) );
@@ -1040,7 +1135,7 @@ void tracking_v6 () // by analyzing the tree_both
 	int third_layer_chan;
 	int fourth_layer_chan;
 	double hit3_best_fit_picker=100000000000;
-	double hit3_best_fit_picker_layer[9];
+	double hit3_best_fit_picker_layer[14];
 	double hit3_worse_hit_picker=0;
 	int hit3_worse_hit_picker_layer;
 	int hit3_fit_loop=0;
@@ -1055,7 +1150,7 @@ void tracking_v6 () // by analyzing the tree_both
 	vector <double> get_align_result; get_align_result.clear();
 
 	int hit3_final_pickup_ID;
-
+	double hit3_actual_xpos[3];
 
 	double hit4_layer[4]={0,1,2,3};
 	double hit4_fit_Y[4];
@@ -1073,7 +1168,7 @@ void tracking_v6 () // by analyzing the tree_both
 	// vector<double> hit4_final_pickup; hit4_final_pickup.clear(); 
 	int hit4_final_pickup_ID;
 	double hit4_second_residual[3];
-	double hit4_second_bad_pciker[3];
+	double hit4_second_bad_pciker[6];
 	int hit4_second_residual_counter=0;
 	double hit4_second_bad_pciker_big=10000000;
 	int hit4_second_bad_pciker_id;
@@ -1088,6 +1183,7 @@ void tracking_v6 () // by analyzing the tree_both
 	vector<double> final_pickup; final_pickup.clear();
 
 	vector <double> hit4_secondfit_X; hit4_secondfit_X.clear();
+	vector <double> hit4_secondfit_X_ID; hit4_secondfit_X_ID.clear();
 	vector <double> hit4_secondfit_Y; hit4_secondfit_Y.clear();
 
 	vector<int> event_quality; event_quality.clear(); // to save the profile of each event 
@@ -1108,6 +1204,10 @@ void tracking_v6 () // by analyzing the tree_both
 	double origin_l3;
 	double origin_fit_slope;
 	double origin_fit_offset;
+
+	double origin_slope_2; // this is for hit3 case, to check the 2 points slope
+	double origin_slope_1;
+	double origin_slope_0;
 
 	int    align_eID;
 
@@ -1172,6 +1272,30 @@ void tracking_v6 () // by analyzing the tree_both
 		tree_output->Branch("origin_l1"   ,&origin_l1);
 		tree_output->Branch("origin_l2"   ,&origin_l2);
 		tree_output->Branch("origin_l3"   ,&origin_l3);
+		tree_output->Branch("origin_fit_slope"    ,&origin_fit_slope); // the slope before position correction
+		tree_output->Branch("origin_fit_offset"   ,&origin_fit_offset);	// the offset before position correction
+
+		tree_output->Branch("eID"  ,&align_eID);
+	}
+	else if (alignment_on == true && number_of_layer == 3) // the branch setting of the 3 layer testbeam 
+	{
+		file_output = new TFile(Form("%s/folder_%s/alignment_result_data.root",folder_direction.Data(),file_name.Data()), "RECREATE");
+		tree_output = new TTree("alignment_Y", "alignment_Y");
+		tree_output->Branch("l0"   ,&alignment_l0); //alignment result
+		tree_output->Branch("l1"   ,&alignment_l1);
+		tree_output->Branch("l2"   ,&alignment_l2);
+
+		tree_output->Branch("fit_slope"   ,&fit_slope); // slope after position correction
+		tree_output->Branch("fit_offset"   ,&fit_offset); // offset after position correction
+
+		tree_output->Branch("origin_l0"   ,&origin_l0); // the original positions
+		tree_output->Branch("origin_l1"   ,&origin_l1);
+		tree_output->Branch("origin_l2"   ,&origin_l2);
+
+		tree_output->Branch("origin_slope_2"   ,&origin_slope_2); // the original slope
+		tree_output->Branch("origin_slope_1"   ,&origin_slope_1);
+		tree_output->Branch("origin_slope_0"   ,&origin_slope_0);		
+
 		tree_output->Branch("origin_fit_slope"    ,&origin_fit_slope); // the slope before position correction
 		tree_output->Branch("origin_fit_offset"   ,&origin_fit_offset);	// the offset before position correction
 
@@ -1403,6 +1527,10 @@ void tracking_v6 () // by analyzing the tree_both
 					hit3_layer[2]=2;
 				}
 				
+				hit3_actual_xpos[0] = actual_xpos[ hit3_layer[0] ]; // the actual position of the ladders in x axis
+				hit3_actual_xpos[1] = actual_xpos[ hit3_layer[1] ]; // to avoid the problem of non- isometric layer gap
+				hit3_actual_xpos[2] = actual_xpos[ hit3_layer[2] ];
+
 				//the nasted for loop fits all the combinations and only the one with minimal r-chi2 is picked up
 				for (int l1=0; l1<data_all_MC_EW[ int(hit3_layer[0]) ].size(); l1++)
 				{
@@ -1414,7 +1542,7 @@ void tracking_v6 () // by analyzing the tree_both
 							hit3_fit_Y[1] = data_all_MC_EW[ int(hit3_layer[1]) ][l2];
 							hit3_fit_Y[2] = data_all_MC_EW[ int(hit3_layer[2]) ][l3];
 
-							TGraph * hit3_grr = new TGraph (3,hit3_layer,hit3_fit_Y);
+							TGraph * hit3_grr = new TGraph (3,hit3_layer,hit3_fit_Y); // MAYBE the hit3_layer has to be replaced by hit3_actual_xpos. then the x axis range, fit range has to be modified as well.
 							hit3_grr ->SetTitle( Form("3 hit PLC : %d-%d, eID : %d ,chip : %d, position :%.3f, %.3f, %.3f",pass_l1_counting,hit3_fit_loop,eID_array[i],most_hit_info[0],hit3_fit_Y[0],hit3_fit_Y[1],hit3_fit_Y[2]) );
 							hit3_grr ->Fit("hit3_fit","NQ");
 							
@@ -1443,7 +1571,9 @@ void tracking_v6 () // by analyzing the tree_both
 							//some important parameters are saved to the "hit3_best_fit_picker_layer" for further analysis or checking 
 							//1. the chosen cluster position at layer 0 1 2 (0 ~ 2) 
 							//2. the residual of each chosen cluster against the fitting line (3 ~ 5)
-							//3. the position difference of the clusters against each other  (6 ~ 8)
+							//3. the position difference of the clusters divided by the layer distance against each other  (6 ~ 8)
+							//4. the position difference of the clusters against each other  (9 ~ 11)
+							//4. the original best fit slope and offset (12~13)
 							if (  ( hit3_fit->GetChisquare()/double(hit3_fit->GetNDF()) ) < hit3_best_fit_picker)
 							{
 								hit3_best_fit_picker =( hit3_fit->GetChisquare()/double(hit3_fit->GetNDF()) );
@@ -1455,9 +1585,17 @@ void tracking_v6 () // by analyzing the tree_both
 								hit3_best_fit_picker_layer[4] = ( hit3_fit_Y[1] - (hit3_fit->GetParameter(1)* hit3_layer[1] + hit3_fit->GetParameter(0)) );//deviation from fit secondlayer
 								hit3_best_fit_picker_layer[5] = ( hit3_fit_Y[2] - (hit3_fit->GetParameter(1)* hit3_layer[2] + hit3_fit->GetParameter(0)) );//deviation from fit thirdlayer
 							
-								hit3_best_fit_picker_layer[6]=fabs(hit3_fit_Y[0]-hit3_fit_Y[1]);
-								hit3_best_fit_picker_layer[7]=fabs(hit3_fit_Y[0]-hit3_fit_Y[2]);
-								hit3_best_fit_picker_layer[8]=fabs(hit3_fit_Y[1]-hit3_fit_Y[2]);
+								hit3_best_fit_picker_layer[6] = fabs(hit3_fit_Y[0]-hit3_fit_Y[1]) / fabs(hit3_actual_xpos[0]-hit3_actual_xpos[1]); // because now we check the slope, 
+								hit3_best_fit_picker_layer[7] = fabs(hit3_fit_Y[0]-hit3_fit_Y[2]) / fabs(hit3_actual_xpos[0]-hit3_actual_xpos[2]); // the reason of using "hit3_actual_xpos" instead of hit3_layer is to make it compatible with non-isometric layer gap 
+								hit3_best_fit_picker_layer[8] = fabs(hit3_fit_Y[1]-hit3_fit_Y[2]) / fabs(hit3_actual_xpos[1]-hit3_actual_xpos[2]);
+
+								hit3_best_fit_picker_layer[9]  = fabs(hit3_fit_Y[0]-hit3_fit_Y[1]) ; // these three is for the final check -> 0000
+								hit3_best_fit_picker_layer[10] = fabs(hit3_fit_Y[0]-hit3_fit_Y[2]) ; // we check the absolute position difference
+								hit3_best_fit_picker_layer[11] = fabs(hit3_fit_Y[1]-hit3_fit_Y[2]) ; 
+
+								hit3_best_fit_picker_layer[12] = hit3_fit->GetParameter(1); // original slope
+								hit3_best_fit_picker_layer[13] = hit3_fit->GetParameter(0); // original offset
+
 								hit3_final_pickup_ID = hit3_fit_loop;
 							}
 
@@ -1470,6 +1608,55 @@ void tracking_v6 () // by analyzing the tree_both
 				final_pickup.push_back(hit3_final_pickup_ID);
 				if (pass_l1_counting%info_sampling==0) {cout<<"---------hit3, PLC "<<pass_l1_counting<<" final pick : "<<hit3_final_pickup_ID<<endl;}
 				hit3_fit_loop=0;
+
+				if (alignment_on == true && number_of_layer == 3)
+				{
+					for_final_alignment.push_back(hit3_best_fit_picker_layer[0]); // to save the best fit positions
+					for_final_alignment.push_back(hit3_best_fit_picker_layer[1]);
+					for_final_alignment.push_back(hit3_best_fit_picker_layer[2]);
+
+					for_final_alignment.push_back(hit3_best_fit_picker_layer[6]); //0-1
+					for_final_alignment.push_back(hit3_best_fit_picker_layer[7]); //0-2
+					for_final_alignment.push_back(hit3_best_fit_picker_layer[8]); //1-2
+
+					get_align_result = align_func_hit3 (for_final_alignment);
+
+					TH1_hit4_layer0_Y_alignment->Fill(get_align_result[0]); // to fill the alignment to the histogram 
+					TH1_hit4_layer1_Y_alignment->Fill(get_align_result[1]);
+					TH1_hit4_layer2_Y_alignment->Fill(get_align_result[2]);
+
+					//the required data for further alignment check is saved in root file 
+					alignment_l0 = get_align_result[0]; // the amount of the correction of layer 0
+					alignment_l1 = get_align_result[1]; // the amount of the correction of layer 1
+					alignment_l2 = get_align_result[2]; // the amount of the correction of layer 2
+					
+					fit_slope    = get_align_result[4]; // the slope of the 2 fixed points
+					fit_offset   = get_align_result[5]; // the offset of the 2 fixed points 
+					
+					origin_l0     = hit3_best_fit_picker_layer[0]; // the original position at l0
+					origin_l1     = hit3_best_fit_picker_layer[1]; // the original position at l1
+					origin_l2     = hit3_best_fit_picker_layer[2]; // the original position at l2
+
+					origin_slope_2 = hit3_best_fit_picker_layer[6]; // the original slope, exclude layer 2
+					origin_slope_1 = hit3_best_fit_picker_layer[7];
+					origin_slope_0 = hit3_best_fit_picker_layer[8];
+
+					origin_fit_slope  = hit3_best_fit_picker_layer[12]; // the original best fit slope before correction 
+					origin_fit_offset = hit3_best_fit_picker_layer[13]; // the original best fit offset before correction
+
+					align_eID    = eID_array[i];
+
+					tree_output->Fill();
+
+				}
+
+				if (number_of_layer == 3)
+				{
+					TH1_hit4_layer0_Y_residual->Fill(hit3_best_fit_picker_layer[3]); // fill the residual to the histogram withno correction
+					TH1_hit4_layer1_Y_residual->Fill(hit3_best_fit_picker_layer[4]);
+					TH1_hit4_layer2_Y_residual->Fill(hit3_best_fit_picker_layer[5]);
+				}
+
 				// hit3_final_small_X.push_back(hit3_layer[0]);
 				// hit3_final_small_X.push_back(hit3_layer[1]);
 				// hit3_final_small_X.push_back(hit3_layer[2]);
@@ -1526,7 +1713,9 @@ void tracking_v6 () // by analyzing the tree_both
 					}
 
 					// to check the position difference of the rest 2 points
-					if ( fabs(hit3_best_fit_picker_layer[hit3_second_bad_picker]) > noise_hit_distance ) 
+					//hit3_second_bad_picker : 6 ~ 8
+					// we check the absolute position difference
+					if ( fabs(hit3_best_fit_picker_layer[hit3_second_bad_picker+3]) > noise_hit_distance ) 
 					{
 						event_quality[pass_l1_counting] = 0x00;
 					}
@@ -1566,7 +1755,7 @@ void tracking_v6 () // by analyzing the tree_both
 									hit4_grr ->SetTitle( Form("4 hit PLC : %d-%d, eID : %d, chip : %d, chan :%.3f, %.3f, %.3f,%.3f",pass_l1_counting,hit4_fit_loop,eID_array[i],most_hit_info[0],hit4_fit_Y[0],hit4_fit_Y[1],hit4_fit_Y[2],hit4_fit_Y[3]) );
 									hit4_grr ->SetMarkerStyle(20);
 									hit4_grr ->SetMarkerSize(2);
-									hit4_grr ->GetXaxis()->SetLimits(-1,5);
+									hit4_grr ->GetXaxis()->SetLimits(-1,5); //MAYBE if we change the xaxis to the actuall position, we have to modify this line
 									hit4_grr ->GetXaxis()->SetTitle("Layer ID");
 									hit4_grr ->GetYaxis()->SetRangeUser(-10,10);
 									hit4_grr ->GetYaxis()->SetTitle("Y position (Unit : mm)");
@@ -1604,9 +1793,9 @@ void tracking_v6 () // by analyzing the tree_both
 									hit4_best_fit_picker_layer[6] = ( hit4_fit_Y[2] - (hit4_fit->GetParameter(1)* double(hit4_layer[2]) + hit4_fit->GetParameter(0)) );//deviation from fit thirdlayer
 									hit4_best_fit_picker_layer[7] = ( hit4_fit_Y[3] - (hit4_fit->GetParameter(1)* double(hit4_layer[3]) + hit4_fit->GetParameter(0)) );//deviation from fit fourthlayer
 									
-									hit4_best_fit_picker_layer[8]  = fabs(hit4_fit_Y[0]-(hit4_fit_Y[1]+hit4_fit_Y[2]+hit4_fit_Y[3])/3.);
-									hit4_best_fit_picker_layer[9]  = fabs(hit4_fit_Y[1]-(hit4_fit_Y[0]+hit4_fit_Y[2]+hit4_fit_Y[3])/3.);
-									hit4_best_fit_picker_layer[10] = fabs(hit4_fit_Y[2]-(hit4_fit_Y[1]+hit4_fit_Y[0]+hit4_fit_Y[3])/3.);
+									hit4_best_fit_picker_layer[8]  = fabs(hit4_fit_Y[0]-(hit4_fit_Y[1]+hit4_fit_Y[2]+hit4_fit_Y[3])/3.); // MAYBE this way to find out the outlier is not the best 
+									hit4_best_fit_picker_layer[9]  = fabs(hit4_fit_Y[1]-(hit4_fit_Y[0]+hit4_fit_Y[2]+hit4_fit_Y[3])/3.); // but sofar it works, the easy solution is to first make the window larger
+									hit4_best_fit_picker_layer[10] = fabs(hit4_fit_Y[2]-(hit4_fit_Y[1]+hit4_fit_Y[0]+hit4_fit_Y[3])/3.); // calculate the rotation and correct it back
 									hit4_best_fit_picker_layer[11] = fabs(hit4_fit_Y[3]-(hit4_fit_Y[1]+hit4_fit_Y[2]+hit4_fit_Y[0])/3.);
 									
 									hit4_best_fit_picker_layer[12] = hit4_fit->GetParameter(1);
@@ -1670,10 +1859,14 @@ void tracking_v6 () // by analyzing the tree_both
 
 				// the following 4 histograms is for checking the residual before alignment 
 				// if all the layers are aligned well, the peak of the distributions should all be at 0
-				TH1_hit4_layer0_Y_residual->Fill(hit4_best_fit_picker_layer[4]);
-				TH1_hit4_layer1_Y_residual->Fill(hit4_best_fit_picker_layer[5]);
-				TH1_hit4_layer2_Y_residual->Fill(hit4_best_fit_picker_layer[6]);
-				TH1_hit4_layer3_Y_residual->Fill(hit4_best_fit_picker_layer[7]);
+				if (number_of_layer == 4)
+				{
+					TH1_hit4_layer0_Y_residual->Fill(hit4_best_fit_picker_layer[4]);
+					TH1_hit4_layer1_Y_residual->Fill(hit4_best_fit_picker_layer[5]);
+					TH1_hit4_layer2_Y_residual->Fill(hit4_best_fit_picker_layer[6]);
+					TH1_hit4_layer3_Y_residual->Fill(hit4_best_fit_picker_layer[7]);
+				}
+				
 				// cout<<"test 11111"<<endl;
 
 				// If one of the residuals is larger than the setting cut, the further analysis is applied 
@@ -1701,7 +1894,8 @@ void tracking_v6 () // by analyzing the tree_both
 						{}
 						else 
 						{
-							hit4_secondfit_X.push_back(i4);
+							hit4_secondfit_X.push_back(hit4_layer[i4]); //MAYBE if we change the x axis to the actual layer gap this has to be modified.
+							hit4_secondfit_X_ID.push_back(i4);
 							hit4_secondfit_Y.push_back(hit4_best_fit_picker_layer[i4]);
 						}
 
@@ -1755,9 +1949,13 @@ void tracking_v6 () // by analyzing the tree_both
 					hit4_second_residual[1] = hit4_secondfit_Y[1] - (hit4_fit->GetParameter(1)* double(hit4_secondfit_X[1]) + hit4_fit->GetParameter(0));
 					hit4_second_residual[2] = hit4_secondfit_Y[2] - (hit4_fit->GetParameter(1)* double(hit4_secondfit_X[2]) + hit4_fit->GetParameter(0));
 					// calculate the outlier numerically 
-					hit4_second_bad_pciker[0] = fabs(hit4_secondfit_Y[1]-hit4_secondfit_Y[2] ); /*bad in 0      /|\ */
-					hit4_second_bad_pciker[1] = fabs(hit4_secondfit_Y[0]-hit4_secondfit_Y[2] ); //bad in 1       |
-					hit4_second_bad_pciker[2] = fabs(hit4_secondfit_Y[1]-hit4_secondfit_Y[0] ); //bad in 2 of ---|
+					hit4_second_bad_pciker[0] = fabs( hit4_secondfit_Y[1]-hit4_secondfit_Y[2] )/fabs(hit4_secondfit_X[1]-hit4_secondfit_X[2]); /*bad in 0      /|\ */
+					hit4_second_bad_pciker[1] = fabs( hit4_secondfit_Y[0]-hit4_secondfit_Y[2] )/fabs(hit4_secondfit_X[0]-hit4_secondfit_X[2]); //bad in 1       |
+					hit4_second_bad_pciker[2] = fabs( hit4_secondfit_Y[1]-hit4_secondfit_Y[0] )/fabs(hit4_secondfit_X[1]-hit4_secondfit_X[0]); //bad in 2 of ---|
+
+					hit4_second_bad_pciker[3] = fabs( hit4_secondfit_Y[1]-hit4_secondfit_Y[2] );
+					hit4_second_bad_pciker[4] = fabs( hit4_secondfit_Y[0]-hit4_secondfit_Y[2] );
+					hit4_second_bad_pciker[5] = fabs( hit4_secondfit_Y[1]-hit4_secondfit_Y[0] );
 
 					//procedure 4
 					if (fabs(hit4_second_residual[0]) > noise_hit_distance || fabs(hit4_second_residual[1]) > noise_hit_distance || fabs(hit4_second_residual[2]) > noise_hit_distance)
@@ -1771,17 +1969,18 @@ void tracking_v6 () // by analyzing the tree_both
 								hit4_second_bad_pciker_id = i4;
 							}
 						}
-						if      (hit4_secondfit_X[hit4_second_bad_pciker_id]==0)
+						if      (hit4_secondfit_X_ID[hit4_second_bad_pciker_id]==0)
 							event_quality[pass_l1_counting]=event_quality[pass_l1_counting]^0x08;
-						else if (hit4_secondfit_X[hit4_second_bad_pciker_id]==1)
+						else if (hit4_secondfit_X_ID[hit4_second_bad_pciker_id]==1)
 							event_quality[pass_l1_counting]=event_quality[pass_l1_counting]^0x04;
-						else if (hit4_secondfit_X[hit4_second_bad_pciker_id]==2)
+						else if (hit4_secondfit_X_ID[hit4_second_bad_pciker_id]==2)
 							event_quality[pass_l1_counting]=event_quality[pass_l1_counting]^0x02;
-						else if (hit4_secondfit_X[hit4_second_bad_pciker_id]==3)
+						else if (hit4_secondfit_X_ID[hit4_second_bad_pciker_id]==3)
 							event_quality[pass_l1_counting]=event_quality[pass_l1_counting]^0x01;
 
 						// to check the position difference of the rest 2 points
-						if ( fabs( hit4_second_bad_pciker [hit4_second_bad_pciker_id] ) > noise_hit_distance) 
+						// hit4_second_bad_pciker_id 0 ~ 2
+						if ( fabs( hit4_second_bad_pciker [hit4_second_bad_pciker_id+3] ) > noise_hit_distance) 
 						{
 							event_quality[pass_l1_counting] = 0x00;
 						}
@@ -1840,6 +2039,7 @@ void tracking_v6 () // by analyzing the tree_both
 
 		hit4_secondfit_Y.clear();
 		hit4_secondfit_X.clear();
+		hit4_secondfit_X_ID.clear();
 		event_chip_to_function.clear();
 		if (pass_l1_counting%info_sampling==0) {cout<<" "<<endl;}
 	}//end of event loop "i"
@@ -1923,28 +2123,40 @@ void tracking_v6 () // by analyzing the tree_both
 
 	// the print all plots
 
-	c1->Clear();
-	c1->cd();
-	TH1_hit4_layer0_Y_residual->Draw("hist");
-	c1->Print( Form("%s/folder_%s/Y_residual.pdf(",folder_direction.Data(),file_name.Data()) );
-	c1->Clear();
+	if (number_of_layer > 2)
+	{
+		c1->Clear();
+		c1->cd();
+		TH1_hit4_layer0_Y_residual->Draw("hist");
+		c1->Print( Form("%s/folder_%s/Y_residual.pdf(",folder_direction.Data(),file_name.Data()) );
+		c1->Clear();
+	
+		c1->cd();
+		TH1_hit4_layer1_Y_residual->Draw("hist");
+		c1->Print( Form("%s/folder_%s/Y_residual.pdf",folder_direction.Data(),file_name.Data()) );
+		c1->Clear();
+		if (number_of_layer == 4)
+		{
+			c1->cd();
+			TH1_hit4_layer2_Y_residual->Draw("hist");
+			c1->Print( Form("%s/folder_%s/Y_residual.pdf",folder_direction.Data(),file_name.Data()) );
+			c1->Clear();
+	
+			c1->cd();
+			TH1_hit4_layer3_Y_residual->Draw("hist");
+			c1->Print( Form("%s/folder_%s/Y_residual.pdf)",folder_direction.Data(),file_name.Data()) );
+			c1->Clear();	
+		}
+		else if (number_of_layer == 3)
+		{
+			c1->cd();
+			TH1_hit4_layer2_Y_residual->Draw("hist");
+			c1->Print( Form("%s/folder_%s/Y_residual.pdf)",folder_direction.Data(),file_name.Data()) );
+			c1->Clear();
+		}
+	}
 
-	c1->cd();
-	TH1_hit4_layer1_Y_residual->Draw("hist");
-	c1->Print( Form("%s/folder_%s/Y_residual.pdf",folder_direction.Data(),file_name.Data()) );
-	c1->Clear();
-
-	c1->cd();
-	TH1_hit4_layer2_Y_residual->Draw("hist");
-	c1->Print( Form("%s/folder_%s/Y_residual.pdf",folder_direction.Data(),file_name.Data()) );
-	c1->Clear();
-
-	c1->cd();
-	TH1_hit4_layer3_Y_residual->Draw("hist");
-	c1->Print( Form("%s/folder_%s/Y_residual.pdf)",folder_direction.Data(),file_name.Data()) );
-	c1->Clear();
-
-	if (alignment_on == true && number_of_layer == 4)
+	if (alignment_on == true && number_of_layer > 2)
 	{
 		c1->Clear();
 		c1->cd();
@@ -1956,16 +2168,26 @@ void tracking_v6 () // by analyzing the tree_both
 		TH1_hit4_layer1_Y_alignment->Draw("hist");
 		c1->Print( Form("%s/folder_%s/Y_alignment.pdf",folder_direction.Data(),file_name.Data()) );
 		c1->Clear();
+		if (number_of_layer == 4)
+		{
+			c1->cd();
+			TH1_hit4_layer2_Y_alignment->Draw("hist");
+			c1->Print( Form("%s/folder_%s/Y_alignment.pdf",folder_direction.Data(),file_name.Data()) );
+			c1->Clear();
 
-		c1->cd();
-		TH1_hit4_layer2_Y_alignment->Draw("hist");
-		c1->Print( Form("%s/folder_%s/Y_alignment.pdf",folder_direction.Data(),file_name.Data()) );
-		c1->Clear();
-
-		c1->cd();
-		TH1_hit4_layer3_Y_alignment->Draw("hist");
-		c1->Print( Form("%s/folder_%s/Y_alignment.pdf)",folder_direction.Data(),file_name.Data()) );
-		c1->Clear();
+			c1->cd();
+			TH1_hit4_layer3_Y_alignment->Draw("hist");
+			c1->Print( Form("%s/folder_%s/Y_alignment.pdf)",folder_direction.Data(),file_name.Data()) );
+			c1->Clear();	
+		}
+		else if (number_of_layer == 3)
+		{
+			c1->cd();
+			TH1_hit4_layer2_Y_alignment->Draw("hist");
+			c1->Print( Form("%s/folder_%s/Y_alignment.pdf)",folder_direction.Data(),file_name.Data()) );
+			c1->Clear();
+		}
+		
 
 		file_output->cd ();
 		tree_output->Write("", TObject::kOverwrite);
